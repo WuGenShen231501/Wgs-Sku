@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTSP</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        html {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url('https://pic.3gbizhi.com/uploads/20240123/96553aa3934b1c09c0451a6e85bda084.png');
+            overflow: hidden;
+            background-size: cover;
+        }
+        
+        .ksss {
+            position: fixed;
+            top: calc((50% - 25px) - 100px);
+            left: calc(50% - 75px);
+            color: rgb(237, 253, 255, 0.8);
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 48px;
+            border: 1px solid rgb(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+        }
+        
+        .qjss {
+            position: fixed;
+            top: calc(50% - 25px);
+            left: calc(50% - 75px);
+            color: rgb(237, 253, 255);
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 48px;
+            border: 1px solid rgb(255, 255, 255);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+        }
+        
+        .jr {
+            position: fixed;
+            top: calc((50% - 25px) + 100px);
+            left: calc(50% - 75px);
+            color: rgb(237, 253, 255, 0.8);
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 48px;
+            border: 1px solid rgb(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+        }
+        
+        .tsk {
+            position: fixed;
+            top: 0;
+            font: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tsk"></div>
+    <div class="ksss">本地快速搜索</div>
+    <div class="qjss">全局搜索</div>
+    <div class="jr" style="display: none;">进入</div>
+    <div class="div_img_s" style="display: none;"></div>
+    <img class="WGS_HTSP" src="" alt="">
+
+    <!-- 提示音 -->
+    <audio class="sku_tsy" src="https://pic.ibaotu.com/00/25/22/14B888piCpnZ.mp3"></audio>
+    <audio class="sku_tsy" src="https://img.tukuppt.com/newpreview_music/09/04/07/5c8b02776d58965550.mp3"></audio>
+
+    <script>
+        // 提示音
+        var sku_tsy = document.querySelectorAll('.sku_tsy');
+
+        function Sku_tsy(num) {
+            sku_tsy[num].play();
+        }
+
+        var ksss = document.querySelector('.ksss');
+        var qjss = document.querySelector('.qjss');
+        var div_img_s = document.querySelector('.div_img_s');
+        var jr = document.querySelector('.jr');
+        var tsk = document.querySelector('.tsk');
+        var WGS_HTSP = document.querySelector('.WGS_HTSP');
+
+        //指定删除
+        function sz_zdsc(sz_s, sz_sc_zhi, sz_tj_zhi) {
+            if (sz_sc_zhi && sz_s.indexOf(sz_sc_zhi) !== -1 && sz_tj_zhi) {
+                sz_s.splice(sz_s.indexOf(sz_sc_zhi), 2, sz_tj_zhi);
+            } else if (sz_sc_zhi && sz_s.indexOf(sz_sc_zhi) !== -1) {
+                sz_s.splice(sz_s.indexOf(sz_sc_zhi), 1);
+            }
+        }
+
+        if (localStorage.htsp_lj == undefined) {
+            localStorage.htsp_lj = '[]';
+        }
+
+        if (JSON.parse(localStorage.htsp_lj).length == 0) {
+            ksss.style.display = 'none';
+        }
+
+        var di_zhi = '';
+        var kskg = 0;
+
+        qjss.addEventListener('click', function(e) {
+            ksss.style.display = 'none';
+            if (kskg == 0) {
+                kskg = 1;
+                this.innerHTML = '稍等.....';
+
+                var s_sz = ['qq', 'ww', 'ee', 'rr', 'tt', 'yy', 'uu', 'ii', 'oo', 'pp', 'aa', 'ss', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'zz', 'xx', 'cc', 'vv', 'bb', 'nn', 'mm'];
+                var htsp_s_tjgs = 0;
+                var htsp_s_tjgs_cg = 0;
+                var htsp_s_tjgs_sb = 0;
+                var htsp_cgqcfgs = 0;
+
+                for (var i = 0; i < s_sz.length; i++) {
+                    for (var u = 0; u < 400; u++) {
+                        htsp_s_tjgs++;
+                        var wz_shu = u < 10 ? '0' + u : u;
+                        var imgs = document.createElement('img');
+                        imgs.src = 'https://ht' + wz_shu + s_sz[i] + '.xyz:9527/favicon.ico';
+                        imgs.addEventListener('load', function(e) {
+                            // 分支加速
+                            setTimeout(function() {}, 0);
+
+                            htsp_s_tjgs_cg++;
+                            console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
+                            console.log(this.src);
+                            di_zhi = this.src;
+
+                            // 保存
+                            var htsp_lj = JSON.parse(localStorage.htsp_lj);
+                            if (htsp_lj.indexOf(this.src) !== -1) {
+                                htsp_cgqcfgs++;
+                                sz_zdsc(htsp_lj, this.src);
+                            } else {
+                                Sku_tsy(1);
+                            }
+                            htsp_lj.unshift(this.src);
+                            localStorage.htsp_lj = JSON.stringify(htsp_lj);
+
+                            // 进入
+                            jr.style.display = 'block';
+
+                            tsk.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
+
+                            if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                var htsp_lj = JSON.parse(localStorage.htsp_lj);
+                                tsk.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ')';
+                                qjss.innerHTML = '搜索完成';
+                                div_img_s.innerHTML = '';
+                                Sku_tsy(0);
+                            }
+                        });
+                        imgs.addEventListener('error', function(e) {
+                            // 分支加速
+                            setTimeout(function() {}, 0);
+
+                            htsp_s_tjgs_sb++;
+                            var htsp_lj = JSON.parse(localStorage.htsp_lj);
+                            tsk.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
+                            console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
+                            if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                var htsp_lj = JSON.parse(localStorage.htsp_lj);
+                                tsk.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ')';
+                                div_img_s.innerHTML = '';
+                                Sku_tsy(0);
+                            }
+                        });
+                        div_img_s.appendChild(imgs);
+                    }
+                }
+            }
+        });
+
+        ksss.addEventListener('click', function(e) {
+            qjss.style.display = 'none';
+            if (kskg == 0) {
+                kskg = 1;
+                this.innerHTML = '稍等.....';
+
+                var htsp_lj = JSON.parse(localStorage.htsp_lj);
+                var htsp_s_gs = 0;
+                var b = 0;
+
+                function wzjc(dz, sj) {
+                    WGS_HTSP.src = dz;
+                    WGS_HTSP.addEventListener('load', function(e) {
+                        b = 1;
+                        console.log('加载成功:' + this.src);
+                        di_zhi = this.src;
+
+                        // 进入
+                        jr.style.display = 'block';
+                        ksss.innerHTML = '搜索完成';
+                        console.log();
+                        tsk.innerHTML = 'HTSP 地址:' + dz.substring(0, dz.length - 11) + ' (删除无用 ' + (htsp_s_gs) + ' 本地剩余 ' + (htsp_lj.length - htsp_s_gs) + ')';
+                        Sku_tsy(0);
+                    });
+                    WGS_HTSP.addEventListener('error', function(e) {
+                        console.log('加载失败:' + this.src);
+                        // 删除
+                        var htsp_s2 = JSON.parse(localStorage.htsp_lj);
+                        sz_zdsc(htsp_s2, dz);
+                        localStorage.htsp_lj = JSON.stringify(htsp_s2);
+                    });
+
+                    setTimeout(function() {
+                        if (b !== 1) {
+                            console.log('加载超时:' + dz);
+                            htsp_s_gs++;
+                            if (htsp_s_gs <= htsp_lj.length - 1) {
+                                wzjc(htsp_lj[htsp_s_gs], 1000);
+                            } else {
+                                console.log('本地没用发现有用链接 ! 请换全局搜索');
+                                tsk.innerHTML = 'HTSP 本地没有发现有用链接,请换全局搜索';
+                                kskg = 0;
+                                qjss.style.display = 'block';
+                                ksss.style.display = 'none';
+                                Sku_tsy(0);
+                            }
+                        }
+                    }, sj);
+                }
+
+                wzjc(htsp_lj[htsp_s_gs], 1000);
+
+                WGS_HTSP.addEventListener('click', function(e) {
+                    window.open(WGS_HTSP.src.substring(0, WGS_HTSP.src.length - 11));
+                });
+
+            }
+            gywm_ban_ben_sj = setTimeout(function() {
+                gywm_ban_ben_djcs = 0;
+            }, 2000);
+
+
+        });
+
+        jr.addEventListener('click', function(e) {
+            div_img_s.innerHTML = '';
+            location.replace(di_zhi.substring(0, di_zhi.length - 11));
+        });
+    </script>
+
+</body>
+
+</html>
