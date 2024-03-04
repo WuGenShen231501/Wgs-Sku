@@ -258,9 +258,13 @@
 
         });
 
+        var jrks = 0;
         jr.addEventListener('click', function(e) {
-            div_img_s.innerHTML = '';
-            location.replace(di_zhi.substring(0, di_zhi.length - 11));
+            if (jrks == 0) {
+                jrks = 1;
+                div_img_s.innerHTML = '';
+                location.replace(di_zhi.substring(0, di_zhi.length - 11));
+            }
         });
     </script>
 
