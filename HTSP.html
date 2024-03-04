@@ -72,11 +72,22 @@
             font-size: 12px;
             color: white;
         }
+        
+        .txk {
+            position: fixed;
+            bottom: 0;
+            font: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <div class="tsk"></div>
+    <div class="txk">手机无广告设置: 打开浏览器设置-UA标识 Android 改为 电脑版win<br></div>
     <div class="ksss">本地快速搜索</div>
     <div class="qjss">全局搜索</div>
     <div class="jr" style="display: none;">进入</div>
@@ -264,7 +275,8 @@
             if (jrks == 0) {
                 jrks = 1;
                 div_img_s.innerHTML = '';
-                location.replace(di_zhi.substring(0, di_zhi.length - 11));
+                window.open(di_zhi.substring(0, di_zhi.length - 11));
+                window.close();
             }
         });
     </script>
