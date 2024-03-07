@@ -82,6 +82,25 @@
             font-size: 12px;
             color: white;
         }
+        
+        .jdt {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 90%;
+            height: 16px;
+            margin: 0px 5%;
+            padding: 3px;
+            border: 1px solid rgb(255, 255, 255);
+        }
+        
+        .jdt2 {
+            float: left;
+            width: 0%;
+            height: 100%;
+            background-color: white;
+            transition: 0.5s linear;
+        }
     </style>
 </head>
 
@@ -90,6 +109,9 @@
     <div class="txk">手机无广告设置: 打开浏览器设置-UA标识 Android 改为 电脑版win<br></div>
     <div class="ksss">本地快速搜索</div>
     <div class="qjss">全局搜索</div>
+    <div class="jdt" style="display: none;">
+        <div class="jdt2"></div>
+    </div>
     <div class="jr" style="display: none;">进入</div>
     <div class="div_img_s" style="display: none;"></div>
     <img class="WGS_HTSP" src="" alt="" style="display: none;">
@@ -112,6 +134,8 @@
         var jr = document.querySelector('.jr');
         var tsk = document.querySelector('.tsk');
         var WGS_HTSP = document.querySelector('.WGS_HTSP');
+        var jdt = document.querySelector('.jdt');
+        var jdt2 = document.querySelector('.jdt2');
 
         //指定删除
         function sz_zdsc(sz_s, sz_sc_zhi, sz_tj_zhi) {
@@ -145,64 +169,76 @@
                 var htsp_s_tjgs_sb = 0;
                 var htsp_cgqcfgs = 0;
 
-                for (var i = 0; i < s_sz.length; i++) {
-                    for (var u = 0; u < 400; u++) {
-                        htsp_s_tjgs++;
-                        var wz_shu = u < 10 ? '0' + u : u;
-                        var imgs = document.createElement('img');
-                        imgs.src = 'https://ht' + wz_shu + s_sz[i] + '.xyz:9527/favicon.ico';
-                        imgs.addEventListener('load', function(e) {
-                            // 分支加速
-                            setTimeout(function() {}, 0);
+                setTimeout(function() {
+                    for (var i = 0; i < s_sz.length; i++) {
+                        for (var u = 0; u < 400; u++) {
+                            htsp_s_tjgs++;
+                            var wz_shu = u < 10 ? '0' + u : u;
+                            var imgs = document.createElement('img');
+                            imgs.src = 'https://ht' + wz_shu + s_sz[i] + '.xyz:9527/favicon.ico';
+                            imgs.addEventListener('load', function(e) {
+                                // 分支加速
+                                setTimeout(function() {}, 0);
 
-                            htsp_s_tjgs_cg++;
-                            console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
-                            console.log(this.src);
-                            di_zhi = this.src;
+                                htsp_s_tjgs_cg++;
+                                console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
+                                console.log(this.src);
+                                di_zhi = this.src;
 
-                            // 保存
-                            var htsp_lj = JSON.parse(localStorage.htsp_lj);
-                            if (htsp_lj.indexOf(this.src) !== -1) {
-                                htsp_cgqcfgs++;
-                                sz_zdsc(htsp_lj, this.src);
-                            } else {
-                                Sku_tsy(1);
-                            }
-                            htsp_lj.unshift(this.src);
-                            localStorage.htsp_lj = JSON.stringify(htsp_lj);
-
-                            // 进入
-                            jr.style.display = 'block';
-
-                            tsk.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
-
-                            if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                // 保存
                                 var htsp_lj = JSON.parse(localStorage.htsp_lj);
-                                tsk.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ')';
-                                qjss.innerHTML = '搜索完成';
-                                div_img_s.innerHTML = '';
-                                Sku_tsy(0);
-                            }
-                        });
-                        imgs.addEventListener('error', function(e) {
-                            // 分支加速
-                            setTimeout(function() {}, 0);
+                                if (htsp_lj.indexOf(this.src) !== -1) {
+                                    htsp_cgqcfgs++;
+                                    sz_zdsc(htsp_lj, this.src);
+                                } else {
+                                    Sku_tsy(1);
+                                }
+                                htsp_lj.unshift(this.src);
+                                localStorage.htsp_lj = JSON.stringify(htsp_lj);
 
-                            htsp_s_tjgs_sb++;
-                            var htsp_lj = JSON.parse(localStorage.htsp_lj);
-                            tsk.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
-                            console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
-                            console.log(this.src);
-                            if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                // 进入
+                                jr.style.display = 'block';
+
+                                tsk.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
+
+                                jdt.style.display = 'block';
+                                jdt2.style.width = (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%';
+
+                                if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                    var htsp_lj = JSON.parse(localStorage.htsp_lj);
+                                    tsk.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ')';
+                                    jdt.style.display = 'none';
+                                    qjss.innerHTML = '搜索完成';
+                                    div_img_s.innerHTML = '';
+                                    Sku_tsy(0);
+                                }
+                            });
+                            imgs.addEventListener('error', function(e) {
+                                // 分支加速
+                                setTimeout(function() {}, 0);
+
+                                htsp_s_tjgs_sb++;
                                 var htsp_lj = JSON.parse(localStorage.htsp_lj);
-                                tsk.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ')';
-                                div_img_s.innerHTML = '';
-                                Sku_tsy(0);
-                            }
-                        });
-                        div_img_s.appendChild(imgs);
+
+                                tsk.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
+
+                                jdt.style.display = 'block';
+                                jdt2.style.width = (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%';
+
+                                console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
+                                console.log(this.src);
+                                if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                    var htsp_lj = JSON.parse(localStorage.htsp_lj);
+                                    tsk.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_lj.length + ')';
+                                    jdt.style.display = 'none';
+                                    div_img_s.innerHTML = '';
+                                    Sku_tsy(0);
+                                }
+                            });
+                            div_img_s.appendChild(imgs);
+                        }
                     }
-                }
+                }, 500);
             }
         });
 
