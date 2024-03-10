@@ -203,6 +203,7 @@
     background-color: rgb(0, 0, 0, 0.75);
     right: -120px;
     top: -17px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .liu_yan_s_jiao_xing {
@@ -216,6 +217,7 @@
     border-right: 12px solid transparent !important;
     border-bottom: 12px solid transparent !important;
     transform: rotate(-45deg);
+    border-radius: 3px 0px 0px 0px;
 }
 
 .liu_yan_shezhi_gn_biaoji {

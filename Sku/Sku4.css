@@ -55,19 +55,20 @@
         width: calc(100% + 70px);
         height: 450px;
         overflow-y: scroll;
+        padding-bottom: 10px;
     }
     
     .bzsz_s {
         position: relative;
         float: left;
         width: 335px;
-        height: 195.335px;
+        background-repeat: no-repeat;
+        background-position: center;
         background-color: rgba(255, 255, 255, 0.75);
         border-radius: 5px;
         margin-left: 10px;
         margin-top: 10px;
-        background-size: 100% 100%;
-        background-image: url(https://pr1-greenteacdn.lenovo.com.cn/config/1672128782424_21.png);
+        background-size: cover;
         transition: 0.5s;
     }
     
@@ -81,9 +82,13 @@
         margin-left: 10px;
         margin-top: 10px;
         transition: 0.5s;
-        line-height: 195.335px;
         text-align: center;
         font-size: 100px;
+        overflow: hidden;
+    }
+    
+    .bzsz_sj {
+        font-size: 40px;
     }
     
     .bzsz_tj:hover,
@@ -857,4 +862,21 @@
         border-bottom: 1px solid white;
         background-color: rgb(0, 0, 0, 0);
         outline: none;
+    }
+    
+    .htsp_qjss_jdt {
+        position: absolute;
+        left: 119px;
+        top: 89px;
+        width: 500px;
+        height: 16px;
+        padding: 4px;
+        overflow: hidden;
+        border: 1px solid;
+    }
+    
+    .htsp_qjss_jdt2 {
+        float: left;
+        width: 0%;
+        height: 100%;
     }
