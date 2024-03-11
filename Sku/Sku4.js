@@ -1424,7 +1424,7 @@ daoru_ym_sc.addEventListener('input', function(e) {
 var daoru_sz = [];
 
 function daoru_sz_hs() {
-    if (daoru_sz.length == 28 || daoru_sz.length == 29) {
+    if (daoru_sz.length == 29) {
         // 导航栏
         localStorage.dhr_sz = daoru_sz[0];
         //导航栏页面
@@ -1494,6 +1494,62 @@ daoru_ym_dr.addEventListener('click', function(e) {
         if (daoru_ym_sc.value[0] == '[') {
             daoru_sz = JSON.parse(daoru_ym_sc.value);
             daoru_sz_hs();
+        } else if (daoru_ym_sc.value == 'wgs') { //密钥
+            // 暂停使用
+            daoru_ym_sc.disabled = 'disabled';
+            daoru_ym_sc.value = '';
+            daoru_ym_sc.placeholder = '获取中.........';
+            // 确保服务器支持CORS
+            const url = 'https://wugenshen231501.github.io/Wgs-Sku/S-ku加密库.txt';
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    daoru_ym_sc.value = data;
+                    // 可以使用
+                    daoru_ym_sc.disabled = '';
+                    daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    Sku_tctx('获取失败! 网络故障 或 地址错误');
+                    // 可以使用
+                    daoru_ym_sc.disabled = '';
+                    daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
+                });
+        } else if (daoru_ym_sc.value.substring(0, 4) == 'http') { //网址导入
+            // 暂停使用
+            daoru_ym_sc.disabled = 'disabled';
+            daoru_ym_sc.placeholder = '获取中.........';
+            // 确保服务器支持CORS
+            const url = daoru_ym_sc.value;
+            daoru_ym_sc.value = '';
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    daoru_ym_sc.value = data;
+                    // 可以使用
+                    daoru_ym_sc.disabled = '';
+                    daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    Sku_tctx('获取失败! 网络故障 或 地址错误');
+                    // 可以使用
+                    daoru_ym_sc.disabled = '';
+                    daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
+                });
         } else {
             daoru_sz = JSON.parse(WGS_zfc_jiemi(daoru_ym_sc.value, miyao));
             if (daoru_sz[19] == '') {
@@ -1505,6 +1561,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
         }
     } catch (error) {
         // 如果上面代码有异常时
+        daoru_ym_sc.value = '';
         Sku_tctx('格式错误 ! 不符合的导入模块');
     }
 });
