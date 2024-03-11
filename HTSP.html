@@ -17,7 +17,6 @@
             background-position: center;
             background-attachment: fixed;
             overflow: hidden;
-            background-size: cover;
         }
         
         .ksss,
@@ -285,7 +284,7 @@
                             console.log('加载超时:' + dz);
                             htsp_s_gs++;
                             if (htsp_s_gs <= htsp_lj.length - 1) {
-                                wzjc(htsp_lj[htsp_s_gs], 1000);
+                                wzjc(htsp_lj[htsp_s_gs], 2000);
                             } else {
                                 console.log('本地没用发现有用链接 ! 请换全局搜索');
                                 tsk.innerHTML = 'HTSP 本地没有发现有用链接,请换全局搜索';
@@ -298,7 +297,7 @@
                     }, sj);
                 }
 
-                wzjc(htsp_lj[htsp_s_gs], 1000);
+                wzjc(htsp_lj[htsp_s_gs], 2000);
 
                 WGS_HTSP.addEventListener('click', function(e) {
                     window.open(WGS_HTSP.src.substring(0, WGS_HTSP.src.length - 11));
@@ -319,6 +318,21 @@
                 div_img_s.innerHTML = '';
                 window.open(di_zhi.substring(0, di_zhi.length - 11));
                 window.close();
+            }
+        });
+
+        if (localStorage.htsp_tp_size == undefined) {
+            localStorage.htsp_tp_size = 'cover';
+        }
+        document.documentElement.style.backgroundSize = localStorage.htsp_tp_size;
+        var txk = document.querySelector('.txk');
+        txk.addEventListener('click', function(e) {
+            if (document.documentElement.style.backgroundSize == 'cover') {
+                document.documentElement.style.backgroundSize = 'contain';
+                localStorage.htsp_tp_size = 'contain';
+            } else {
+                document.documentElement.style.backgroundSize = 'cover';
+                localStorage.htsp_tp_size = 'cover';
             }
         });
     </script>
