@@ -92,6 +92,10 @@
     overflow: hidden;
 }
 
+.liu_yan_z:hover~.liu_yan_time {
+    opacity: 1;
+}
+
 .liu_yan_z img {
     max-width: 658px;
 }
@@ -136,7 +140,7 @@
     top: -14px;
     right: 100px;
     transform: scale(0.8);
-    color: rgb(255, 255, 255, 0.5);
+    opacity: 0.5;
 }
 
 .liu_yan_sxuan {
@@ -181,7 +185,7 @@
 }
 
 .liu_yan_sxuan_s:hover {
-    background-color: rgba(255, 183, 0, 0.15);
+    text-indent: 1.5em;
 }
 
 .liu_yan_sxuan_s span {

@@ -72,10 +72,6 @@ html {
     border-bottom: 2px solid rgb(255, 213, 0);
 }
 
-.top_dhl div:hover {
-    background-color: rgb(255, 213, 0, 0.15);
-}
-
 
 /* -----------头部搜索----------- */
 

@@ -679,6 +679,11 @@
         height: 40px;
         line-height: 39px;
         border-bottom: 1px solid white;
+        transition: 0.2s;
+    }
+    
+    .sy_dwck_s:hover {
+        text-indent: 0.5em;
     }
     /* -----倒计时提醒栏------- */
     

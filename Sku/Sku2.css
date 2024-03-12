@@ -40,12 +40,12 @@
     text-align: center;
     line-height: 50px;
     text-indent: -3em;
-    transition: 0.1s;
+    transition: 0.2s;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .lian_jie_l div:hover {
-    background-color: rgba(255, 183, 0, 0.15);
+    text-indent: -2em;
 }
 
 .lian_jie_r div {
@@ -63,10 +63,6 @@
     margin: 10px 0px 0px 20px;
 }
 
-.lj_max:hover {
-    border-bottom: 1px solid rgb(255, 213, 0);
-}
-
 .lj_tp {
     float: left;
     width: 60px !important;
@@ -77,6 +73,11 @@
     overflow: hidden;
     border-radius: 5px;
     background-position: center;
+    transition: 0.2s;
+}
+
+.lj_tp:hover {
+    transform: scale(0.85);
 }
 
 .lj_xx {
@@ -149,10 +150,9 @@
     color: white;
 }
 
-.lj_lj_t:hover,
-.lj_lj_b:hover {
-    color: rgb(255, 213, 0);
-    border-color: rgb(255, 213, 0);
+.lj_lj_t,
+.lj_lj_b {
+    transition: 0.1s;
 }
 
 .dhr_shezhi_gn {
