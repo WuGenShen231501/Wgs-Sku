@@ -115,14 +115,19 @@
     <div class="jr" style="display: none;">进入</div>
     <div class="div_img_s" style="display: none;"></div>
     <img class="WGS_HTSP" src="" alt="" style="display: none;">
+    <img class="img1" src="" alt="" style="display: none;">
 
     <!-- 提示音 -->
     <audio class="sku_tsy" src="https://pic.ibaotu.com/00/25/22/14B888piCpnZ.mp3"></audio>
     <audio class="sku_tsy" src="https://img.tukuppt.com/newpreview_music/09/04/07/5c8b02776d58965550.mp3"></audio>
 
     <script>
-        // 壁纸
-        document.documentElement.style.backgroundImage = 'url(' + 'https://moe.jitsu.top/r18' + ')';
+        // 随机数
+        function sjs(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
         // 提示音
         var sku_tsy = document.querySelectorAll('.sku_tsy');
 
@@ -321,13 +326,34 @@
             }
         });
 
-        if (localStorage.htsp_tp_size == undefined) {
+        if (localStorage.htsp_tp_size !== 'cover' && localStorage.htsp_tp_size !== 'contain') {
             localStorage.htsp_tp_size = 'cover';
         }
+
         document.documentElement.style.backgroundSize = localStorage.htsp_tp_size;
+        console.log(localStorage.htsp_tp_size);
+
+        if (localStorage.htsp_tp_size == 'cover') {
+            bizhi_sjwz2 = [
+                'https://moe.jitsu.top/r18'
+            ];
+        } else {
+            bizhi_sjwz2 = [
+                'https://moe.jitsu.top/r18',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=azurlane',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=honkai',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=arknights',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=frontline',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=fate',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=princess',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=hololive',
+                'https://image.anosu.top/pixiv/direct?r18=1&keyword=touhou',
+            ];
+        }
+
         var txk = document.querySelector('.txk');
         txk.addEventListener('click', function(e) {
-            if (document.documentElement.style.backgroundSize == 'cover') {
+            if (localStorage.htsp_tp_size == 'cover') {
                 document.documentElement.style.backgroundSize = 'contain';
                 localStorage.htsp_tp_size = 'contain';
             } else {
@@ -335,6 +361,31 @@
                 localStorage.htsp_tp_size = 'cover';
             }
         });
+
+        // 随机壁纸 
+
+        var tpdsq;
+
+        function sjtp() {
+            var shuiji_biz = sjs(0, bizhi_sjwz2.length - 1);
+            document.documentElement.style.backgroundImage = 'url(' + bizhi_sjwz2[shuiji_biz] + ')';
+
+            var img1 = document.querySelector('.img1');
+            img1.src = bizhi_sjwz2[shuiji_biz];
+            tpdsq = setTimeout(function() {
+                if (bizhi_sjwz2.length !== 1) {
+                    sjtp();
+                }
+            }, 3000);
+            img1.onload = function() {
+                console.log('Background image has loaded.');
+                clearTimeout(tpdsq);
+            };
+            img1.onerror = function() {
+                console.log('Background image has not loaded.');
+            };
+        }
+        sjtp();
     </script>
 
 </body>
