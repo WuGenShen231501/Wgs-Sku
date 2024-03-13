@@ -17,6 +17,7 @@
             background-position: center;
             background-attachment: fixed;
             overflow: hidden;
+            transition: 0.5s;
         }
         
         .ksss,
@@ -115,7 +116,7 @@
     <div class="jr" style="display: none;">进入</div>
     <div class="div_img_s" style="display: none;"></div>
     <img class="WGS_HTSP" src="" alt="" style="display: none;">
-    <img class="img1" src="" alt="" style="display: none;">
+    <div class="sstp" style="display: none;"></div>
 
     <!-- 提示音 -->
     <audio class="sku_tsy" src="https://pic.ibaotu.com/00/25/22/14B888piCpnZ.mp3"></audio>
@@ -333,23 +334,19 @@
         document.documentElement.style.backgroundSize = localStorage.htsp_tp_size;
         console.log(localStorage.htsp_tp_size);
 
-        if (localStorage.htsp_tp_size == 'cover') {
-            bizhi_sjwz2 = [
-                'https://moe.jitsu.top/r18'
-            ];
-        } else {
-            bizhi_sjwz2 = [
-                'https://moe.jitsu.top/r18',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=azurlane',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=honkai',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=arknights',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=frontline',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=fate',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=princess',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=hololive',
-                'https://image.anosu.top/pixiv/direct?r18=1&keyword=touhou',
-            ];
-        }
+
+        document.documentElement.style.backgroundImage = 'url(' + 'https://moe.jitsu.top/r18?1000' + ')';
+        var bizhi_sjwz2 = [
+            'https://moe.jitsu.top/r18',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=azurlane',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=honkai',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=arknights',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=frontline',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=fate',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=princess',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=hololive',
+            'https://image.anosu.top/pixiv/direct?r18=1&keyword=touhou',
+        ];
 
         var txk = document.querySelector('.txk');
         txk.addEventListener('click', function(e) {
@@ -363,29 +360,57 @@
         });
 
         // 随机壁纸 
+        var sstp = document.querySelector('.sstp');
+        var sstp_sz = [];
+        var sstp_num = 0;
+        var bz_s = 0;
+        var max_s = 30;
 
-        var tpdsq;
-
-        function sjtp() {
-            var shuiji_biz = sjs(0, bizhi_sjwz2.length - 1);
-            document.documentElement.style.backgroundImage = 'url(' + bizhi_sjwz2[shuiji_biz] + ')';
-
-            var img1 = document.querySelector('.img1');
-            img1.src = bizhi_sjwz2[shuiji_biz];
-            tpdsq = setTimeout(function() {
-                if (bizhi_sjwz2.length !== 1) {
-                    sjtp();
+        function sstp_jz() {
+            var img = document.createElement('img');
+            img.src = 'https://moe.jitsu.top/r18?' + sstp_num;
+            img.onload = function() {
+                setTimeout(function() {});
+                sstp_sz.push(this.src);
+                if (sstp_sz.length <= max_s) {
+                    sstp_jz();
                 }
-            }, 3000);
-            img1.onload = function() {
-                console.log('Background image has loaded.');
-                clearTimeout(tpdsq);
             };
-            img1.onerror = function() {
-                console.log('Background image has not loaded.');
+            img.onerror = function() {
+                setTimeout(function() {});
+                if (sstp_sz.length <= max_s) {
+                    sstp_jz();
+                }
             };
+            sstp.appendChild(img);
+            sstp_num++;
         }
-        sjtp();
+
+        for (var i = 0; i < bizhi_sjwz2.length; i++) {
+            var img = document.createElement('img');
+
+            img.src = bizhi_sjwz2[i];
+            img.onload = function() {
+                setTimeout(function() {});
+                sstp_sz.push(this.src);
+                if (this.src.substring(0, 21) == 'https://moe.jitsu.top') {
+                    sstp_jz();
+                }
+            };
+
+            sstp.appendChild(img);
+        }
+
+
+        setInterval(function() {
+            if (sstp_sz.length >= bz_s + 1) {
+                document.documentElement.style.backgroundImage = 'url(' + sstp_sz[bz_s] + ')';
+                bz_s++;
+                if (bz_s == max_s) {
+                    bz_s = 0;
+                }
+            }
+        }, 4000);
     </script>
 
 </body>
