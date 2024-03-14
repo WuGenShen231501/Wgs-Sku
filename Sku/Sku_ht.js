@@ -1,5 +1,5 @@
 //检测是否第一次使用
-var ban_ben_s = 'v14.6.2';
+var ban_ben_s = 'v15.11.2';
 if (localStorage.ban_ben) {
     console.log('继续使用中');
     //检查是否最新
@@ -241,6 +241,13 @@ if (localStorage.htsp_s == undefined) {
 if (localStorage.htsp_s_bf == undefined) {
     var htsp_s_bf = [];
     localStorage.htsp_s_bf = JSON.stringify(htsp_s_bf);
+}
+//注册表
+if (localStorage.sku_zcb == undefined) {
+    localStorage.sku_zcb = '[[],[]]';
+}
+if (localStorage.sku_zcb_bf == undefined) {
+    localStorage.sku_zcb_bf = '[[],[]]';
 }
 
 // var str = 'wgs';

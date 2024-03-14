@@ -799,13 +799,16 @@ html {
 
 @media screen and (max-width: 1260px) {
     .lian_jie_ssk {
-        right: 58px !important;
+        right: 62px !important;
     }
     .lian_jie_r_max {
         right: 58px;
     }
     .lian_jie_l_max {
         margin-left: 58px;
+    }
+    .lj_zcb_i {
+        right: 36px !important;
     }
 }
 

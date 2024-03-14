@@ -385,7 +385,9 @@ function zi_ti_color_s() {
     style_s3.innerHTML = '.sy_dwck_ym,.sy_dwck,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.top_tou_xian_sc,.drym_min,.wl_max,.bzsz_tj_ym,.sy_djs_tjym,.sy_djs,.liu_yan_sxuan_div,.liu_yan_mao_bo_li,.lj_xg_tj,.dhr_xg_tj,.lian_jie_l_max,.lian_jie_r_max,.topmax,.shezhi_max,.music_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);} .input_djs_tjym_time_s2,.input_djs_tjym_sj,.input_djs_tjym_time_s,.djs_tjym_qr,.mblxg,.input_drmm_mm,.daoru_ym_sc,.drmm_mm_qr,.drym_tx,.imput_drym_mm,.sy_zpzs_jr,.sy_zpzs_tj,.sy_zp_tj_anniu,.input_sy_zp_tj,.sy_hddb,.input_ji_ru_srk,.input_ji_ru_ss,.bfsz_zdbf_qrk,.sy_lbt_b {border-color:' + localStorage.zi_ti_color + ';} .input_djs_tjym_time_s2,.input_drmm_mm,.daoru_ym_sc,.imput_drym_mm,.input_sy_zp_tj,.input_ji_ru_srk,.input_ji_ru_ss {color:' + localStorage.zi_ti_color + ';} .sy_zp_tj_anniu:hover,.drmm_mm_qr:hover,.djs_tjym_qr:hover,.sy_zpzs_tj:hover,.sy_zpzs_jr:hover,.sy_dwck_s:hover,.daoru_ym_bendi_click:hover {color:' + localStorage.zi_ti_click_color + ';border-color:' + localStorage.zi_ti_click_color + ';} .drym_tx {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';} .sy_dwck {color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .sy_dwck_s {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';} .liu_yan_z a, .lian_jie_ssk {color:' + localStorage.zi_ti_color + ';} .liu_yan_z a:hover {color:' + localStorage.zi_ti_click_color + ';} .daoru_ym_dc,.daoru_ym_dr,.daoru_ym_bendi,.daorubendi_s_sj,.daorubendi_s_yy,.daorubendi_s_cs {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.input_tmd{background: -webkit-linear-gradient(' + localStorage.zi_ti_color + ', ' + localStorage.zi_ti_color + ') no-repeat, none;border: 1px solid ' + localStorage.zi_ti_color + ';}.input_tmd::-webkit-slider-thumb {background: ' + localStorage.zi_ti_color + ';}.music_s {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';}';
 
     var style_s5 = document.querySelector('.style_s5');
-    style_s5.innerHTML = '.music_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.1) + ';}.music_bottom_hk {background: -webkit-linear-gradient(' + RGB_zhq(localStorage.zi_ti_color) + ', ' + RGB_zhq(localStorage.zi_ti_color) + ') no-repeat,' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';}.music_bottom_hk::-webkit-slider-thumb { background: ' + RGB_zhq(localStorage.zi_ti_color) + ';} .music_boyyom_tj_ym,.Sku_tcjg_Max,.sy_lbt,.sy_djs_txl,.sy_nrs_t_span,.ssbqym,.sd_dtnr_max {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);}.music_tjym_qd:hover {border-color:' + localStorage.zi_ti_click_color + ';color:' + localStorage.zi_ti_click_color + ';}.music_tjym_mz,.music_tjym_url,.ssjl_s{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lian_jie_l2_sy{background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.ssbq_s {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.ssbq_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .daoru_ym_jmdc{background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .su_biao{color:' + localStorage.zi_ti_color + ';}.daoru_ym_my{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lbnr_ljbz{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.lbnr_ljxz,.lbnr_ljdz,.lbnr_max {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lbnr_ljxz:hover,.lbnr_ljdz:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.sy_zpzs_kaiguan,.lbnr_ljtp{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.sy_zpzs_kaiguan_ts{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.WGS_HTSP_TJ,.shezhi_sp_xp_min2,.htsp_qjss_jdt {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.htsp_qjss_jdt2 {background-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lj_lj_t:hover,.lj_lj_b:hover { box-shadow: 0px 0px 30px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.3) + ';}.lj_max:hover { box-shadow: inset 0px -17px 15px -20px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.8) + ';}';
+    style_s5.innerHTML = '.music_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.1) + ';}.music_bottom_hk {background: -webkit-linear-gradient(' + RGB_zhq(localStorage.zi_ti_color) + ', ' + RGB_zhq(localStorage.zi_ti_color) + ') no-repeat,' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';}.music_bottom_hk::-webkit-slider-thumb { background: ' + RGB_zhq(localStorage.zi_ti_color) + ';} .music_boyyom_tj_ym,.Sku_tcjg_Max,.sy_lbt,.sy_djs_txl,.sy_nrs_t_span,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);}.music_tjym_qd:hover {border-color:' + localStorage.zi_ti_click_color + ';color:' + localStorage.zi_ti_click_color + ';}.music_tjym_mz,.music_tjym_url,.ssjl_s{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lian_jie_l2_sy{background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.ssbq_s {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.ssbq_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .daoru_ym_jmdc{background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .su_biao{color:' + localStorage.zi_ti_color + ';}.daoru_ym_my{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lbnr_ljbz{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.lbnr_ljxz,.lbnr_ljdz,.lbnr_max {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lbnr_ljxz:hover,.lbnr_ljdz:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.sy_zpzs_kaiguan,.lbnr_ljtp{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.sy_zpzs_kaiguan_ts{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.WGS_HTSP_TJ,.shezhi_sp_xp_min2,.htsp_qjss_jdt,.lj_zcb_name,.lj_zcb_dizhi,.lj_zcb_qr {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.htsp_qjss_jdt2 {background-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lj_lj_t:hover,.lj_lj_b:hover { box-shadow: 0px 0px 30px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.3) + ';}.lj_max:hover { box-shadow: inset 0px -17px 15px -20px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.8) + ';}';
+
+    document.documentElement.style.setProperty('--zi_ti_color', RGB_zhq(localStorage.zi_ti_color));
 }
 //字体颜色改变
 input_color1.addEventListener('input', function() {
@@ -481,7 +483,7 @@ function bei_jing_color_s() {
     drym_min = document.querySelector('.drym_min');
     drym_min.style.backgroundColor = RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd);
     var style_s4 = document.querySelector('.style_s4');
-    style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}';
+    style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}';
 }
 //背景颜色
 input_color3 = document.querySelector('.input_color3');
@@ -522,6 +524,7 @@ sy_djs_txl = document.querySelector('.sy_djs_txl');
 ssbqym = document.querySelector('.ssbqym');
 sy_nrs_t_span = document.querySelectorAll('.sy_nrs_t_span');
 sy_3d_kaiguan = document.querySelector('.sy_3d_kaiguan');
+lj_zcb_ym = document.querySelector('.lj_zcb_ym');
 if (localStorage.bei_jing_kuan_ture == 1) {
     bjk_xzk.innerHTML = '✔';
 } else if (localStorage.bei_jing_kuan_ture == 0) {
@@ -568,6 +571,7 @@ function bj_kuan_hs() {
     ssbqym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     daoru_ym_dr_mmym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     sy_3d_kaiguan.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
+    lj_zcb_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
 }
 setTimeout(function() {
 
@@ -616,6 +620,7 @@ bjk_xzk.addEventListener('click', function() {
         ssbqym.style.border = '';
         daoru_ym_dr_mmym.style.border = '';
         sy_3d_kaiguan.style.border = '';
+        lj_zcb_ym.style.border = '';
     } else if (localStorage.bei_jing_kuan_ture == 0) {
         localStorage.bei_jing_kuan_ture = 1;
         bjk_xzk.innerHTML = '✔';
@@ -938,6 +943,7 @@ bfsz_sccd.addEventListener('click', function() {
     localStorage.music_cd_bf = localStorage.music_cd;
     localStorage.lsjl_bf = localStorage.lsjl;
     localStorage.htsp_s_bf = localStorage.htsp_s;
+    localStorage.sku_zcb_bf = localStorage.sku_zcb;
 
 });
 // 下载存档
@@ -958,6 +964,7 @@ bfsz_xzcd.addEventListener('click', function() {
     localStorage.music_cd = localStorage.music_cd_bf;
     localStorage.lsjl = localStorage.lsjl_bf;
     localStorage.htsp_s = localStorage.htsp_s_bf;
+    localStorage.sku_zcb = localStorage.sku_zcb_bf;
     location.reload();
 });
 //自动上传
@@ -1270,6 +1277,8 @@ daoru_ym_dc.addEventListener('click', function(e) {
     daochu_sz[26] = localStorage.sy_lbxz;
     // HTSP
     daochu_sz[27] = localStorage.htsp_s;
+    // 注册表
+    daochu_sz[28] = localStorage.sku_zcb;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1281,7 +1290,7 @@ daoru_ym_dc.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[28] = getFormattedTime();
+    daochu_sz[29] = getFormattedTime();
 
     daoru_ym_sc.value = JSON.stringify(daochu_sz);
 
@@ -1368,6 +1377,8 @@ daoru_ym_jmdc.addEventListener('click', function(e) {
     daochu_sz[26] = localStorage.sy_lbxz;
     // HTSP
     daochu_sz[27] = localStorage.htsp_s;
+    // 注册表
+    daochu_sz[28] = localStorage.sku_zcb;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1379,7 +1390,7 @@ daoru_ym_jmdc.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[28] = getFormattedTime();
+    daochu_sz[29] = getFormattedTime();
 
     daoru_ym_sc.value = WGS_zfc_jiami(JSON.stringify(daochu_sz), miyao);
 
@@ -1423,7 +1434,7 @@ daoru_ym_sc.addEventListener('input', function(e) {
 var daoru_sz = [];
 
 function daoru_sz_hs() {
-    if (daoru_sz.length == 29) {
+    if (daoru_sz.length == 30) {
         // 导航栏
         localStorage.dhr_sz = daoru_sz[0];
         //导航栏页面
@@ -1477,6 +1488,8 @@ function daoru_sz_hs() {
         localStorage.sy_lbxz = daoru_sz[26];
         // HTSP
         localStorage.htsp_s = daoru_sz[27];
+        // 注册表
+        localStorage.sku_zcb = daoru_sz[28];
 
         location.reload();
     } else {
@@ -1498,6 +1511,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
             daoru_ym_sc.disabled = 'disabled';
             daoru_ym_sc.value = '';
             daoru_ym_sc.placeholder = '获取中.........';
+            daoru_ym_sc_tjzs();
             // 确保服务器支持CORS
             const url = 'https://wugenshen231501.github.io/Wgs-Sku/S-ku加密库.txt';
 
@@ -1513,6 +1527,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
                     // 可以使用
                     daoru_ym_sc.disabled = '';
                     daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
+                    daoru_ym_sc_tjzs();
                 })
                 .catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
@@ -1520,6 +1535,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
                     // 可以使用
                     daoru_ym_sc.disabled = '';
                     daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
+                    daoru_ym_sc_tjzs();
                 });
         } else if (daoru_ym_sc.value.substring(0, 4) == 'http') { //网址导入
             // 暂停使用
@@ -1637,6 +1653,8 @@ daoru_ym_bendi.addEventListener('click', function(e) {
     zd_daochu[26] = localStorage.sy_lbxz;
     // HTSP
     zd_daochu[27] = localStorage.htsp_s;
+    // 注册表
+    zd_daochu[28] = localStorage.sku_zcb;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1649,7 +1667,7 @@ daoru_ym_bendi.addEventListener('click', function(e) {
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
     // 打包时间
-    zd_daochu[28] = getFormattedTime();
+    zd_daochu[29] = getFormattedTime();
 
     try {
         //保存
@@ -1801,6 +1819,8 @@ function bendidaoru_click() {
                 localStorage.sy_lbxz = daoru_sz[26];
                 // HTSP
                 localStorage.htsp_s = daoru_sz[27];
+                // 注册表
+                localStorage.sku_zcb = daoru_sz[28];
 
                 location.reload();
             } catch (error) {
@@ -2828,6 +2848,206 @@ document.addEventListener('copy', function(e) {
     htsp_dz_fz_cs_jsq = setTimeout(function() {
         htsp_dz_fz_cs = 0;
     }, 2000)
+});
+
+
+
+
+
+// 历史注册表
+var lszcb_ym = document.querySelector('.lszcb_ym');
+var shezhi_lszcb = document.querySelector('.shezhi_lszcb');
+var ssjl_min2 = document.querySelector('.ssjl_min2');
+shezhi_lszcb.addEventListener('click', function(e) {
+    ssjl_min2.innerHTML = '';
+    shezhi_min.style.display = 'none';
+    lszcb_ym.style.display = 'block';
+    zcb_s_jz();
+});
+
+function zcb_s_jz() {
+    var sku_zcb = JSON.parse(localStorage.sku_zcb);
+    for (var i = 0; i < sku_zcb[0].length; i++) {
+        var div = document.createElement('div');
+
+        div.className = 'lszcb_s';
+        div.innerHTML = '<div class="lszcb_s_name">' + sku_zcb[0][i] + '</div><div class="lszcb_s_dizhi">' + sku_zcb[1][i] + '</div><div class="lszcb_s_cj">下载注册表</div><div class="lszcb_s_sc">删除注册表</div>';
+
+        ssjl_min2.appendChild(div);
+    }
+    // 添加创建reg
+    var lszcb_s_cj = document.querySelectorAll('.lszcb_s_cj');
+    for (var i = 0; i < lszcb_s_cj.length; i++) {
+        lszcb_s_cj[i].addEventListener('click', function(e) {
+            // 创建TXT文本 WGS_txt_wenbenchuanjian('文件名','文本内容');
+            console.log('Windows Registry Editor Version 5.00\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + ']\n@="URL:' + this.previousElementSibling.previousElementSibling.innerText + ' Protocol Handler"\n"URL Protocol"=""\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\DefaultIcon]\n@="' + this.previousElementSibling.innerText + '"\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\shell]\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\shell\\open]\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\shell\\open\\command]\n@="\\"' + this.previousElementSibling.innerText + '\\" \\"%1\\""');
+            WGS_txt_wenbenchuanjian(this.previousElementSibling.previousElementSibling.innerText + '注册表.reg', 'Windows Registry Editor Version 5.00\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + ']\n@="URL:' + this.previousElementSibling.previousElementSibling.innerText + ' Protocol Handler"\n"URL Protocol"=""\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\DefaultIcon]\n@="' + this.previousElementSibling.innerText + '"\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\shell]\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\shell\\open]\n[HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.innerText + '\\shell\\open\\command]\n@="\\"' + this.previousElementSibling.innerText + '\\" \\"%1\\""');
+
+            function WGS_txt_wenbenchuanjian(fileName, txt) {
+                // 创建文本内容
+                var text = txt;
+
+                // 创建Blob对象
+                var blob = new Blob([text], {
+                    type: 'text/plain;charset=utf-16le'
+                });
+
+                // 创建下载链接
+                var url = URL.createObjectURL(blob);
+                var link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                URL.revokeObjectURL(url); // 释放内存
+            }
+        })
+    }
+    // 添加删除创建reg
+    //指定删除
+    function sz_zdsc(sz_s, sz_sc_zhi, sz_tj_zhi) {
+        if (sz_sc_zhi && sz_s.indexOf(sz_sc_zhi) !== -1 && sz_tj_zhi) {
+            sz_s.splice(sz_s.indexOf(sz_sc_zhi), 2, sz_tj_zhi);
+        } else if (sz_sc_zhi && sz_s.indexOf(sz_sc_zhi) !== -1) {
+            sz_s.splice(sz_s.indexOf(sz_sc_zhi), 1);
+        }
+    }
+    var lszcb_s_sc = document.querySelectorAll('.lszcb_s_sc');
+    for (var i = 0; i < lszcb_s_sc.length; i++) {
+        lszcb_s_sc[i].addEventListener('click', function(e) {
+            // 删除本地
+            var sku_zcb = JSON.parse(localStorage.sku_zcb);
+            sz_zdsc(sku_zcb[0], this.previousElementSibling.previousElementSibling.previousElementSibling.innerText);
+            sz_zdsc(sku_zcb[1], this.previousElementSibling.previousElementSibling.innerText);
+            localStorage.sku_zcb = JSON.stringify(sku_zcb);
+
+            this.parentNode.parentNode.removeChild(this.parentNode);
+
+            // 创建TXT文本 WGS_txt_wenbenchuanjian('文件名','文本内容');
+            console.log('Windows Registry Editor Version 5.00\n[-HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.previousElementSibling.innerText + ']');
+            WGS_txt_wenbenchuanjian('删除' + this.previousElementSibling.previousElementSibling.previousElementSibling.innerText + '注册表.reg', 'Windows Registry Editor Version 5.00\n[-HKEY_CLASSES_ROOT\\' + this.previousElementSibling.previousElementSibling.previousElementSibling.innerText + ']');
+
+            function WGS_txt_wenbenchuanjian(fileName, txt) {
+                // 创建文本内容
+                var text = txt;
+
+                // 创建Blob对象
+                var blob = new Blob([text], {
+                    type: 'text/plain;charset=utf-8'
+                });
+
+                // 创建下载链接
+                var url = URL.createObjectURL(blob);
+                var link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                URL.revokeObjectURL(url); // 释放内存
+            }
+        })
+    }
+}
+// 一键删除和下载
+var lszcb_yjxz = document.querySelector('.lszcb_yjxz');
+var lszcb_yjsc = document.querySelector('.lszcb_yjsc');
+lszcb_yjxz.addEventListener('click', function(e) {
+    var sku_zcb = JSON.parse(localStorage.sku_zcb);
+    if (sku_zcb[0].length != 0) {
+        // 创建TXT文本 WGS_txt_wenbenchuanjian('文件名','文本内容');
+        var neron = '';
+        var neme = '';
+        for (var i = 0; i < sku_zcb[1].length; i++) {
+            if (i == 0) {
+                neron = neron.concat('Windows Registry Editor Version 5.00\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + ']\n@="URL:' + sku_zcb[0][i] + ' Protocol Handler"\n"URL Protocol"=""\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\DefaultIcon]\n@="' + sku_zcb[1][i] + '"\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\shell]\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\shell\\open]\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\shell\\open\\command]\n@="\\"' + sku_zcb[1][i] + '\\" \\"%1\\""');
+            } else {
+                neron = neron.concat('\nWindows Registry Editor Version 5.00\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + ']\n@="URL:' + sku_zcb[0][i] + ' Protocol Handler"\n"URL Protocol"=""\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\DefaultIcon]\n@="' + sku_zcb[1][i] + '"\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\shell]\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\shell\\open]\n[HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + '\\shell\\open\\command]\n@="\\"' + sku_zcb[1][i] + '\\" \\"%1\\""');
+            }
+        }
+        for (var i = 0; i < sku_zcb[0].length; i++) {
+            if (i == sku_zcb[0].length - 1) {
+                neme = neme.concat(sku_zcb[0][i]);
+            } else {
+                neme = neme.concat(sku_zcb[0][i] + ',');
+            }
+        }
+
+        console.log(neme);
+        console.log(neron);
+        WGS_txt_wenbenchuanjian(neme + '注册表.reg', neron);
+
+        function WGS_txt_wenbenchuanjian(fileName, txt) {
+            // 创建文本内容
+            var text = txt;
+
+            // 创建Blob对象
+            var blob = new Blob([text], {
+                type: 'text/plain;charset=utf-16le'
+            });
+
+            // 创建下载链接
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(url); // 释放内存
+        }
+    } else {
+        Sku_tctx('暂无历史注册表');
+    }
+});
+lszcb_yjsc.addEventListener('click', function(e) {
+    var sku_zcb = JSON.parse(localStorage.sku_zcb);
+    if (sku_zcb[0].length != 0) {
+        // 删除本地
+        localStorage.sku_zcb = '[[],[]]';
+        ssjl_min2.innerHTML = '';
+
+        // 创建TXT文本 WGS_txt_wenbenchuanjian('文件名','文本内容');
+        var neron = '';
+        var neme = '';
+        for (var i = 0; i < sku_zcb[1].length; i++) {
+            if (i == 0) {
+                neron = neron.concat('Windows Registry Editor Version 5.00\n[-HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + ']');
+            } else {
+                neron = neron.concat('\nWindows Registry Editor Version 5.00\n[-HKEY_CLASSES_ROOT\\' + sku_zcb[0][i] + ']');
+            }
+        }
+        for (var i = 0; i < sku_zcb[0].length; i++) {
+            if (i == sku_zcb[0].length - 1) {
+                neme = neme.concat(sku_zcb[0][i]);
+            } else {
+                neme = neme.concat(sku_zcb[0][i] + ',');
+            }
+        }
+
+        console.log(neme);
+        console.log(neron);
+        WGS_txt_wenbenchuanjian('删除' + neme + '注册表.reg', neron);
+
+        function WGS_txt_wenbenchuanjian(fileName, txt) {
+            // 创建文本内容
+            var text = txt;
+
+            // 创建Blob对象
+            var blob = new Blob([text], {
+                type: 'text/plain;charset=utf-16le'
+            });
+
+            // 创建下载链接
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(url); // 释放内存
+        }
+    } else {
+        Sku_tctx('暂无历史注册表');
+    }
 });
 
 

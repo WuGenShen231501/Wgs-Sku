@@ -89,16 +89,20 @@ function RGB_zhq(hex, opacity) {
 nrmaxs1 = document.querySelector('.nrmaxs1');
 dhr_xg_tj = document.querySelector('.dhr_xg_tj');
 lj_xg_tj = document.querySelector('.lj_xg_tj');
+lj_zcb_ym = document.querySelector('.lj_zcb_ym');
 nrmaxs1.style.marginTop = (window.innerHeight + 56 - 523 - 80) / 2 + 'px';
 dhr_xg_tj.style.top = (window.innerHeight - dhr_xg_tj.offsetHeight) / 2 + 'px';
 lj_xg_tj.style.top = (window.innerHeight - 221) / 2 + 'px';
+lj_zcb_ym.style.top = (window.innerHeight - 221) / 2 + 'px';
 window.addEventListener('resize', function() {
     nrmaxs1 = document.querySelector('.nrmaxs1');
     dhr_xg_tj = document.querySelector('.dhr_xg_tj');
     lj_xg_tj = document.querySelector('.lj_xg_tj');
+    lj_zcb_ym = document.querySelector('.lj_zcb_ym');
     nrmaxs1.style.marginTop = (window.innerHeight + 56 - 523 - 80) / 2 + 'px';
     dhr_xg_tj.style.top = (window.innerHeight - dhr_xg_tj.offsetHeight) / 2 + 'px';
     lj_xg_tj.style.top = (window.innerHeight - 221) / 2 + 'px';
+    lj_zcb_ym.style.top = (window.innerHeight - 221) / 2 + 'px';
 });
 
 
@@ -917,6 +921,94 @@ lj_xg_tj.addEventListener('click', function(e) {
 });
 
 
+
+
+// 注册表
+var lj_zcb_ym = document.querySelector('.lj_zcb_ym');
+var lj_zcb_i = document.querySelector('.lj_zcb_i');
+var lj_zcb_qr = document.querySelector('.lj_zcb_qr');
+var lj_zcb_dizhi = document.querySelector('.lj_zcb_dizhi');
+var lj_zcb_name = document.querySelector('.lj_zcb_name');
+
+function lj_zcb_ym_sc() {
+    lj_zcb_ym.style.display = 'none';
+    lj_zcb_dizhi.value = '';
+    lj_zcb_name.value = '';
+};
+lj_zcb_ym.addEventListener('click', function(e) {
+    e.stopPropagation();
+});
+lj_zcb_i.addEventListener('click', function(e) {
+    e.stopPropagation();
+    ycgn_dhr_xgk();
+    ycgn_lj_xgk();
+    lj_zcb_ym.style.display = 'block';
+    lj_zcb_name.focus();
+});
+
+function escapeBackslash(path) {
+    var path2 = path.replace(/\\\\/g, '\\');
+    var path3 = path2.replace(/\//g, '\\');
+    var path4 = path3.replace(/\/\//g, '\\');
+    var path5 = path4.replace(/\"/g, '');
+    var path6 = path5.replace(/\'/g, '');
+    return path6.replace(/\\/g, '\\\\');
+}
+
+function isAlphaDash(str) {
+    const pattern = /^[a-zA-Z-]+$/;
+    return pattern.test(str);
+}
+
+lj_zcb_qr.addEventListener('click', function(e) {
+
+    if (isAlphaDash(lj_zcb_name.value) && lj_zcb_name.value != '' && lj_zcb_dizhi.value != '' && (lj_zcb_dizhi.value.substr(lj_zcb_dizhi.value.length - 4, lj_zcb_dizhi.value.length) == 'exe"' || lj_zcb_dizhi.value.substr(lj_zcb_dizhi.value.length - 4, lj_zcb_dizhi.value.length) == 'exe\'' || lj_zcb_dizhi.value.substr(lj_zcb_dizhi.value.length - 3, lj_zcb_dizhi.value.length) == 'exe')) {
+        // 保存历史
+        var sku_zcb = JSON.parse(localStorage.sku_zcb);
+        sku_zcb[0].push('Sku-' + lj_zcb_name.value);
+        console.log(escapeBackslash(lj_zcb_dizhi.value));
+        sku_zcb[1].push('' + escapeBackslash(lj_zcb_dizhi.value));
+        localStorage.sku_zcb = JSON.stringify(sku_zcb);
+
+        // 创建TXT文本 WGS_txt_wenbenchuanjian('文件名','文本内容');
+        console.log('Windows Registry Editor Version 5.00\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + ']\n@="URL:' + 'Sku-' + lj_zcb_name.value + ' Protocol Handler"\n"URL Protocol"=""\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\DefaultIcon]\n@="' + escapeBackslash(lj_zcb_dizhi.value) + '"\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\shell]\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\shell\\open]\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\shell\\open\\command]\n@="\\"' + escapeBackslash(lj_zcb_dizhi.value) + '\\" \\"%1\\""');
+        WGS_txt_wenbenchuanjian('Sku-' + lj_zcb_name.value + '注册表.reg', 'Windows Registry Editor Version 5.00\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + ']\n@="URL:' + 'Sku-' + lj_zcb_name.value + ' Protocol Handler"\n"URL Protocol"=""\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\DefaultIcon]\n@="' + escapeBackslash(lj_zcb_dizhi.value) + '"\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\shell]\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\shell\\open]\n[HKEY_CLASSES_ROOT\\' + 'Sku-' + lj_zcb_name.value + '\\shell\\open\\command]\n@="\\"' + escapeBackslash(lj_zcb_dizhi.value) + '\\" \\"%1\\""');
+
+        function WGS_txt_wenbenchuanjian(fileName, txt) {
+            // 创建文本内容
+            var text = txt;
+
+            // 创建Blob对象
+            var blob = new Blob([text], {
+                type: 'text/plain;charset=utf-16le'
+            });
+
+            // 创建下载链接
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            URL.revokeObjectURL(url); // 释放内存
+        }
+
+    } else if (isAlphaDash(lj_zcb_name.value) == false) {
+        Sku_tctx('创建失败! 命名格式错误 或 其他原因');
+    } else {
+        Sku_tctx('创建失败! 路径格式错误 或 其他原因');
+    }
+});
+
+var ls_zcb_kjj = document.querySelector('.ls_zcb_kjj');
+ls_zcb_kjj.addEventListener('click', function(e) {
+    document.querySelector('.top_dhl').querySelectorAll('div')[3].click();
+    document.querySelector('.shezhi_lszcb').click();
+});
+
+
+
+
 //全局事件
 dhr_xg_tj = document.querySelector('.dhr_xg_tj');
 dhr_shezhi_gn = document.querySelector('.dhr_shezhi_gn');
@@ -926,12 +1018,14 @@ document.addEventListener('contextmenu', function() {
     dhr_shezhi_gn.style.display = 'none';
     ycgn_dhr_xgk();
     ycgn_lj_xgk();
+    lj_zcb_ym_sc();
 });
 //全局左击事件
 document.addEventListener('click', function() {
     dhr_shezhi_gn.style.display = 'none';
     ycgn_dhr_xgk();
     ycgn_lj_xgk();
+    lj_zcb_ym_sc();
 });
 //全局回车事件
 document.addEventListener('keyup', function(e) {
@@ -956,6 +1050,9 @@ document.addEventListener('keyup', function(e) {
             } else if (lj_xg_tj_ipt_xzs == 4) {
                 jl_qrk.click();
             }
+        }
+        if (lj_zcb_ym.style.display == 'block') {
+            lj_zcb_qr.click();
         }
     }
     if (e.key == 'ArrowUp' || e.key == 'ArrowDown') {
