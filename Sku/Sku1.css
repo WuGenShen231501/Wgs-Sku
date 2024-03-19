@@ -544,7 +544,14 @@
         line-height: 40px;
         bottom: 0;
         right: 0px;
+    }
+    
+    .sy_zpzs_sc i {
         opacity: 0.5;
+    }
+    
+    .sy_zpzs_sc i:hover {
+        opacity: 1;
     }
     
     .iframe2 {

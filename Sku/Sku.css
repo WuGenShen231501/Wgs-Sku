@@ -488,6 +488,7 @@ html {
 .music_s {
     width: 100%;
     height: 50px;
+    transition: 0.1s;
 }
 
 .music_s_mz {
@@ -499,6 +500,7 @@ html {
     width: 200px;
     overflow: hidden;
     white-space: nowrap;
+    transition: 0.3s;
 }
 
 .i_music_s_ks_tb,

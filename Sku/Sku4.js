@@ -46,7 +46,7 @@ function WGS_wenbengundon(qwe, asd) {
                 var duochu = nrcd - hzcd;
                 var sj = duochu / 50;
                 this.style.transition = sj + 's linear';
-                this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) + 'px';
+                this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) - asd + 'px';
             }
         });
         wb[i].addEventListener('mouseout', function(e) {
@@ -131,6 +131,7 @@ shezhi_bzsz.addEventListener('click', function() {
 //壁纸高度设置
 var bzsz_tj = document.querySelector('.bzsz_tj');
 var bzsz_sj = document.querySelector('.bzsz_sj');
+var bzsz_tj_ym_TP = document.querySelector('.bzsz_tj_ym_TP');
 var bzsz_s_gd = 335 / (window.innerWidth / window.innerHeight);
 setTimeout(function() {
     var bzsz_s = document.querySelectorAll('.bzsz_s');
@@ -142,6 +143,11 @@ bzsz_tj.style.height = bzsz_s_gd + 'px';
 bzsz_tj.style.lineHeight = bzsz_s_gd + 'px';
 bzsz_sj.style.height = bzsz_s_gd + 'px';
 bzsz_sj.style.lineHeight = bzsz_s_gd + 'px';
+bzsz_tj_ym_TP.style.height = bzsz_s_gd + 'px';
+if (bzsz_s_gd > 250) {
+    bzsz_tj_ym_TP.style.width = 250 / (window.innerHeight / window.innerWidth) + 'px';
+    bzsz_tj_ym_TP.style.left = 'calc((100% - ' + (250 / (window.innerHeight / window.innerWidth)) + 'px) / 2)';
+}
 window.addEventListener('resize', function() {
     var bzsz_s = document.querySelectorAll('.bzsz_s');
     var bzsz_s_gd = 335 / (window.innerWidth / window.innerHeight);
@@ -152,6 +158,11 @@ window.addEventListener('resize', function() {
     bzsz_tj.style.lineHeight = bzsz_s_gd + 'px';
     bzsz_sj.style.height = bzsz_s_gd + 'px';
     bzsz_sj.style.lineHeight = bzsz_s_gd + 'px';
+    bzsz_tj_ym_TP.style.height = bzsz_s_gd + 'px';
+    if (bzsz_s_gd > 250) {
+        bzsz_tj_ym_TP.style.width = 250 / (window.innerHeight / window.innerWidth) + 'px';
+        bzsz_tj_ym_TP.style.left = 'calc((100% - ' + (250 / (window.innerHeight / window.innerWidth)) + 'px) / 2)';
+    }
 });
 
 //输出所有壁纸
@@ -178,14 +189,9 @@ for (var i = 0; i < i_bzsz_sc_tp.length; i++) {
         var bi_zhi_s = JSON.parse(localStorage.bi_zhi_s);
         var topimg = this.parentNode.style.backgroundImage.split('("')[1].split('")')[0];
         //指定删除
-        function sz_zdsc(sz_s, sz_sc_zhi, sz_tj_zhi) {
-            if (sz_sc_zhi && sz_s.indexOf(sz_sc_zhi) !== -1 && sz_tj_zhi) {
-                sz_s.splice(sz_s.indexOf(sz_sc_zhi), 2, sz_tj_zhi);
-            } else if (sz_sc_zhi && sz_s.indexOf(sz_sc_zhi) !== -1) {
-                sz_s.splice(sz_s.indexOf(sz_sc_zhi), 1);
-            }
+        if (topimg && bi_zhi_s.indexOf(topimg) !== -1) {
+            bi_zhi_s.splice(bi_zhi_s.indexOf(topimg), 1);
         }
-        sz_zdsc(bi_zhi_s, topimg);
         localStorage.bi_zhi_s = JSON.stringify(bi_zhi_s);
 
         Sku_tctx('壁纸删除成功');
@@ -193,12 +199,11 @@ for (var i = 0; i < i_bzsz_sc_tp.length; i++) {
 }
 
 //换壁纸
-bzsz_s = document.querySelectorAll('.bzsz_s');
+var bzsz_s = document.querySelectorAll('.bzsz_s');
 for (var i = 0; i < bzsz_s.length; i++) {
     bzsz_s[i].addEventListener('click', function() {
         var topimg = this.style.backgroundImage.split('("')[1].split('")')[0];
         localStorage.bi_zhi = topimg;
-        localStorage.bi_zhi_s = JSON.stringify(bi_zhi_s);
         document.documentElement.style.backgroundImage = this.style.backgroundImage;
     });
 }
@@ -262,6 +267,7 @@ bzsz_tj_anniu.addEventListener('click', function() {
         div.className = 'bzsz_s';
         div.style.backgroundImage = 'url(' + input_bzlj.value + ')';
         div.innerHTML = '<i class="iconfont icon-shanchu1 i_bzsz_sc_tp"></i>';
+        div.style.height = 335 / (window.innerWidth / window.innerHeight) + 'px';
         bzsz_max.insertBefore(div, bzsz_tj);
         //添加按钮样式
         bzsz_s = document.querySelectorAll('.bzsz_s');
@@ -1219,6 +1225,7 @@ var shezhi_daoru_ym = document.querySelector('.shezhi_daoru_ym');
 shezhi_daoru.addEventListener('click', function(e) {
     shezhi_min.style.display = 'none';
     shezhi_daoru_ym.style.display = 'block';
+    daoru_ym_sc.focus();
 });
 
 //导出
@@ -1589,6 +1596,9 @@ daoru_ym_dr_mmym_qr.addEventListener('click', function(e) {
     daoru_sz = JSON.parse(WGS_zfc_jiemi(daoru_ym_sc.value, miyao));
     if (daoru_sz[19] == S_ku_jiami(daoru_ym_my.value)) {
         daoru_sz_hs();
+    }
+    if (daoru_ym_my.value == '') {
+        Sku_tctx('密钥不能为空 !');
     } else {
         Sku_tctx('密钥错误 !');
         daoru_ym_my.value = '';
@@ -2875,6 +2885,9 @@ function zcb_s_jz() {
 
         ssjl_min2.appendChild(div);
     }
+    // 滚动字体
+    WGS_wenbengundon('.lszcb_s_name', '5');
+    WGS_wenbengundon('.lszcb_s_dizhi', '5');
     // 添加创建reg
     var lszcb_s_cj = document.querySelectorAll('.lszcb_s_cj');
     for (var i = 0; i < lszcb_s_cj.length; i++) {
@@ -3081,6 +3094,12 @@ document.addEventListener('keyup', function(e) {
     if (e.key == 'Enter') {
         if (daoru_ym_dr_mmym.style.display == 'block') {
             daoru_ym_dr_mmym_qr.click();
+        }
+        if (daoru_ym_sc.value !== '' && shezhi_daoru_ym.style.display == 'block' && daoru_ym_dr_mmym.style.display == 'none') {
+            daoru_ym_dr.click();
+        }
+        if (daoru_ym_sc.value == '' && shezhi_daoru_ym.style.display == 'block' && daoru_ym_dr_mmym.style.display == 'none') {
+            daoru_ym_sc.focus();
         }
     }
 });

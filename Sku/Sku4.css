@@ -120,10 +120,12 @@
     
     .bzsz_tj_ym_TP {
         position: absolute;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
         width: 335px;
-        height: 195.335px;
+        max-height: 250px;
         background-color: rgb(255, 255, 255, 0.5);
-        background-size: 100% 100%;
         border-radius: 5px;
         top: 50px;
         left: calc((100% - 335px) / 2);

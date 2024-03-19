@@ -879,6 +879,7 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
                 }
             }
         }
+        lian_jie_r2.scroll(0, 0);
         WGS_wenbengundon('.lj_xx_b_2');
     } else {
         lian_jie_r.style.display = 'block';
