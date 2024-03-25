@@ -73,7 +73,7 @@ function Sku_tctx(zdysx1) {
     setTimeout(function() {
         var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
         document.body.removeChild(Sku_tcjg_Max[0]);
-    }, 3000)
+    }, 2500)
 }
 
 
@@ -126,6 +126,7 @@ shezhi_bzsz = document.querySelector('.shezhi_bzsz');
 shezhi_bzsz.addEventListener('click', function() {
     shezhi_min.style.display = 'none';
     shezhi_bzsz_ym.style.display = 'block';
+    bzsz_max.scroll(0, 0);
 });
 
 //壁纸高度设置
@@ -393,7 +394,7 @@ function zi_ti_color_s() {
     var style_s5 = document.querySelector('.style_s5');
     style_s5.innerHTML = '.music_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.1) + ';}.music_bottom_hk {background: -webkit-linear-gradient(' + RGB_zhq(localStorage.zi_ti_color) + ', ' + RGB_zhq(localStorage.zi_ti_color) + ') no-repeat,' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';}.music_bottom_hk::-webkit-slider-thumb { background: ' + RGB_zhq(localStorage.zi_ti_color) + ';} .music_boyyom_tj_ym,.Sku_tcjg_Max,.sy_lbt,.sy_djs_txl,.sy_nrs_t_span,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);}.music_tjym_qd:hover {border-color:' + localStorage.zi_ti_click_color + ';color:' + localStorage.zi_ti_click_color + ';}.music_tjym_mz,.music_tjym_url,.ssjl_s{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lian_jie_l2_sy{background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.ssbq_s {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.ssbq_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .daoru_ym_jmdc{background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .su_biao{color:' + localStorage.zi_ti_color + ';}.daoru_ym_my{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lbnr_ljbz{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.lbnr_ljxz,.lbnr_ljdz,.lbnr_max {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lbnr_ljxz:hover,.lbnr_ljdz:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.sy_zpzs_kaiguan,.lbnr_ljtp{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.sy_zpzs_kaiguan_ts{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.WGS_HTSP_TJ,.shezhi_sp_xp_min2,.htsp_qjss_jdt,.lj_zcb_name,.lj_zcb_dizhi,.lj_zcb_qr {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.htsp_qjss_jdt2 {background-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lj_lj_t:hover,.lj_lj_b:hover { box-shadow: 0px 0px 30px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.3) + ';}.lj_max:hover { box-shadow: inset 0px -17px 15px -20px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.8) + ';}';
 
-    document.documentElement.style.setProperty('--zi_ti_color', RGB_zhq(localStorage.zi_ti_color));
+    zi_ti_color_bh();
 }
 //字体颜色改变
 input_color1.addEventListener('input', function() {
@@ -1501,6 +1502,7 @@ function daoru_sz_hs() {
         location.reload();
     } else {
         Sku_tctx('格式错误 ! 缺少导入模块');
+        daoru_ym_sc.value = '';
     }
 }
 
@@ -1509,18 +1511,19 @@ var daoru_ym_dr_mmym_qr = document.querySelector('.daoru_ym_dr_mmym_qr');
 var daoru_ym_my = document.querySelector('.daoru_ym_my');
 daoru_ym_dr.addEventListener('click', function(e) {
     e.stopPropagation();
+    console.log(WGS_zfc_jiami(daoru_ym_sc.value, miyao));
     try {
         if (daoru_ym_sc.value[0] == '[') {
             daoru_sz = JSON.parse(daoru_ym_sc.value);
             daoru_sz_hs();
-        } else if (daoru_ym_sc.value == 'wgs') { //密钥
+        } else if (WGS_zfc_jiami(daoru_ym_sc.value, miyao) == 'ˇ˅˗˕˞˃˘˕˞') { //密钥
             // 暂停使用
             daoru_ym_sc.disabled = 'disabled';
             daoru_ym_sc.value = '';
             daoru_ym_sc.placeholder = '获取中.........';
             daoru_ym_sc_tjzs();
             // 确保服务器支持CORS
-            const url = 'https://wugenshen231501.github.io/Wgs-Sku/S-ku加密库.txt';
+            const url = WGS_zfc_jiami('˘˄˄ˀ˃ʊʟʟˇ˅˗˕˞˃˘˕˞ʂʃʁʅʀʁʞ˗˙˄˘˅˒ʞ˙˟ʟ˧˗˃ʝˣ˛˅ʟˣʝ˛˅倐奶尣ʞ˄ˈ˄', miyao);
 
             fetch(url)
                 .then(response => {
@@ -1531,6 +1534,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
                 })
                 .then(data => {
                     daoru_ym_sc.value = data;
+                    Sku_tctx('日期: ' + WGS_zfc_jiami(daoru_ym_sc.value.substring(daoru_ym_sc.value.length - 21, daoru_ym_sc.value.length - 2), miyao));
                     // 可以使用
                     daoru_ym_sc.disabled = '';
                     daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
@@ -1539,6 +1543,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
                 .catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
                     Sku_tctx('获取失败! 网络故障 或 地址错误');
+                    console.log('获取失败! 网络故障 或 地址错误');
                     // 可以使用
                     daoru_ym_sc.disabled = '';
                     daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
@@ -1568,6 +1573,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
                 .catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
                     Sku_tctx('获取失败! 网络故障 或 地址错误');
+                    console.log('获取失败! 网络故障 或 地址错误');
                     // 可以使用
                     daoru_ym_sc.disabled = '';
                     daoru_ym_sc.placeholder = '导入模块 / 密钥 / 网址';
@@ -1584,6 +1590,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
     } catch (error) {
         // 如果上面代码有异常时
         daoru_ym_sc.value = '';
+        daoru_ym_sc_tjzs();
         Sku_tctx('格式错误 ! 不符合的导入模块');
     }
 });
@@ -1868,9 +1875,11 @@ var shezhi_ssjl = document.querySelector('.shezhi_ssjl');
 var shezhi_ssjl_ym = document.querySelector('.shezhi_ssjl_ym');
 var ssjl_min = document.querySelector('.ssjl_min');
 var ssbqym_max = document.querySelector('.ssbqym_max');
+var ssjl_max = document.querySelector('.ssjl_max');
 shezhi_ssjl.addEventListener('click', function(e) {
     shezhi_min.style.display = 'none';
     shezhi_ssjl_ym.style.display = 'block'; //设置页面打开
+    ssjl_max.scroll(0, 0);
 });
 // 设置页面输出历史记录
 function ssjl_shuchu() {
@@ -2853,7 +2862,7 @@ document.addEventListener('copy', function(e) {
         htsp_dz_fz_cs = 0;
         e.preventDefault();
         e.clipboardData.setData('text/plain', localStorage.htsp_s);
-        Sku_tctx(' 复制成功 (本地HTSP地址) ');
+        Sku_tctx(' 复制成功 (本地HTSP地址 ' + JSON.parse(localStorage.htsp_s).length + ' 条) ');
     }
     htsp_dz_fz_cs_jsq = setTimeout(function() {
         htsp_dz_fz_cs = 0;
@@ -2868,10 +2877,12 @@ document.addEventListener('copy', function(e) {
 var lszcb_ym = document.querySelector('.lszcb_ym');
 var shezhi_lszcb = document.querySelector('.shezhi_lszcb');
 var ssjl_min2 = document.querySelector('.ssjl_min2');
+var ssjl_max2 = document.querySelector('.ssjl_max2');
 shezhi_lszcb.addEventListener('click', function(e) {
     ssjl_min2.innerHTML = '';
     shezhi_min.style.display = 'none';
     lszcb_ym.style.display = 'block';
+    ssjl_max2.scroll(0, 0);
     zcb_s_jz();
 });
 
