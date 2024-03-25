@@ -211,7 +211,7 @@
             }
         }
 
-        if (localStorage.htsp_lj == undefined) {
+        if (localStorage.htsp_lj == undefined || localStorage.htsp_lj == '') {
             localStorage.htsp_lj = '[]';
         }
 
@@ -470,7 +470,7 @@
                                 bcflj.push(wblj[i]);
                             }
                         }
-                        localStorage.htsp_lj = xzd.concat(bcflj);
+                        localStorage.htsp_lj = JSON.stringify(xzd.concat(bcflj));
                         Sku_tctx('获取成功! 请刷新');
                         console.log('获取成功!');
                     })
