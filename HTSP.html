@@ -166,6 +166,7 @@
         var kskg = 0;
 
         qjss.addEventListener('click', function(e) {
+            e.stopPropagation();
             ksss.style.display = 'none';
             if (kskg == 0) {
                 kskg = 1;
@@ -254,6 +255,7 @@
         });
 
         ksss.addEventListener('click', function(e) {
+            e.stopPropagation();
             qjss.style.display = 'none';
             if (kskg == 0) {
                 kskg = 1;
@@ -306,6 +308,7 @@
                 wzjc(htsp_lj[htsp_s_gs], 2000);
 
                 WGS_HTSP.addEventListener('click', function(e) {
+                    e.stopPropagation();
                     window.open(WGS_HTSP.src.substring(0, WGS_HTSP.src.length - 11));
                 });
 
@@ -319,6 +322,7 @@
 
         var jrks = 0;
         jr.addEventListener('click', function(e) {
+            e.stopPropagation();
             if (jrks == 0) {
                 jrks = 1;
                 div_img_s.innerHTML = '';
@@ -349,13 +353,17 @@
         ];
 
         var txk = document.querySelector('.txk');
-        txk.addEventListener('click', function(e) {
+        document.documentElement.addEventListener('click', function(e) {
             if (localStorage.htsp_tp_size == 'cover') {
                 document.documentElement.style.backgroundSize = 'contain';
                 localStorage.htsp_tp_size = 'contain';
+                console.clear();
+                console.log(localStorage.htsp_tp_size);
             } else {
                 document.documentElement.style.backgroundSize = 'cover';
                 localStorage.htsp_tp_size = 'cover';
+                console.clear();
+                console.log(localStorage.htsp_tp_size);
             }
         });
 
