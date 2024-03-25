@@ -102,6 +102,41 @@
             background-color: white;
             transition: 0.5s linear;
         }
+        
+        .Sku_tcjg_Max {
+            position: fixed;
+            padding: 0 50px 0 50px;
+            width: auto;
+            height: 30px;
+            top: 0px;
+            text-align: center;
+            border-radius: 5px;
+            line-height: 30px;
+            transition: 0.5s;
+            z-index: 1;
+            opacity: 0;
+            animation: Sku_tcjg_dh 2.5s linear;
+        }
+        
+        @keyframes Sku_tcjg_dh {
+            0% {
+                /* 动画开始的画面; */
+                top: 100px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            85% {
+                top: 100px;
+                opacity: 1;
+            }
+            100% {
+                /* 动画结束的画面; */
+                top: 0px;
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -123,6 +158,28 @@
     <audio class="sku_tsy" src="https://img.tukuppt.com/newpreview_music/09/04/07/5c8b02776d58965550.mp3"></audio>
 
     <script>
+        // 弹窗提醒
+        function Sku_tctx(zdysx1) {
+            var div = document.createElement('div');
+            div.className = "Sku_tcjg_Max";
+            div.innerHTML = zdysx1;
+            if (localStorage.bei_jing_kuan_ture == 1) {
+                div.style.border = '1px solid rgba(255, 255, 255, 0.9)';
+                div.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+            }
+
+            document.body.appendChild(div);
+
+            var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
+            Sku_tcjg_Max[Sku_tcjg_Max.length - 1].style.left = ((window.innerWidth / 2) - (Sku_tcjg_Max[Sku_tcjg_Max.length - 1].offsetWidth / 2)) + 'px';
+
+            setTimeout(function() {
+                var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
+                document.body.removeChild(Sku_tcjg_Max[0]);
+            }, 2500)
+        }
+
+
         // 随机数
         function sjs(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -352,7 +409,81 @@
             'https://image.anosu.top/pixiv/direct?r18=1&keyword=touhou',
         ];
 
+
+
+
+        // 全部密钥
+        var miyao = 688;
+        //WGS_zfc_jiami('要加密的文本','整数值(密钥)');
+        function WGS_zfc_jiami(nr, key) {
+            function xorEncode(str, key) {
+                let result = '';
+                for (let i = 0; i < str.length; i++) {
+                    let charCode = str.charCodeAt(i);
+                    result += String.fromCharCode(charCode ^ key);
+                }
+                return result;
+            }
+            const encrypted = xorEncode(nr, key);
+            return encrypted;
+        }
+        //WGS_zfc_jiami('要解密的文本','整数值(密钥)');
+        function WGS_zfc_jiemi(nr, key) {
+            function xorEncode(str, key) {
+                let result = '';
+                for (let i = 0; i < str.length; i++) {
+                    let charCode = str.charCodeAt(i);
+                    result += String.fromCharCode(charCode ^ key);
+                }
+                return result;
+            }
+            const decrypted = xorEncode(nr, key);
+            return decrypted;
+        }
+
+        var htsp_dz_fz_cs = 0;
+        var htsp_dz_fz_cs_jsq;
         var txk = document.querySelector('.txk');
+        txk.addEventListener('click', function(e) {
+            e.stopPropagation();
+            htsp_dz_fz_cs_jsq ? clearTimeout(htsp_dz_fz_cs_jsq) : undefined;
+            htsp_dz_fz_cs++;
+            if (htsp_dz_fz_cs == 5) {
+                htsp_dz_fz_cs = 0;
+                e.preventDefault();
+                // 确保服务器支持CORS
+                const url = WGS_zfc_jiami('˘˄˄ˀ˃ʊʟʟˇ˅˗˕˞˃˘˕˞ʂʃʁʅʀʁʞ˗˙˄˘˅˒ʞ˙˟ʟ˧˗˃ʝˣ˛˅ʟ˸ˤˣˠʞ˄ˈ˄', miyao);
+
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        var wblj = JSON.parse(WGS_zfc_jiemi(data, miyao));
+                        var bcflj = [];
+                        var xzd = JSON.parse(localStorage.htsp_lj);
+                        for (var i = 0; i < wblj.length; i++) {
+                            if (xzd.indexOf(wblj[i]) == -1) {
+                                bcflj.push(wblj[i]);
+                            }
+                        }
+                        localStorage.htsp_lj = xzd.concat(bcflj);
+                        Sku_tctx('获取成功! 请刷新');
+                        console.log('获取成功!');
+                    })
+                    .catch(error => {
+                        console.error('There has been a problem with your fetch operation:', error);
+                        Sku_tctx('获取失败! 网络故障 或 地址错误');
+                        console.log('获取失败! 网络故障 或 地址错误');
+                    });
+            }
+            htsp_dz_fz_cs_jsq = setTimeout(function() {
+                htsp_dz_fz_cs = 0;
+            }, 2000)
+        });
         document.documentElement.addEventListener('click', function(e) {
             if (localStorage.htsp_tp_size == 'cover') {
                 document.documentElement.style.backgroundSize = 'contain';
