@@ -9,7 +9,6 @@ if (localStorage.ban_ben) {
     }
 } else {
     //删除所有内存
-    localStorage.clear();
     console.log('欢迎使用最新版本 ' + ban_ben_s);
     //制定版本
     localStorage.ban_ben = ban_ben_s;
