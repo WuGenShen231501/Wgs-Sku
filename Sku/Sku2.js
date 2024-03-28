@@ -177,6 +177,8 @@ function lian_jie_l_kaishi() {
         dhr_div.innerHTML = dhr_sz[i];
         //指定顺序值
         dhr_div.setAttribute('dhr_num', i);
+        dhr_div.draggable = "true";
+        dhr_div.className = 'tuodon_dhr_div';
         lian_jie_l.appendChild(dhr_div);
     }
     //for循环输出指定导航栏页面个数
@@ -271,9 +273,6 @@ function lian_jie_l_kaishi() {
         }
     }
     WGS_wenbengundon('.lj_xx_b');
-
-    // 启用拖拽和放下换位功能
-    enableDragAndDrop('lj_max');
 
     //为所有链接添加事   
     lj_max = document.querySelectorAll('.lj_max');
@@ -603,6 +602,8 @@ dhr_qrk.addEventListener('click', function(e) {
             var dhr_div = document.createElement('div');
             dhr_div.innerHTML = dhr_srk.value;
             dhr_div.setAttribute('dhr_num', lian_jie_r_l.length);
+            dhr_div.draggable = 'true';
+            dhr_div.className = 'tuodon_dhr_div';
             lian_jie_l.appendChild(dhr_div);
             var dhr_ym_div = document.createElement('div');
             dhr_ym_div.className = 'dhr_ym_r_s';
@@ -685,6 +686,8 @@ dhr_qrk.addEventListener('click', function(e) {
             qjgnzx();
             //隐藏
             ycgn_dhr_xgk();
+            // 添加拖动
+            enableDragAndDrop2('tuodon_dhr_div');
 
             Sku_tctx('分页添加成功');
         }
@@ -1022,13 +1025,13 @@ ls_zcb_kjj.addEventListener('click', function(e) {
 
 
 
-
 // 换位封装
 var huanwei_class_name;
 
 function enableDragAndDrop(className) {
     var draggies = document.querySelectorAll('.' + className);
     huanwei_class_name = className;
+
     // 移除已存在的拖拽相关事件监听器
     draggies.forEach(function(draggie) {
         draggie.removeEventListener('dragstart', handleDragStart);
@@ -1043,6 +1046,7 @@ function enableDragAndDrop(className) {
         draggie.addEventListener('dragover', handleDragOver, false);
         draggie.addEventListener('drop', handleDrop, false);
         draggie.addEventListener('dragend', handleDragEnd, false);
+
     });
 
 }
@@ -1090,43 +1094,6 @@ function handleDrop(e) {
     su_biao.style.transform = 'scale(1)';
 
     sfwuxiao = 1;
-
-
-    // 最后交换两个元素的位置
-    var parent = draggedItem.parentNode;
-    dropIndex2 = Array.prototype.indexOf.call(parent.children, this);
-    console.log(dragIndex2, dropIndex2);
-    // 内存替换
-    var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
-    var dx_z = dhr_ym_dx['dhr_ym_dx' + dhr_zhi_xian];
-
-    if (dragIndex2 !== dropIndex2) {
-        if (dragIndex2 < dropIndex2) {
-            var key = Object.keys(dx_z);
-            var dx_z2 = JSON.parse(JSON.stringify(dx_z));
-            for (var i = dragIndex2; i <= dropIndex2; i++) {
-                if (i !== dropIndex2) {
-                    dx_z[key[i]] = dx_z2[key[i + 1]];
-                } else {
-                    dx_z[key[dropIndex2]] = dx_z2[key[dragIndex2]];
-                }
-            }
-        } else {
-            var key = Object.keys(dx_z);
-            var dx_z2 = JSON.parse(JSON.stringify(dx_z));
-            for (var i = dragIndex2; i >= dropIndex2; i--) {
-                if (i !== dropIndex2) {
-                    dx_z[key[i]] = dx_z2[key[i - 1]];
-                } else {
-                    dx_z[key[dropIndex2]] = dx_z2[key[dragIndex2]];
-                }
-            }
-        }
-    }
-
-
-    dhr_ym_dx['dhr_ym_dx' + dhr_zhi_xian] = dx_z;
-    localStorage.dhr_ym_dx = JSON.stringify(dhr_ym_dx);
 }
 
 function handleDragEnd(e) {
@@ -1146,6 +1113,42 @@ function handleDragEnd(e) {
             parent.insertBefore(qb[dragIndex], qb[dropIndex]);
         }
     } else {
+        // 最后交换两个元素的位置
+        var parent = draggedItem.parentNode;
+        dropIndex2 = Array.prototype.indexOf.call(parent.children, this);
+        console.log(dragIndex2, dropIndex2);
+        // 内存替换
+        var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
+        var dx_z = dhr_ym_dx['dhr_ym_dx' + dhr_zhi_xian];
+
+        if (dragIndex2 !== dropIndex2) {
+            if (dragIndex2 < dropIndex2) {
+                var key = Object.keys(dx_z);
+                var dx_z2 = JSON.parse(JSON.stringify(dx_z));
+                for (var i = dragIndex2; i <= dropIndex2; i++) {
+                    if (i !== dropIndex2) {
+                        dx_z[key[i]] = dx_z2[key[i + 1]];
+                    } else {
+                        dx_z[key[dropIndex2]] = dx_z2[key[dragIndex2]];
+                    }
+                }
+            } else {
+                var key = Object.keys(dx_z);
+                var dx_z2 = JSON.parse(JSON.stringify(dx_z));
+                for (var i = dragIndex2; i >= dropIndex2; i--) {
+                    if (i !== dropIndex2) {
+                        dx_z[key[i]] = dx_z2[key[i - 1]];
+                    } else {
+                        dx_z[key[dropIndex2]] = dx_z2[key[dragIndex2]];
+                    }
+                }
+            }
+        }
+
+        // 赋值
+        dhr_ym_dx['dhr_ym_dx' + dhr_zhi_xian] = dx_z;
+        localStorage.dhr_ym_dx = JSON.stringify(dhr_ym_dx);
+
         //链接排序
         lian_jie_r = document.querySelector('.lian_jie_r');
         lian_jie_r_s_s = lian_jie_r.children[dhr_zhi_xian].children;
@@ -1159,7 +1162,186 @@ function handleDragEnd(e) {
     draggedItem = null;
 
 }
+enableDragAndDrop('lj_max');
 
+// 换位封装
+var huanwei_class_name2;
+
+function enableDragAndDrop2(className2) {
+    var draggies = document.querySelectorAll('.' + className2);
+    huanwei_class_name2 = className2;
+
+    // 移除已存在的拖拽相关事件监听器
+    draggies.forEach(function(draggie) {
+        draggie.removeEventListener('dragstart', handleDragStart2);
+        draggie.removeEventListener('dragover', handleDragOver2);
+        draggie.removeEventListener('drop', handleDrop2);
+        draggie.removeEventListener('dragend', handleDragEnd2);
+    });
+
+    // 重新添加事件监听器
+    draggies.forEach(function(draggie) {
+        draggie.addEventListener('dragstart', handleDragStart2, false);
+        draggie.addEventListener('dragover', handleDragOver2, false);
+        draggie.addEventListener('drop', handleDrop2, false);
+        draggie.addEventListener('dragend', handleDragEnd2, false);
+
+    });
+
+}
+
+var draggedItem2 = null;
+var sfwuxiao2 = 0;
+
+function handleDragStart2(e) {
+    draggedItem2 = this;
+    e.dataTransfer.effectAllowed = 'move';
+
+    su_biao.style.display = 'none';
+
+
+    var parent2 = draggedItem2.parentNode;
+    dragIndex22 = Array.prototype.indexOf.call(parent2.children, draggedItem2);
+    dropIndex22 = Array.prototype.indexOf.call(parent2.children, this);
+
+    sfwuxiao2 = 0;
+}
+
+function handleDragOver2(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+
+    if (draggedItem2 !== this) {
+        // 交换两个元素的位置
+        var parent2 = draggedItem2.parentNode;
+        var dragIndex1 = Array.prototype.indexOf.call(parent2.children, draggedItem2);
+        var dropIndex1 = Array.prototype.indexOf.call(parent2.children, this);
+        dropIndex22 = Array.prototype.indexOf.call(parent2.children, this);
+        if (dragIndex1 < dropIndex1) {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name2);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1 + 1]);
+        } else {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name2);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1]);
+        }
+    }
+}
+
+function handleDrop2(e) {
+    e.stopPropagation();
+
+    su_biao.style.transform = 'scale(1)';
+
+    sfwuxiao2 = 1;
+}
+
+function handleDragEnd2(e) {
+
+    su_biao.style.transform = 'scale(1)';
+
+
+    if (sfwuxiao2 == 0) {
+        var parent2 = draggedItem2.parentNode;
+        var dragIndex1 = dropIndex22;
+        var dropIndex1 = dragIndex22;
+        if (dragIndex1 < dropIndex1) {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name2);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1 + 1]);
+        } else {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name2);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1]);
+        }
+    } else {
+        // 最后交换两个元素的位置
+        var parent2 = draggedItem2.parentNode;
+        dropIndex22 = Array.prototype.indexOf.call(parent2.children, this);
+
+        // 页面替换
+        var dhr_ym_r_s = document.querySelector('.dhr_ym_r_s');
+        // 交换两个元素的位置
+        var dahz = dhr_ym_r_s.parentNode;
+        if (dragIndex22 < dropIndex22) {
+            var dhr_ym_r_s = document.querySelectorAll('.dhr_ym_r_s');
+            dahz.insertBefore(dhr_ym_r_s[dragIndex22], dhr_ym_r_s[dropIndex22 + 1]);
+        } else {
+            var dhr_ym_r_s = document.querySelectorAll('.dhr_ym_r_s');
+            dahz.insertBefore(dhr_ym_r_s[dragIndex22], dhr_ym_r_s[dropIndex22]);
+        }
+        //导航栏排序
+        lian_jie_l_s = document.querySelector('.lian_jie_l').children;
+        for (var i = 0; i < lian_jie_l_s.length; i++) {
+            //指定顺序值
+            lian_jie_l_s[i].setAttribute('dhr_num', i)
+        }
+        //指向更改
+        if (dragIndex22 > dhr_zhi_xian && dropIndex22 <= dhr_zhi_xian) {
+            dhr_zhi_xian = dhr_zhi_xian - 0 + 1;
+        } else if (dragIndex22 < dhr_zhi_xian && dropIndex22 >= dhr_zhi_xian) {
+            dhr_zhi_xian = dhr_zhi_xian - 0 - 1;
+        } else if (dragIndex22 == dhr_zhi_xian) {
+            dhr_zhi_xian = dropIndex22;
+        }
+        qjgnzx();
+        // 内存替换
+        if (dragIndex22 !== dropIndex22) {
+            if (dragIndex22 < dropIndex22) {
+                var dhr_sz = JSON.parse(localStorage.dhr_sz);
+                var dhr_sz2 = JSON.parse(JSON.stringify(dhr_sz));
+                for (var i = dragIndex22; i <= dropIndex22; i++) {
+                    if (i !== dropIndex22) {
+                        dhr_sz[i] = dhr_sz2[i + 1];
+                    } else {
+                        dhr_sz[dropIndex22] = dhr_sz2[dragIndex22];
+                    }
+                }
+                localStorage.dhr_sz = JSON.stringify(dhr_sz);
+            } else {
+                var dhr_sz = JSON.parse(localStorage.dhr_sz);
+                var dhr_sz2 = JSON.parse(JSON.stringify(dhr_sz));
+                for (var i = dragIndex22; i >= dropIndex22; i--) {
+                    if (i !== dropIndex22) {
+                        dhr_sz[i] = dhr_sz2[i - 1];
+                    } else {
+                        dhr_sz[dropIndex22] = dhr_sz2[dragIndex22];
+                    }
+                }
+                localStorage.dhr_sz = JSON.stringify(dhr_sz);
+            }
+        }
+        // 内存替换2
+        if (dragIndex22 !== dropIndex22) {
+            if (dragIndex22 < dropIndex22) {
+                var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
+                var dhr_ym_dx2 = JSON.parse(JSON.stringify(dhr_ym_dx));
+                for (var i = dragIndex22; i <= dropIndex22; i++) {
+                    if (i !== dropIndex22) {
+                        dhr_ym_dx['dhr_ym_dx' + i] = dhr_ym_dx2['dhr_ym_dx' + (i + 1)];
+                    } else {
+                        dhr_ym_dx['dhr_ym_dx' + dropIndex22] = dhr_ym_dx2['dhr_ym_dx' + dragIndex22];
+                    }
+                }
+                localStorage.dhr_ym_dx = JSON.stringify(dhr_ym_dx);
+            } else {
+                var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
+                var dhr_ym_dx2 = JSON.parse(JSON.stringify(dhr_ym_dx));
+                for (var i = dragIndex22; i >= dropIndex22; i--) {
+                    if (i !== dropIndex22) {
+                        dhr_ym_dx['dhr_ym_dx' + i] = dhr_ym_dx2['dhr_ym_dx' + (i - 1)];
+                    } else {
+                        dhr_ym_dx['dhr_ym_dx' + dropIndex22] = dhr_ym_dx2['dhr_ym_dx' + dragIndex22];
+                    }
+                }
+                localStorage.dhr_ym_dx = JSON.stringify(dhr_ym_dx);
+            }
+        }
+        console.log(dragIndex22, dropIndex22);
+    }
+
+
+    draggedItem2 = null;
+
+}
+enableDragAndDrop2('tuodon_dhr_div');
 
 
 

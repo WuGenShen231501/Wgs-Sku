@@ -679,7 +679,7 @@ function sy_zp_shuc_hs() {
     for (var i = 0; i < sy_zpzs_lj.length; i++) {
         var divs = document.createElement('div');
         divs.className = 'iframe1';
-        divs.setAttribute('iframe_num', i);
+        divs.draggable = 'true';
         if (localStorage.sy_zpzs_kaiguan == 0) {
             divs.innerHTML = '<iframe src="' + sy_zpzs_lj[i] + '"></iframe><div class="sy_zpzs_jr">' + sy_zpzs_mz[i] + '</div><div class="sy_zpzs_sc"><i class="iconfont icon-shanchu1 i_sc_tb"></i></div>';
         } else {
@@ -811,6 +811,7 @@ sy_zp_tj_anniu.addEventListener('click', function() {
         var sy_zpzs_lj = JSON.parse(localStorage.sy_zpzs_lj);
         var divs = document.createElement('div');
         divs.className = 'iframe1';
+        divs.draggable = 'true';
         if (localStorage.sy_zpzs_kaiguan == 0) {
             divs.innerHTML = '<iframe src="' + sy_zp_tj_lj.value + '"></iframe><div class="sy_zpzs_jr">' + sy_zp_tj_mz.value + '</div><div class="sy_zpzs_sc"><i class="iconfont icon-shanchu1 i_sc_tb"></i></div>';
         } else {
@@ -827,6 +828,8 @@ sy_zp_tj_anniu.addEventListener('click', function() {
         iframe1_sygn();
         iframe_cxpx();
         Sku_tctx('作品添加成功');
+
+        enableDragAndDrop3('iframe1');
     }
 });
 //删除作品添加
@@ -861,6 +864,7 @@ sy_zpzs_kaiguan.addEventListener('click', function(e) {
         iframe1_heigth();
         iframe1_sygn();
     }
+    enableDragAndDrop3('iframe1');
 });
 if (localStorage.sy_zpzs_kaiguan == 1) {
     sy_zpzs_kaiguan.innerText = '✔';
@@ -1988,6 +1992,163 @@ sy_3d_kaiguan.addEventListener('click', function(e) {
 
 });
 
+
+
+
+
+
+// 换位
+// 换位封装
+var huanwei_class_name3;
+
+function enableDragAndDrop3(className2) {
+    var draggies = document.querySelectorAll('.' + className2);
+    huanwei_class_name3 = className2;
+
+    // 移除已存在的拖拽相关事件监听器
+    draggies.forEach(function(draggie) {
+        draggie.removeEventListener('dragstart', handleDragStart3);
+        draggie.removeEventListener('dragover', handleDragOver3);
+        draggie.removeEventListener('drop', handleDrop3);
+        draggie.removeEventListener('dragend', handleDragEnd3);
+    });
+
+    // 重新添加事件监听器
+    draggies.forEach(function(draggie) {
+        draggie.addEventListener('dragstart', handleDragStart3, false);
+        draggie.addEventListener('dragover', handleDragOver3, false);
+        draggie.addEventListener('drop', handleDrop3, false);
+        draggie.addEventListener('dragend', handleDragEnd3, false);
+
+    });
+
+}
+
+var draggedItem2 = null;
+var sfwuxiao2 = 0;
+
+function handleDragStart3(e) {
+    draggedItem2 = this;
+    e.dataTransfer.effectAllowed = 'move';
+
+    su_biao.style.display = 'none';
+
+
+    var parent2 = draggedItem2.parentNode;
+    dragIndex22 = Array.prototype.indexOf.call(parent2.children, draggedItem2);
+    dropIndex22 = Array.prototype.indexOf.call(parent2.children, this);
+
+    sfwuxiao2 = 0;
+}
+
+function handleDragOver3(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    if (draggedItem2 !== this) {
+        // 交换两个元素的位置
+        var parent2 = draggedItem2.parentNode;
+        var dragIndex1 = Array.prototype.indexOf.call(parent2.children, draggedItem2);
+        var dropIndex1 = Array.prototype.indexOf.call(parent2.children, this);
+        dropIndex22 = Array.prototype.indexOf.call(parent2.children, this);
+        if (dragIndex1 < dropIndex1) {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name3);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1].nextElementSibling);
+        } else {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name3);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1]);
+        }
+    }
+}
+
+function handleDrop3(e) {
+    e.stopPropagation();
+
+    su_biao.style.transform = 'scale(1)';
+
+    sfwuxiao2 = 1;
+}
+
+function handleDragEnd3(e) {
+
+    su_biao.style.transform = 'scale(1)';
+
+
+    if (sfwuxiao2 == 0) {
+        var parent2 = draggedItem2.parentNode;
+        var dragIndex1 = dropIndex22;
+        var dropIndex1 = dragIndex22;
+        if (dragIndex1 < dropIndex1) {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name3);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1].nextElementSibling);
+        } else {
+            var qb = parent2.querySelectorAll('.' + huanwei_class_name3);
+            parent2.insertBefore(qb[dragIndex1], qb[dropIndex1]);
+        }
+    } else {
+        // 最后交换两个元素的位置
+        var parent2 = draggedItem2.parentNode;
+        dropIndex22 = Array.prototype.indexOf.call(parent2.children, this);
+        console.log(dragIndex22, dropIndex22);
+        // 内存变换1
+        if (dragIndex22 !== dropIndex22) {
+            if (dragIndex22 < dropIndex22) {
+                var sy_zpzs_mz = JSON.parse(localStorage.sy_zpzs_mz);
+                var sy_zpzs_mz2 = JSON.parse(JSON.stringify(sy_zpzs_mz));
+                for (var i = dragIndex22; i <= dropIndex22; i++) {
+                    if (i !== dropIndex22) {
+                        sy_zpzs_mz[i] = sy_zpzs_mz2[i + 1];
+                    } else {
+                        sy_zpzs_mz[dropIndex22] = sy_zpzs_mz2[dragIndex22];
+                    }
+                }
+                localStorage.sy_zpzs_mz = JSON.stringify(sy_zpzs_mz);
+            } else {
+                var sy_zpzs_mz = JSON.parse(localStorage.sy_zpzs_mz);
+                var sy_zpzs_mz2 = JSON.parse(JSON.stringify(sy_zpzs_mz));
+                for (var i = dragIndex22; i >= dropIndex22; i--) {
+                    if (i !== dropIndex22) {
+                        sy_zpzs_mz[i] = sy_zpzs_mz2[i - 1];
+                    } else {
+                        sy_zpzs_mz[dropIndex22] = sy_zpzs_mz2[dragIndex22];
+                    }
+                }
+                localStorage.sy_zpzs_mz = JSON.stringify(sy_zpzs_mz);
+            }
+        }
+        // 内存变换2
+        if (dragIndex22 !== dropIndex22) {
+            if (dragIndex22 < dropIndex22) {
+                var sy_zpzs_lj = JSON.parse(localStorage.sy_zpzs_lj);
+                var sy_zpzs_lj2 = JSON.parse(JSON.stringify(sy_zpzs_lj));
+                for (var i = dragIndex22; i <= dropIndex22; i++) {
+                    if (i !== dropIndex22) {
+                        sy_zpzs_lj[i] = sy_zpzs_lj2[i + 1];
+                    } else {
+                        sy_zpzs_lj[dropIndex22] = sy_zpzs_lj2[dragIndex22];
+                    }
+                }
+                localStorage.sy_zpzs_lj = JSON.stringify(sy_zpzs_lj);
+            } else {
+                var sy_zpzs_lj = JSON.parse(localStorage.sy_zpzs_lj);
+                var sy_zpzs_lj2 = JSON.parse(JSON.stringify(sy_zpzs_lj));
+                for (var i = dragIndex22; i >= dropIndex22; i--) {
+                    if (i !== dropIndex22) {
+                        sy_zpzs_lj[i] = sy_zpzs_lj2[i - 1];
+                    } else {
+                        sy_zpzs_lj[dropIndex22] = sy_zpzs_lj2[dragIndex22];
+                    }
+                }
+                localStorage.sy_zpzs_lj = JSON.stringify(sy_zpzs_lj);
+            }
+        }
+        console.log('---------------');
+    }
+
+
+    draggedItem2 = null;
+
+}
+enableDragAndDrop3('iframe1');
 
 
 

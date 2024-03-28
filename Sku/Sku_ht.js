@@ -1,5 +1,5 @@
 //检测是否第一次使用
-var ban_ben_s = 'v15.11.2';
+var ban_ben_s = 'v16.54.2';
 if (localStorage.ban_ben) {
     console.log('继续使用中');
     //检查是否最新
