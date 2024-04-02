@@ -91,22 +91,6 @@ nrmaxs0_nr.addEventListener('scroll', function() {
 });
 
 //滚动显示回到顶部
-// function SHITIDONGHUA(class名, 移动距离(右为正, 左为负), function() {});
-function SHITIDONGHUA(bjs, jls, callback) {
-    obj_dwjsq = document.querySelector(bjs);
-    clearInterval(obj_dwjsq.time);
-    obj_dwjsq.time = setInterval(function() {
-        var jl = (jls - obj_dwjsq.scrollTop) / 10;
-        jl = jl > 0 ? Math.ceil(jl) : Math.floor(jl);
-        if (obj_dwjsq.scrollTop == jls) {
-            clearInterval(obj_dwjsq.time);
-            if (callback) {
-                callback();
-            }
-        }
-        obj_dwjsq.scroll(0, obj_dwjsq.scrollTop + jl);
-    }, 15);
-}
 sy_lbt_b = document.querySelector('.sy_lbt_b');
 sy_hddb = document.querySelector('.sy_hddb');
 nrmaxs0_nr = document.querySelector('.nrmaxs0_nr');
@@ -120,7 +104,7 @@ nrmaxs0_nr.addEventListener('scroll', function() {
     }
 });
 sy_hddb.addEventListener('click', function() {
-    SHITIDONGHUA('.nrmaxs0_nr', 0);
+    sy_dw_top.click();
 });
 
 // 匹配浏览器高度
@@ -905,6 +889,7 @@ function sy_dwck_ym_yc() {
 //定位
 // function SHITIDONGHUA(class名, 移动距离(右为正, 左为负), function() {});
 var obj_dwjsq = undefined;
+var gundon_dsj = undefined;
 
 function SHITIDONGHUA2(bjs, jls, callback) {
     var jlss = Math.round(jls);
@@ -921,6 +906,10 @@ function SHITIDONGHUA2(bjs, jls, callback) {
         }
         obj_dwjsq.scroll(0, obj_dwjsq.scrollTop + jl);
     }, 15);
+    clearTimeout(gundon_dsj);
+    gundon_dsj = setTimeout(function() {
+        clearInterval(obj_dwjsq.time);
+    }, 1200);
 }
 sy_dw_top.addEventListener('click', function() {
     SHITIDONGHUA2('.nrmaxs0_nr', 0);

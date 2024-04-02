@@ -184,12 +184,13 @@ for (var i = 0; i < 4; i++) {
         }
         if (this.getAttribute('date-num') == 3) {
             so_ssk.placeholder = '搜索引擎 / Ctrl + ?';
-            shezhi_min = document.querySelector('.shezhi_min');
+            var shezhi_min = document.querySelector('.shezhi_min');
             shezhi_ym = document.querySelectorAll('.shezhi_ym');
             for (var i = 0; i < shezhi_ym.length; i++) {
                 shezhi_ym[i].style.display = 'none';
             }
             shezhi_min.style.display = 'block';
+            shezhi_min.scroll(0, 0);
         }
     });
 }
@@ -776,7 +777,7 @@ function sku_gjsp() {
             i_music_boyyom_ks.click();
         }
 
-        Sku_tctx('无操作 ' + localStorage.sku_xp_sp + ' 分钟 自动锁屏');
+        Sku_tctx('无操作 ' + localStorage.sku_xp_sp + ' 分钟 自动锁定');
 
     } else if (localStorage.dr_mm == '' && sd_dtnr_max.style.display == 'none') {
         // 停止音乐
@@ -786,7 +787,7 @@ function sku_gjsp() {
         // 开始3d
         i_sy_3d_kaiguan.click();
 
-        Sku_tctx('无操作 ' + localStorage.sku_xp_sp + ' 分钟 自动挂屏');
+        Sku_tctx('无操作 ' + localStorage.sku_xp_sp + ' 分钟 自动休眠');
     }
 }
 
@@ -818,7 +819,7 @@ shezhi_sp_xp.addEventListener('click', function(e) {
 shezhi_sp_xp_min2.value = localStorage.sku_xp_sp;
 shezhi_sp_xp_min2.addEventListener('blur', function(e) {
     if (shezhi_sp_xp_min2.value >= 1 && shezhi_sp_xp_min2.value <= (60 * 24)) {
-        Sku_tctx('更改成功 , 无操作 ' + shezhi_sp_xp_min2.value + ' 分钟后自动(挂屏/锁屏)');
+        Sku_tctx('更改成功 , 无操作 ' + shezhi_sp_xp_min2.value + ' 分钟后自动(休眠/锁定)');
         localStorage.sku_xp_sp = shezhi_sp_xp_min2.value;
     } else if (shezhi_sp_xp_min2.value < 10) {
         Sku_tctx('更改失败 ! 时间不能小于 1 分钟');

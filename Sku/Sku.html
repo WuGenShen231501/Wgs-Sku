@@ -266,7 +266,7 @@
             <i class="iconfont icon-yingyongzhongxin lj_zcb_i"><div class="lj_zcb_i_wz">创建注册表</div></i>
             <div class="lj_zcb_ym" style="display: none;">
                 <input class="lj_zcb_name" type="text" placeholder=" 命名 ( 由 [a-z] [A-Z] “-” 组成 )">
-                <input class="lj_zcb_dizhi" type="text" placeholder=" 本地.exe文件路径">
+                <input class="lj_zcb_dizhi" type="text" placeholder=" 本地.exe/.com文件路径">
                 <div class="lj_zcb_tx">方法:下载注册表后运行注册表进行创建,打开路径为(Sku-命名:)<br>注意:命名和文件路径暂不支持中文<br>中文需手动修改reg编码为utf-16le,否则无效创建</div>
                 <div class="lj_zcb_qr">下载注册表</div>
                 <div class="ls_zcb_kjj">查看历史注册表</div>
@@ -376,7 +376,7 @@
                     <div class="shezhi_lszcb">历史注册表</div>
                     <div class="shezhi_ssjl">历史搜索记录</div>
                     <div class="shezhi_synr">更换首页内容</div>
-                    <div class="shezhi_sp_xp">挂屏 / 锁屏</div>
+                    <div class="shezhi_sp_xp">休眠 / 锁定</div>
                     <div class="shezhi_gywm">关于 S-ku</div>
                 </div>
 
@@ -393,6 +393,8 @@
                         <input type="text" class="input_bzlj" placeholder=" URL">
                         <div class="bzsz_tj_anniu">添加</div>
                     </div>
+                    <!-- 下上 -->
+                    <div class="bizhi_gundon bizhi_gundon1">↓</div>
                 </div>
 
                 <!-- 主题风格  -->
@@ -516,11 +518,12 @@
                     <div class="daoru_ym_bendi">导入本地</div>
                     <div class="daoru_ym_bendi_click">查看详细本地导出信息</div>
                     <input type="text" placeholder="导入模块 / 密钥 / 网址" class="daoru_ym_sc">
-                    <div class="daoru_ym_sc_zishu">0 位数</div>
+                    <div class="daoru_ym_sc_zishu">输入 0 位数</div>
                 </div>
 
                 <!-- 导出信息页面 -->
                 <div class="shezhi_ym shezhi_daoru_bendi_ym" style="display: none;">
+                    <div class="bizhi_gundon bizhi_gundon2">↓</div>
                     <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>本地导出信息</div>
                     <div class="daorubendi_max_hd">
                         <div class="daorubendi_min">
@@ -531,6 +534,8 @@
 
                 <!-- 历史注册表 -->
                 <div class="shezhi_ym lszcb_ym" style="display: none;">
+                    <div class="bizhi_gundon bizhi_gundon3">↓</div>
+                    <div class="zh_scanniu">⇆</div>
                     <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>历史注册表</div>
                     <div class="ssjl_max2">
                         <div class="ssjl_min2">
@@ -539,10 +544,12 @@
                     </div>
                     <div class="lszcb_yjxz">一键合并下载</div>
                     <div class="lszcb_yjsc">一键合并删除</div>
+                    <div class="lszcb_yjqk">清空历史</div>
                 </div>
 
                 <!-- 历史搜索记录 -->
                 <div class="shezhi_ym shezhi_ssjl_ym" style="display: none;">
+                    <div class="bizhi_gundon bizhi_gundon4">↓</div>
                     <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>历史搜索记录 ( 点击搜索 / 右击删除 )</div>
                     <div class="ssjl_max">
                         <div class="ssjl_min">
@@ -566,11 +573,11 @@
 
                 <!-- 锁屏 -->
                 <div class="shezhi_ym shezhi_sp_xp_ym" style="display: none;">
-                    <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>挂屏与锁屏 ( 取决与您是否设置密码 )</div>
+                    <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>休眠与锁定 ( 取决与您是否设置密码 )</div>
                     <div class="shezhi_sp_xp_max">
                         <div class="shezhi_sp_xp_min1">无操作</div>
                         <input class="shezhi_sp_xp_min2" type="number">
-                        <div class="shezhi_sp_xp_min3">分钟后自动 挂屏/锁屏</div>
+                        <div class="shezhi_sp_xp_min3">分钟后自动 休眠/锁定</div>
                     </div>
                 </div>
 

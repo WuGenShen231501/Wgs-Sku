@@ -162,6 +162,19 @@
     .bzsz_tj_anniu:hover {
         color: rgb(255, 213, 0);
     }
+    
+    .bizhi_gundon {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        border: 1px solid var(--zi_ti_color);
+        text-align: center;
+        line-height: 33px;
+        border-radius: 50%;
+        right: 7px;
+        top: 8px;
+        font-size: 20px;
+    }
     /* -----------天气----------- */
     
     .tianqi_max {
@@ -628,7 +641,7 @@
     
     .daorubendi_s_sj {
         float: left;
-        width: 300px;
+        width: 435px;
         height: 30px;
         margin-left: 50px;
         border: 1px solid rgb(255, 255, 255);
@@ -669,14 +682,31 @@
     
     .daoru_ym_sc_zishu {
         position: absolute;
-        width: 200px;
+        width: 500px;
         height: 30px;
         text-align: right;
         line-height: 30px;
-        left: 448px;
+        left: 148px;
         top: 280px;
     }
     /* 历史搜索记录 */
+    
+    .zh_scanniu {
+        position: absolute;
+        border: 1px solid var(--zi_ti_color);
+        width: 48px;
+        height: 30px;
+        border-radius: 5px;
+        text-align: center;
+        right: 60px;
+        top: 10px;
+        line-height: 28px;
+        transition: 0.15s;
+    }
+    
+    .zh_scanniu:hover {
+        transform: scale(1.1);
+    }
     
     .ssjl_max {
         float: left;
@@ -981,6 +1011,20 @@
     }
     
     .lszcb_yjsc:hover,
-    .lszcb_yjxz:hover {
+    .lszcb_yjxz:hover,
+    .lszcb_yjqk:hover {
         transform: scale(1.1);
+    }
+    
+    .lszcb_yjqk {
+        position: absolute;
+        border: 1px solid var(--zi_ti_color);
+        width: 99px;
+        height: 30px;
+        border-radius: 5px;
+        text-align: center;
+        right: 218px;
+        top: 10px;
+        line-height: 30px;
+        transition: 0.15s;
     }

@@ -981,9 +981,9 @@ lj_zcb_qr.addEventListener('click', function(e) {
     if (isAlphaDash(lj_zcb_name.value) && lj_zcb_name.value != '' && lj_zcb_dizhi.value != '' && (lj_zcb_dizhi.value.substr(lj_zcb_dizhi.value.length - 4, lj_zcb_dizhi.value.length) == 'exe"' || lj_zcb_dizhi.value.substr(lj_zcb_dizhi.value.length - 4, lj_zcb_dizhi.value.length) == 'exe\'' || lj_zcb_dizhi.value.substr(lj_zcb_dizhi.value.length - 3, lj_zcb_dizhi.value.length) == 'exe')) {
         // 保存历史
         var sku_zcb = JSON.parse(localStorage.sku_zcb);
-        sku_zcb[0].push('Sku-' + lj_zcb_name.value);
+        sku_zcb[0].unshift('Sku-' + lj_zcb_name.value);
         console.log(escapeBackslash(lj_zcb_dizhi.value));
-        sku_zcb[1].push('' + escapeBackslash(lj_zcb_dizhi.value));
+        sku_zcb[1].unshift('' + escapeBackslash(lj_zcb_dizhi.value));
         localStorage.sku_zcb = JSON.stringify(sku_zcb);
 
         // 创建TXT文本 WGS_txt_wenbenchuanjian('文件名','文本内容');
