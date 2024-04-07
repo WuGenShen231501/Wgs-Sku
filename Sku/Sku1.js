@@ -1481,11 +1481,12 @@ sy_djs_txl.addEventListener('click', function(e) {
 });
 var sy_djs_txl_jsq;
 sy_djs_txl_jsq = setInterval(function() {
+    console.log(1);
     var sy_djs_r_s_one = document.querySelectorAll('.sy_djs_r_s')[0];
     if (sy_djs_r_s_one !== undefined) {
         var sy_djs_r_t_1 = document.querySelectorAll('.sy_djs_r_s')[0].querySelector('.sy_djs_r_t');
         var sy_djs_r_s_1 = document.querySelectorAll('.sy_djs_r_time')[0].innerHTML;
-        if (nrmaxs0_nr.scrollTop < 10 && sy_djs_r_s_1 == '时间已到<br>超过三天自动删除') {
+        if (nrmaxs0_nr.scrollTop < 20 && sy_djs_r_s_1 == '时间已到<br>超过三天自动删除') {
             sy_djs_txl.style.display = 'block';
             sy_djs_txl.innerHTML = '“' + sy_djs_r_t_1.innerHTML + '”时间已到 ↓';
         } else {
@@ -1530,11 +1531,12 @@ top_dhl_S[0].addEventListener('click', function(e) {
 
     // 倒计时提示优化
     sy_djs_txl_jsq = setInterval(function() {
+        console.log(1);
         var sy_djs_r_s_one = document.querySelectorAll('.sy_djs_r_s')[0];
         if (sy_djs_r_s_one !== undefined) {
             var sy_djs_r_t_1 = document.querySelectorAll('.sy_djs_r_s')[0].querySelector('.sy_djs_r_t');
             var sy_djs_r_s_1 = document.querySelectorAll('.sy_djs_r_time')[0].innerHTML;
-            if (nrmaxs0_nr.scrollTop < 10 && sy_djs_r_s_1 == '时间已到<br>超过三天自动删除') {
+            if (nrmaxs0_nr.scrollTop < 20 && sy_djs_r_s_1 == '时间已到<br>超过三天自动删除') {
                 sy_djs_txl.style.display = 'block';
                 sy_djs_txl.innerHTML = '“' + sy_djs_r_t_1.innerHTML + '”时间已到 ↓';
             } else {

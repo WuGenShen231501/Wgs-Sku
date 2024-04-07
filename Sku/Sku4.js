@@ -2820,7 +2820,9 @@ gywm_l.addEventListener('click', function(e) {
         gywm_ban_ben_djcs2 = 0;
 
         var WGS_HTSP_S = document.querySelector('.WGS_HTSP_S');
-        var s_sz = ['qq', 'ww', 'ee', 'rr', 'tt', 'yy', 'uu', 'ii', 'oo', 'pp', 'aa', 'ss', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'zz', 'xx', 'cc', 'vv', 'bb', 'nn', 'mm'];
+        var s_sz = ['az', 'qq', 'ww', 'ee', 'rr', 'tt', 'yy', 'uu', 'ii', 'oo', 'pp', 'aa', 'ss', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'zz', 'xx', 'cc', 'vv', 'bb', 'nn', 'mm'];
+        var s_sz_2 = ['xyz', 'vip'];
+        var s_sz_3 = ['9527'];
         var htsp_s_tjgs = 0;
         var htsp_s_tjgs_cg = 0;
         var htsp_s_tjgs_sb = 0;
@@ -2848,72 +2850,76 @@ gywm_l.addEventListener('click', function(e) {
             }
         }, 1000);
 
-        for (var i = 0; i < s_sz.length; i++) {
-            for (var u = 0; u < 400; u++) {
-                htsp_s_tjgs++;
-                var wz_shu = u < 10 ? '0' + u : u;
-                var imgs = document.createElement('img');
-                imgs.src = 'https://ht' + wz_shu + s_sz[i] + '.xyz:9527/favicon.ico';
-                imgs.addEventListener('load', function(e) {
-                    // 分支加速
-                    setTimeout(function() {}, 0);
+        for (var p = 0; p < s_sz_3.length; p++) {
+            for (var o = 0; o < s_sz_2.length; o++) {
+                for (var i = 0; i < s_sz.length; i++) {
+                    for (var u = 0; u < 400; u++) {
+                        htsp_s_tjgs++;
+                        var wz_shu = u < 10 ? '0' + u : u;
+                        var imgs = document.createElement('img');
+                        imgs.src = 'https://ht' + wz_shu + s_sz[i] + '.' + s_sz_2[o] + ':' + s_sz_3[p] + '/favicon.ico';
+                        imgs.addEventListener('load', function(e) {
+                            // 分支加速
+                            setTimeout(function() {}, 0);
 
-                    htsp_s_tjgs_cg++;
-                    console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
-                    console.log(this.src);
-                    HTSP_src = this.src;
+                            htsp_s_tjgs_cg++;
+                            console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
+                            console.log(this.src);
+                            HTSP_src = this.src;
 
-                    // 保存
-                    var htsp_s = JSON.parse(localStorage.htsp_s);
-                    if (htsp_s.indexOf(this.src) !== -1) {
-                        htsp_cgqcfgs++;
-                        sz_zdsc(htsp_s, this.src);
-                    } else {
-                        Sku_tsy(1);
+                            // 保存
+                            var htsp_s = JSON.parse(localStorage.htsp_s);
+                            if (htsp_s.indexOf(this.src) !== -1) {
+                                htsp_cgqcfgs++;
+                                sz_zdsc(htsp_s, this.src);
+                            } else {
+                                Sku_tsy(1);
+                            }
+                            htsp_s.unshift(this.src);
+                            localStorage.htsp_s = JSON.stringify(htsp_s);
+
+                            gywm_ban_ben_HTSP = 1;
+
+                            WGS_HTSP.src = this.src;
+
+                            gywm_ban_ben.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
+
+                            htsp_qjss_jdt.style.display = 'block';
+                            htsp_qjss_jdt2.style.width = (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%';
+
+                            if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                var htsp_s = JSON.parse(localStorage.htsp_s);
+                                gywm_ban_ben.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ')';
+                                htsp_qjss_jdt.style.display = 'none';
+                                WGS_HTSP_S.innerHTML = '';
+                                Sku_tctx('HTSP 全局搜索已结束 !');
+                                Sku_tsy(0);
+                            }
+                        });
+                        imgs.addEventListener('error', function(e) {
+                            // 分支加速
+                            setTimeout(function() {}, 0);
+                            htsp_s_tjgs_sb++;
+                            var htsp_s = JSON.parse(localStorage.htsp_s);
+
+                            gywm_ban_ben.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
+
+                            htsp_qjss_jdt.style.display = 'block';
+                            htsp_qjss_jdt2.style.width = (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%';
+
+                            console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
+                            if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
+                                var htsp_s = JSON.parse(localStorage.htsp_s);
+                                gywm_ban_ben.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ')';
+                                htsp_qjss_jdt.style.display = 'none';
+                                WGS_HTSP_S.innerHTML = '';
+                                Sku_tctx('HTSP 全局搜索已结束 !');
+                                Sku_tsy(0);
+                            }
+                        });
+                        WGS_HTSP_S.appendChild(imgs);
                     }
-                    htsp_s.unshift(this.src);
-                    localStorage.htsp_s = JSON.stringify(htsp_s);
-
-                    gywm_ban_ben_HTSP = 1;
-
-                    WGS_HTSP.src = this.src;
-
-                    gywm_ban_ben.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
-
-                    htsp_qjss_jdt.style.display = 'block';
-                    htsp_qjss_jdt2.style.width = (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%';
-
-                    if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
-                        var htsp_s = JSON.parse(localStorage.htsp_s);
-                        gywm_ban_ben.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ')';
-                        htsp_qjss_jdt.style.display = 'none';
-                        WGS_HTSP_S.innerHTML = '';
-                        Sku_tctx('HTSP 全局搜索已结束 !');
-                        Sku_tsy(0);
-                    }
-                });
-                imgs.addEventListener('error', function(e) {
-                    // 分支加速
-                    setTimeout(function() {}, 0);
-                    htsp_s_tjgs_sb++;
-                    var htsp_s = JSON.parse(localStorage.htsp_s);
-
-                    gywm_ban_ben.innerHTML = 'HTSP 成功 ' + htsp_s_tjgs_cg + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ' 玩命搜索中...' + (htsp_s_tjgs_cg + htsp_s_tjgs_sb) + '/' + htsp_s_tjgs + ' (进程 ' + (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%)';
-
-                    htsp_qjss_jdt.style.display = 'block';
-                    htsp_qjss_jdt2.style.width = (((htsp_s_tjgs_cg + htsp_s_tjgs_sb) / htsp_s_tjgs) * 100).toFixed(2) + '%';
-
-                    console.log('总共 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg);
-                    if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
-                        var htsp_s = JSON.parse(localStorage.htsp_s);
-                        gywm_ban_ben.innerHTML = 'HTSP 搜索结束' + ' (检测 ' + htsp_s_tjgs + ' 失败 ' + htsp_s_tjgs_sb + ' 成功 ' + htsp_s_tjgs_cg + ' 重复 ' + htsp_cgqcfgs + ' 新增 ' + (htsp_s_tjgs_cg - htsp_cgqcfgs) + ' 本地 ' + htsp_s.length + ')';
-                        htsp_qjss_jdt.style.display = 'none';
-                        WGS_HTSP_S.innerHTML = '';
-                        Sku_tctx('HTSP 全局搜索已结束 !');
-                        Sku_tsy(0);
-                    }
-                });
-                WGS_HTSP_S.appendChild(imgs);
+                }
             }
         }
 
