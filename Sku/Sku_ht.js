@@ -1,5 +1,5 @@
 //检测是否第一次使用
-var ban_ben_s = 'v16.54.2';
+var ban_ben_s = 'v17.03.2';
 if (localStorage.ban_ben) {
     console.log('继续使用中');
     //检查是否最新
@@ -182,6 +182,15 @@ if (localStorage.drym_cs == undefined) {
 }
 if (localStorage.drym_srcs == undefined) {
     localStorage.drym_srcs = 0;
+}
+if (localStorage.dr_mmdr == undefined) {
+    localStorage.dr_mmdr = 0;
+}
+if (localStorage.dr_mmdr_drsj == undefined) {
+    localStorage.dr_mmdr_drsj = 0;
+}
+if (localStorage.dr_mmdr_mmfw == undefined) {
+    localStorage.dr_mmdr_mmfw = 60;
 }
 //作品展示
 if (localStorage.sy_zpzs_lj == undefined) {

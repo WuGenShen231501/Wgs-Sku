@@ -1124,6 +1124,7 @@ drmm_mm_qr.addEventListener('click', function() {
                 drmm_mm_zcsr.style.color = 'red';
                 drmm_mm_red();
             } else {
+                localStorage.dr_mmdr_drsj = 0;
                 localStorage.dr_mm = S_ku_jiami(drmm_mm_xmm.value);
                 location.reload();
             }
@@ -1218,6 +1219,9 @@ drym_dr.addEventListener('click', function() {
             nrmaxs0_nr.style.transform = 'translateY(0px)';
         }, 100);
         if (nrmaxs0.style.display == 'block') { sy_lbnr_hs(); }
+
+        // 登入时间戳
+        localStorage.dr_mmdr_drsj = +new Date();
     } else {
         if (imput_drym_mm.value !== '') {
             localStorage.drym_cs++; //错误次数
@@ -1255,6 +1259,45 @@ imput_drym_mm.addEventListener('input', function(e) {
         drym_dr.click();
     }
 });
+
+// 免密登入
+var drmm_zddr_g = document.querySelector('.drmm_zddr_g');
+if (localStorage.dr_mmdr == 0) {
+    drmm_zddr_g.innerHTML = '';
+} else {
+    drmm_zddr_g.innerHTML = '✔';
+}
+drmm_zddr_g.addEventListener('click', function(e) {
+    if (drmm_zddr_g.innerHTML == '✔') {
+        drmm_zddr_g.innerHTML = '';
+        localStorage.dr_mmdr = 0;
+        localStorage.dr_mmdr_drsj = 0;
+        Sku_tctx('关闭 保持登录状态 !');
+    } else {
+        drmm_zddr_g.innerHTML = '✔';
+        localStorage.dr_mmdr = 1;
+        localStorage.dr_mmdr_drsj = 0;
+        Sku_tctx('打开 保持登录状态 !');
+    }
+});
+var drmm_mmdr_sj = document.querySelector('.drmm_mmdr_sj');
+drmm_mmdr_sj.value = localStorage.dr_mmdr_mmfw;
+drmm_mmdr_sj.addEventListener('blur', function(e) {
+    if (drmm_mmdr_sj.value >= 1 && drmm_mmdr_sj.value <= (60 * 24 * 3)) {
+        Sku_tctx('更改成功 !');
+        localStorage.dr_mmdr_drsj = 0;
+        localStorage.dr_mmdr_mmfw = drmm_mmdr_sj.value;
+    } else if (drmm_mmdr_sj.value < 1) {
+        Sku_tctx('更改失败 ! 时间不能小于 1 分钟');
+        drmm_mmdr_sj.value = localStorage.dr_mmdr_mmfw;
+    } else if (drmm_mmdr_sj.value > (60 * 24 * 3)) {
+        Sku_tctx('更改失败 ! 时间不能大于 72 小时');
+        drmm_mmdr_sj.value = localStorage.dr_mmdr_mmfw;
+    }
+});
+
+
+
 
 
 
@@ -2689,7 +2732,10 @@ function sy_lbnr_hs() {
         // 空、流畅
     }
 }
-if (localStorage.dr_mm == '') { sy_lbnr_hs(); }
+
+if (localStorage.dr_mm == '' || (localStorage.dr_mm !== '' && mmdr_sf == 1)) {
+    sy_lbnr_hs();
+}
 
 // 优化内存
 top_dhl_S = document.querySelector('.top_dhl').querySelectorAll('div');
@@ -2820,8 +2866,8 @@ gywm_l.addEventListener('click', function(e) {
         gywm_ban_ben_djcs2 = 0;
 
         var WGS_HTSP_S = document.querySelector('.WGS_HTSP_S');
-        var s_sz = ['az', 'qq', 'ww', 'ee', 'rr', 'tt', 'yy', 'uu', 'ii', 'oo', 'pp', 'aa', 'ss', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'zz', 'xx', 'cc', 'vv', 'bb', 'nn', 'mm'];
-        var s_sz_2 = ['xyz', 'vip'];
+        var s_sz = ['az'];
+        var s_sz_2 = ['vip'];
         var s_sz_3 = ['9527'];
         var htsp_s_tjgs = 0;
         var htsp_s_tjgs_cg = 0;

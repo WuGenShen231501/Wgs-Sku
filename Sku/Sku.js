@@ -5,7 +5,7 @@ function Sku_tsy(num) {
     sku_tsy[num].play();
 }
 
-var shui_you_nc = ['dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf'];
+var shui_you_nc = ['dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 // 保护localStorage值
 window.addEventListener('storage', function(event) {
     console.clear();
@@ -613,9 +613,14 @@ if (localStorage.dr_mm !== '') {
     //显示密码框
     drmm_mm_mm_max = document.querySelector('.drmm_mm_mm_max');
     drmm_mm_mm_max.style.display = 'block';
+}
+if (localStorage.dr_mm !== '' && mmdr_sf == 0) {
+    //显示密码框
+    drmm_mm_mm_max = document.querySelector('.drmm_mm_mm_max');
+    drmm_mm_mm_max.style.display = 'block';
     //显示提示
     drmm_mm_xmm = document.querySelector('.drmm_mm_xmm');
-    drmm_mm_xmm.placeholder = '为空时 , 既取消密码登入';
+    drmm_mm_xmm.placeholder = '为空时，既取消 密码 与 密钥';
     //显示登入页面
     drym_max = document.querySelector('.drym_max');
     drym_max.style.display = 'block';
@@ -776,6 +781,8 @@ function sku_gjsp() {
         if (i_music_boyyom_ks.className == 'iconfont i_music_boyyom_ks icon-zanting') {
             i_music_boyyom_ks.click();
         }
+        // 时间戳0
+        localStorage.dr_mmdr_drsj = 0;
 
         Sku_tctx('无操作 ' + localStorage.sku_xp_sp + ' 分钟 自动锁定');
 
@@ -819,12 +826,12 @@ shezhi_sp_xp.addEventListener('click', function(e) {
 shezhi_sp_xp_min2.value = localStorage.sku_xp_sp;
 shezhi_sp_xp_min2.addEventListener('blur', function(e) {
     if (shezhi_sp_xp_min2.value >= 1 && shezhi_sp_xp_min2.value <= (60 * 24)) {
-        Sku_tctx('更改成功 , 无操作 ' + shezhi_sp_xp_min2.value + ' 分钟后自动(休眠/锁定)');
+        Sku_tctx('更改成功 ! 无操作 ' + shezhi_sp_xp_min2.value + ' 分钟后自动(休眠/锁定)');
         localStorage.sku_xp_sp = shezhi_sp_xp_min2.value;
-    } else if (shezhi_sp_xp_min2.value < 10) {
+    } else if (shezhi_sp_xp_min2.value < 1) {
         Sku_tctx('更改失败 ! 时间不能小于 1 分钟');
         shezhi_sp_xp_min2.value = localStorage.sku_xp_sp;
-    } else if (shezhi_sp_xp_min2.value > (60 * 60 * 24)) {
+    } else if (shezhi_sp_xp_min2.value > (60 * 24)) {
         Sku_tctx('更改失败 ! 时间不能大于 24 小时');
         shezhi_sp_xp_min2.value = localStorage.sku_xp_sp;
     }

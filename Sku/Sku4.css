@@ -331,6 +331,7 @@
         width: 20px;
         height: 20px;
         border: 1px solid white;
+        border-radius: 5px;
         line-height: 18px;
         text-align: center;
     }
@@ -340,6 +341,7 @@
         top: 15px;
         left: 55px;
         border: 1px solid white;
+        border-radius: 5px;
         width: 20px;
         height: 20px;
         line-height: 18px;
@@ -507,6 +509,42 @@
         height: 30px;
         line-height: 29px;
         text-align: center;
+    }
+    
+    .drmm_zddr {
+        position: absolute;
+        top: 337px;
+        left: calc((100% - 335px) / 2);
+        width: 400px;
+        height: 20px;
+    }
+    
+    .drmm_zddr_g {
+        float: left;
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--zi_ti_color);
+        border-radius: 5px;
+        line-height: 18px;
+        text-align: center;
+    }
+    
+    .drmm_zddr_wb {
+        height: 20px;
+        float: left;
+        line-height: 20px;
+        margin-left: 10px;
+    }
+    
+    .drmm_mmdr_sj {
+        text-align: center;
+        width: 50px;
+        height: 20px;
+        border: 0;
+        border-bottom: 1px solid var(--zi_ti_color);
+        color: var(--zi_ti_color);
+        background-color: rgb(0, 0, 0, 0);
+        outline: none;
     }
     /* ------关于我们--------- */
     

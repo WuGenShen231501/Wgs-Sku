@@ -127,7 +127,12 @@ window.addEventListener('resize', function() {
 
 
 //开始轮播图上浮
-if (localStorage.dr_mm == '') {
+mmdr_sf = 0;
+if (localStorage.dr_mmdr == 1 && ((localStorage.dr_mmdr_drsj - 0 + (1000 * 60 * localStorage.dr_mmdr_mmfw)) - (+new Date()) > 0)) {
+    mmdr_sf = 1;
+}
+
+if (localStorage.dr_mm == '' || (localStorage.dr_mm !== '' && mmdr_sf == 1)) {
     setTimeout(function() {
         nrmaxs0_nr = document.querySelector('.nrmaxs0_nr');
         nrmaxs0_nr.style.opacity = 1;
@@ -1481,7 +1486,6 @@ sy_djs_txl.addEventListener('click', function(e) {
 });
 var sy_djs_txl_jsq;
 sy_djs_txl_jsq = setInterval(function() {
-    console.log(1);
     var sy_djs_r_s_one = document.querySelectorAll('.sy_djs_r_s')[0];
     if (sy_djs_r_s_one !== undefined) {
         var sy_djs_r_t_1 = document.querySelectorAll('.sy_djs_r_s')[0].querySelector('.sy_djs_r_t');
@@ -1531,7 +1535,6 @@ top_dhl_S[0].addEventListener('click', function(e) {
 
     // 倒计时提示优化
     sy_djs_txl_jsq = setInterval(function() {
-        console.log(1);
         var sy_djs_r_s_one = document.querySelectorAll('.sy_djs_r_s')[0];
         if (sy_djs_r_s_one !== undefined) {
             var sy_djs_r_t_1 = document.querySelectorAll('.sy_djs_r_s')[0].querySelector('.sy_djs_r_t');
