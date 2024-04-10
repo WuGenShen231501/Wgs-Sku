@@ -367,7 +367,7 @@ document.addEventListener('click', function() {
     top_tou_xian_sc.style.display = 'none';
 });
 //全局按键事件
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     if (e.key == 'Enter' && so_ssk_num == 1) {
         so_anniu.click();
     }
@@ -384,19 +384,21 @@ document.addEventListener('keyup', function(e) {
     if (top_tou_xian_sc.style.display == 'block' && e.key == 'Enter') {
         tou_xian_qr.click();
     }
-    if (e.altKey && e.key == '1' && drym_max.style.display == 'none') {
+
+    var nrmaxs = document.querySelectorAll('.nrmaxs');
+    if (e.altKey && e.key == '1' && drym_max.style.display == 'none' && nrmaxs[0].style.display == 'none') {
         top_dhl_z = document.querySelector('.top_dhl');
         top_dhl_z.querySelectorAll('div')[0].click();
     }
-    if (e.altKey && e.key == '2' && drym_max.style.display == 'none') {
+    if (e.altKey && e.key == '2' && drym_max.style.display == 'none' && nrmaxs[1].style.display == 'none') {
         top_dhl_z = document.querySelector('.top_dhl');
         top_dhl_z.querySelectorAll('div')[1].click();
     }
-    if (e.altKey && e.key == '3' && drym_max.style.display == 'none') {
+    if (e.altKey && e.key == '3' && drym_max.style.display == 'none' && nrmaxs[2].style.display == 'none') {
         top_dhl_z = document.querySelector('.top_dhl');
         top_dhl_z.querySelectorAll('div')[2].click();
     }
-    if (e.altKey && e.key == '4' && drym_max.style.display == 'none') {
+    if (e.altKey && e.key == '4' && drym_max.style.display == 'none' && nrmaxs[3].style.display == 'none') {
         top_dhl_z = document.querySelector('.top_dhl');
         top_dhl_z.querySelectorAll('div')[3].click();
     }

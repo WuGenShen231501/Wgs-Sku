@@ -2150,7 +2150,7 @@ enableDragAndDrop3('iframe1');
 
 
 //全局按键事件
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     if (music_ym.style.display == 'block') {
         if (e.key == ' ' && music_boyyom_tj_ym.style.display == 'none') {
             i_music_boyyom_ks.click();
@@ -2268,6 +2268,8 @@ document.addEventListener('keyup', function(e) {
                 if (i_music_boyyom_ks.className == 'iconfont i_music_boyyom_ks icon-zanting') {
                     i_music_boyyom_ks.click();
                 }
+                // 时间戳0
+                localStorage.dr_mmdr_drsj = 0;
             }
         }
     }

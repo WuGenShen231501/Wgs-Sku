@@ -914,19 +914,7 @@ lian_jie_ssk.addEventListener('blur', function() {
 });
 
 document.addEventListener('keyup', function(e) {
-    if (nrmaxs1.style.display == 'block' && e.ctrlKey && e.key == '/') {
-        lian_jie_ssk.focus();
-    }
     if (lian_jie_ssk_xz == 1) {
-        i_lian_jie_ss_tb.click();
-    }
-    if (lian_jie_ssk_xz == 1 && e.key == 'Enter') {
-        i_lian_jie_ss_tb.click();
-        lian_jie_ssk.blur();
-    }
-    if (nrmaxs1.style.display == 'block' && e.key == 'Escape') {
-        lian_jie_ssk.value = '';
-        lian_jie_ssk.blur();
         i_lian_jie_ss_tb.click();
     }
 });
@@ -1365,7 +1353,20 @@ document.addEventListener('click', function() {
     lj_zcb_ym_sc();
 });
 //全局回车事件
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
+    if (nrmaxs1.style.display == 'block' && e.ctrlKey && e.key == '/') {
+        lian_jie_ssk.focus();
+    }
+    if (lian_jie_ssk_xz == 1 && e.key == 'Enter') {
+        i_lian_jie_ss_tb.click();
+        lian_jie_ssk.blur();
+    }
+    if (nrmaxs1.style.display == 'block' && e.key == 'Escape') {
+        lian_jie_ssk.value = '';
+        lian_jie_ssk.blur();
+        i_lian_jie_ss_tb.click();
+    }
+
     if (e.key == 'Enter') {
         dhr_xg_tj = document.querySelector('.dhr_xg_tj');
         if (dhr_xg_tj.style.display == 'block') {

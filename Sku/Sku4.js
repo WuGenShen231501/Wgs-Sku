@@ -1684,6 +1684,8 @@ function daoru_sz_hs() {
         // 注册表
         localStorage.sku_zcb = daoru_sz[28];
 
+        // 时间戳0
+        localStorage.dr_mmdr_drsj = 0;
         location.reload();
     } else {
         Sku_tctx('格式错误 ! 缺少导入模块');
@@ -2028,6 +2030,9 @@ function bendidaoru_click() {
                 // 注册表
                 localStorage.sku_zcb = daoru_sz[28];
 
+
+                // 时间戳0
+                localStorage.dr_mmdr_drsj = 0;
                 location.reload();
             } catch (error) {
                 // 这个块会在 try 中有错误抛出时执行
@@ -3312,7 +3317,7 @@ zh_scanniu.addEventListener('click', function(e) {
 
 //全局按键事件
 var sd_dtnr_max = document.querySelector('.sd_dtnr_max');
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     if (e.key == 'Enter' && WGS_HTSP_TJ.style.display == 'block') {
         WGS_HTSP_TJ_click();
     }

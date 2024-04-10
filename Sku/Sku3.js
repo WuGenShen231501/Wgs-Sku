@@ -642,19 +642,29 @@ document.addEventListener('click', function() {
     liu_yan_shezhi_gn.style.display = 'none';
 });
 //全局按键事件
+var sf_shift = 0;
+document.addEventListener('keydown', function(e) {
+    if (liu_yan_srk_jc == '1' && e.shiftKey && e.key === 'Enter') {
+        // e.preventDefault();
+        // 执行shift+回车的逻辑
+        var zfc = liu_yan_srk.value;
+        var cswz = liu_yan_srk.selectionEnd;
+        var zfc_x = insertStr(zfc, cswz, '<br>');
+        liu_yan_srk.value = zfc_x;
+        liu_yan_srk.focus();
+        liu_yan_srk.selectionEnd = cswz + 4;
+
+        sf_shift = 1;
+    }
+})
 document.addEventListener('keyup', function(e) {
     if (nrmaxs2.style.display == 'block' && so_ssk_num == 0) {
-        if (e.key == 'Enter') {
+        if (e.key == 'Enter' && sf_shift == 0) {
             liu_yan_button.click();
+        } else if (e.key == 'Enter' && sf_shift == 1) {
+            sf_shift = 0;
         }
-        if (liu_yan_srk_jc == '1' && e.ctrlKey && e.key == '.') {
-            var zfc = liu_yan_srk.value;
-            var cswz = liu_yan_srk.selectionEnd;
-            var zfc_x = insertStr(zfc, cswz, '<br>');
-            liu_yan_srk.value = zfc_x;
-            liu_yan_srk.focus();
-            liu_yan_srk.selectionEnd = cswz + 4;
-        }
+
         if (input_ji_ru_srk_bl == 1) {
             if (input_ji_ru_srk.value !== '') {
                 i_liu_yan_ss_tp.click();
@@ -663,9 +673,12 @@ document.addEventListener('keyup', function(e) {
                 input_ji_ru_srk.focus();
             }
         }
-        if (e.key == 'Enter' && input_ji_ru_srk_bl == 1) {
+        if (e.key == 'Enter' && input_ji_ru_srk_bl == 1 && sf_shift == 0) {
             liu_yan_srk.focus();
+        } else if (e.key == 'Enter' && sf_shift == 1) {
+            sf_shift = 0;
         }
+
         if (e.key == 'Escape' && nrmaxs2.style.display == 'block') {
             liu_yan_sxuan_zh.click();
         }
