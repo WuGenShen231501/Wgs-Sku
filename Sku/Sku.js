@@ -613,6 +613,9 @@ if (localStorage.dr_mm !== '') {
     //显示密码框
     drmm_mm_mm_max = document.querySelector('.drmm_mm_mm_max');
     drmm_mm_mm_max.style.display = 'block';
+    //显示提示
+    drmm_mm_xmm = document.querySelector('.drmm_mm_xmm');
+    drmm_mm_xmm.placeholder = '为空时，既取消 密码 与 密钥';
 }
 if (localStorage.dr_mm !== '' && mmdr_sf == 0) {
     //显示密码框

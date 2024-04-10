@@ -1145,6 +1145,7 @@ drmm_mm_qr.addEventListener('click', function() {
                 drmm_mm_zcsr.style.color = 'red';
                 drmm_mm_red();
             } else {
+                localStorage.dr_mmdr_drsj = 0;
                 localStorage.dr_mm = drmm_mm_xmm.value == '' ? drmm_mm_xmm.value : S_ku_jiami(drmm_mm_xmm.value);
                 location.reload();
             }
@@ -2866,8 +2867,8 @@ gywm_l.addEventListener('click', function(e) {
         gywm_ban_ben_djcs2 = 0;
 
         var WGS_HTSP_S = document.querySelector('.WGS_HTSP_S');
-        var s_sz = ['az'];
-        var s_sz_2 = ['vip'];
+        var s_sz = ['az', 'qq', 'ww', 'ee', 'rr', 'tt', 'yy', 'uu', 'ii', 'oo', 'pp', 'aa', 'ss', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'zz', 'xx', 'cc', 'vv', 'bb', 'nn', 'mm'];
+        var s_sz_2 = ['vip', 'xyz'];
         var s_sz_3 = ['9527'];
         var htsp_s_tjgs = 0;
         var htsp_s_tjgs_cg = 0;
@@ -3025,13 +3026,19 @@ gywm_r2.addEventListener('click', function(e) {
         gywm_ban_ben_djcs4 = 0;
     }, 2000);
 });
-WGS_HTSP_TJ.addEventListener('blur', function(e) {
+
+function WGS_HTSP_TJ_click() {
     if (WGS_HTSP_TJ.value !== '' && WGS_HTSP_TJ.value !== localStorage.htsp_s) {
         try {
             // 可能产生错误的代码
             var htsp_s = JSON.parse(localStorage.htsp_s);
             var xing_htsp_s = [];
-            var xing_htsp_s2 = JSON.parse(WGS_HTSP_TJ.value);
+            var xing_htsp_s2;
+            if (WGS_HTSP_TJ.value.substring(0, 4) == 'http') {
+                xing_htsp_s2 = JSON.parse('["' + WGS_HTSP_TJ.value + '"]');
+            } else {
+                xing_htsp_s2 = JSON.parse(WGS_HTSP_TJ.value);
+            }
             for (var i = 0; i < xing_htsp_s2.length; i++) {
                 if (htsp_s.indexOf(xing_htsp_s2[i]) == -1) {
                     xing_htsp_s.push(xing_htsp_s2[i]);
@@ -3050,7 +3057,8 @@ WGS_HTSP_TJ.addEventListener('blur', function(e) {
             Sku_tctx('无法识别的HTSP模块 !');
         }
     }
-});
+}
+
 // 5下复制,快速复制htsp本地地址
 var htsp_dz_fz_cs = 0;
 var htsp_dz_fz_cs_jsq;
@@ -3305,6 +3313,9 @@ zh_scanniu.addEventListener('click', function(e) {
 //全局按键事件
 var sd_dtnr_max = document.querySelector('.sd_dtnr_max');
 document.addEventListener('keyup', function(e) {
+    if (e.key == 'Enter' && WGS_HTSP_TJ.style.display == 'block') {
+        WGS_HTSP_TJ_click();
+    }
     if (gywm_ban_ben_HTSP == 1 && shezhi_gywm_ym.style.display == 'block' && e.altKey && e.key == 'Enter' && shezhi_min.style.display == 'none' && nrmaxs3.style.display == 'block') {
         WGS_HTSP.click();
     }

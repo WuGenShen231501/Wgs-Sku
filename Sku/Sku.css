@@ -869,6 +869,9 @@ html {
         top: 56px;
         height: 56px;
     }
+    .music_max {
+        display: none;
+    }
     .so_ssk {
         width: 200px;
     }
