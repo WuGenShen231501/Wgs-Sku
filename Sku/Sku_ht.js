@@ -34,6 +34,19 @@ function Sku_tctx(zdysx1) {
     }, 3000)
 }
 
+// 开机壁纸颜色(放前面免卡顿)
+if (localStorage.bi_zhi_ys !== '') {
+    document.documentElement.style.backgroundColor = localStorage.bi_zhi_ys;
+}
+//开机壁纸(放前面免卡顿)
+if (localStorage.bi_zhi == 'sj') {
+    var bizhi_sjwz = JSON.parse(localStorage.shuiji_bi_zhi_wz);
+    var shuiji_biz = sjs(0, bizhi_sjwz.length - 1);
+    document.documentElement.style.backgroundImage = 'url(' + bizhi_sjwz[shuiji_biz] + ')';
+} else if (localStorage.bi_zhi !== 'sj' && localStorage.bi_zhi_ys == '') {
+    document.documentElement.style.backgroundImage = 'url(' + localStorage.bi_zhi + ')';
+}
+
 
 // 导航栏
 if (localStorage.dhr_sz == undefined) {
@@ -94,6 +107,10 @@ if (localStorage.bi_zhi_s == undefined) {
 // 当前壁纸
 if (localStorage.bi_zhi == undefined) {
     localStorage.bi_zhi = 'https://pic.3gbizhi.com/uploads/20231218/bc41092030bb7e763170bc172af92039.png';
+}
+// 壁纸背景颜色
+if (localStorage.bi_zhi_ys == undefined) {
+    localStorage.bi_zhi_ys = '';
 }
 //天气
 if (localStorage.tian_qi == undefined) {
@@ -257,6 +274,8 @@ if (localStorage.sku_zcb == undefined) {
 if (localStorage.sku_zcb_bf == undefined) {
     localStorage.sku_zcb_bf = '[[],[]]';
 }
+
+
 
 // var str = 'wgs';
 // var str64 = window.btoa(str);

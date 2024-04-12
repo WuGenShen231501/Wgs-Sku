@@ -191,6 +191,7 @@ for (var i = 0; i < i_bzsz_sc_tp.length; i++) {
         //修改内存
         var bi_zhi_s = JSON.parse(localStorage.bi_zhi_s);
         var topimg = this.parentNode.style.backgroundImage.split('("')[1].split('")')[0];
+        console.log(topimg);
         //指定删除
         if (topimg && bi_zhi_s.indexOf(topimg) !== -1) {
             bi_zhi_s.splice(bi_zhi_s.indexOf(topimg), 1);
@@ -208,6 +209,7 @@ for (var i = 0; i < bzsz_s.length; i++) {
         var topimg = this.style.backgroundImage.split('("')[1].split('")')[0];
         localStorage.bi_zhi = topimg;
         document.documentElement.style.backgroundImage = this.style.backgroundImage;
+        localStorage.bi_zhi_ys = '';
     });
 }
 
@@ -263,12 +265,12 @@ bzsz_tj_anniu.addEventListener('click', function() {
     if (input_bzlj.value !== '') {
         //修改内存
         var bi_zhi_s = JSON.parse(localStorage.bi_zhi_s);
-        bi_zhi_s.push(input_bzlj.value);
+        bi_zhi_s.push(bzsz_tj_ym_TP.style.backgroundImage.split('("')[1].split('")')[0]);
         localStorage.bi_zhi_s = JSON.stringify(bi_zhi_s);
         //修改HTML
         var div = document.createElement('div');
         div.className = 'bzsz_s';
-        div.style.backgroundImage = 'url(' + input_bzlj.value + ')';
+        div.style.backgroundImage = bzsz_tj_ym_TP.style.backgroundImage;
         div.innerHTML = '<i class="iconfont icon-shanchu1 i_bzsz_sc_tp"></i>';
         div.style.height = 335 / (window.innerWidth / window.innerHeight) + 'px';
         bzsz_max.insertBefore(div, bzsz_tj);
@@ -364,6 +366,7 @@ SHITIDONGHUA2_kssy('.bizhi_gundon1', '.bzsz_max');
 SHITIDONGHUA2_kssy('.bizhi_gundon2', '.daorubendi_max_hd');
 SHITIDONGHUA2_kssy('.bizhi_gundon3', '.ssjl_max2');
 SHITIDONGHUA2_kssy('.bizhi_gundon4', '.ssjl_max');
+SHITIDONGHUA2_kssy('.bizhi_gundon5', '.grb_j_max');
 
 
 
@@ -1388,6 +1391,8 @@ shezhi_daoru.addEventListener('click', function(e) {
     daochu_sz[27] = localStorage.htsp_s;
     // 注册表
     daochu_sz[28] = localStorage.sku_zcb;
+    // 背景颜色
+    daochu_sz[29] = localStorage.bi_zhi_ys;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1399,7 +1404,7 @@ shezhi_daoru.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[29] = getFormattedTime();
+    daochu_sz[30] = getFormattedTime();
 
     jisuan_bendidx = JSON.stringify(daochu_sz).length;
 });
@@ -1462,6 +1467,8 @@ daoru_ym_dc.addEventListener('click', function(e) {
     daochu_sz[27] = localStorage.htsp_s;
     // 注册表
     daochu_sz[28] = localStorage.sku_zcb;
+    // 背景颜色
+    daochu_sz[29] = localStorage.bi_zhi_ys;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1473,7 +1480,7 @@ daoru_ym_dc.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[29] = getFormattedTime();
+    daochu_sz[30] = getFormattedTime();
 
     daoru_ym_sc.value = JSON.stringify(daochu_sz);
 
@@ -1562,6 +1569,8 @@ daoru_ym_jmdc.addEventListener('click', function(e) {
     daochu_sz[27] = localStorage.htsp_s;
     // 注册表
     daochu_sz[28] = localStorage.sku_zcb;
+    // 背景颜色
+    daochu_sz[29] = localStorage.bi_zhi_ys;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1573,7 +1582,7 @@ daoru_ym_jmdc.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[29] = getFormattedTime();
+    daochu_sz[30] = getFormattedTime();
 
     daoru_ym_sc.value = WGS_zfc_jiami(JSON.stringify(daochu_sz), miyao);
 
@@ -1627,7 +1636,7 @@ daoru_ym_sc.addEventListener('input', function(e) {
 var daoru_sz = [];
 
 function daoru_sz_hs() {
-    if (daoru_sz.length == 30) {
+    if (daoru_sz.length == 31) {
         // 导航栏
         localStorage.dhr_sz = daoru_sz[0];
         //导航栏页面
@@ -1683,6 +1692,8 @@ function daoru_sz_hs() {
         localStorage.htsp_s = daoru_sz[27];
         // 注册表
         localStorage.sku_zcb = daoru_sz[28];
+        // 背景颜色
+        localStorage.bi_zhi_ys = daoru_sz[29];
 
         // 时间戳0
         localStorage.dr_mmdr_drsj = 0;
@@ -1859,6 +1870,8 @@ daoru_ym_bendi.addEventListener('click', function(e) {
     zd_daochu[27] = localStorage.htsp_s;
     // 注册表
     zd_daochu[28] = localStorage.sku_zcb;
+    // 背景颜色
+    zd_daochu[29] = localStorage.bi_zhi_ys;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1871,7 +1884,7 @@ daoru_ym_bendi.addEventListener('click', function(e) {
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
     // 打包时间
-    zd_daochu[29] = getFormattedTime();
+    zd_daochu[30] = getFormattedTime();
 
     try {
         //保存
@@ -2029,6 +2042,8 @@ function bendidaoru_click() {
                 localStorage.htsp_s = daoru_sz[27];
                 // 注册表
                 localStorage.sku_zcb = daoru_sz[28];
+                // 背景颜色
+                localStorage.bi_zhi_ys = daoru_sz[29];
 
 
                 // 时间戳0
@@ -3315,7 +3330,190 @@ zh_scanniu.addEventListener('click', function(e) {
 
 
 
+// 传统颜色集
+var shezhi_rgb_j_ym = document.querySelector('.shezhi_rgb_j_ym');
+var shezhi_rgb_j = document.querySelector('.shezhi_rgb_j');
+var grb_j_max = document.querySelector('.grb_j_max');
+var rgbj_y_fxk_zt = document.querySelector('.rgbj_y_fxk_zt');
+var rgbj_yy_fxk_zzt = document.querySelector('.rgbj_yy_fxk_zzt');
+var rgbj_yy_fxk_nrbj = document.querySelector('.rgbj_yy_fxk_nrbj');
+var rgbj_yy_fxk_bk = document.querySelector('.rgbj_yy_fxk_bk');
+var rgbj_yy_fxk_bz = document.querySelector('.rgbj_yy_fxk_bz');
+
+shezhi_rgb_j.addEventListener('click', function(e) {
+    shezhi_min.style.display = 'none';
+    shezhi_rgb_j_ym.style.display = 'block';
+    grb_j_max.scroll(0, 0);
+});
+
+var rgbj_y_fxk_zt_sf = 0;
+var rgbj_yy_fxk_zzt_sf = 0;
+var rgbj_yy_fxk_nrbj_sf = 0;
+var rgbj_yy_fxk_bk_sf = 0;
+var rgbj_yy_fxk_bz_sf = 0;
+
+rgbj_y_fxk_zt.addEventListener('click', function(e) {
+    if (rgbj_y_fxk_zt_sf == 0) {
+        rgbj_y_fxk_zt_sf = 1;
+        rgbj_y_fxk_zt.innerHTML = '✔';
+    } else {
+        rgbj_y_fxk_zt_sf = 0;
+        rgbj_y_fxk_zt.innerHTML = '';
+    }
+});
+rgbj_yy_fxk_zzt.addEventListener('click', function(e) {
+    if (rgbj_yy_fxk_zzt_sf == 0) {
+        rgbj_yy_fxk_zzt_sf = 1;
+        rgbj_yy_fxk_zzt.innerHTML = '✔';
+    } else {
+        rgbj_yy_fxk_zzt_sf = 0;
+        rgbj_yy_fxk_zzt.innerHTML = '';
+    }
+});
+rgbj_yy_fxk_nrbj.addEventListener('click', function(e) {
+    if (rgbj_yy_fxk_nrbj_sf == 0) {
+        rgbj_yy_fxk_nrbj_sf = 1;
+        rgbj_yy_fxk_nrbj.innerHTML = '✔';
+    } else {
+        rgbj_yy_fxk_nrbj_sf = 0;
+        rgbj_yy_fxk_nrbj.innerHTML = '';
+    }
+});
+rgbj_yy_fxk_bk.addEventListener('click', function(e) {
+    if (rgbj_yy_fxk_bk_sf == 0) {
+        rgbj_yy_fxk_bk_sf = 1;
+        rgbj_yy_fxk_bk.innerHTML = '✔';
+    } else {
+        rgbj_yy_fxk_bk_sf = 0;
+        rgbj_yy_fxk_bk.innerHTML = '';
+    }
+});
+rgbj_yy_fxk_bz.addEventListener('click', function(e) {
+    if (rgbj_yy_fxk_bz_sf == 0) {
+        rgbj_yy_fxk_bz_sf = 1;
+        rgbj_yy_fxk_bz.innerHTML = '✔';
+    } else {
+        rgbj_yy_fxk_bz_sf = 0;
+        rgbj_yy_fxk_bz.innerHTML = '';
+    }
+});
+
+var rgb_name = [
+    "暗玉紫", "牡丹粉红", "栗紫", "香叶红", "葡萄酱紫", "艳红", "玉红", "茶花红", "高粱红", "满江红", "鼠鼻红", "合欢红", "春梅红", "苋菜红", "烟红", "莓红", "鹅冠红", "枫叶红", "唐菖蒲红", "枣红", "猪肝紫", "葡萄紫", "暗紫苑红", "殷红", "草茉莉红", "酱紫", "山茶红", "锌灰", "海棠红", "蓟粉红", "石蕊红", "淡曙红", "李紫", "石竹红", "淡茜红", "金鱼紫", "山黎豆红", "鼠背灰", "淡蕊香红", "甘蔗紫", "月季红", "尖晶玉红", "水红", "姜红", "芦灰", "茄皮紫", "苍蝇灰", "锦葵红", "粉团花红", "石竹紫", "卵石紫", "晶红", "芝兰紫", "芍药耕红", "暮云灰", "豇豆红", "报春红", "淡绛红", "凤仙花红", "霞光红", "喜蛋红", "夹竹桃红", "松叶牡丹红", "莲瓣红", "白芨红", "隐红灰", "榲桲红", "酢酱草红", "火鹅紫", "鹞冠紫", "品红", "磨石紫", "墨紫", "檀紫", "初荷红", "菜头紫", "葡萄酒红", "淡青紫", "菠根红", "海象紫",
+    "兔眼红", "嫩菱红", "洋葱紫", "吊钟花红", "绀紫", "紫荆红", "扁豆花红", "马鞭草紫", "藏花红", "斑鸠灰", "古铜紫", "丹紫红", "丁香淡紫", "玫瑰红", "古鼎灰", "菱锰红", "樱草紫", "龙须红", "电气石红", "玫瑰紫", "苋菜紫", "紫灰", "龙睛鱼紫", "青蛤壳紫", "萝兰紫", "荸荠紫", "豆蔻紫", "扁豆紫", "牵牛紫", "芓紫", "葛巾紫", "青莲", "芥花紫", "凤信紫", "深牵牛紫", "魏紫", "乌梅紫", "桔梗紫", "淡牵牛紫", "剑锋紫", "蕈紫", "槿紫", "芡食白", "龙葵紫", "藤萝紫", "沙鱼灰", "暗龙胆紫", "暗蓝紫", "野葡萄紫", "野菊紫", "水牛灰", "远山紫", "螺甸紫", "晶石紫", "满天星紫", "淡蓝紫", "山梗紫", "牛角灰", "鱼尾灰", "瓦罐灰", "钢蓝", "燕颔蓝", "鲸鱼灰", "青灰", "鸽蓝", "暗蓝", "钢青", "海涛蓝", "飞燕草蓝", "靛青", "安安蓝", "海军蓝", "景泰蓝", "品蓝", "尼罗蓝", "蝶翅蓝", "花青", "鷃蓝", "星蓝", "虹蓝", "柏林蓝",
+    "群青", "云水蓝", "羽扇豆蓝", "战舰灰", "晴山蓝", "睛蓝", "搪磁蓝", "潮蓝", "天蓝", "大理石灰", "牵牛花蓝", "宝石蓝", "淡蓝灰", "嫩灰", "银鱼白", "釉蓝", "涧石蓝", "远天蓝", "云山蓝", "秋波蓝", "井天蓝", "鸢尾蓝", "云峰白", "星灰", "钴蓝", "碧青", "苍蓝", "深灰蓝", "灰蓝", "湖水蓝", "海青", "黄昏灰", "霁青", "玉鈫蓝", "胆矾蓝", "樫鸟蓝", "鸥蓝", "翠蓝", "蜻蜓蓝", "孔雀蓝", "蔚蓝", "瀑布蓝", "闪蓝", "甸子蓝", "晚波蓝", "清水蓝", "夏云灰", "海天蓝", "虾壳青", "石绿", "穹灰", "美蝶绿", "垩灰", "蓝绿", "竹绿", "亚丁绿", "月影白", "海王绿", "深海绿", "绿灰", "青矾绿", "苍绿", "飞泉绿", "莽丛绿", "梧枝绿", "铜绿", "草原远绿", "蛙绿", "浪花绿", "苷蓝绿", "粉绿", "淡绿灰", "麦苗绿", "翠绿", "葱绿", "荷叶绿", "淡绿", "田园绿", "玉簪绿", "蟾绿", "蔻梢绿", "薄荷绿", "月白", "蛋白石绿", "竹篁绿", "孔雀绿",
+    "宫殿绿", "云杉绿", "毛绿", "冰山蓝", "明灰", "明绿", "松霜绿", "白屈菜绿", "狼烟灰", "瓦松绿", "槲寄生绿", "淡翠绿", "玉髓绿", "鲜绿", "油绿", "宝石绿", "嘉陵水绿", "田螺绿", "水绿", "鹦鹉绿", "艾背绿", "艾绿", "镍灰", "橄榄石绿", "芽绿", "嫩菊绿", "芦苇绿", "姚黄", "蒽油绿", "苹果绿", "海沬绿", "橄榄黄绿", "槐花黄绿", "蝶黄", "象牙白", "橄榄绿", "雪白", "淡灰绿", "佛手黄", "乳白", "香蕉黄", "新禾绿", "油菜花黄", "秋葵黄", "柚黄", "草黄", "硫华黄", "姜黄", "潭水绿", "金瓜黄", "麦秆黄", "蒿黄", "茉莉黄", "藤黄", "芒果黄", "海参灰", "碧螺春绿", "苔绿", "柠檬黄", "草灰绿", "向日葵黄", "素馨黄", "乳鸭黄", "月灰", "葵扇黄", "大豆黄", "金盏黄", "菊蕾白", "黄连黄", "杏仁黄", "谷黄", "木瓜黄", "淡茧黄", "雅梨黄", "银白", "棕榈绿", "鹦鹉冠黄", "枯绿", "浅烙黄", "淡密黄", "芥黄", "栀子黄", "暗海水绿", "篾黄",
+    "蚌肉白", "炒米黄", "琥珀黄", "灰绿", "粽叶绿", "尘灰", "鼬黄", "象牙黄", "鲛青", "豆汁黄", "土黄", "香水玫瑰黄", "虎皮黄", "鸡蛋黄", "银鼠灰", "鱼肚白", "初熟杏黄", "山鸡黄", "莲子白", "蟹壳灰", "沙石黄", "甘草黄", "燕羽灰", "鹅掌黄", "麦芽糖黄", "浅驼色", "百灵鸟灰", "酪黄", "荔肉白", "淡肉色", "河豚灰", "蜴蜊绿", "汉白玉", "橙皮黄", "莱阳梨黄", "枇杷黄", "金叶黄", "苍黄", "粉白", "淡橘橙", "珍珠灰", "龟背黄", "浅灰", "铅灰", "中灰", "雄黄", "蜜黄", "风帆黄", "桂皮淡棕", "金莺黄", "肉色", "凋叶棕", "古铜绿", "落英淡粉", "软木黄", "瓜瓤粉", "榴萼黄", "玳瑁黄", "焦茶绿", "蟹壳绿", "山鸡褐", "猴毛灰", "鹿角棕", "淡松烟", "万寿菊黄", "蛋壳黄", "杏黄", "橄榄灰", "鹤灰", "玛瑙灰", "淡银灰", "瓦灰", "夜灰", "北瓜黄", "荷花白", "松鼠灰", "淡米粉", "深灰", "海鸥灰", "茶褐", "驼色", "银灰", "鹿皮褐", "槟榔综",
+    "晓灰", "淡赭", "古铜褐", "麂棕", "醉瓜肉", "雁灰", "鲑鱼红", "橘橙", "金黄", "玫瑰粉", "美人焦橙", "米色", "蛛网灰", "淡咖啡", "海螺橙", "岩石棕", "芒果棕", "陶瓷红", "菠萝红", "余烬红", "金莲花橙", "火砖红", "初桃粉红", "铁棕", "介壳淡粉红", "蟹壳红", "金驼", "燕颔红", "淡可可棕", "晨曦红", "玉粉红", "野蔷薇红", "藕荷", "长石灰", "中红灰", "火泥棕", "绀红", "莓酱红", "丁香棕", "淡玫瑰灰", "瓜瓤红", "淡藏花红", "筍皮棕", "润红", "龙睛鱼红", "淡土黄", "珠母灰", "芙蓉红", "落霞红", "法螺红", "草珠红", "咖啡", "中灰驼", "椰壳棕", "蟹蝥红", "淡豆沙", "淡桃红", "淡铁灰", "石板灰", "淡栗棕", "银朱", "草莓红", "洋水仙红", "朱红", "榴花红", "柿红", "可可棕", "淡罂粟红", "大红", "柞叶棕", "蜻蜓红", "橡树棕", "颊红", "桃红", "火岩棕", "淡藤萝紫", "赭石", "铁水红", "胭脂红", "极光红", "红汞红", "萝卜红", "曲红",
+    "谷鞘红", "苹果红", "桂红", "粉红", "暗驼棕", "夕阳红", "樱桃红", "珊瑚红", "火山棕", "栗棕", "鹤顶红", "舌红", "鹅血石红", "酱棕", "鱼鳃红", "芦穗灰", "丽春红", "覆盆子红", "海报灰", "豆沙", "榴子红", "秋海棠红", "无花果红", "淡绯", "玫瑰灰", "淡菽红", "枸枢红", "貂紫"
+];
+var rgb_ys = [
+    "5C2223", "EEA2A4", "5A191B", "F07C82", "5A1216", "ED5A65", "C04851", "EE3F4D", "C02C38", "A7535A", "E3B4B8", "F0A1A8", "F1939C", "A61B29", "894E54", "C45A65", "D11A2D", "C21F30", "DE1C31", "7C1823", "541E24", "4C1F24", "82202B", "82111F", "EF475D", "4D1018", "ED556A", "7A7374", "F03752", "E6D2D5", "F0C9CF", "EE2746", "2B1216", "EE4863", "E77C8E", "500A16", "C27C88", "73575C", "EE4866", "621624", "CE5777", "CC163A", "F1C4CD", "EEB8C3", "856D72", "2D0C13", "36282B", "BF3553", "EC9BAD", "63071C", "30161C", "EEA6B7", "E9CCD3", "EBA0B3", "4F383E", "ED9DB2", "EC8AA4", "EC7696", "EA7293", "EF82A0", "EC2C64", "EB507E", "EB3C70", "EA517F", "DE7897", "B598A1", "ED2F6A", "C5708B", "33141E", "621D34", "EF3473", "382129", "310F1B", "381924",
+    "E16C96", "951C48", "62102E", "E0C8D1", "D13C74", "4B1E2F", "EC4E8A", "DE3F7C", "A8456B", "CE5E8A", "461629", "EE2C79", "EF498B", "EDE3E7", "EC2D7A", "482936", "440E25", "D2568C", "E9D7DF", "D2357D", "36292F", "D276A3", "C06F98", "CC5595", "C35691", "BA2F7B", "9B1E64", "5D3F51", "4E2A40", "BC84A8", "C08EAF", "411C35", "AD6598", "A35C8F", "681752", "894276", "7E2065", "8B2671", "983680", "C8ADC4", "1C0D1A", "7E1671", "1E131D", "813C85", "D1C2D3", "3E3841", "815C94", "806D9E", "E2E1E4", "322F3B", "8076A3", "35333C", "22202E", "131124", "302F4B", "525288", "2F2F35", "CCCCD6", "74759B", "1F2040", "2E317C", "A7A8BD", "61649F", "2D2E36", "5E616D", "47484C", "0F1423", "131824", "475164", "2B333E", "1C2938", "101F30", "142334", "15559A", "0F59A4",
+    "1661AB", "3170A7", "346C9C", "2775B6", "2B73AF", "2474B5", "4E7CA1", "2376B7", "144A74", "93B5CF", "2177B8", "126BAE", "1772B4", "BACCD9", "619AC3", "495C69", "8FB2C9", "5698C3", "11659A", "2983BB", "1677B3", "C4CBCF", "1177B0", "2486B9", "5E7987", "74787A", "CDD1D3", "1781B5", "66A9C9", "D0DFE6", "2F90B9", "8ABCD1", "C3D7DF", "158BB8", "D8E3E7", "B2BBBE", "1A94BC", "5CB3CC", "134857", "132C33", "21373D", "B0D5DF", "22A2C3", "474B4C", "63BBD0", "126E82", "0F95B0", "1491A8", "C7D2D4", "1E9EB3", "3B818C", "0EB0C9", "29B7CB", "51C4D3", "7CABB1", "10AEC2", "648E93", "93D5DC", "617172", "C6E6E8", "869D9D", "57C3C2", "C4D7D6", "12AA9C", "737C7B", "12A182", "1BA784", "428675", "C0C4C3", "248067", "1A3B32", "314A43", "2C9678", "223E36", "497568",
+    "141E1B", "69A794", "2BAE85", "9ABEAF", "45B787", "92B3A5", "1F2623", "83CBAC", "70887D", "55BB8A", "20A162", "40A070", "1A6840", "61AC85", "68B88E", "A4CAB6", "3C9566", "5DBE8A", "207F4C", "EEF7F2", "579572", "B9DEC9", "229453", "20894D", "15231B", "66C18C", "A4ACA7", "8A988E", "9ECCAB", "83A78D", "485B4D", "5D655F", "6E8B74", "2B312C", "C6DFC8", "41B349", "43B244", "253D24", "41AE3C", "ADD5A2", "5E665B", "8CC269", "5BAE23", "DFECD5", "CAD3C3", "9FA39A", "B2CF87", "96C24E", "F0F5E5", "B7D07A", "D0DEAA", "373834", "BACF65", "E2E7BF", "BEC936", "D2D97A", "E2D849", "FFFEF8", "5E5314", "FFFEF9", "AD9E5F", "FED71A", "F9F4DC", "E4BF11", "D2B116", "FBDA41", "EED045", "F1CA17", "D2B42C", "F2CE2B", "E2C027", "645822", "FCD217", "F8DF70", "DFC243",
+    "F8DF72", "FFD111", "DDC871", "FFFEFA", "867018", "887322", "FCD337", "8E804B", "FECC11", "FCCB16", "FFC90C", "B7AE8F", "F8D86A", "FBCD31", "FCC307", "E9DDB6", "FCC515", "F7E8AA", "E8B004", "F9C116", "F9D770", "FBC82F", "F1F0ED", "5B4913", "F6C430", "B78D12", "F9BD10", "F9D367", "D9A40E", "EBB10D", "584717", "F7DE98", "F9F1DB", "F4CE69", "FEBA07", "8A6913", "876818", "B6A476", "FCB70A", "F0D695", "87723E", "F8E8C1", "D6A01D", "F7DA94", "EAAD1A", "FBB612", "B5AA90", "F7F4ED", "F8BC31", "B78B26", "E5D3AA", "695E45", "E5B751", "F3BF4C", "685E48", "FBB929", "F9D27D", "E2C17C", "B4A992", "F6DEAD", "F2E6CE", "F8E0B0", "393733", "835E1D", "F8F4ED", "FCA104", "815F25", "FCA106", "FFA60F", "806332", "FBF2E3", "FBA414", "E4DFD7", "826B48", "DAD4CB",
+    "BBB5AC", "BBB5AC", "FF9900", "FBB957", "DC9123", "C09351", "F4A83A", "F7C173", "E7A23F", "533C1B", "F9E8D0", "DE9E44", "F9CB8B", "F9A633", "DAA45A", "553B18", "513C20", "986524", "97846C", "E3BD8D", "4D4030", "FB8B05", "F8C387", "F28E16", "503E2A", "4A4035", "CFCCC9", "C1B2A3", "867E76", "847C74", "FC8C23", "FBECDE", "4F4032", "FBEEE2", "81776E", "9A8878", "5D3D21", "66462A", "918072", "D99156", "C1651A", "D4C4B7", "BE7E4A", "5C3719", "DE7622", "DB8540", "80766E", "F09C5A", "F97D1C", "F26B1F", "F8B37F", "FA7E23", "F9E9CD", "B7A091", "945833", "F0945D", "964D22", "954416", "E16723", "FC7930", "CF7543", "F86B1D", "CD6227", "F6DCCE", "D85916", "F7CFBA", "F27635", "E46828", "FC6315", "B7511D", "EA8958", "E8B49A", "FB9968", "EDC3AE", "363433",
+    "8B614D", "AA6A4C", "A6522C", "FA5D19", "71361D", "B89485", "F68C60", "F6AD8F", "732E12", "F7CDBC", "EF632B", "8C4B31", "64483D", "F9723D", "CF4813", "EE8055", "F8EBE6", "753117", "603D30", "883A1E", "B14B28", "873D24", "F6CEC1", "5B423A", "624941", "673424", "F43E06", "EF6F48", "F4C7BA", "ED5126", "F34718", "F2481B", "652B1C", "EEA08C", "F04B22", "692A1B", "F1441D", "773D31", "EEAA9C", "F0ADA0", "863020", "F2E7E5", "862617", "F5391C", "F03F24", "F33B1F", "F23E23", "F13C22", "F05A46", "F17666", "F15642", "F25A47", "F2B9B2", "592620", "DE2A18", "ED3321", "F04A3A", "482522", "5C1E19", "D42517", "F19790", "AB372F", "5A1F1B", "ED3B2F", "BDAEAD", "EB261A", "AC1F18", "483332", "481E1C", "F1908C", "EC2B24", "EFAFAD", "F2CAC9", "4B2E2B", "ED4845", "ED3333", "5D3131"
+];
+
+function RGBToHex(rgb) {
+    if (!rgb) rgb = 'rgb(237,237,237)'
+    var regexp = /[0-9]{0,3}/g
+    var res = rgb.match(regexp) // 利用正则表达式去掉多余的部分，将rgb中的数字提取
+    var hexRes = '#'
+    var hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    var hexArr = []
+    for (let i = 0; i < res.length; i++) {
+        if (res[i]) {
+            if (res[i] > 16) {
+                let leftIndex = (res[i] / 16) >> 0 // 向下取整
+                let rightIndex = +res[i] % 16
+                hexArr.push(hex[leftIndex])
+                hexArr.push(hex[rightIndex])
+            } else {
+                hexArr.push(0)
+                hexArr.push(hex[res[i]])
+            }
+        }
+    }
+    return hexRes += hexArr.join('') // #EDEDED
+}
+
+for (var i = 0; i < rgb_name.length; i++) {
+    var divs = document.createElement('div');
+
+    divs.className = 'grb_j_s';
+    divs.innerHTML = '<div class="grb_j_grb" style="background-color: #' + rgb_ys[i] + ';"></div><div class="grb_j_grb2" style="background-color: #' + rgb_ys[i] + ';"></div><div class="grb_j_grbname">' + rgb_ys[i] + '</div><div class="grb_j_name">' + rgb_name[i] + '</div>';
+    divs.addEventListener('click', function(e) {
+        if (rgbj_y_fxk_zt_sf == 1) {
+            localStorage.zi_ti_color = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+            input_color1.value = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+        }
+        if (rgbj_yy_fxk_zzt_sf == 1) {
+            localStorage.zi_ti_click_color = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+            input_color2.value = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+        }
+        if (rgbj_yy_fxk_nrbj_sf == 1) {
+            localStorage.bei_jing_color = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+            input_color3.value = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+            bei_jing_color_s();
+        }
+        if (rgbj_yy_fxk_bk_sf == 1) {
+            localStorage.bei_jing_kuan_color = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+            input_color4.value = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+            bj_kuan_hs();
+        }
+        if (rgbj_yy_fxk_bz_sf == 1) {
+            document.documentElement.style.backgroundColor = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+            document.documentElement.style.backgroundImage = '';
+            localStorage.bi_zhi = '';
+            localStorage.bi_zhi_ys = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
+        }
+
+        if (rgbj_y_fxk_zt_sf == 1 || rgbj_yy_fxk_zzt_sf == 1) {
+            zi_ti_color_s();
+        }
+
+    });
+
+    grb_j_max.appendChild(divs);
+}
+
+//重置
+var qian_bi_zhi = localStorage.bi_zhi;
+var qian_bi_zhi_ys = localStorage.bi_zhi_ys;
+var shezhi_rgb_qbcz = document.querySelector('.shezhi_rgb_qbcz');
+shezhi_rgb_qbcz.addEventListener('click', function(e) {
+    localStorage.bi_zhi = qian_bi_zhi;
+    localStorage.bi_zhi_ys = qian_bi_zhi_ys;
+    if (qian_bi_zhi_ys !== '') {
+        document.documentElement.style.backgroundColor = qian_bi_zhi_ys;
+        document.documentElement.style.backgroundImage = '';
+    } else {
+        document.documentElement.style.backgroundImage = ' url(' + qian_bi_zhi + ')';
+    }
+    ztsz_chongzhi.click();
+    bjsz_chongzhi.click();
+});
+
+
+
+
+
+
+
+
+
 //全局按键事件
+document.addEventListener('keyup', function(e) {
+    if (bzsz_tj_ym_tp_jk == 1) {
+        bzsz_tj_ym_TP.style.backgroundImage = 'url(' + input_bzlj.value + ')';
+    }
+    if (e.key == 'Enter' && bzsz_tj_ym_tp_jk == 1) {
+        bzsz_tj_anniu.click();
+    }
+});
 var sd_dtnr_max = document.querySelector('.sd_dtnr_max');
 document.addEventListener('keydown', function(e) {
     if (e.key == 'Enter' && WGS_HTSP_TJ.style.display == 'block') {
@@ -3323,12 +3521,6 @@ document.addEventListener('keydown', function(e) {
     }
     if (gywm_ban_ben_HTSP == 1 && shezhi_gywm_ym.style.display == 'block' && e.altKey && e.key == 'Enter' && shezhi_min.style.display == 'none' && nrmaxs3.style.display == 'block') {
         WGS_HTSP.click();
-    }
-    if (bzsz_tj_ym_tp_jk == 1) {
-        bzsz_tj_ym_TP.style.backgroundImage = 'url(' + input_bzlj.value + ')';
-    }
-    if (e.key == 'Enter' && bzsz_tj_ym_tp_jk == 1) {
-        bzsz_tj_anniu.click();
     }
     if (e.key == 'Enter' && shezhi_drmm_ym.style.display == 'block') {
         drmm_mm_qr.click();
@@ -3371,3 +3563,17 @@ document.addEventListener('click', function() {
     daoru_ym_dr_mmym.style.display = 'none';
     daoru_ym_my.value = '';
 });
+
+// var sz_name = [];
+// var name_s = document.querySelectorAll('span[class="name"]');
+// for (var i = 0; i < name_s.length; i++) {
+//     sz_name.push(name_s[i].innerText);
+// }
+// console.log(JSON.stringify(sz_name));
+
+// var sz_rgb = [];
+// var rgb_s = document.querySelectorAll('span[class="rgb"]');
+// for (var i = 0; i < rgb_s.length; i++) {
+//     sz_rgb.push(rgb_s[i].innerText);
+// }
+// console.log(JSON.stringify(sz_rgb));

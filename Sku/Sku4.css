@@ -1066,3 +1066,118 @@
         line-height: 30px;
         transition: 0.15s;
     }
+    /* -------------grb集--------- */
+    
+    .grb_j_max {
+        float: left;
+        width: calc(100% + 70px);
+        height: calc(100% - 50px);
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding-right: 52px;
+        padding-top: 33px;
+        padding-bottom: 33px;
+    }
+    
+    .grb_j_s {
+        position: relative;
+        float: left;
+        width: 100px;
+        height: 80px;
+        margin-left: 33px;
+        margin-bottom: 20px;
+    }
+    
+    .grb_j_grb {
+        width: 100px;
+        height: 30px;
+        border-radius: 5px;
+        margin-bottom: 13px;
+    }
+    
+    .grb_j_grb2 {
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        left: 6px;
+        top: 7px;
+        border-radius: 5px;
+        opacity: 0.5;
+        z-index: -1;
+    }
+    
+    .grb_j_grbname {
+        float: left;
+        width: 100px;
+        text-align: center;
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .grb_j_name {
+        float: left;
+        width: 100px;
+        text-align: center;
+        letter-spacing: 4px;
+    }
+    
+    .rgbj_yy {
+        position: absolute;
+        width: 90px;
+        height: 20px;
+        top: 14px;
+    }
+    
+    .rgbj_yy_fxk {
+        float: left;
+        width: 20px;
+        height: 20px;
+        border: 1px solid var(--zi_ti_color);
+        border-radius: 5px;
+        line-height: 18px;
+        text-align: center;
+    }
+    
+    .rgbj_yy_fxk_wz {
+        float: left;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 5px;
+    }
+    
+    .rgbj_yy_zt {
+        right: 450px;
+    }
+    
+    .rgbj_yy_zzt {
+        right: 380px;
+    }
+    
+    .rgbj_yy_nrbj {
+        right: 310px;
+    }
+    
+    .rgbj_yy_bk {
+        right: 240px;
+    }
+    
+    .rgbj_yy_bz {
+        right: 170px;
+    }
+    
+    .shezhi_rgb_qbcz {
+        position: absolute;
+        border: 1px solid var(--zi_ti_color);
+        width: 48px;
+        height: 30px;
+        border-radius: 5px;
+        text-align: center;
+        right: 60px;
+        top: 10px;
+        line-height: 28px;
+        transition: 0.15s;
+    }
+    
+    .shezhi_rgb_qbcz:hover {
+        transform: scale(1.1);
+    }

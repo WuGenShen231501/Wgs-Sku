@@ -273,6 +273,8 @@ function lian_jie_l_kaishi() {
         }
     }
     WGS_wenbengundon('.lj_xx_b');
+    // Sku-a转换href
+    a_click_self();
 
     //为所有链接添加事   
     lj_max = document.querySelectorAll('.lj_max');
@@ -533,6 +535,9 @@ jl_qrk.addEventListener('click', function(e) {
             // 添加单独字体浮动
             var xgwz_lj_xx_b = xgwz.querySelector('.lj_xx_b');
             WGS_wenbengundon_dd(xgwz_lj_xx_b);
+
+            // Sku-a转换href
+            a_click_self();
         }
     } else {
         lj_srk_mc.style.borderColor = '';
@@ -770,6 +775,9 @@ jl_qrk.addEventListener('click', function(e) {
             var xgwz_lj_xx_b_2 = divss.querySelector('.lj_xx_b');
             WGS_wenbengundon_dd(xgwz_lj_xx_b_2);
 
+            // Sku-a转换href
+            a_click_self();
+
         }
     } else {
         lj_srk_mc.style.borderColor = '';
@@ -896,6 +904,10 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
         }
         lian_jie_r2.scroll(0, 0);
         WGS_wenbengundon('.lj_xx_b_2');
+
+        // Sku-a转换href
+        a_click_self();
+
     } else {
         lian_jie_r.style.display = 'block';
         lian_jie_r2.style.display = 'none';
@@ -1330,6 +1342,17 @@ function handleDragEnd2(e) {
 
 }
 enableDragAndDrop2('tuodon_dhr_div');
+
+
+
+
+// a标签打开方式替换
+function a_click_self() {
+    var className = document.querySelectorAll('a[href^="Sku-"]');
+    for (var i = 0; i < className.length; i++) {
+        className[i].target = '_self';
+    }
+}
 
 
 
