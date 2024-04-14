@@ -476,12 +476,15 @@ function sy_djs_tjym_mrz() {
     input_djs_tjym_time_s[1].value = (time_day.getMonth() + 1 < 10 ? '0' + (time_day.getMonth() + 1) : time_day.getMonth() + 1);
     input_djs_tjym_time_s[2].value = (time_day.getDate() < 10 ? '0' + time_day.getDate() : time_day.getDate());
     input_djs_tjym_time_s2 = document.querySelectorAll('.input_djs_tjym_time_s2');
-    var ss = time_day.getHours();
-    var ff = time_day.getMinutes();
-    var mm = time_day.getSeconds();
-    input_djs_tjym_time_s2[0].value = mm < 10 ? '0' + mm : mm;
-    input_djs_tjym_time_s2[1].value = ff < 10 ? '0' + ff : ff;
-    input_djs_tjym_time_s2[2].value = ss < 10 ? '0' + ss : ss;
+    // var ss = time_day.getHours();
+    // var ff = time_day.getMinutes();
+    // var mm = time_day.getSeconds();
+    // input_djs_tjym_time_s2[0].value = mm < 10 ? '0' + mm : mm;
+    // input_djs_tjym_time_s2[1].value = ff < 10 ? '0' + ff : ff;
+    // input_djs_tjym_time_s2[2].value = ss < 10 ? '0' + ss : ss;
+    input_djs_tjym_time_s2[0].value = '00';
+    input_djs_tjym_time_s2[1].value = '00';
+    input_djs_tjym_time_s2[2].value = '00';
 }
 //确认
 djs_tjym_qr = document.querySelector('.djs_tjym_qr');

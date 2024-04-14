@@ -3495,6 +3495,27 @@ shezhi_rgb_qbcz.addEventListener('click', function(e) {
     }
     ztsz_chongzhi.click();
     bjsz_chongzhi.click();
+
+    if (rgbj_y_fxk_zt.innerHTML == '✔') {
+        rgbj_y_fxk_zt.innerHTML = '';
+        rgbj_y_fxk_zt_sf = 0;
+    }
+    if (rgbj_yy_fxk_zzt.innerHTML == '✔') {
+        rgbj_yy_fxk_zzt.innerHTML = '';
+        rgbj_yy_fxk_zzt_sf = 0;
+    }
+    if (rgbj_yy_fxk_nrbj.innerHTML == '✔') {
+        rgbj_yy_fxk_nrbj.innerHTML = '';
+        rgbj_yy_fxk_nrbj_sf = 0;
+    }
+    if (rgbj_yy_fxk_bk.innerHTML == '✔') {
+        rgbj_yy_fxk_bk.innerHTML = '';
+        rgbj_yy_fxk_bk_sf = 0;
+    }
+    if (rgbj_yy_fxk_bz.innerHTML == '✔') {
+        rgbj_yy_fxk_bz.innerHTML = '';
+        rgbj_yy_fxk_bz_sf = 0;
+    }
 });
 
 
