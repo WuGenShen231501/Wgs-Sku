@@ -5,7 +5,7 @@ function Sku_tsy(num) {
     sku_tsy[num].play();
 }
 
-var shui_you_nc = ['bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
+var shui_you_nc = ['mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 // 保护localStorage值
 window.addEventListener('storage', function(event) {
     console.clear();
@@ -64,9 +64,17 @@ function Sku_tctx(zdysx1) {
 // 定位
 var music_hzmax = document.querySelector('.music_hzmax');
 music_hzmax.style.maxHeight = window.innerHeight - (60 + 60) + 'px';
+var drym_min = document.querySelector('.drym_min');
+drym_min.style.top = ((window.innerHeight - 56) / 2) - 150 + 56 + 'px';
+var mryy = document.querySelector('.mryy');
+mryy.style.top = ((window.innerHeight - 56) / 2) - 150 + 430 + 'px';
 window.addEventListener('resize', function(e) {
     var music_hzmax = document.querySelector('.music_hzmax');
     music_hzmax.style.maxHeight = window.innerHeight - (60 + 60) + 'px';
+    var drym_min = document.querySelector('.drym_min');
+    drym_min.style.top = ((window.innerHeight - 56) / 2) - 150 + 56 + 'px';
+    var mryy = document.querySelector('.mryy');
+    mryy.style.top = ((window.innerHeight - 56) / 2) - 150 + 430 + 'px';
 });
 
 
@@ -237,6 +245,18 @@ so_anniu.addEventListener('click', function() {
         // 检测是否是直接网址
         if (so_ssk.value.substring(0, 4) == 'http' || so_ssk.value.substring(0, 4) == 'file') {
             window.open(so_ssk.value);
+        } else if (so_ssk.value[0] == '[' && so_ssk.value[so_ssk.value.length - 1] == ']') {
+            var lsjl = JSON.parse(localStorage.lsjl);
+            var rsjl = JSON.parse(so_ssk.value);
+            var rsjl2 = [];
+            for (var i = 0; i < rsjl.length; i++) {
+                if (lsjl.indexOf(rsjl[i]) == -1) {
+                    rsjl2.push(rsjl[i]);
+                }
+            }
+            var xlsjl = lsjl.concat(rsjl2);
+            localStorage.lsjl = JSON.stringify(xlsjl);
+            Sku_tctx('已添 ' + rsjl2.length + ' 条无重复搜索记录');
         } else {
             // 不是直接网址时搜索
             if (so_yq.innerHTML == '百度') {
@@ -273,21 +293,38 @@ so_anniu.addEventListener('click', function() {
 
 
     // 检测是否在记录里
-    const inputValue = so_ssk.value;
-    const trimmedValue = inputValue.trim();
+    var inputValue = so_ssk.value;;
+    var trimmedValue = inputValue.trim();
     // 检测输入的值是否全是空格
     if (trimmedValue.length !== 0) {
-        var lsjl = JSON.parse(localStorage.lsjl);
-        var qrgs = lsjl.indexOf(so_ssk.value);
-        if (qrgs == -1) {
-            // 没有时：添加
-            lsjl.unshift(so_ssk.value);
-        } else {
-            // 有时：置顶
-            lsjl.splice(qrgs, 1);
-            lsjl.unshift(so_ssk.value);
+        if (so_ssk.value[0] !== '[' && so_ssk.value[so_ssk.value.length - 1] !== ']') {
+            var lsjl = JSON.parse(localStorage.lsjl);
+            var qrgs = lsjl.indexOf(so_ssk.value);
+            var mrrd = JSON.parse(localStorage.mrrd);
+            if (qrgs == -1) {
+                // 没有时：添加
+                lsjl.unshift(so_ssk.value);
+                // 热点置顶
+                if (mrrd.indexOf(so_ssk.value) !== -1) {
+                    var asd = mrrd.indexOf(so_ssk.value);
+                    mrrd.splice(asd, 1);
+                    mrrd.unshift(so_ssk.value);
+                    localStorage.mrrd = JSON.stringify(mrrd);
+                }
+            } else {
+                // 有时：置顶
+                lsjl.splice(qrgs, 1);
+                lsjl.unshift(so_ssk.value);
+                // 热点置顶
+                if (mrrd.indexOf(so_ssk.value) !== -1) {
+                    var asd = mrrd.indexOf(so_ssk.value);
+                    mrrd.splice(asd, 1);
+                    mrrd.unshift(so_ssk.value);
+                    localStorage.mrrd = JSON.stringify(mrrd);
+                }
+            }
+            localStorage.lsjl = JSON.stringify(lsjl);
         }
-        localStorage.lsjl = JSON.stringify(lsjl);
         // 设置页面重新加载
         var ssjl_min = document.querySelector('.ssjl_min');
         ssjl_min.innerHTML = '';

@@ -209,6 +209,7 @@ for (var i = 0; i < bzsz_s.length; i++) {
         var topimg = this.style.backgroundImage.split('("')[1].split('")')[0];
         localStorage.bi_zhi = topimg;
         document.documentElement.style.backgroundImage = this.style.backgroundImage;
+        document.documentElement.style.backgroundColor = '';
         localStorage.bi_zhi_ys = '';
     });
 }
@@ -808,6 +809,8 @@ shezhi_ztfg.addEventListener('click', function() {
 tianqi_xy = document.querySelector('.tianqi_xy');
 ztfg1 = document.querySelector('.ztfg1');
 ztfg1.addEventListener('click', function() {
+    document.documentElement.style.backgroundColor = '';
+    localStorage.bi_zhi_ys = '';
     tianqi_xy.click();
     localStorage.bi_zhi = 'https://pic.3gbizhi.com/uploads/20231218/bc41092030bb7e763170bc172af92039.png';
     document.documentElement.style.backgroundImage = 'url(https://pic.3gbizhi.com/uploads/20231218/bc41092030bb7e763170bc172af92039.png)';
@@ -838,6 +841,8 @@ ztfg1.addEventListener('click', function() {
 tianqi_qt = document.querySelector('.tianqi_qt');
 ztfg2 = document.querySelector('.ztfg2');
 ztfg2.addEventListener('click', function() {
+    document.documentElement.style.backgroundColor = '';
+    localStorage.bi_zhi_ys = '';
     tianqi_qt.click();
     localStorage.bi_zhi = '#'
     document.documentElement.style.backgroundImage = 'url(#)';
@@ -868,6 +873,8 @@ ztfg2.addEventListener('click', function() {
 tianqi_xx = document.querySelector('.tianqi_xx');
 ztfg3 = document.querySelector('.ztfg3');
 ztfg3.addEventListener('click', function() {
+    document.documentElement.style.backgroundColor = '';
+    localStorage.bi_zhi_ys = '';
     tianqi_xx.click();
     localStorage.bi_zhi = 'https://pic.3gbizhi.com/uploads/20231227/e0b15cfc41a57575ca154db81ed745f2.png';
     document.documentElement.style.backgroundImage = 'url(https://pic.3gbizhi.com/uploads/20231227/e0b15cfc41a57575ca154db81ed745f2.png)';
@@ -897,6 +904,8 @@ ztfg3.addEventListener('click', function() {
 // 雅致黑
 var ztfg4 = document.querySelector('.ztfg4');
 ztfg4.addEventListener('click', function(e) {
+    document.documentElement.style.backgroundColor = '';
+    localStorage.bi_zhi_ys = '';
     tianqi_qt.click();
     localStorage.bi_zhi = 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/4e4a20a4462309f7e770251f7a0e0cf3d7cad6a4.jpg';
     document.documentElement.style.backgroundImage = 'url(https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/4e4a20a4462309f7e770251f7a0e0cf3d7cad6a4.jpg)';
@@ -926,6 +935,8 @@ ztfg4.addEventListener('click', function(e) {
 // 温馨米
 var ztfg5 = document.querySelector('.ztfg5');
 ztfg5.addEventListener('click', function(e) {
+    document.documentElement.style.backgroundColor = '';
+    localStorage.bi_zhi_ys = '';
     tianqi_qt.click();
     localStorage.bi_zhi = 'https://pic.3gbizhi.com/uploads/20240130/d97c54c7a77532c34f74c5ee56562a70.jpg';
     document.documentElement.style.backgroundImage = 'url(https://pic.3gbizhi.com/uploads/20240130/d97c54c7a77532c34f74c5ee56562a70.jpg)';
@@ -1726,6 +1737,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
+                        Sku_tctx('网络响应不正常 !');
                         throw new Error('Network response was not ok ' + response.statusText);
                     }
                     return response.text();
@@ -1758,6 +1770,7 @@ daoru_ym_dr.addEventListener('click', function(e) {
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
+                        Sku_tctx('网络响应不正常 !');
                         throw new Error('Network response was not ok ' + response.statusText);
                     }
                     return response.text();
@@ -2132,9 +2145,22 @@ var so_yq_s = document.querySelector('.so_yq_s');
 so_ssk.addEventListener('click', function(e) {
     e.stopPropagation();
 });
+
+
+
 so_ssk.addEventListener('input', function(e) {
     if (so_ssk.value !== '') {
+        var mrrd = JSON.parse(localStorage.mrrd);
+        var lsjl2_qjbl = [];
         var lsjl = JSON.parse(localStorage.lsjl);
+        for (var i = 0; i < mrrd.length; i++) {
+            if (lsjl.indexOf(mrrd[i]) == -1) {
+                lsjl2_qjbl.push(mrrd[i]);
+            }
+        }
+
+        var lsjl = lsjl.concat(lsjl2_qjbl);
+
         var qrgs = 0;
         lsjl_jp_dys = -1;
         // 清除原有
@@ -2152,9 +2178,8 @@ so_ssk.addEventListener('input', function(e) {
                 });
 
                 ssbqym_min.appendChild(div);
-
-                WGS_wenbengundon('.ssbq_s', 9);
             }
+            if (qrgs == 100) { break; }
         }
         // 显示页面
         if (qrgs == 0) {
@@ -2163,9 +2188,21 @@ so_ssk.addEventListener('input', function(e) {
             ssbqym.style.display = 'block';
             // 显示最上面
             ssbqym_max.scroll(0, 0);
+
+            WGS_wenbengundon('.ssbq_s', 9);
         }
     } else {
-        var lsjl = JSON.parse(localStorage.lsjl);
+        var mrrd = JSON.parse(localStorage.mrrd);
+        var lsjl2_qjbl = [];
+        var lsjl2_qjbl2 = JSON.parse(localStorage.lsjl);
+        for (var i = 0; i < lsjl2_qjbl2.length; i++) {
+            if (mrrd.indexOf(lsjl2_qjbl2[i]) == -1) {
+                lsjl2_qjbl.push(lsjl2_qjbl2[i]);
+            }
+        }
+
+        var lsjl = mrrd.slice(0, 49).concat(lsjl2_qjbl);
+
         var qrgs = 0;
         lsjl_jp_dys = -1;
         // 清除原有
@@ -2183,7 +2220,7 @@ so_ssk.addEventListener('input', function(e) {
 
             ssbqym_min.appendChild(div);
 
-            WGS_wenbengundon('.ssbq_s', 9);
+            if (qrgs == 100) { break; }
         }
         // 显示页面
         if (qrgs == 0) {
@@ -2192,12 +2229,24 @@ so_ssk.addEventListener('input', function(e) {
             ssbqym.style.display = 'block';
             // 显示最上面
             ssbqym_max.scroll(0, 0);
+
+            WGS_wenbengundon('.ssbq_s', 9);
         }
     }
 });
 so_ssk.addEventListener('focus', function(e) {
     if (so_ssk.value !== '') {
+        var mrrd = JSON.parse(localStorage.mrrd);
+        var lsjl2_qjbl = [];
         var lsjl = JSON.parse(localStorage.lsjl);
+        for (var i = 0; i < mrrd.length; i++) {
+            if (lsjl.indexOf(mrrd[i]) == -1) {
+                lsjl2_qjbl.push(mrrd[i]);
+            }
+        }
+
+        var lsjl = lsjl.concat(lsjl2_qjbl);
+
         var qrgs = 0;
         lsjl_jp_dys = -1;
         // 清除原有
@@ -2215,9 +2264,8 @@ so_ssk.addEventListener('focus', function(e) {
                 });
 
                 ssbqym_min.appendChild(div);
-
-                WGS_wenbengundon('.ssbq_s', 9);
             }
+            if (qrgs == 100) { break; }
         }
         // 显示页面
         if (qrgs == 0) {
@@ -2227,9 +2275,21 @@ so_ssk.addEventListener('focus', function(e) {
             ssbqym.style.display = 'block';
             // 显示最上面
             ssbqym_max.scroll(0, 0);
+
+            WGS_wenbengundon('.ssbq_s', 9);
         }
     } else {
-        var lsjl = JSON.parse(localStorage.lsjl);
+        var mrrd = JSON.parse(localStorage.mrrd);
+        var lsjl2_qjbl = [];
+        var lsjl2_qjbl2 = JSON.parse(localStorage.lsjl);
+        for (var i = 0; i < lsjl2_qjbl2.length; i++) {
+            if (mrrd.indexOf(lsjl2_qjbl2[i]) == -1) {
+                lsjl2_qjbl.push(lsjl2_qjbl2[i]);
+            }
+        }
+
+        var lsjl = mrrd.slice(0, 49).concat(lsjl2_qjbl);
+
         var qrgs = 0;
         lsjl_jp_dys = -1;
         // 清除原有
@@ -2247,7 +2307,7 @@ so_ssk.addEventListener('focus', function(e) {
 
             ssbqym_min.appendChild(div);
 
-            WGS_wenbengundon('.ssbq_s', 9);
+            if (qrgs == 100) { break; }
         }
         // 显示页面
         if (qrgs == 0) {
@@ -2257,6 +2317,8 @@ so_ssk.addEventListener('focus', function(e) {
             ssbqym.style.display = 'block';
             // 显示最上面
             ssbqym_max.scroll(0, 0);
+
+            WGS_wenbengundon('.ssbq_s', 9);
         }
     }
 });
@@ -2426,7 +2488,7 @@ function sy_lbnr_hs() {
 
         function sjnr_shuchu(gs) {
             // 1日程2作品3链接4未标记5设置6音乐
-            var sj_nr_bl = [1, 2, 3, 3, 3, 4, 5, 6];
+            var sj_nr_bl = [1, 2, 3, 3, 3, 4, 5, 6, 7];
 
             // sz_zdsc(数组, 要删除的字符(不是索引号), 如果要替换成)
             function sz_zdsc(sz_s, sz_sc_zhi, sz_tj_zhi) {
@@ -2500,6 +2562,11 @@ function sy_lbnr_hs() {
             var music_cd = JSON.parse(localStorage.music_cd);
             if (music_cd[0].length == 0) {
                 sz_zdsc(sj_nr_bl, 6);
+            }
+            // 检测每日热点
+            var mrrd = JSON.parse(localStorage.mrrd);
+            if (mrrd.length < 10) {
+                sz_zdsc(sj_nr_bl, 7);
             }
 
 
@@ -2710,6 +2777,23 @@ function sy_lbnr_hs() {
                             var i_music_s_ks_tb = document.querySelectorAll('.i_music_s_ks_tb');
                             i_music_s_ks_tb[music_cd[0].indexOf(this.querySelector('.lbnr_yy2').innerText)].click();
                         });
+                        lbnr_max[i].appendChild(div);
+                        // 固定位置
+                        div.style.left = sjnr_wz_shu[i] + 'px';
+                        sjnr_wz_shu[i] += div.offsetWidth + 12;
+                    } else if (sknr_sjs == 7) { //热点
+                        var div = document.createElement('div');
+                        div.className = 'lbnr_min';
+
+                        var mrrd = JSON.parse(localStorage.mrrd);
+                        var sknr_sjs2 = sjs4(0, mrrd.length - 1);
+
+                        div.innerHTML = '<div class="lbnr_sz">今日热点 🔥</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
+                        div.addEventListener('click', function(e) {
+                            so_ssk.value = this.querySelector('.lbnr_sz2').innerText;
+                            so_anniu.click();
+                        });
+
                         lbnr_max[i].appendChild(div);
                         // 固定位置
                         div.style.left = sjnr_wz_shu[i] + 'px';
@@ -3517,6 +3601,88 @@ shezhi_rgb_qbcz.addEventListener('click', function(e) {
         rgbj_yy_fxk_bz_sf = 0;
     }
 });
+
+
+
+
+
+
+
+// 每日热点API
+function ssrd(url_s) {
+    fetch(url_s)
+        .then(response => {
+            if (!response.ok) {
+                Sku_tctx('网络响应不正常 !');
+                throw new Error('网络响应不正常 ' + response.statusText);
+            }
+            return response.text();
+        })
+        .then(data => {
+            // 处理返回的数据
+            var mrrd = JSON.parse(localStorage.mrrd);
+            var mrrd_s_dx = JSON.parse(data);
+            // 提取所有name到一个新数组
+            const names = mrrd_s_dx.data.map(item => item.name);
+            var names2 = [];
+            for (var i = 0; i < names.length; i++) {
+                if (mrrd.indexOf(names[i]) == -1) {
+                    names2.push(names[i]);
+                }
+            }
+            // 打印names数组
+            var mrrd2 = mrrd.concat(names2);
+            console.log(names2, mrrd2);
+            localStorage.mrrd = JSON.stringify(mrrd2);
+        })
+        .catch(error => {
+            console.error('您的抓取操作出现了问题 ', error);
+            Sku_tctx('您的抓取操作出现了问题 ( 今日热点 )');
+        });
+}
+
+if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 60) || localStorage.mrrd_sxsj == 0) {
+    localStorage.mrrd_sxsj = +new Date();
+    localStorage.mrrd = '[]';
+    ssrd('https://tenapi.cn/v2/douyinhot');
+    ssrd('https://tenapi.cn/v2/baiduhot');
+    ssrd('https://tenapi.cn/v2/weibohot');
+    ssrd('https://tenapi.cn/v2/zhihuhot');
+    ssrd('https://tenapi.cn/v2/bilihot');
+    ssrd('https://tenapi.cn/v2/toutiaohot');
+    ssrd('https://tenapi.cn/v2/toutiaohotnew');
+    mryy_s();
+}
+
+// 每日一言
+var mryy = document.querySelector('.mryy');
+mryy.innerText = localStorage.mryy;
+if (localStorage.mryy == '') {
+    mryy_s();
+}
+
+function mryy_s() {
+    fetch('https://tenapi.cn/v2/yiyan')
+        .then(response => {
+            if (!response.ok) {
+                Sku_tctx('网络响应不正常 !');
+                throw new Error('网络响应不正常 ' + response.statusText);
+            }
+            return response.text();
+        })
+        .then(data => {
+            // 处理返回的数据
+            mryy.innerText = data;
+            localStorage.mryy = data;
+        })
+        .catch(error => {
+            console.error('您的抓取操作出现了问题 ', error);
+            // 处理返回的数据
+            mryy.innerText = '';
+            localStorage.mryy = '';
+            Sku_tctx('您的抓取操作出现了问题 ( 每日一言 )');
+        });
+}
 
 
 

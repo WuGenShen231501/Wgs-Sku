@@ -1,5 +1,5 @@
 //检测是否第一次使用
-var ban_ben_s = 'v18.59.8';
+var ban_ben_s = 'v22.13.5';
 if (localStorage.ban_ben) {
     console.log('继续使用中');
     //检查是否最新
@@ -259,6 +259,17 @@ if (localStorage.sku_zcb == undefined) {
 }
 if (localStorage.sku_zcb_bf == undefined) {
     localStorage.sku_zcb_bf = '[[],[]]';
+}
+// 每日热点
+if (localStorage.mrrd == undefined) {
+    localStorage.mrrd = '[]';
+}
+if (localStorage.mrrd_sxsj == undefined) {
+    localStorage.mrrd_sxsj = 0;
+}
+// 每日一言
+if (localStorage.mryy == undefined) {
+    localStorage.mryy = '';
 }
 
 // 开机壁纸颜色(放前面免卡顿)
