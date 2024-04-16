@@ -806,6 +806,7 @@
         top: 56px;
         right: 335px;
         overflow: hidden;
+        transition: 0.4s;
     }
     
     .ssbqym_max {

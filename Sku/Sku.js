@@ -257,6 +257,33 @@ so_anniu.addEventListener('click', function() {
             var xlsjl = lsjl.concat(rsjl2);
             localStorage.lsjl = JSON.stringify(xlsjl);
             Sku_tctx('已添 ' + rsjl2.length + ' 条无重复搜索记录');
+        } else if (so_ssk.value == 'wugenshen') {
+            localStorage.mrrd_sxsj = +new Date();
+            localStorage.mrrd = '[]';
+            localStorage.mrrd_top = '[]'
+            var mrrd_asd = 0;
+            mryy_s();
+            mrrd_dsq = setInterval(function() {
+                mrrd_asd++;
+                if (mrrd_asd == 1) {
+                    ssrd('https://tenapi.cn/v2/douyinhot', '1');
+                } else if (mrrd_asd == 2) {
+                    ssrd('https://tenapi.cn/v2/baiduhot', '2');
+                } else if (mrrd_asd == 3) {
+                    ssrd('https://tenapi.cn/v2/weibohot', '3');
+                } else if (mrrd_asd == 4) {
+                    ssrd('https://tenapi.cn/v2/zhihuhot', '4');
+                } else if (mrrd_asd == 5) {
+                    ssrd('https://tenapi.cn/v2/bilihot', '5');
+                } else if (mrrd_asd == 6) {
+                    ssrd('https://tenapi.cn/v2/toutiaohot', '6');
+                } else if (mrrd_asd == 7) {
+                    ssrd('https://tenapi.cn/v2/toutiaohotnew', '7');
+                } else {
+                    mrrd_asd = 0;
+                    clearInterval(mrrd_dsq);
+                }
+            }, 1000);
         } else {
             // 不是直接网址时搜索
             if (so_yq.innerHTML == '百度') {
@@ -297,7 +324,7 @@ so_anniu.addEventListener('click', function() {
     var trimmedValue = inputValue.trim();
     // 检测输入的值是否全是空格
     if (trimmedValue.length !== 0) {
-        if (so_ssk.value[0] !== '[' && so_ssk.value[so_ssk.value.length - 1] !== ']') {
+        if (so_ssk.value[0] !== '[' && so_ssk.value[so_ssk.value.length - 1] !== ']' && so_ssk.value !== 'wugenshen') {
             var lsjl = JSON.parse(localStorage.lsjl);
             var qrgs = lsjl.indexOf(so_ssk.value);
             var mrrd = JSON.parse(localStorage.mrrd);

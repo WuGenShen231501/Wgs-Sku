@@ -1638,7 +1638,7 @@ function sy_lbnr_hs2(max_gs) {
 
     function sjnr_shuchu2(gs) {
         // 1日程2作品3链接4未标记5设置6音乐
-        var sj_nr_bl = [1, 2, 3, 3, 3, 4, 5, 6];
+        var sj_nr_bl = [1, 2, 3, 3, 3, 4, 5, 6, 7, 7];
 
         // sz_zdsc(数组, 要删除的字符(不是索引号), 如果要替换成)
         function sz_zdsc(sz_s, sz_sc_zhi, sz_tj_zhi) {
@@ -1712,6 +1712,12 @@ function sy_lbnr_hs2(max_gs) {
         var music_cd = JSON.parse(localStorage.music_cd);
         if (music_cd[0].length == 0) {
             sz_zdsc(sj_nr_bl, 6);
+        }
+        // 检测每日热点
+        var mrrd = JSON.parse(localStorage.mrrd);
+        if (mrrd.length < 10) {
+            sz_zdsc(sj_nr_bl, 7);
+            sz_zdsc(sj_nr_bl, 7);
         }
 
 
@@ -1928,6 +1934,41 @@ function sy_lbnr_hs2(max_gs) {
                         var i_music_s_ks_tb = document.querySelectorAll('.i_music_s_ks_tb');
                         i_music_s_ks_tb[music_cd[0].indexOf(this.querySelector('.lbnr_yy2').innerText)].click();
                     });
+                    lbnr_max[i].appendChild(div);
+                    // 固定位置
+                    div.style.left = sjnr_wz_shu[i] + 'px';
+                    sjnr_wz_shu[i] += div.offsetWidth + 12;
+                } else if (sknr_sjs == 7) { //热点
+                    var div = document.createElement('div');
+                    div.className = 'lbnr_min';
+
+                    var mrrd = JSON.parse(localStorage.mrrd);
+                    var sknr_sjs2 = sjs4(0, mrrd.length - 1);
+
+                    var mrrd_numtop = sknr_sjs2 + 1;
+                    var mrrd_top = JSON.parse(localStorage.mrrd_top);
+                    for (var ii = 0; ii < mrrd_top.length; ii++) {
+                        var num_ss = 0;
+                        for (var tt = 0; tt <= ii; tt++) {
+                            num_ss += mrrd_top[tt];
+                        }
+                        if (num_ss >= mrrd_numtop && ii >= 1) {
+                            for (var pp = 0; pp < ii; pp++) {
+                                mrrd_numtop -= mrrd_top[pp];
+                            }
+                            break;
+                        } else if (num_ss >= mrrd_numtop && ii == 0) {
+                            break;
+                        }
+                    }
+
+                    div.innerHTML = '<div class="lbnr_sz">今日热点 🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
+
+                    div.addEventListener('click', function(e) {
+                        so_ssk.value = this.querySelector('.lbnr_sz2').innerText;
+                        so_anniu.click();
+                    });
+
                     lbnr_max[i].appendChild(div);
                     // 固定位置
                     div.style.left = sjnr_wz_shu[i] + 'px';

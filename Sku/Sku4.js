@@ -2488,7 +2488,7 @@ function sy_lbnr_hs() {
 
         function sjnr_shuchu(gs) {
             // 1日程2作品3链接4未标记5设置6音乐
-            var sj_nr_bl = [1, 2, 3, 3, 3, 4, 5, 6, 7];
+            var sj_nr_bl = [1, 2, 3, 3, 3, 4, 5, 6, 7, 7];
 
             // sz_zdsc(数组, 要删除的字符(不是索引号), 如果要替换成)
             function sz_zdsc(sz_s, sz_sc_zhi, sz_tj_zhi) {
@@ -2566,6 +2566,7 @@ function sy_lbnr_hs() {
             // 检测每日热点
             var mrrd = JSON.parse(localStorage.mrrd);
             if (mrrd.length < 10) {
+                sz_zdsc(sj_nr_bl, 7);
                 sz_zdsc(sj_nr_bl, 7);
             }
 
@@ -2788,7 +2789,25 @@ function sy_lbnr_hs() {
                         var mrrd = JSON.parse(localStorage.mrrd);
                         var sknr_sjs2 = sjs4(0, mrrd.length - 1);
 
-                        div.innerHTML = '<div class="lbnr_sz">今日热点 🔥</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
+                        var mrrd_numtop = sknr_sjs2 + 1;
+                        var mrrd_top = JSON.parse(localStorage.mrrd_top);
+                        for (var ii = 0; ii < mrrd_top.length; ii++) {
+                            var num_ss = 0;
+                            for (var tt = 0; tt <= ii; tt++) {
+                                num_ss += mrrd_top[tt];
+                            }
+                            if (num_ss >= mrrd_numtop && ii >= 1) {
+                                for (var pp = 0; pp < ii; pp++) {
+                                    mrrd_numtop -= mrrd_top[pp];
+                                }
+                                break;
+                            } else if (num_ss >= mrrd_numtop && ii == 0) {
+                                break;
+                            }
+                        }
+
+                        div.innerHTML = '<div class="lbnr_sz">今日热点 🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
+
                         div.addEventListener('click', function(e) {
                             so_ssk.value = this.querySelector('.lbnr_sz2').innerText;
                             so_anniu.click();
@@ -3609,7 +3628,7 @@ shezhi_rgb_qbcz.addEventListener('click', function(e) {
 
 
 // 每日热点API
-function ssrd(url_s) {
+function ssrd(url_s, num) {
     fetch(url_s)
         .then(response => {
             if (!response.ok) {
@@ -3632,26 +3651,47 @@ function ssrd(url_s) {
             }
             // 打印names数组
             var mrrd2 = mrrd.concat(names2);
-            console.log(names2, mrrd2);
             localStorage.mrrd = JSON.stringify(mrrd2);
+
+            var mrrd_top = JSON.parse(localStorage.mrrd_top);
+            mrrd_top.push(names2.length);
+            localStorage.mrrd_top = JSON.stringify(mrrd_top);
+
+            console.error('抓取成功 ' + names2.length + ' 条 ( 今日热点 ' + num + ' )');
         })
         .catch(error => {
-            console.error('您的抓取操作出现了问题 ', error);
-            Sku_tctx('您的抓取操作出现了问题 ( 今日热点 )');
+            console.error('您的抓取操作出现了问题 ( 今日热点 ' + num + ' )');
         });
 }
 
-if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 60) || localStorage.mrrd_sxsj == 0) {
+mrrd_dsq = null;
+if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5) || localStorage.mrrd_sxsj == 0) {
     localStorage.mrrd_sxsj = +new Date();
     localStorage.mrrd = '[]';
-    ssrd('https://tenapi.cn/v2/douyinhot');
-    ssrd('https://tenapi.cn/v2/baiduhot');
-    ssrd('https://tenapi.cn/v2/weibohot');
-    ssrd('https://tenapi.cn/v2/zhihuhot');
-    ssrd('https://tenapi.cn/v2/bilihot');
-    ssrd('https://tenapi.cn/v2/toutiaohot');
-    ssrd('https://tenapi.cn/v2/toutiaohotnew');
+    localStorage.mrrd_top = '[]'
+    var mrrd_asd = 0;
     mryy_s();
+    mrrd_dsq = setInterval(function() {
+        mrrd_asd++;
+        if (mrrd_asd == 1) {
+            ssrd('https://tenapi.cn/v2/douyinhot', '1');
+        } else if (mrrd_asd == 2) {
+            ssrd('https://tenapi.cn/v2/baiduhot', '2');
+        } else if (mrrd_asd == 3) {
+            ssrd('https://tenapi.cn/v2/weibohot', '3');
+        } else if (mrrd_asd == 4) {
+            ssrd('https://tenapi.cn/v2/zhihuhot', '4');
+        } else if (mrrd_asd == 5) {
+            ssrd('https://tenapi.cn/v2/bilihot', '5');
+        } else if (mrrd_asd == 6) {
+            ssrd('https://tenapi.cn/v2/toutiaohot', '6');
+        } else if (mrrd_asd == 7) {
+            ssrd('https://tenapi.cn/v2/toutiaohotnew', '7');
+        } else {
+            mrrd_asd = 0;
+            clearInterval(mrrd_dsq);
+        }
+    }, 1000);
 }
 
 // 每日一言
@@ -3671,16 +3711,16 @@ function mryy_s() {
             return response.text();
         })
         .then(data => {
+            console.error('抓取成功 ( 每日一言 )');
             // 处理返回的数据
             mryy.innerText = data;
             localStorage.mryy = data;
         })
         .catch(error => {
-            console.error('您的抓取操作出现了问题 ', error);
+            console.error('您的抓取操作出现了问题 ( 每日一言 )');
             // 处理返回的数据
             mryy.innerText = '';
             localStorage.mryy = '';
-            Sku_tctx('您的抓取操作出现了问题 ( 每日一言 )');
         });
 }
 

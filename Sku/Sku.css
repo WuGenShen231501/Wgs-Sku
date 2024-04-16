@@ -833,6 +833,9 @@ html {
     .so_suo {
         right: 100px;
     }
+    .ssbqym {
+        right: 135px !important;
+    }
     .top_dhl {
         left: 50px;
     }
@@ -850,6 +853,9 @@ html {
 @media screen and (max-width: 890px) {
     .so_suo {
         display: none;
+    }
+    .ssbqym {
+        display: none !important;
     }
     .nrmaxs1 {
         transform: scale(0.5);

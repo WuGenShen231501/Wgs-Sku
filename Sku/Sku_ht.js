@@ -267,6 +267,9 @@ if (localStorage.mrrd == undefined) {
 if (localStorage.mrrd_sxsj == undefined) {
     localStorage.mrrd_sxsj = 0;
 }
+if (localStorage.mrrd_top == undefined) {
+    localStorage.mrrd_top = '[]';
+}
 // 每日一言
 if (localStorage.mryy == undefined) {
     localStorage.mryy = '';
