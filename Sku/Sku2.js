@@ -851,7 +851,6 @@ lian_jie_r2 = document.querySelector('.lian_jie_r2');
 lian_jie_ssk = document.querySelector('.lian_jie_ssk');
 i_lian_jie_ss_tb = document.querySelector('.i_lian_jie_ss_tb');
 i_lian_jie_ss_tb.addEventListener('click', function() {
-    console.clear();
     if (lian_jie_ssk.value !== '') {
         lian_jie_r.style.display = 'none';
         lian_jie_l.style.display = 'none';

@@ -2806,7 +2806,7 @@ function sy_lbnr_hs() {
                             }
                         }
 
-                        div.innerHTML = '<div class="lbnr_sz">今日热点 🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
+                        div.innerHTML = '<div class="lbnr_sz">今日热点🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
 
                         div.addEventListener('click', function(e) {
                             so_ssk.value = this.querySelector('.lbnr_sz2').innerText;
@@ -3547,7 +3547,7 @@ for (var i = 0; i < rgb_name.length; i++) {
     var divs = document.createElement('div');
 
     divs.className = 'grb_j_s';
-    divs.innerHTML = '<div class="grb_j_grb" style="background-color: #' + rgb_ys[i] + ';"></div><div class="grb_j_grb2" style="background-color: #' + rgb_ys[i] + ';"></div><div class="grb_j_grbname">' + rgb_ys[i] + '</div><div class="grb_j_name">' + rgb_name[i] + '</div>';
+    divs.innerHTML = '<div class="grb_j_grb" style="background-color: #' + rgb_ys[i] + ';"></div><div class="grb_j_grb2" style="background-color: #' + rgb_ys[i] + ';"></div><div class="grb_j_grbname">#' + rgb_ys[i] + '</div><div class="grb_j_name">' + rgb_name[i] + '</div>';
     divs.addEventListener('click', function(e) {
         if (rgbj_y_fxk_zt_sf == 1) {
             localStorage.zi_ti_color = RGBToHex(this.querySelector('.grb_j_grb').style.backgroundColor);
@@ -3657,15 +3657,16 @@ function ssrd(url_s, num) {
             mrrd_top.push(names2.length);
             localStorage.mrrd_top = JSON.stringify(mrrd_top);
 
-            console.error('抓取成功 ' + names2.length + ' 条 ( 今日热点 ' + num + ' )');
+            console.log('抓取成功 ' + names2.length + ' 条 ( 今日热点 ' + num + ' )');
         })
         .catch(error => {
-            console.error('您的抓取操作出现了问题 ( 今日热点 ' + num + ' )');
+            console.log('您的抓取操作出现了问题 ( 今日热点 ' + num + ' )');
         });
 }
 
 mrrd_dsq = null;
-if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5) || localStorage.mrrd_sxsj == 0) {
+
+function mrrd_sx() {
     localStorage.mrrd_sxsj = +new Date();
     localStorage.mrrd = '[]';
     localStorage.mrrd_top = '[]'
@@ -3694,6 +3695,15 @@ if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5) || localStorage.
     }, 1000);
 }
 
+if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5) || localStorage.mrrd_sxsj == 0) {
+    mrrd_sx()
+}
+
+setInterval(function() {
+    mrrd_sx();
+}, (1000 * 60 * 5));
+
+
 // 每日一言
 var mryy = document.querySelector('.mryy');
 mryy.innerText = localStorage.mryy;
@@ -3702,7 +3712,13 @@ if (localStorage.mryy == '') {
 }
 
 function mryy_s() {
-    fetch('https://tenapi.cn/v2/yiyan')
+    fetch('https://tenapi.cn/v2/yiyan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'format=json'
+        })
         .then(response => {
             if (!response.ok) {
                 Sku_tctx('网络响应不正常 !');
@@ -3711,14 +3727,24 @@ function mryy_s() {
             return response.text();
         })
         .then(data => {
-            console.error('抓取成功 ( 每日一言 )');
+            console.log('抓取成功 ( 每日一言 )');
+            var data2 = JSON.parse(data);
             // 处理返回的数据
-            mryy.innerText = data;
-            localStorage.mryy = data;
+            var mymj = data2.data.hitokoto[data2.data.hitokoto.length - 1] == '。' ? data2.data.hitokoto.substring(0, data2.data.hitokoto.length - 1) : data2.data.hitokoto;
+            if (data2.data.source !== '') {
+                mryy.innerText = mymj + ' —— ' + data2.data.source;
+                localStorage.mryy = mymj + ' —— ' + data2.data.source;
+            } else if (data2.data.source == '' && data2.data.author !== '') {
+                mryy.innerText = mymj + ' —— ' + data2.data.author;
+                localStorage.mryy = mymj + ' —— ' + data2.data.author;
+            } else if (data2.data.source == '' && data2.data.author == '') {
+                mryy.innerText = mymj;
+                localStorage.mryy = mymj;
+            }
         })
         .catch(error => {
-            console.error('您的抓取操作出现了问题 ( 每日一言 )');
-            // 处理返回的数据
+            console.log('您的抓取操作出现了问题 ( 每日一言 )');
+            处理返回的数据
             mryy.innerText = '';
             localStorage.mryy = '';
         });

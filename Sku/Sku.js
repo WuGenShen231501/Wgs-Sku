@@ -5,7 +5,7 @@ function Sku_tsy(num) {
     sku_tsy[num].play();
 }
 
-var shui_you_nc = ['mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
+var shui_you_nc = ['mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 // 保护localStorage值
 window.addEventListener('storage', function(event) {
     console.clear();
@@ -34,6 +34,9 @@ window.addEventListener('storage', function(event) {
             console.log('保护后的值:' + localStorage.getItem(`${event.key}`));
 
             Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做!');
+
+            window.close();
+            setTimeout(function() { location.replace('https://cn.bing.com/'); });
         }
     }
 });
@@ -258,32 +261,7 @@ so_anniu.addEventListener('click', function() {
             localStorage.lsjl = JSON.stringify(xlsjl);
             Sku_tctx('已添 ' + rsjl2.length + ' 条无重复搜索记录');
         } else if (so_ssk.value == 'wugenshen') {
-            localStorage.mrrd_sxsj = +new Date();
-            localStorage.mrrd = '[]';
-            localStorage.mrrd_top = '[]'
-            var mrrd_asd = 0;
-            mryy_s();
-            mrrd_dsq = setInterval(function() {
-                mrrd_asd++;
-                if (mrrd_asd == 1) {
-                    ssrd('https://tenapi.cn/v2/douyinhot', '1');
-                } else if (mrrd_asd == 2) {
-                    ssrd('https://tenapi.cn/v2/baiduhot', '2');
-                } else if (mrrd_asd == 3) {
-                    ssrd('https://tenapi.cn/v2/weibohot', '3');
-                } else if (mrrd_asd == 4) {
-                    ssrd('https://tenapi.cn/v2/zhihuhot', '4');
-                } else if (mrrd_asd == 5) {
-                    ssrd('https://tenapi.cn/v2/bilihot', '5');
-                } else if (mrrd_asd == 6) {
-                    ssrd('https://tenapi.cn/v2/toutiaohot', '6');
-                } else if (mrrd_asd == 7) {
-                    ssrd('https://tenapi.cn/v2/toutiaohotnew', '7');
-                } else {
-                    mrrd_asd = 0;
-                    clearInterval(mrrd_dsq);
-                }
-            }, 1000);
+            mrrd_sx();
         } else {
             // 不是直接网址时搜索
             if (so_yq.innerHTML == '百度') {
@@ -749,7 +727,7 @@ setInterval(function() {
     if (max_ncxs) { max_ncxs.innerHTML = `Free Memory:${remainingPercent}%`; }
     var gywm_nczbl = document.querySelector('.gywm_nczbl');
     if (gywm_nczbl) { gywm_nczbl.innerHTML = `${remainingPercent2} %`; }
-}, 1000);
+}, 5000);
 
 
 // 网络状态
@@ -773,7 +751,7 @@ setInterval(function() {
         sku_wlyc.style.display = 'none';
         sku_wlzt.style.bottom = '10px';
     }
-}, 1000);
+}, 5000);
 
 window.addEventListener('unhandledrejection', function(event) {
     console.error('捕获到未处理的Promise拒绝:', event.reason);
