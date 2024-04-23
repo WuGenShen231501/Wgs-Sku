@@ -34,7 +34,7 @@ function WGS_zfc_jiemi(nr, key) {
     return decrypted;
 }
 
-// WGS_wenbengundon(class,首行缩进)
+// WGS_wenbengundon(class, 首行缩进)
 function WGS_wenbengundon(qwe, asd) {
     if (asd == undefined) { asd = 0; }
     var wb = document.querySelectorAll(qwe);
@@ -55,6 +55,7 @@ function WGS_wenbengundon(qwe, asd) {
         });
     }
 }
+
 
 // 弹窗提醒
 function Sku_tctx(zdysx1) {
@@ -454,7 +455,7 @@ function zi_ti_color_s() {
     style_s3.innerHTML = '.sy_dwck_ym,.sy_dwck,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.top_tou_xian_sc,.drym_min,.wl_max,.bzsz_tj_ym,.sy_djs_tjym,.sy_djs,.liu_yan_sxuan_div,.liu_yan_mao_bo_li,.lj_xg_tj,.dhr_xg_tj,.lian_jie_l_max,.lian_jie_r_max,.topmax,.shezhi_max,.music_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);} .input_djs_tjym_time_s2,.input_djs_tjym_sj,.input_djs_tjym_time_s,.djs_tjym_qr,.mblxg,.input_drmm_mm,.daoru_ym_sc,.drmm_mm_qr,.drym_tx,.imput_drym_mm,.sy_zpzs_jr,.sy_zpzs_tj,.sy_zp_tj_anniu,.input_sy_zp_tj,.sy_hddb,.input_ji_ru_srk,.input_ji_ru_ss,.bfsz_zdbf_qrk,.sy_lbt_b {border-color:' + localStorage.zi_ti_color + ';} .input_djs_tjym_time_s2,.input_drmm_mm,.daoru_ym_sc,.imput_drym_mm,.input_sy_zp_tj,.input_ji_ru_srk,.input_ji_ru_ss {color:' + localStorage.zi_ti_color + ';} .sy_zp_tj_anniu:hover,.drmm_mm_qr:hover,.djs_tjym_qr:hover,.sy_zpzs_tj:hover,.sy_zpzs_jr:hover,.sy_dwck_s:hover,.daoru_ym_bendi_click:hover {color:' + localStorage.zi_ti_click_color + ';border-color:' + localStorage.zi_ti_click_color + ';} .drym_tx {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';} .sy_dwck {color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .sy_dwck_s {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';} .liu_yan_z a, .lian_jie_ssk {color:' + localStorage.zi_ti_color + ';} .liu_yan_z a:hover {color:' + localStorage.zi_ti_click_color + ';} .daoru_ym_dc,.daoru_ym_dr,.daoru_ym_bendi,.daorubendi_s_sj,.daorubendi_s_yy,.daorubendi_s_cs {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.input_tmd{background: -webkit-linear-gradient(' + localStorage.zi_ti_color + ', ' + localStorage.zi_ti_color + ') no-repeat, none;border: 1px solid ' + localStorage.zi_ti_color + ';}.input_tmd::-webkit-slider-thumb {background: ' + localStorage.zi_ti_color + ';}.music_s {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';}';
 
     var style_s5 = document.querySelector('.style_s5');
-    style_s5.innerHTML = '.music_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.1) + ';}.music_bottom_hk {background: -webkit-linear-gradient(' + RGB_zhq(localStorage.zi_ti_color) + ', ' + RGB_zhq(localStorage.zi_ti_color) + ') no-repeat,' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';}.music_bottom_hk::-webkit-slider-thumb { background: ' + RGB_zhq(localStorage.zi_ti_color) + ';} .music_boyyom_tj_ym,.Sku_tcjg_Max,.sy_lbt,.sy_djs_txl,.sy_nrs_t_span,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);}.music_tjym_qd:hover {border-color:' + localStorage.zi_ti_click_color + ';color:' + localStorage.zi_ti_click_color + ';}.music_tjym_mz,.music_tjym_url,.ssjl_s{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lian_jie_l2_sy{background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.ssbq_s {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.ssbq_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .daoru_ym_jmdc{background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .su_biao{color:' + localStorage.zi_ti_color + ';}.daoru_ym_my{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lbnr_ljbz{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.lbnr_ljxz,.lbnr_ljdz,.lbnr_max {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lbnr_ljxz:hover,.lbnr_ljdz:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.sy_zpzs_kaiguan,.lbnr_ljtp{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.sy_zpzs_kaiguan_ts{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.WGS_HTSP_TJ,.shezhi_sp_xp_min2,.htsp_qjss_jdt,.lj_zcb_name,.lj_zcb_dizhi,.lj_zcb_qr {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.htsp_qjss_jdt2 {background-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lj_lj_t:hover,.lj_lj_b:hover { box-shadow: 0px 0px 30px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.3) + ';}.lj_max:hover { box-shadow: inset 0px -17px 15px -20px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.8) + ';}';
+    style_s5.innerHTML = '.music_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.1) + ';}.music_bottom_hk {background: -webkit-linear-gradient(' + RGB_zhq(localStorage.zi_ti_color) + ', ' + RGB_zhq(localStorage.zi_ti_color) + ') no-repeat,' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';}.music_bottom_hk::-webkit-slider-thumb { background: ' + RGB_zhq(localStorage.zi_ti_color) + ';} .music_boyyom_tj_ym,.Sku_tcjg_Max,.sy_lbt,.sy_djs_txl,.sy_nrs_t_span,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);}.music_tjym_qd:hover {border-color:' + localStorage.zi_ti_click_color + ';color:' + localStorage.zi_ti_click_color + ';}.music_tjym_mz,.music_tjym_url,.ssjl_s{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lian_jie_l2_sy{background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.ssbq_s {border-bottom-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ' !important;}.ssbq_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .daoru_ym_jmdc{background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .su_biao{color:' + localStorage.zi_ti_color + ';}.daoru_ym_my{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lbnr_ljbz{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.lbnr_ljxz,.lbnr_ljdz,.lbnr_max {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lbnr_ljxz:hover,.lbnr_ljdz:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.sy_zpzs_kaiguan,.lbnr_ljtp{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.sy_zpzs_kaiguan_ts{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.WGS_HTSP_TJ,.shezhi_sp_xp_min2,.htsp_qjss_jdt,.lj_zcb_name,.lj_zcb_dizhi,.lj_zcb_qr {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.htsp_qjss_jdt2 {background-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lj_lj_t:hover,.lj_lj_b:hover { box-shadow: 0px 0px 30px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.3) + ';}.lj_max:hover { box-shadow: inset 0px -17px 15px -20px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.8) + ';}';
 
     zi_ti_color_bh();
 }
@@ -2152,14 +2153,14 @@ so_ssk.addEventListener('input', function(e) {
     if (so_ssk.value !== '') {
         var mrrd = JSON.parse(localStorage.mrrd);
         var lsjl2_qjbl = [];
-        var lsjl = JSON.parse(localStorage.lsjl);
+        var lsjl2 = JSON.parse(localStorage.lsjl);
         for (var i = 0; i < mrrd.length; i++) {
-            if (lsjl.indexOf(mrrd[i]) == -1) {
+            if (lsjl2.indexOf(mrrd[i]) == -1) {
                 lsjl2_qjbl.push(mrrd[i]);
             }
         }
 
-        var lsjl = lsjl.concat(lsjl2_qjbl);
+        var lsjl = lsjl2.concat(lsjl2_qjbl);
 
         var qrgs = 0;
         lsjl_jp_dys = -1;
@@ -2176,9 +2177,21 @@ so_ssk.addEventListener('input', function(e) {
                     so_ssk.value = this.innerText;
                     so_anniu.click();
                 });
+                div.style.borderBottom = '1px solid';
 
                 ssbqym_min.appendChild(div);
+
+                if (i == (lsjl.length - 1)) {
+                    console.log(div);
+                }
             }
+            if (i == lsjl2.length - 1) {
+                var syjl = document.querySelectorAll('.ssbq_s');
+                if (syjl.length !== 0) {
+                    syjl[syjl.length - 1].style.borderBottom = '2px dashed';
+                }
+            }
+
             if (qrgs == 100) { break; }
         }
         // 显示页面
@@ -2191,6 +2204,9 @@ so_ssk.addEventListener('input', function(e) {
 
             WGS_wenbengundon('.ssbq_s', 9);
         }
+
+        // 关键词搜索
+        ss_gjcss();
     } else {
         var mrrd = JSON.parse(localStorage.mrrd);
         var lsjl2_qjbl = [];
@@ -2217,6 +2233,11 @@ so_ssk.addEventListener('input', function(e) {
                 so_ssk.value = this.innerText;
                 so_anniu.click();
             });
+            if (i == 48) {
+                div.style.borderBottom = '2px dashed';
+            } else {
+                div.style.borderBottom = '1px solid';
+            }
 
             ssbqym_min.appendChild(div);
 
@@ -2238,14 +2259,14 @@ so_ssk.addEventListener('focus', function(e) {
     if (so_ssk.value !== '') {
         var mrrd = JSON.parse(localStorage.mrrd);
         var lsjl2_qjbl = [];
-        var lsjl = JSON.parse(localStorage.lsjl);
+        var lsjl2 = JSON.parse(localStorage.lsjl);
         for (var i = 0; i < mrrd.length; i++) {
-            if (lsjl.indexOf(mrrd[i]) == -1) {
+            if (lsjl2.indexOf(mrrd[i]) == -1) {
                 lsjl2_qjbl.push(mrrd[i]);
             }
         }
 
-        var lsjl = lsjl.concat(lsjl2_qjbl);
+        var lsjl = lsjl2.concat(lsjl2_qjbl);
 
         var qrgs = 0;
         lsjl_jp_dys = -1;
@@ -2262,22 +2283,36 @@ so_ssk.addEventListener('focus', function(e) {
                     so_ssk.value = this.innerText;
                     so_anniu.click();
                 });
+                div.style.borderBottom = '1px solid';
 
                 ssbqym_min.appendChild(div);
+
+                if (i == (lsjl.length - 1)) {
+                    console.log(div);
+                }
             }
+            if (i == lsjl2.length - 1) {
+                var syjl = document.querySelectorAll('.ssbq_s');
+                if (syjl.length !== 0) {
+                    syjl[syjl.length - 1].style.borderBottom = '2px dashed';
+                }
+            }
+
             if (qrgs == 100) { break; }
         }
         // 显示页面
         if (qrgs == 0) {
             ssbqym.style.display = 'none';
         } else {
-            so_yq_s.style.display = 'none';
             ssbqym.style.display = 'block';
             // 显示最上面
             ssbqym_max.scroll(0, 0);
 
             WGS_wenbengundon('.ssbq_s', 9);
         }
+
+        // 关键词搜索
+        ss_gjcss();
     } else {
         var mrrd = JSON.parse(localStorage.mrrd);
         var lsjl2_qjbl = [];
@@ -2304,6 +2339,11 @@ so_ssk.addEventListener('focus', function(e) {
                 so_ssk.value = this.innerText;
                 so_anniu.click();
             });
+            if (i == 48) {
+                div.style.borderBottom = '2px dashed';
+            } else {
+                div.style.borderBottom = '1px solid';
+            }
 
             ssbqym_min.appendChild(div);
 
@@ -3746,10 +3786,79 @@ function mryy_s() {
         })
         .catch(error => {
             console.log('您的抓取操作出现了问题 ( 每日一言 )');
-            处理返回的数据
+            // 处理返回的数据
             mryy.innerText = '';
             localStorage.mryy = '';
         });
+}
+
+
+
+
+
+// 搜索关键词
+var ss_gjcss_ysq = undefined;
+
+function ss_gjcss() {
+    var API_dz = ['https://suggestion.baidu.com/su?wd=', 'https://suggest.taobao.com/sug?code=utf-8&q=', 'https://api.bing.com/qsonhs.aspx?type=cb&q=', 'https://sug.so.360.cn/suggest?encodein=utf-8&encodeout=utf-8&format=json&word='];
+
+    ss_gjcss_ysq ? clearTimeout(ss_gjcss_ysq) : undefined;
+    ss_gjcss_ysq = setTimeout(function() {
+        if (so_ssk.value !== '') {
+            function API_dz_syff(gjc, ff, ff2) {
+                //定义回调函数
+                window.baidu = {
+                        sug: function(json) {
+                            if (ff2) {
+                                tjc_sz = json[`${ff}`][`${ff2}`];
+                            } else if (ff) {
+                                tjc_sz = json[`${ff}`];
+                            }
+
+                            // 最后一排虚线
+                            if (tjc_sz.length !== 0) {
+                                var syjl = document.querySelectorAll('.ssbq_s');
+                                if (syjl.length !== 0) {
+                                    syjl[syjl.length - 1].style.borderBottom = '2px dashed';
+                                }
+                            }
+
+                            var qrgs = 0;
+                            for (var i = 0; i < tjc_sz.length; i++) {
+                                qrgs++;
+                                var div = document.createElement('div');
+                                div.className = 'ssbq_s ssbq_s2';
+                                div.innerText = tjc_sz[i];
+                                div.addEventListener('click', function(e) {
+                                    so_ssk.value = this.innerText;
+                                    so_anniu.click();
+                                });
+                                div.style.borderBottom = '1px solid';
+
+                                ssbqym_min.appendChild(div);
+
+                                if (qrgs == 100) { break; }
+                            }
+
+                            // 显示页面
+                            if (qrgs !== 0) {
+                                so_yq_s.style.display = 'none';
+                                ssbqym.style.display = 'block';
+
+                                WGS_wenbengundon('.ssbq_s2', 9);
+                            }
+
+                        }
+                    }
+                    //动态添加JS脚本
+                var script = document.createElement("script");
+                script.src = gjc;
+                document.getElementsByTagName("head")[0].appendChild(script);
+            }
+
+            API_dz_syff(API_dz[0] + so_ssk.value, 's');
+        }
+    }, 1000);
 }
 
 
