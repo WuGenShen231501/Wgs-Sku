@@ -822,6 +822,9 @@ function sku_gjsp() {
         // 时间戳0
         localStorage.dr_mmdr_drsj = 0;
 
+        // 模拟点击
+        drym_max.click();
+
         Sku_tctx('无操作 ' + localStorage.sku_xp_sp + ' 分钟 自动锁定');
 
     } else if (localStorage.dr_mm == '' && sd_dtnr_max.style.display == 'none') {
@@ -874,3 +877,24 @@ shezhi_sp_xp_min2.addEventListener('blur', function(e) {
         shezhi_sp_xp_min2.value = localStorage.sku_xp_sp;
     }
 });
+
+
+
+// 相互关闭
+// 点击的,不需要隐藏的...
+function xhgb_dx(class1, class2, class3) {
+    var xhgb_dx = ['so_yq_s', 'ssbqym', 'music_ym', 'top_tou_xian_sc', 'lj_xg_tj', 'dhr_xg_tj'];
+    var dj = document.querySelector('.' + class1);
+    dj.addEventListener('click', function(e) {
+        for (var i = 0; i < xhgb_dx.length; i++) {
+            if (xhgb_dx[i] !== class2 && xhgb_dx[i] !== class3) {
+                document.querySelector('.' + xhgb_dx[i]).style.display = 'none';
+            }
+        }
+    });
+}
+xhgb_dx('so_ssk', 'ssbqym');
+xhgb_dx('so_yq', 'so_yq_s');
+xhgb_dx('i_music_tb', 'music_ym');
+xhgb_dx('top_tou_xian', 'top_tou_xian_sc');
+xhgb_dx('dhr_shezhi_gn_tj', 'lj_xg_tj', 'dhr_xg_tj');

@@ -314,6 +314,10 @@
     opacity: 0.2;
 }
 
+.ji_ru_ssk_max:hover {
+    opacity: 1 !important;
+}
+
 .input_ji_ru_srk {
     position: absolute;
     width: 630px;

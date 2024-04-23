@@ -3660,43 +3660,48 @@ function ssrd(url_s, num) {
             console.log('抓取成功 ' + names2.length + ' 条 ( 今日热点 ' + num + ' )');
         })
         .catch(error => {
-            console.log('您的抓取操作出现了问题 ( 今日热点 ' + num + ' )');
+            console.log('您的抓取操作出现了问题 ( 今日热点 ' + num + ' )' + '\n' + error);
         });
 }
 
 mrrd_dsq = null;
+var mrrd_fzlx = 0;
 
 function mrrd_sx() {
-    localStorage.mrrd_sxsj = +new Date();
-    localStorage.mrrd = '[]';
-    localStorage.mrrd_top = '[]'
-    var mrrd_asd = 0;
-    mryy_s();
-    mrrd_dsq = setInterval(function() {
-        mrrd_asd++;
-        if (mrrd_asd == 1) {
-            ssrd('https://tenapi.cn/v2/douyinhot', '1');
-        } else if (mrrd_asd == 2) {
-            ssrd('https://tenapi.cn/v2/baiduhot', '2');
-        } else if (mrrd_asd == 3) {
-            ssrd('https://tenapi.cn/v2/weibohot', '3');
-        } else if (mrrd_asd == 4) {
-            ssrd('https://tenapi.cn/v2/zhihuhot', '4');
-        } else if (mrrd_asd == 5) {
-            ssrd('https://tenapi.cn/v2/bilihot', '5');
-        } else if (mrrd_asd == 6) {
-            ssrd('https://tenapi.cn/v2/toutiaohot', '6');
-        } else if (mrrd_asd == 7) {
-            ssrd('https://tenapi.cn/v2/toutiaohotnew', '7');
-        } else {
-            mrrd_asd = 0;
-            clearInterval(mrrd_dsq);
-        }
-    }, 1000);
+    // 防止连续执行
+    if (mrrd_fzlx - (+new Date()) < -10000) {
+        mrrd_fzlx = +new Date();
+        localStorage.mrrd_sxsj = +new Date();
+        localStorage.mrrd = '[]';
+        localStorage.mrrd_top = '[]'
+        var mrrd_asd = 0;
+        mryy_s();
+        mrrd_dsq = setInterval(function() {
+            mrrd_asd++;
+            if (mrrd_asd == 1) {
+                ssrd('https://tenapi.cn/v2/douyinhot', '1');
+            } else if (mrrd_asd == 2) {
+                ssrd('https://tenapi.cn/v2/baiduhot', '2');
+            } else if (mrrd_asd == 3) {
+                ssrd('https://tenapi.cn/v2/weibohot', '3');
+            } else if (mrrd_asd == 4) {
+                ssrd('https://tenapi.cn/v2/zhihuhot', '4');
+            } else if (mrrd_asd == 5) {
+                ssrd('https://tenapi.cn/v2/bilihot', '5');
+            } else if (mrrd_asd == 6) {
+                ssrd('https://tenapi.cn/v2/toutiaohot', '6');
+            } else if (mrrd_asd == 7) {
+                ssrd('https://tenapi.cn/v2/toutiaohotnew', '7');
+            } else {
+                mrrd_asd = 0;
+                clearInterval(mrrd_dsq);
+            }
+        }, 1000);
+    }
 }
 
 if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5) || localStorage.mrrd_sxsj == 0) {
-    mrrd_sx()
+    mrrd_sx();
 }
 
 setInterval(function() {
@@ -3707,9 +3712,6 @@ setInterval(function() {
 // 每日一言
 var mryy = document.querySelector('.mryy');
 mryy.innerText = localStorage.mryy;
-if (localStorage.mryy == '') {
-    mryy_s();
-}
 
 function mryy_s() {
     fetch('https://tenapi.cn/v2/yiyan', {

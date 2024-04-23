@@ -2314,6 +2314,9 @@ document.addEventListener('keydown', function(e) {
                 }
                 // 时间戳0
                 localStorage.dr_mmdr_drsj = 0;
+
+                // 模拟点击
+                drym_max.click();
             }
         }
     }
