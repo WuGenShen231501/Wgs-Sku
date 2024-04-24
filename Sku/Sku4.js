@@ -2162,6 +2162,7 @@ so_ssk.addEventListener('input', function(e) {
 
         var lsjl = lsjl2.concat(lsjl2_qjbl);
 
+        var ssjl_zuih = 0;
         var qrgs = 0;
         lsjl_jp_dys = -1;
         // 清除原有
@@ -2169,6 +2170,14 @@ so_ssk.addEventListener('input', function(e) {
         // 匹配添加
         for (var i = 0; i < lsjl.length; i++) {
             if (lsjl[i].indexOf(so_ssk.value) !== -1 && lsjl[i] !== so_ssk.value) {
+                if (i > lsjl2.length - 1 && ssjl_zuih == 0) {
+                    ssjl_zuih = 1;
+                    var syjl = document.querySelectorAll('.ssbq_s');
+                    if (syjl.length !== 0) {
+                        syjl[syjl.length - 1].style.borderBottom = '2px dashed';
+                    }
+                }
+
                 qrgs++;
                 var div = document.createElement('div');
                 div.className = 'ssbq_s';
@@ -2180,16 +2189,6 @@ so_ssk.addEventListener('input', function(e) {
                 div.style.borderBottom = '1px solid';
 
                 ssbqym_min.appendChild(div);
-
-                if (i == (lsjl.length - 1)) {
-                    console.log(div);
-                }
-            }
-            if (i == lsjl2.length - 1) {
-                var syjl = document.querySelectorAll('.ssbq_s');
-                if (syjl.length !== 0) {
-                    syjl[syjl.length - 1].style.borderBottom = '2px dashed';
-                }
             }
 
             if (qrgs == 100) { break; }
@@ -2268,6 +2267,7 @@ so_ssk.addEventListener('focus', function(e) {
 
         var lsjl = lsjl2.concat(lsjl2_qjbl);
 
+        var ssjl_zuih = 0;
         var qrgs = 0;
         lsjl_jp_dys = -1;
         // 清除原有
@@ -2275,6 +2275,14 @@ so_ssk.addEventListener('focus', function(e) {
         // 匹配添加
         for (var i = 0; i < lsjl.length; i++) {
             if (lsjl[i].indexOf(so_ssk.value) !== -1 && lsjl[i] !== so_ssk.value) {
+                if (i > lsjl2.length - 1 && ssjl_zuih == 0) {
+                    ssjl_zuih = 1;
+                    var syjl = document.querySelectorAll('.ssbq_s');
+                    if (syjl.length !== 0) {
+                        syjl[syjl.length - 1].style.borderBottom = '2px dashed';
+                    }
+                }
+
                 qrgs++;
                 var div = document.createElement('div');
                 div.className = 'ssbq_s';
@@ -2286,16 +2294,6 @@ so_ssk.addEventListener('focus', function(e) {
                 div.style.borderBottom = '1px solid';
 
                 ssbqym_min.appendChild(div);
-
-                if (i == (lsjl.length - 1)) {
-                    console.log(div);
-                }
-            }
-            if (i == lsjl2.length - 1) {
-                var syjl = document.querySelectorAll('.ssbq_s');
-                if (syjl.length !== 0) {
-                    syjl[syjl.length - 1].style.borderBottom = '2px dashed';
-                }
             }
 
             if (qrgs == 100) { break; }
@@ -3697,10 +3695,10 @@ function ssrd(url_s, num) {
             mrrd_top.push(names2.length);
             localStorage.mrrd_top = JSON.stringify(mrrd_top);
 
-            console.log('抓取成功 ' + names2.length + ' 条 ( 今日热点 ' + num + ' )');
+            console.log('抓取成功 ' + names2.length + ' 条 ( ' + num + ' )');
         })
         .catch(error => {
-            console.log('您的抓取操作出现了问题 ( 今日热点 ' + num + ' )' + '\n' + error);
+            console.log('您的抓取操作出现了问题 ( ' + num + ' )' + '\n' + error);
         });
 }
 
@@ -3719,19 +3717,19 @@ function mrrd_sx() {
         mrrd_dsq = setInterval(function() {
             mrrd_asd++;
             if (mrrd_asd == 1) {
-                ssrd('https://tenapi.cn/v2/douyinhot', '1');
+                ssrd('https://tenapi.cn/v2/douyinhot', '抖音');
             } else if (mrrd_asd == 2) {
-                ssrd('https://tenapi.cn/v2/baiduhot', '2');
+                ssrd('https://tenapi.cn/v2/baiduhot', '百度');
             } else if (mrrd_asd == 3) {
-                ssrd('https://tenapi.cn/v2/weibohot', '3');
+                ssrd('https://tenapi.cn/v2/weibohot', '微博');
             } else if (mrrd_asd == 4) {
-                ssrd('https://tenapi.cn/v2/zhihuhot', '4');
+                ssrd('https://tenapi.cn/v2/zhihuhot', '知乎');
             } else if (mrrd_asd == 5) {
-                ssrd('https://tenapi.cn/v2/bilihot', '5');
+                ssrd('https://tenapi.cn/v2/bilihot', '哔哩');
             } else if (mrrd_asd == 6) {
-                ssrd('https://tenapi.cn/v2/toutiaohot', '6');
+                ssrd('https://tenapi.cn/v2/toutiaohot', '头条');
             } else if (mrrd_asd == 7) {
-                ssrd('https://tenapi.cn/v2/toutiaohotnew', '7');
+                ssrd('https://tenapi.cn/v2/toutiaohotnew', '头条2');
             } else {
                 mrrd_asd = 0;
                 clearInterval(mrrd_dsq);
@@ -3841,7 +3839,7 @@ function ss_gjcss() {
                             }
 
                             // 显示页面
-                            if (qrgs !== 0) {
+                            if (qrgs !== 0 && so_ssk_num == 1) {
                                 so_yq_s.style.display = 'none';
                                 ssbqym.style.display = 'block';
 
