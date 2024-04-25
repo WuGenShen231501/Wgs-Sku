@@ -270,6 +270,9 @@ if (localStorage.mrrd_sxsj == undefined) {
 if (localStorage.mrrd_top == undefined) {
     localStorage.mrrd_top = '[]';
 }
+if (localStorage.mrrd_name == undefined) {
+    localStorage.mrrd_name = '[]';
+}
 // 每日一言
 if (localStorage.mryy == undefined) {
     localStorage.mryy = '';

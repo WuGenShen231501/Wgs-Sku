@@ -2829,6 +2829,8 @@ function sy_lbnr_hs() {
 
                         var mrrd_numtop = sknr_sjs2 + 1;
                         var mrrd_top = JSON.parse(localStorage.mrrd_top);
+                        var i2 = 0;
+
                         for (var ii = 0; ii < mrrd_top.length; ii++) {
                             var num_ss = 0;
                             for (var tt = 0; tt <= ii; tt++) {
@@ -2838,13 +2840,17 @@ function sy_lbnr_hs() {
                                 for (var pp = 0; pp < ii; pp++) {
                                     mrrd_numtop -= mrrd_top[pp];
                                 }
+
+                                i2 = ii;
                                 break;
                             } else if (num_ss >= mrrd_numtop && ii == 0) {
+
+                                i2 = ii;
                                 break;
                             }
                         }
 
-                        div.innerHTML = '<div class="lbnr_sz">今日热点🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
+                        div.innerHTML = '<div class="lbnr_sz">' + JSON.parse(localStorage.mrrd_name)[i2] + '热点🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
 
                         div.addEventListener('click', function(e) {
                             so_ssk.value = this.querySelector('.lbnr_sz2').innerText;
@@ -3666,7 +3672,7 @@ shezhi_rgb_qbcz.addEventListener('click', function(e) {
 
 
 // 每日热点API
-function ssrd(url_s, num) {
+function ssrd(url_s, num, dx, dx2) {
     fetch(url_s)
         .then(response => {
             if (!response.ok) {
@@ -3680,10 +3686,15 @@ function ssrd(url_s, num) {
             var mrrd = JSON.parse(localStorage.mrrd);
             var mrrd_s_dx = JSON.parse(data);
             // 提取所有name到一个新数组
-            const names = mrrd_s_dx.data.map(item => item.name);
+            if (dx2) {
+                var names = mrrd_s_dx[`${dx}`].map(item => item[`${dx2}`]);
+            } else if (dx) {
+                var names = mrrd_s_dx[`${dx}`].map(item => item);
+            }
+
             var names2 = [];
             for (var i = 0; i < names.length; i++) {
-                if (mrrd.indexOf(names[i]) == -1) {
+                if (mrrd.indexOf(names[i]) == -1 && names2.indexOf(names[i]) == -1) {
                     names2.push(names[i]);
                 }
             }
@@ -3694,6 +3705,10 @@ function ssrd(url_s, num) {
             var mrrd_top = JSON.parse(localStorage.mrrd_top);
             mrrd_top.push(names2.length);
             localStorage.mrrd_top = JSON.stringify(mrrd_top);
+
+            var mrrd_name = JSON.parse(localStorage.mrrd_name);
+            mrrd_name.push(num);
+            localStorage.mrrd_name = JSON.stringify(mrrd_name);
 
             console.log('抓取成功 ' + names2.length + ' 条 ( ' + num + ' )');
         })
@@ -3711,25 +3726,42 @@ function mrrd_sx() {
         mrrd_fzlx = +new Date();
         localStorage.mrrd_sxsj = +new Date();
         localStorage.mrrd = '[]';
-        localStorage.mrrd_top = '[]'
+        localStorage.mrrd_top = '[]';
+        localStorage.mrrd_name = '[]';
         var mrrd_asd = 0;
         mryy_s();
         mrrd_dsq = setInterval(function() {
             mrrd_asd++;
             if (mrrd_asd == 1) {
-                ssrd('https://tenapi.cn/v2/douyinhot', '抖音');
+                ssrd('https://tenapi.cn/v2/douyinhot', '抖音', 'data', 'name');
             } else if (mrrd_asd == 2) {
-                ssrd('https://tenapi.cn/v2/baiduhot', '百度');
+                ssrd('https://tenapi.cn/v2/baiduhot', '百度', 'data', 'name');
             } else if (mrrd_asd == 3) {
-                ssrd('https://tenapi.cn/v2/weibohot', '微博');
+                ssrd('https://tenapi.cn/v2/weibohot', '微博', 'data', 'name');
             } else if (mrrd_asd == 4) {
-                ssrd('https://tenapi.cn/v2/zhihuhot', '知乎');
+                ssrd('https://tenapi.cn/v2/zhihuhot', '知乎', 'data', 'name');
             } else if (mrrd_asd == 5) {
-                ssrd('https://tenapi.cn/v2/bilihot', '哔哩');
+                ssrd('https://tenapi.cn/v2/bilihot', '哔哩', 'data', 'name');
             } else if (mrrd_asd == 6) {
-                ssrd('https://tenapi.cn/v2/toutiaohot', '头条');
+                ssrd('https://tenapi.cn/v2/toutiaohot', '头条', 'data', 'name');
             } else if (mrrd_asd == 7) {
-                ssrd('https://tenapi.cn/v2/toutiaohotnew', '头条2');
+                ssrd('https://tenapi.cn/v2/toutiaohotnew', '头闻', 'data', 'name');
+            } else if (mrrd_asd == 8) {
+                ssrd('https://api.andeer.top/API/hot_bky.php', '博客', 'data', 'title');
+            } else if (mrrd_asd == 9) {
+                ssrd('https://api.andeer.top/API/hot_tx.php', '腾讯', 'data', 'title');
+            } else if (mrrd_asd == 10) {
+                ssrd('https://api.andeer.top/API/hot_cs.php', 'CSDN', 'data', 'title');
+            } else if (mrrd_asd == 11) {
+                ssrd('https://api.andeer.top/API/hot_wy.php', '网易', 'data', 'titles');
+            } else if (mrrd_asd == 12) {
+                ssrd('https://api.vvhan.com/api/hotlist/huPu', '虎扑', 'data', 'title');
+            } else if (mrrd_asd == 13) {
+                ssrd('https://api.vvhan.com/api/hotlist/36Ke', '36氪', 'data', 'title');
+            } else if (mrrd_asd == 14) {
+                ssrd('https://api.vvhan.com/api/hotlist/huXiu', '虎嗅', 'data', 'title');
+            } else if (mrrd_asd == 15) {
+                ssrd('https://api.vvhan.com/api/hotlist/woShiPm', 'woShiPm', 'data', 'title');
             } else {
                 mrrd_asd = 0;
                 clearInterval(mrrd_dsq);

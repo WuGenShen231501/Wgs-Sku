@@ -1947,6 +1947,8 @@ function sy_lbnr_hs2(max_gs) {
 
                     var mrrd_numtop = sknr_sjs2 + 1;
                     var mrrd_top = JSON.parse(localStorage.mrrd_top);
+                    var i2 = 0;
+
                     for (var ii = 0; ii < mrrd_top.length; ii++) {
                         var num_ss = 0;
                         for (var tt = 0; tt <= ii; tt++) {
@@ -1956,13 +1958,17 @@ function sy_lbnr_hs2(max_gs) {
                             for (var pp = 0; pp < ii; pp++) {
                                 mrrd_numtop -= mrrd_top[pp];
                             }
+
+                            i2 = ii;
                             break;
                         } else if (num_ss >= mrrd_numtop && ii == 0) {
+
+                            i2 = ii;
                             break;
                         }
                     }
 
-                    div.innerHTML = '<div class="lbnr_sz">今日热点🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
+                    div.innerHTML = '<div class="lbnr_sz">' + JSON.parse(localStorage.mrrd_name)[i2] + '热点🔥TOP ' + mrrd_numtop + '</div><div class="lbnr_sz2">' + mrrd[sknr_sjs2] + '</div>';
 
                     div.addEventListener('click', function(e) {
                         so_ssk.value = this.querySelector('.lbnr_sz2').innerText;
