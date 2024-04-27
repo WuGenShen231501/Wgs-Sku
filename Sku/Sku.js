@@ -898,3 +898,4 @@ xhgb_dx('so_yq', 'so_yq_s');
 xhgb_dx('i_music_tb', 'music_ym');
 xhgb_dx('top_tou_xian', 'top_tou_xian_sc');
 xhgb_dx('dhr_shezhi_gn_tj', 'lj_xg_tj', 'dhr_xg_tj');
+xhgb_dx('dhr_shezhi_gn_cmm', 'lj_xg_tj', 'dhr_xg_tj');

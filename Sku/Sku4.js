@@ -3255,6 +3255,7 @@ var ssjl_max2 = document.querySelector('.ssjl_max2');
 var bizhi_gundon3 = document.querySelector('.bizhi_gundon3');
 shezhi_lszcb.addEventListener('click', function(e) {
     ssjl_min2.innerHTML = '';
+    lszcb_yjqk.style.display = 'none';
     shezhi_min.style.display = 'none';
     lszcb_ym.style.display = 'block';
     bizhi_gundon3.innerHTML = '↓';
@@ -3459,15 +3460,20 @@ lszcb_yjqk.addEventListener('click', function(e) {
 var zh_scanniu = document.querySelector('.zh_scanniu');
 zh_scanniu.addEventListener('click', function(e) {
     var lszcb_s_sc = document.querySelectorAll('.lszcb_s_sc');
+    var lszcb_yjqk = document.querySelector('.lszcb_yjqk');
     if (lszcb_s_sc.length != 0) {
         if (lszcb_s_sc[0].innerHTML == '删除注册表') {
             for (var i = 0; i < lszcb_s_sc.length; i++) {
                 lszcb_s_sc[i].innerHTML = '删除此历史';
             }
+
+            lszcb_yjqk.style.display = 'block';
         } else {
             for (var i = 0; i < lszcb_s_sc.length; i++) {
                 lszcb_s_sc[i].innerHTML = '删除注册表';
             }
+
+            lszcb_yjqk.style.display = 'none';
         }
     }
 });
@@ -3722,50 +3728,55 @@ var mrrd_fzlx = 0;
 
 function mrrd_sx() {
     // 防止连续执行
-    if (mrrd_fzlx - (+new Date()) < -10000) {
+    if (mrrd_fzlx - (+new Date()) < -60000) {
+        console.log('--------------------------------');
         mrrd_fzlx = +new Date();
         localStorage.mrrd_sxsj = +new Date();
         localStorage.mrrd = '[]';
         localStorage.mrrd_top = '[]';
         localStorage.mrrd_name = '[]';
+        mrrd_dsq ? clearInterval(mrrd_dsq) : undefined;
+
         var mrrd_asd = 0;
-        mryy_s();
         mrrd_dsq = setInterval(function() {
             mrrd_asd++;
+
             if (mrrd_asd == 1) {
-                ssrd('https://tenapi.cn/v2/douyinhot', '抖音', 'data', 'name');
+                mryy_s();
             } else if (mrrd_asd == 2) {
-                ssrd('https://tenapi.cn/v2/baiduhot', '百度', 'data', 'name');
+                ssrd('https://tenapi.cn/v2/douyinhot', '抖音', 'data', 'name');
             } else if (mrrd_asd == 3) {
-                ssrd('https://tenapi.cn/v2/weibohot', '微博', 'data', 'name');
+                ssrd('https://tenapi.cn/v2/baiduhot', '百度', 'data', 'name');
             } else if (mrrd_asd == 4) {
-                ssrd('https://tenapi.cn/v2/zhihuhot', '知乎', 'data', 'name');
+                ssrd('https://tenapi.cn/v2/weibohot', '微博', 'data', 'name');
             } else if (mrrd_asd == 5) {
-                ssrd('https://tenapi.cn/v2/bilihot', '哔哩', 'data', 'name');
+                ssrd('https://tenapi.cn/v2/zhihuhot', '知乎', 'data', 'name');
             } else if (mrrd_asd == 6) {
-                ssrd('https://tenapi.cn/v2/toutiaohot', '头条', 'data', 'name');
+                ssrd('https://tenapi.cn/v2/bilihot', '哔哩', 'data', 'name');
             } else if (mrrd_asd == 7) {
-                ssrd('https://tenapi.cn/v2/toutiaohotnew', '头闻', 'data', 'name');
+                ssrd('https://tenapi.cn/v2/toutiaohot', '头条', 'data', 'name');
             } else if (mrrd_asd == 8) {
-                ssrd('https://api.andeer.top/API/hot_bky.php', '博客', 'data', 'title');
+                ssrd('https://tenapi.cn/v2/toutiaohotnew', '头闻', 'data', 'name');
             } else if (mrrd_asd == 9) {
-                ssrd('https://api.andeer.top/API/hot_tx.php', '腾讯', 'data', 'title');
+                ssrd('https://api.andeer.top/API/hot_bky.php', '博客', 'data', 'title');
             } else if (mrrd_asd == 10) {
-                ssrd('https://api.andeer.top/API/hot_cs.php', 'CSDN', 'data', 'title');
+                ssrd('https://api.andeer.top/API/hot_tx.php', '腾讯', 'data', 'title');
             } else if (mrrd_asd == 11) {
-                ssrd('https://api.andeer.top/API/hot_wy.php', '网易', 'data', 'titles');
+                ssrd('https://api.andeer.top/API/hot_cs.php', 'CSDN', 'data', 'title');
             } else if (mrrd_asd == 12) {
-                ssrd('https://api.vvhan.com/api/hotlist/huPu', '虎扑', 'data', 'title');
+                ssrd('https://api.andeer.top/API/hot_wy.php', '网易', 'data', 'titles');
             } else if (mrrd_asd == 13) {
-                ssrd('https://api.vvhan.com/api/hotlist/36Ke', '36氪', 'data', 'title');
+                ssrd('https://api.vvhan.com/api/hotlist/huPu', '虎扑', 'data', 'title');
             } else if (mrrd_asd == 14) {
-                ssrd('https://api.vvhan.com/api/hotlist/huXiu', '虎嗅', 'data', 'title');
+                ssrd('https://api.vvhan.com/api/hotlist/36Ke', '36氪', 'data', 'title');
             } else if (mrrd_asd == 15) {
+                ssrd('https://api.vvhan.com/api/hotlist/huXiu', '虎嗅', 'data', 'title');
+            } else if (mrrd_asd == 16) {
                 ssrd('https://api.vvhan.com/api/hotlist/woShiPm', 'woShiPm', 'data', 'title');
             } else {
-                mrrd_asd = 0;
                 clearInterval(mrrd_dsq);
             }
+
         }, 1000);
     }
 }
@@ -3775,6 +3786,7 @@ if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5) || localStorage.
 }
 
 setInterval(function() {
+    console.log(new Date());
     mrrd_sx();
 }, (1000 * 60 * 5));
 

@@ -429,6 +429,7 @@ dhr_shezhi_gn_cmm = document.querySelector('.dhr_shezhi_gn_cmm');
 dhr_xg_tj = document.querySelector('.dhr_xg_tj');
 dhr_srk = document.querySelector('.dhr_srk');
 dhr_qrk = document.querySelector('.dhr_qrk');
+lj_xg_tj_bdtj = document.querySelector('.lj_xg_tj_bdtj');
 dhr_shezhi_gn_cmm.addEventListener('click', function(e) {
     e.stopPropagation();
     if (zhi_xian == '导航栏') {
@@ -462,6 +463,8 @@ dhr_shezhi_gn_cmm.addEventListener('click', function(e) {
         lj_xg_tj.style.display = 'block';
         lj_srk_tpid.select();
         lj_xg_tj_ipt_xzs = 0;
+
+        lj_xg_tj_bdtj.style.display = 'none';
     }
 });
 
@@ -502,7 +505,7 @@ for (var i = 0; i < 5; i++) {
 jl_qrk = document.querySelector('.jl_qrk');
 jl_qrk.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (lj_srk_mc.value !== '' && lj_srk_wzid.value !== '') {
+    if (lj_srk_mc.value !== '' && lj_srk_wzid.value !== '' && gong_neng == '链接修改') {
         if (lj_srk_xzid.value !== '') {
             lj_sz_s = [];
             for (var i = 0; i < 5; i++) {
@@ -539,7 +542,7 @@ jl_qrk.addEventListener('click', function(e) {
             // Sku-a转换href
             a_click_self();
         }
-    } else {
+    } else if ((lj_srk_mc.value == '' || lj_srk_wzid.value == '') && gong_neng == '链接修改') {
         lj_srk_mc.style.borderColor = '';
         lj_srk_wzid.style.borderColor = '';
         if (lj_srk_mc.value == '') {
@@ -579,7 +582,11 @@ dhr_shezhi_gn_tj.addEventListener('click', function(e) {
         lj_xg_tj.style.display = 'block';
         lj_srk_tpid.select();
         lj_xg_tj_ipt_xzs = 0;
-        jl_qrk.innerHTML = '添加<span class="jl_qrk_fh">↵</span>';
+        jl_qrk.innerHTML = '创建<span class="jl_qrk_fh">↵</span>';
+
+        lj_xg_tj_bdtj.style.display = 'block';
+        lj_xg_tj_bdtj.className = 'iconfont icon-fuzhi lj_xg_tj_bdtj';
+        lj_xg_tj_bdtj_wz.innerHTML = '匹配添加已有链接';
     }
 });
 
@@ -705,7 +712,10 @@ dhr_qrk.addEventListener('click', function(e) {
 jl_qrk = document.querySelector('.jl_qrk');
 jl_qrk.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (lj_srk_mc.value !== '' && lj_srk_wzid.value !== '') {
+    var lj_xg_tj_bdtj_wz = document.querySelector('.lj_xg_tj_bdtj_wz');
+
+    if (lj_srk_mc.value !== '' && lj_srk_wzid.value !== '' && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML == '匹配添加已有链接') {
+        console.log(1);
         if (lj_srk_xzid.value !== '') {
             lj_sz_s = [];
             for (var i = 0; i < 5; i++) {
@@ -779,7 +789,52 @@ jl_qrk.addEventListener('click', function(e) {
             a_click_self();
 
         }
-    } else {
+    } else if ((lj_srk_tpid.value !== '' || lj_srk_mc.value !== '' || lj_srk_zsm.value !== '' || lj_srk_wzid.value !== '' || lj_srk_xzid.value !== '') && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML !== '匹配添加已有链接') {
+        var lj_sz_s2 = [];
+        for (var i = 0; i < 5; i++) {
+            lj_sz_s2[i] = lj_xg_tj_ipt[i].value;
+        }
+
+        var dx = JSON.parse(localStorage.dhr_ym_dx);
+        var dx_l = Object.keys(dx);
+
+        // 隐藏
+        // ycgn_lj_xgk();
+        lj_xg_tj_bdtj_wz.innerHTML = '匹配添加已有链接';
+
+        var zg_lj = 0;
+        for (var o = 0; o < dx_l.length; o++) {
+            var dx_l_l = Object.keys(dx[dx_l[o]]);
+            for (var p = 0; p < dx_l_l.length; p++) {
+                var dx_l_l_l = dx[dx_l[o]][dx_l_l[p]];
+                var ji_shu = 0;
+                for (var i = 0; i < lj_sz_s2.length; i++) {
+                    if (lj_sz_s2[i] !== '' && dx_l_l_l[i]) {
+                        if (dx_l_l_l[i].includes(lj_sz_s2[i])) {
+                            ji_shu++;
+                        }
+                    } else if (lj_sz_s2[i] == '') {
+                        ji_shu++;
+                    }
+                }
+                if (ji_shu == 5) {
+                    lj_srk_tpid.value = dx_l_l_l[0];
+                    lj_srk_mc.value = dx_l_l_l[1];
+                    lj_srk_zsm.value = dx_l_l_l[2];
+                    lj_srk_wzid.value = dx_l_l_l[3];
+                    dx_l_l_l[4] ? lj_srk_xzid.value = dx_l_l_l[4] : lj_srk_xzid.value = '';
+
+                    jl_qrk.click();
+                    zg_lj++;
+                }
+            }
+        }
+
+        if (zg_lj == 0) {
+            Sku_tctx('未找到匹配的链接 !');
+        }
+
+    } else if ((lj_srk_mc.value == '' || lj_srk_wzid.value == '') && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML == '匹配添加已有链接') {
         lj_srk_mc.style.borderColor = '';
         lj_srk_wzid.style.borderColor = '';
         if (lj_srk_mc.value == '') {
@@ -788,6 +843,8 @@ jl_qrk.addEventListener('click', function(e) {
         if (lj_srk_wzid.value == '') {
             lj_srk_wzid.style.borderColor = 'red';
         }
+    } else if (lj_srk_tpid.value == '' && lj_srk_mc.value == '' && lj_srk_zsm.value == '' && lj_srk_wzid.value == '' && lj_srk_xzid.value == '' && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML !== '匹配添加已有链接') {
+        Sku_tctx('最少填写一个匹配项 !');
     }
 });
 
@@ -1099,7 +1156,6 @@ function handleDragEnd(e) {
 
     su_biao.style.transform = 'scale(1)';
 
-
     if (sfwuxiao == 0) {
         var parent = draggedItem.parentNode;
         var dragIndex = dropIndex2;
@@ -1356,6 +1412,28 @@ function a_click_self() {
 
 
 
+
+
+// 添加已有链接
+
+var lj_xg_tj_bdtj_wz = document.querySelector('.lj_xg_tj_bdtj_wz');
+lj_xg_tj_bdtj.addEventListener('click', function(e) {
+    if (lj_xg_tj_bdtj.className == 'iconfont icon-fuzhi lj_xg_tj_bdtj') {
+        lj_xg_tj_bdtj.className = 'iconfont icon-tianjia1 lj_xg_tj_bdtj';
+        lj_xg_tj_bdtj_wz.innerHTML = '创建新的链接';
+        jl_qrk.innerHTML = '匹配添加<span class="jl_qrk_fh">↵</span>';
+    } else {
+        lj_xg_tj_bdtj.className = 'iconfont icon-fuzhi lj_xg_tj_bdtj';
+        lj_xg_tj_bdtj_wz.innerHTML = '匹配添加已有链接';
+        jl_qrk.innerHTML = '创建<span class="jl_qrk_fh">↵</span>';
+    }
+    lj_srk_tpid.focus();
+});
+
+
+
+
+
 //全局事件
 dhr_xg_tj = document.querySelector('.dhr_xg_tj');
 dhr_shezhi_gn = document.querySelector('.dhr_shezhi_gn');
@@ -1407,7 +1485,7 @@ document.addEventListener('keydown', function(e) {
             } else if (lj_xg_tj_ipt_xzs == 3) {
                 lj_srk_wzid.blur();
                 lj_srk_xzid.select();
-            } else if (lj_xg_tj_ipt_xzs == 4) {
+            } else if (lj_xg_tj_ipt_xzs == 4 && lj_xg_tj_bdtj_wz.innerHTML == '匹配添加已有链接') {
                 jl_qrk.click();
             }
         }

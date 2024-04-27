@@ -655,6 +655,11 @@
         width: auto;
         height: auto;
         border-bottom: 1px solid;
+        opacity: 0.5;
+    }
+    
+    .daoru_ym_bendi_click:hover {
+        opacity: 1;
     }
     
     .daorubendi_max_hd {

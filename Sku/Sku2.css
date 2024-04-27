@@ -482,3 +482,30 @@
 .ls_zcb_kjj:hover {
     opacity: 1;
 }
+
+.lj_xg_tj_bdtj {
+    position: absolute;
+    bottom: 0px;
+    right: -20px;
+    opacity: 0.3;
+    font-size: 20px;
+}
+
+.lj_xg_tj_bdtj:hover {
+    transition: 0.2s;
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.lj_xg_tj_bdtj_wz {
+    display: none;
+    position: absolute;
+    left: 22px;
+    top: 2px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.lj_xg_tj_bdtj:hover>.lj_xg_tj_bdtj_wz {
+    display: block;
+}
