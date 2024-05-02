@@ -357,7 +357,11 @@
         border-radius: 5px;
         text-align: center;
         line-height: 48px;
-        margin: 25px;
+        margin: 25px 0 0 33px;
+    }
+    
+    .ztfg_s:hover {
+        transform: scale(1.1);
         transition: 0.2s;
     }
     
@@ -849,9 +853,9 @@
         height: 100px;
         top: 122px;
         left: calc(50% - 200px);
-        background-color: red;
         border-radius: 10px;
         z-index: 1;
+        backdrop-filter: blur(var(--mao_bo_li));
     }
     
     .daoru_ym_my {
@@ -1186,4 +1190,63 @@
     
     .shezhi_rgb_qbcz:hover {
         transform: scale(1.1);
+    }
+    
+    .dqzttj {
+        position: absolute;
+        border: 1px solid var(--zi_ti_color);
+        width: 112px;
+        height: 30px;
+        border-radius: 5px;
+        text-align: center;
+        right: 50px;
+        top: 10px;
+        line-height: 28px;
+        transition: 0.15s;
+    }
+    
+    .dqzttj:hover {
+        transform: scale(1.1);
+    }
+    
+    .shezhi_ym_max {
+        width: calc(100% + 70px);
+        height: 450px;
+        overflow-y: scroll;
+        padding-bottom: 25px;
+    }
+    
+    .ztfg_tj_ym {
+        position: absolute;
+        width: 400px;
+        height: 100px;
+        top: 122px;
+        left: calc(50% - 200px);
+        border-radius: 10px;
+        z-index: 1;
+        backdrop-filter: blur(var(--mao_bo_li));
+    }
+    
+    .ztfg_tj_ym_name {
+        position: absolute;
+        background-color: rgb(255, 255, 255, 0);
+        outline: none;
+        text-indent: 1em;
+        width: 350px;
+        height: 30px;
+        border: 0;
+        color: var(--zi_ti_color);
+        border-bottom: 1px solid var(--zi_ti_color);
+        left: 25px;
+        top: 35px;
+    }
+    
+    .ztfg_tj_ym_qr {
+        position: absolute;
+        left: 350px;
+        top: 35px;
+        width: 30px;
+        height: 30px;
+        line-height: 29px;
+        text-align: center;
     }

@@ -551,6 +551,11 @@ jl_qrk.addEventListener('click', function(e) {
         if (lj_srk_wzid.value == '') {
             lj_srk_wzid.style.borderColor = 'red';
         }
+
+        setTimeout(function() {
+            lj_srk_mc.style.borderColor = '';
+            lj_srk_wzid.style.borderColor = '';
+        }, 5000);
     }
 });
 
@@ -715,7 +720,6 @@ jl_qrk.addEventListener('click', function(e) {
     var lj_xg_tj_bdtj_wz = document.querySelector('.lj_xg_tj_bdtj_wz');
 
     if (lj_srk_mc.value !== '' && lj_srk_wzid.value !== '' && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML == '匹配添加已有链接') {
-        console.log(1);
         if (lj_srk_xzid.value !== '') {
             lj_sz_s = [];
             for (var i = 0; i < 5; i++) {
@@ -798,10 +802,6 @@ jl_qrk.addEventListener('click', function(e) {
         var dx = JSON.parse(localStorage.dhr_ym_dx);
         var dx_l = Object.keys(dx);
 
-        // 隐藏
-        // ycgn_lj_xgk();
-        lj_xg_tj_bdtj_wz.innerHTML = '匹配添加已有链接';
-
         var zg_lj = 0;
         for (var o = 0; o < dx_l.length; o++) {
             var dx_l_l = Object.keys(dx[dx_l[o]]);
@@ -818,6 +818,10 @@ jl_qrk.addEventListener('click', function(e) {
                     }
                 }
                 if (ji_shu == 5) {
+                    // 隐藏
+                    ycgn_lj_xgk();
+                    lj_xg_tj_bdtj_wz.innerHTML = '匹配添加已有链接';
+
                     lj_srk_tpid.value = dx_l_l_l[0];
                     lj_srk_mc.value = dx_l_l_l[1];
                     lj_srk_zsm.value = dx_l_l_l[2];
@@ -843,6 +847,12 @@ jl_qrk.addEventListener('click', function(e) {
         if (lj_srk_wzid.value == '') {
             lj_srk_wzid.style.borderColor = 'red';
         }
+
+        setTimeout(function() {
+            lj_srk_mc.style.borderColor = '';
+            lj_srk_wzid.style.borderColor = '';
+        }, 5000);
+
     } else if (lj_srk_tpid.value == '' && lj_srk_mc.value == '' && lj_srk_zsm.value == '' && lj_srk_wzid.value == '' && lj_srk_xzid.value == '' && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML !== '匹配添加已有链接') {
         Sku_tctx('最少填写一个匹配项 !');
     }

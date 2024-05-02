@@ -369,6 +369,7 @@ SHITIDONGHUA2_kssy('.bizhi_gundon2', '.daorubendi_max_hd');
 SHITIDONGHUA2_kssy('.bizhi_gundon3', '.ssjl_max2');
 SHITIDONGHUA2_kssy('.bizhi_gundon4', '.ssjl_max');
 SHITIDONGHUA2_kssy('.bizhi_gundon5', '.grb_j_max');
+SHITIDONGHUA2_kssy('.bizhi_gundon6', '.shezhi_ym_max');
 
 
 
@@ -445,20 +446,9 @@ if (localStorage.zi_ti_color !== '') {
 }
 
 function zi_ti_color_s() {
-    var style_s1 = document.querySelector('.style_s1');
-    style_s1.innerHTML = 'html {color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .top_dhl div:hover,.sy_dwck_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';} .so_yq:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .so_yq {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} ::placeholder {color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .iconfont:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .so_ssk {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .iconfont {color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .so_anniu {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .lian_jie_l div:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';} .lian_jie_l div {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';} .lj_xx_b,.lj_xx_b_2 {color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .lj_lj_t {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .lj_lj_b {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .lj_max {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .dhr_srk {border-color:' + RGB_zhq(localStorage.zi_ti_color) + '; color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .dhr_qrk{border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .dhr_qrk:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + '; color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .lj_max:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .lj_lj_t:hover,.lj_lj_b:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .lj_xg_tj input {color:' + RGB_zhq(localStorage.zi_ti_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .jl_qrk:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + '; color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .jl_qrk {border-color:' + RGB_zhq(localStorage.zi_ti_color) + '; color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .liu_yan_z {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .liu_yan_tx {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.75) + '; background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';} .liu_yan_sxuan_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';}';
-
-    var style_s2 = document.querySelector('.style_s2');
-    style_s2.innerHTML = '.liu_yan_top {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.7) + ';} .liu_yan_time {color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .liu_yan_button {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .liu_yan_button:hover,.drym_dr:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + '; color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .input_djs_tjym_time_s,.input_djs_tjym_sj,.liu_yan_srk {color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .liu_yan_sxuan_s {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';} .shezhi_min div {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';} .shezhi_ym_top {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .tianqi_s {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .bzsz_tj {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .ztsz_chongzhi,.bjsz_chongzhi {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .ztsz_chongzhi:hover,.bjsz_chongzhi:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + '; color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .bjk_xzk {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .input_bzlj {border-color:' + RGB_zhq(localStorage.zi_ti_color) + '; color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .bzsz_tj_anniu {border-color:' + RGB_zhq(localStorage.zi_ti_color) + '; color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .bzsz_tj_anniu:hover { color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .bzsz_tj_ym_TP {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .shezhi_min div:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .ztfg_s {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .cdcsh_click,.bfsz_sccd,.bfsz_xzcd {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .top_tou_xian {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';} .top_tou_xian:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .tou_xian_tp {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .input_tou_xian,.tou_xian_qr {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .tou_xian_qr:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}';
-
-    var style_s3 = document.querySelector('.style_s3');
-    style_s3.innerHTML = '.sy_dwck_ym,.sy_dwck,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.top_tou_xian_sc,.drym_min,.wl_max,.bzsz_tj_ym,.sy_djs_tjym,.sy_djs,.liu_yan_sxuan_div,.liu_yan_mao_bo_li,.lj_xg_tj,.dhr_xg_tj,.lian_jie_l_max,.lian_jie_r_max,.topmax,.shezhi_max,.music_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);} .input_djs_tjym_time_s2,.input_djs_tjym_sj,.input_djs_tjym_time_s,.djs_tjym_qr,.mblxg,.input_drmm_mm,.daoru_ym_sc,.drmm_mm_qr,.drym_tx,.imput_drym_mm,.sy_zpzs_jr,.sy_zpzs_tj,.sy_zp_tj_anniu,.input_sy_zp_tj,.sy_hddb,.input_ji_ru_srk,.input_ji_ru_ss,.bfsz_zdbf_qrk,.sy_lbt_b {border-color:' + localStorage.zi_ti_color + ';} .input_djs_tjym_time_s2,.input_drmm_mm,.daoru_ym_sc,.imput_drym_mm,.input_sy_zp_tj,.input_ji_ru_srk,.input_ji_ru_ss {color:' + localStorage.zi_ti_color + ';} .sy_zp_tj_anniu:hover,.drmm_mm_qr:hover,.djs_tjym_qr:hover,.sy_zpzs_tj:hover,.sy_zpzs_jr:hover,.sy_dwck_s:hover,.daoru_ym_bendi_click:hover {color:' + localStorage.zi_ti_click_color + ';border-color:' + localStorage.zi_ti_click_color + ';} .drym_tx {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';} .sy_dwck {color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .sy_dwck_s {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';} .liu_yan_z a, .lian_jie_ssk {color:' + localStorage.zi_ti_color + ';} .liu_yan_z a:hover {color:' + localStorage.zi_ti_click_color + ';} .daoru_ym_dc,.daoru_ym_dr,.daoru_ym_bendi,.daorubendi_s_sj,.daorubendi_s_yy,.daorubendi_s_cs {background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.input_tmd{background: -webkit-linear-gradient(' + localStorage.zi_ti_color + ', ' + localStorage.zi_ti_color + ') no-repeat, none;border: 1px solid ' + localStorage.zi_ti_color + ';}.input_tmd::-webkit-slider-thumb {background: ' + localStorage.zi_ti_color + ';}.music_s {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';}';
-
-    var style_s5 = document.querySelector('.style_s5');
-    style_s5.innerHTML = '.music_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.1) + ';}.music_bottom_hk {background: -webkit-linear-gradient(' + RGB_zhq(localStorage.zi_ti_color) + ', ' + RGB_zhq(localStorage.zi_ti_color) + ') no-repeat,' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';}.music_bottom_hk::-webkit-slider-thumb { background: ' + RGB_zhq(localStorage.zi_ti_color) + ';} .music_boyyom_tj_ym,.Sku_tcjg_Max,.sy_lbt,.sy_djs_txl,.sy_nrs_t_span,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);}.music_tjym_qd:hover {border-color:' + localStorage.zi_ti_click_color + ';color:' + localStorage.zi_ti_click_color + ';}.music_tjym_mz,.music_tjym_url,.ssjl_s{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lian_jie_l2_sy{background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.ssbq_s {border-bottom-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ' !important;}.ssbq_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .daoru_ym_jmdc{background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .su_biao{color:' + localStorage.zi_ti_color + ';}.daoru_ym_my{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lbnr_ljbz{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.lbnr_ljxz,.lbnr_ljdz,.lbnr_max {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lbnr_ljxz:hover,.lbnr_ljdz:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.sy_zpzs_kaiguan,.lbnr_ljtp{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.sy_zpzs_kaiguan_ts{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.WGS_HTSP_TJ,.shezhi_sp_xp_min2,.htsp_qjss_jdt,.lj_zcb_name,.lj_zcb_dizhi,.lj_zcb_qr {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.htsp_qjss_jdt2 {background-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lj_lj_t:hover,.lj_lj_b:hover { box-shadow: 0px 0px 30px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.3) + ';}.lj_max:hover { box-shadow: inset 0px -17px 15px -20px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.8) + ';}';
-
     zi_ti_color_bh();
 }
+
 //字体颜色改变
 input_color1.addEventListener('input', function() {
     //修改内存
@@ -595,6 +585,7 @@ ssbqym = document.querySelector('.ssbqym');
 sy_nrs_t_span = document.querySelectorAll('.sy_nrs_t_span');
 sy_3d_kaiguan = document.querySelector('.sy_3d_kaiguan');
 lj_zcb_ym = document.querySelector('.lj_zcb_ym');
+ztfg_tj_ym = document.querySelector('.ztfg_tj_ym');
 if (localStorage.bei_jing_kuan_ture == 1) {
     bjk_xzk.innerHTML = '✔';
 } else if (localStorage.bei_jing_kuan_ture == 0) {
@@ -642,6 +633,7 @@ function bj_kuan_hs() {
     daoru_ym_dr_mmym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     sy_3d_kaiguan.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     lj_zcb_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
+    ztfg_tj_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
 }
 setTimeout(function() {
 
@@ -691,6 +683,7 @@ bjk_xzk.addEventListener('click', function() {
         daoru_ym_dr_mmym.style.border = '';
         sy_3d_kaiguan.style.border = '';
         lj_zcb_ym.style.border = '';
+        ztfg_tj_ym.style.border = '';
     } else if (localStorage.bei_jing_kuan_ture == 0) {
         localStorage.bei_jing_kuan_ture = 1;
         bjk_xzk.innerHTML = '✔';
@@ -806,169 +799,140 @@ shezhi_ztfg.addEventListener('click', function() {
     shezhi_ztfg_ym.style.display = 'block';
     shezhi_min.style.display = 'none';
 });
-//毛玻璃
-tianqi_xy = document.querySelector('.tianqi_xy');
-ztfg1 = document.querySelector('.ztfg1');
-ztfg1.addEventListener('click', function() {
-    document.documentElement.style.backgroundColor = '';
-    localStorage.bi_zhi_ys = '';
-    tianqi_xy.click();
-    localStorage.bi_zhi = 'https://pic.3gbizhi.com/uploads/20231218/bc41092030bb7e763170bc172af92039.png';
-    document.documentElement.style.backgroundImage = 'url(https://pic.3gbizhi.com/uploads/20231218/bc41092030bb7e763170bc172af92039.png)';
-    input_color1.value = '#ccfbff';
-    localStorage.zi_ti_color = '#ccfbff';
-    input_color2.value = '#ccfbff';
-    localStorage.zi_ti_click_color = '#ccfbff';
-    zi_ti_color_s();
-    input_color3.value = '#000000';
-    localStorage.bei_jing_color = '#000000';
-    input_tmd1.value = '10';
-    localStorage.bei_jing_tmd = '0.1';
-    input_tmd_z.innerHTML = '10%';
-    input_tmd1.style.backgroundSize = '10% 100%';
-    bei_jing_color_s();
-    input_color4.value = '#d1feff';
-    localStorage.bei_jing_kuan_color = '#d1feff';
-    input_tmd2.value = '80';
-    localStorage.bei_jing_kuan_tmd = '0.8';
-    input_tmd_z2.innerHTML = '80%';
-    input_tmd2.style.backgroundSize = '80% 100%';
-    localStorage.bei_jing_kuan_ture = '0';
-    bjk_xzk.click();
-    localStorage.mao_bo_li = 0;
-    mblxg.click();
+// 输出所有主题
+var ztfg_name = JSON.parse(localStorage.ztfg_name);
+var shezhi_ym_max = document.querySelector('.shezhi_ym_max');
+var tianqi_qt = document.querySelector('.tianqi_qt');
+for (var i = 0; i < ztfg_name.length; i++) {
+    var div = document.createElement('div');
+
+    div.className = 'ztfg_s';
+    div.innerHTML = ztfg_name[i];
+    div.addEventListener('click', function(e) {
+        var ztfg_name = JSON.parse(localStorage.ztfg_name);
+        var ztfg = JSON.parse(localStorage.ztfg);
+        var gs = ztfg_name.indexOf(this.innerText);
+        ztfg_hs(ztfg[gs]);
+    });
+    div.addEventListener('contextmenu', function(e) {
+        var ztfg_name = JSON.parse(localStorage.ztfg_name);
+        var ztfg = JSON.parse(localStorage.ztfg);
+        var gs = ztfg_name.indexOf(this.innerText);
+        // 删除html
+        shezhi_ym_max.removeChild(this);
+        // 删除内存
+        ztfg_name.splice(gs, 1);
+        localStorage.ztfg_name = JSON.stringify(ztfg_name);
+        ztfg.splice(gs, 1);
+        localStorage.ztfg = JSON.stringify(ztfg);
+    });
+
+    shezhi_ym_max.appendChild(div);
+}
+
+var dqzttj = document.querySelector('.dqzttj');
+var ztfg_tj_ym = document.querySelector('.ztfg_tj_ym');
+var ztfg_tj_ym_qr = document.querySelector('.ztfg_tj_ym_qr');
+var ztfg_tj_ym_name = document.querySelector('.ztfg_tj_ym_name');
+dqzttj.addEventListener('click', function(e) {
+    e.stopPropagation();
+    ztfg_tj_ym.style.display = 'block';
+    ztfg_tj_ym_name.focus();
 });
-//黑白配
-tianqi_qt = document.querySelector('.tianqi_qt');
-ztfg2 = document.querySelector('.ztfg2');
-ztfg2.addEventListener('click', function() {
-    document.documentElement.style.backgroundColor = '';
-    localStorage.bi_zhi_ys = '';
+ztfg_tj_ym.addEventListener('click', function(e) {
+    e.stopPropagation();
+});
+ztfg_tj_ym_qr.addEventListener('click', function(e) {
+    if (ztfg_tj_ym_name.value == '') {
+        ztfg_tj_ym_name.focus();
+    } else {
+        var zt_name = ztfg_tj_ym_name.value;
+        ztfg_tj_ym.style.display = 'none';
+        ztfg_tj_ym_name.value = '';
+        // 修改html
+        var div = document.createElement('div');
+
+        div.className = 'ztfg_s';
+        div.innerHTML = zt_name;
+        div.addEventListener('click', function(e) {
+            var ztfg_name = JSON.parse(localStorage.ztfg_name);
+            var ztfg = JSON.parse(localStorage.ztfg);
+            var gs = ztfg_name.indexOf(this.innerText);
+            ztfg_hs(ztfg[gs]);
+        });
+        div.addEventListener('contextmenu', function(e) {
+            var ztfg_name = JSON.parse(localStorage.ztfg_name);
+            var ztfg = JSON.parse(localStorage.ztfg);
+            var gs = ztfg_name.indexOf(this.innerText);
+            // 删除html
+            shezhi_ym_max.removeChild(this);
+            // 删除内存
+            ztfg_name.splice(gs, 1);
+            localStorage.ztfg_name = JSON.stringify(ztfg_name);
+            ztfg.splice(gs, 1);
+            localStorage.ztfg = JSON.stringify(ztfg);
+        });
+
+        shezhi_ym_max.appendChild(div);
+        // 修改内存
+        var ztfg_name = JSON.parse(localStorage.ztfg_name);
+        ztfg_name.push(zt_name);
+        localStorage.ztfg_name = JSON.stringify(ztfg_name);
+        var ztfg = JSON.parse(localStorage.ztfg);
+        var xsz = [];
+        xsz.push(localStorage.bi_zhi_ys);
+        xsz.push(localStorage.bi_zhi);
+        xsz.push(localStorage.zi_ti_color);
+        xsz.push(localStorage.zi_ti_click_color);
+        xsz.push(localStorage.bei_jing_color);
+        xsz.push(localStorage.bei_jing_tmd * 100);
+        xsz.push(localStorage.bei_jing_kuan_color);
+        xsz.push(localStorage.bei_jing_kuan_tmd * 100);
+        xsz.push(localStorage.bei_jing_kuan_ture);
+        xsz.push(localStorage.mao_bo_li);
+        ztfg.push(xsz);
+        localStorage.ztfg = JSON.stringify(ztfg);
+    }
+});
+
+function ztfg_hs(sz) {
+    document.documentElement.style.backgroundColor = sz[0];
+    localStorage.bi_zhi_ys = sz[0];
     tianqi_qt.click();
-    localStorage.bi_zhi = '#'
-    document.documentElement.style.backgroundImage = 'url(#)';
-    input_color1.value = '#000000';
-    localStorage.zi_ti_color = '#000000';
-    input_color2.value = '#000000';
-    localStorage.zi_ti_click_color = '#000000';
+    localStorage.bi_zhi = sz[1];
+    document.documentElement.style.backgroundImage = 'url(' + sz[1] + ')';
+    input_color1.value = sz[2];
+    localStorage.zi_ti_color = sz[2];
+    input_color2.value = sz[3];
+    localStorage.zi_ti_click_color = sz[3];
     zi_ti_color_s();
-    input_color3.value = '#ffffff';
-    localStorage.bei_jing_color = '#ffffff';
-    input_tmd1.value = '90';
-    localStorage.bei_jing_tmd = '0.9';
-    input_tmd_z.innerHTML = '90%';
-    input_tmd1.style.backgroundSize = '90% 100%';
+    input_color3.value = sz[4];
+    localStorage.bei_jing_color = sz[4];
+    input_tmd1.value = sz[5];
+    localStorage.bei_jing_tmd = sz[5] / 100;
+    input_tmd_z.innerHTML = sz[5] + '%';
+    input_tmd1.style.backgroundSize = sz[5] + '% 100%';
     bei_jing_color_s();
-    input_color4.value = '#000000';
-    localStorage.bei_jing_kuan_color = '#000000';
-    input_tmd2.value = '100';
-    localStorage.bei_jing_kuan_tmd = '1';
-    input_tmd_z2.innerHTML = '100%';
-    input_tmd2.style.backgroundSize = '100% 100%';
-    localStorage.bei_jing_kuan_ture = '0';
+    input_color4.value = sz[6];
+    localStorage.bei_jing_kuan_color = sz[6];
+    input_tmd2.value = sz[7];
+    localStorage.bei_jing_kuan_tmd = sz[7] / 100;
+    input_tmd_z2.innerHTML = sz[7] + '%';
+    input_tmd2.style.backgroundSize = sz[7] + '% 100%';
+    if (sz[8] == 1) {
+        localStorage.bei_jing_kuan_ture = '0';
+    } else {
+        localStorage.bei_jing_kuan_ture = '1';
+    }
     bjk_xzk.click();
-    localStorage.mao_bo_li = 5;
+    if (sz[9] == 0) {
+        localStorage.mao_bo_li = 5;
+    } else {
+        localStorage.mao_bo_li = 0;
+    }
     mblxg.click();
-});
-//粉色配
-tianqi_xx = document.querySelector('.tianqi_xx');
-ztfg3 = document.querySelector('.ztfg3');
-ztfg3.addEventListener('click', function() {
-    document.documentElement.style.backgroundColor = '';
-    localStorage.bi_zhi_ys = '';
-    tianqi_xx.click();
-    localStorage.bi_zhi = 'https://pic.3gbizhi.com/uploads/20231227/e0b15cfc41a57575ca154db81ed745f2.png';
-    document.documentElement.style.backgroundImage = 'url(https://pic.3gbizhi.com/uploads/20231227/e0b15cfc41a57575ca154db81ed745f2.png)';
-    input_color1.value = '#feb4b4';
-    localStorage.zi_ti_color = '#feb4b4';
-    input_color2.value = '#ffe5e5';
-    localStorage.zi_ti_click_color = '#ffe5e5';
-    zi_ti_color_s();
-    input_color3.value = '#0a0505';
-    localStorage.bei_jing_color = '#0a0505';
-    input_tmd1.value = '59';
-    localStorage.bei_jing_tmd = '0.59';
-    input_tmd_z.innerHTML = '59%';
-    input_tmd1.style.backgroundSize = '59% 100%';
-    bei_jing_color_s();
-    input_color4.value = '#ffc7c7';
-    localStorage.bei_jing_kuan_color = '#ffc7c7';
-    input_tmd2.value = '80';
-    localStorage.bei_jing_kuan_tmd = '0.8';
-    input_tmd_z2.innerHTML = '80%';
-    input_tmd2.style.backgroundSize = '80% 100%';
-    localStorage.bei_jing_kuan_ture = '0';
-    bjk_xzk.click();
-    localStorage.mao_bo_li = 5;
-    mblxg.click();
-});
-// 雅致黑
-var ztfg4 = document.querySelector('.ztfg4');
-ztfg4.addEventListener('click', function(e) {
-    document.documentElement.style.backgroundColor = '';
-    localStorage.bi_zhi_ys = '';
-    tianqi_qt.click();
-    localStorage.bi_zhi = 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/4e4a20a4462309f7e770251f7a0e0cf3d7cad6a4.jpg';
-    document.documentElement.style.backgroundImage = 'url(https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/4e4a20a4462309f7e770251f7a0e0cf3d7cad6a4.jpg)';
-    input_color1.value = '#ededed';
-    localStorage.zi_ti_color = '#ededed';
-    input_color2.value = '#ffffff';
-    localStorage.zi_ti_click_color = '#ffffff';
-    zi_ti_color_s();
-    input_color3.value = '#000000';
-    localStorage.bei_jing_color = '#000000';
-    input_tmd1.value = '0';
-    localStorage.bei_jing_tmd = '0';
-    input_tmd_z.innerHTML = '0%';
-    input_tmd1.style.backgroundSize = '0% 100%';
-    bei_jing_color_s();
-    input_color4.value = '#ffffff';
-    localStorage.bei_jing_kuan_color = '#ffffff';
-    input_tmd2.value = '50';
-    localStorage.bei_jing_kuan_tmd = '0.5';
-    input_tmd_z2.innerHTML = '50%';
-    input_tmd2.style.backgroundSize = '50% 100%';
-    localStorage.bei_jing_kuan_ture = '0';
-    bjk_xzk.click();
-    localStorage.mao_bo_li = 5;
-    mblxg.click();
-});
-// 温馨米
-var ztfg5 = document.querySelector('.ztfg5');
-ztfg5.addEventListener('click', function(e) {
-    document.documentElement.style.backgroundColor = '';
-    localStorage.bi_zhi_ys = '';
-    tianqi_qt.click();
-    localStorage.bi_zhi = 'https://pic.3gbizhi.com/uploads/20240130/d97c54c7a77532c34f74c5ee56562a70.jpg';
-    document.documentElement.style.backgroundImage = 'url(https://pic.3gbizhi.com/uploads/20240130/d97c54c7a77532c34f74c5ee56562a70.jpg)';
-    input_color1.value = '#fffae9';
-    localStorage.zi_ti_color = '#fffae9';
-    input_color2.value = '#f8dca6';
-    localStorage.zi_ti_click_color = '#f8dca6';
-    zi_ti_color_s();
-    input_color3.value = '#000000';
-    localStorage.bei_jing_color = '#000000';
-    input_tmd1.value = '50';
-    localStorage.bei_jing_tmd = '0.5';
-    input_tmd_z.innerHTML = '50%';
-    input_tmd1.style.backgroundSize = '50% 100%';
-    bei_jing_color_s();
-    input_color4.value = '#fff7eb';
-    localStorage.bei_jing_kuan_color = '#fff7eb';
-    input_tmd2.value = '80';
-    localStorage.bei_jing_kuan_tmd = '0.8';
-    input_tmd_z2.innerHTML = '80%';
-    input_tmd2.style.backgroundSize = '80% 100%';
-    localStorage.bei_jing_kuan_ture = '0';
-    bjk_xzk.click();
-    localStorage.mao_bo_li = 5;
-    mblxg.click();
-});
-// 待发布
-var ztfg6 = document.querySelector('.ztfg6');
-ztfg6.addEventListener('click', function(e) {
-    Sku_tctx('不久将与世人见面 (ง •_•)ง');
-});
+}
+
 
 
 
@@ -1024,6 +988,8 @@ bfsz_sccd.addEventListener('click', function() {
     localStorage.lsjl_bf = localStorage.lsjl;
     localStorage.htsp_s_bf = localStorage.htsp_s;
     localStorage.sku_zcb_bf = localStorage.sku_zcb;
+    localStorage.ztfg_name_bf = localStorage.ztfg_name;
+    localStorage.ztfg_bf = localStorage.ztfg;
 
 });
 // 下载存档
@@ -1045,6 +1011,8 @@ bfsz_xzcd.addEventListener('click', function() {
     localStorage.lsjl = localStorage.lsjl_bf;
     localStorage.htsp_s = localStorage.htsp_s_bf;
     localStorage.sku_zcb = localStorage.sku_zcb_bf;
+    localStorage.ztfg_name = localStorage.ztfg_name_bf;
+    localStorage.ztfg = localStorage.ztfg_bf;
     location.reload();
 });
 //自动上传
@@ -1405,6 +1373,9 @@ shezhi_daoru.addEventListener('click', function(e) {
     daochu_sz[28] = localStorage.sku_zcb;
     // 背景颜色
     daochu_sz[29] = localStorage.bi_zhi_ys;
+    // 主题风格
+    daochu_sz[30] = localStorage.ztfg;
+    daochu_sz[31] = localStorage.ztfg_name;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1416,7 +1387,7 @@ shezhi_daoru.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[30] = getFormattedTime();
+    daochu_sz[32] = getFormattedTime();
 
     jisuan_bendidx = JSON.stringify(daochu_sz).length;
 });
@@ -1481,6 +1452,9 @@ daoru_ym_dc.addEventListener('click', function(e) {
     daochu_sz[28] = localStorage.sku_zcb;
     // 背景颜色
     daochu_sz[29] = localStorage.bi_zhi_ys;
+    // 主题风格
+    daochu_sz[30] = localStorage.ztfg;
+    daochu_sz[31] = localStorage.ztfg_name;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1492,7 +1466,7 @@ daoru_ym_dc.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[30] = getFormattedTime();
+    daochu_sz[32] = getFormattedTime();
 
     daoru_ym_sc.value = JSON.stringify(daochu_sz);
 
@@ -1583,6 +1557,9 @@ daoru_ym_jmdc.addEventListener('click', function(e) {
     daochu_sz[28] = localStorage.sku_zcb;
     // 背景颜色
     daochu_sz[29] = localStorage.bi_zhi_ys;
+    // 主题风格
+    daochu_sz[30] = localStorage.ztfg;
+    daochu_sz[31] = localStorage.ztfg_name;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1594,7 +1571,7 @@ daoru_ym_jmdc.addEventListener('click', function(e) {
         const second = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
-    daochu_sz[30] = getFormattedTime();
+    daochu_sz[32] = getFormattedTime();
 
     daoru_ym_sc.value = WGS_zfc_jiami(JSON.stringify(daochu_sz), miyao);
 
@@ -1648,7 +1625,7 @@ daoru_ym_sc.addEventListener('input', function(e) {
 var daoru_sz = [];
 
 function daoru_sz_hs() {
-    if (daoru_sz.length == 31) {
+    if (daoru_sz.length == 33) {
         // 导航栏
         localStorage.dhr_sz = daoru_sz[0];
         //导航栏页面
@@ -1706,6 +1683,9 @@ function daoru_sz_hs() {
         localStorage.sku_zcb = daoru_sz[28];
         // 背景颜色
         localStorage.bi_zhi_ys = daoru_sz[29];
+        // 主题风格
+        localStorage.ztfg = daoru_sz[30];
+        localStorage.ztfg_name = daoru_sz[31];
 
         // 时间戳0
         localStorage.dr_mmdr_drsj = 0;
@@ -1886,6 +1866,9 @@ daoru_ym_bendi.addEventListener('click', function(e) {
     zd_daochu[28] = localStorage.sku_zcb;
     // 背景颜色
     zd_daochu[29] = localStorage.bi_zhi_ys;
+    // 主题风格
+    zd_daochu[30] = localStorage.ztfg;
+    zd_daochu[31] = localStorage.ztfg_name;
     //上传时间
     function getFormattedTime() {
         const now = new Date();
@@ -1898,7 +1881,7 @@ daoru_ym_bendi.addEventListener('click', function(e) {
         return `${year}-${month}-${date} ${hour}:${minute}:${second}`;
     }
     // 打包时间
-    zd_daochu[30] = getFormattedTime();
+    zd_daochu[32] = getFormattedTime();
 
     try {
         //保存
@@ -2058,7 +2041,9 @@ function bendidaoru_click() {
                 localStorage.sku_zcb = daoru_sz[28];
                 // 背景颜色
                 localStorage.bi_zhi_ys = daoru_sz[29];
-
+                // 主题风格
+                localStorage.ztfg = daoru_sz[30];
+                localStorage.ztfg_name = daoru_sz[31];
 
                 // 时间戳0
                 localStorage.dr_mmdr_drsj = 0;
@@ -3060,7 +3045,8 @@ gywm_l.addEventListener('click', function(e) {
 
             if (htsp_s_tjgs_sb + htsp_s_tjgs_cg == htsp_s_tjgs) {
                 clearInterval(htsp_sysj_js);
-                gywm_l_1.innerHTML = '用时' + (htsp_miao <= 60 + '秒:' ? htsp_miao : Math.ceil(htsp_miao / 60) + '分' + (htsp_miao % 60) + '秒:');
+                console.log(htsp_miao);
+                gywm_l_1.innerHTML = '用时' + (htsp_miao <= 60 ? htsp_miao + '秒:' : Math.ceil(htsp_miao / 60) + '分' + (htsp_miao % 60) + '秒:');
             }
         }, 1000);
 
@@ -3645,6 +3631,7 @@ shezhi_rgb_qbcz.addEventListener('click', function(e) {
         document.documentElement.style.backgroundImage = '';
     } else {
         document.documentElement.style.backgroundImage = ' url(' + qian_bi_zhi + ')';
+        document.documentElement.style.backgroundColor = '';
     }
     ztsz_chongzhi.click();
     bjsz_chongzhi.click();
@@ -3676,6 +3663,14 @@ shezhi_rgb_qbcz.addEventListener('click', function(e) {
 
 
 
+function mrrd_Ahs() {
+    var mrrd_top_A = 0;
+    var mrrd_top = JSON.parse(localStorage.mrrd_top);
+    for (var i = 0; i < mrrd_top.length; i++) {
+        mrrd_top_A += mrrd_top[i];
+    }
+    return mrrd_top_A;
+}
 
 // 每日热点API
 function ssrd(url_s, num, dx, dx2) {
@@ -3717,9 +3712,16 @@ function ssrd(url_s, num, dx, dx2) {
             localStorage.mrrd_name = JSON.stringify(mrrd_name);
 
             console.log('抓取成功 ' + names2.length + ' 条 ( ' + num + ' )');
+            names2.length == 0 ? mrrd_F++ : mrrd_T++;
+            mrrd_zg_2++;
+            so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
+
         })
         .catch(error => {
+            mrrd_F++;
+            mrrd_zg_2++;
             console.log('您的抓取操作出现了问题 ( ' + num + ' )' + '\n' + error);
+            so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
         });
 }
 
@@ -3735,9 +3737,16 @@ function mrrd_sx() {
         localStorage.mrrd = '[]';
         localStorage.mrrd_top = '[]';
         localStorage.mrrd_name = '[]';
-        mrrd_dsq ? clearInterval(mrrd_dsq) : undefined;
 
-        var mrrd_asd = 0;
+        // input显示正在执行
+        so_ssk.placeholder = '抓取热点中.........';
+
+        mrrd_asd = 0;
+        mrrd_zg = 16;
+        mrrd_zg_2 = 0;
+        mrrd_F = 0;
+        mrrd_T = 0;
+        mrrd_dsq ? clearInterval(mrrd_dsq) : undefined;
         mrrd_dsq = setInterval(function() {
             mrrd_asd++;
 
@@ -3775,9 +3784,15 @@ function mrrd_sx() {
                 ssrd('https://api.vvhan.com/api/hotlist/woShiPm', 'woShiPm', 'data', 'title');
             } else {
                 clearInterval(mrrd_dsq);
+                setTimeout(function() {
+                    if (so_ssk.placeholder[0] !== '搜') {
+                        so_ssk.placeholder = '搜索引擎';
+                    }
+                }, 5000);
             }
 
         }, 1000);
+
     }
 }
 
@@ -3825,9 +3840,16 @@ function mryy_s() {
                 mryy.innerText = mymj;
                 localStorage.mryy = mymj;
             }
+
+            mrrd_T++;
+            mrrd_zg_2++;
+            so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
         })
         .catch(error => {
             console.log('您的抓取操作出现了问题 ( 每日一言 )');
+            mrrd_F++;
+            mrrd_zg_2++;
+            so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
             // 处理返回的数据
             mryy.innerText = '';
             localStorage.mryy = '';
@@ -3922,6 +3944,9 @@ document.addEventListener('keyup', function(e) {
 });
 var sd_dtnr_max = document.querySelector('.sd_dtnr_max');
 document.addEventListener('keydown', function(e) {
+    if (e.key == 'Enter' && ztfg_tj_ym.style.display == 'block') {
+        ztfg_tj_ym_qr.click();
+    }
     if (e.key == 'Enter' && WGS_HTSP_TJ.style.display == 'block') {
         WGS_HTSP_TJ_click();
     }
@@ -3959,6 +3984,8 @@ document.addEventListener('contextmenu', function() {
     bzsz_tj_ym_TP.style.backgroundImage = '';
     daoru_ym_dr_mmym.style.display = 'none';
     daoru_ym_my.value = '';
+    ztfg_tj_ym.style.display = 'none';
+    ztfg_tj_ym_name.value = '';
 });
 //全局左击事件
 document.addEventListener('click', function() {
@@ -3968,6 +3995,8 @@ document.addEventListener('click', function() {
     bzsz_tj_ym_TP.style.backgroundImage = '';
     daoru_ym_dr_mmym.style.display = 'none';
     daoru_ym_my.value = '';
+    ztfg_tj_ym.style.display = 'none';
+    ztfg_tj_ym_name.value = '';
 });
 
 // var sz_name = [];

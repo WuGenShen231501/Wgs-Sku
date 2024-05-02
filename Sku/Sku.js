@@ -5,7 +5,7 @@ function Sku_tsy(num) {
     sku_tsy[num].play();
 }
 
-var shui_you_nc = ['mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
+var shui_you_nc = ['ztfg_name', 'ztfg', 'mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 // 保护localStorage值
 window.addEventListener('storage', function(event) {
     console.clear();
@@ -509,9 +509,6 @@ function RGB_zhq(hex, opacity) {
 //开机字体
 if (localStorage.zi_ti_color !== '') {
 
-
-
-
     function zi_ti_color_bh(color, tmd) {
         var style_s1 = document.querySelector('.style_s1');
         style_s1.innerHTML = 'html {color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .top_dhl div:hover,.sy_dwck_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';} .so_yq:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .so_yq {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} ::placeholder {color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .iconfont:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .so_ssk {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .iconfont {color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .so_anniu {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .lian_jie_l div:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';} .lian_jie_l div {border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';} .lj_xx_b,.lj_xx_b_2 {color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';} .lj_lj_t {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .lj_lj_b {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .lj_max {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .dhr_srk {border-color:' + RGB_zhq(localStorage.zi_ti_color) + '; color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .dhr_qrk{border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .dhr_qrk:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + '; color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .lj_max:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .lj_lj_t:hover,.lj_lj_b:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .lj_xg_tj input {color:' + RGB_zhq(localStorage.zi_ti_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .jl_qrk:hover {border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + '; color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .jl_qrk {border-color:' + RGB_zhq(localStorage.zi_ti_color) + '; color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .liu_yan_z {border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .liu_yan_tx {border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.75) + '; background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';} .liu_yan_sxuan_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';}';
@@ -527,6 +524,8 @@ if (localStorage.zi_ti_color !== '') {
 
         document.documentElement.style.setProperty('--zi_ti_color', RGB_zhq(localStorage.zi_ti_color));
         document.documentElement.style.setProperty('--zi_ti_click_color', RGB_zhq(localStorage.zi_ti_click_color));
+        document.documentElement.style.setProperty('--mao_bo_li', localStorage.mao_bo_li + 'px');
+        document.documentElement.style.setProperty('--bei_jing_kuan_color', RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd));
     }
 
     zi_ti_color_bh();
@@ -586,6 +585,7 @@ var music_boyyom_yj = document.querySelector('.music_boyyom_yj');
 var music_boyyom_tj_ym = document.querySelector('.music_boyyom_tj_ym');
 var daoru_ym_dr_mmym = document.querySelector('.daoru_ym_dr_mmym');
 var lj_zcb_ym = document.querySelector('.lj_zcb_ym');
+var ztfg_tj_ym = document.querySelector('.ztfg_tj_ym');
 if (localStorage.bei_jing_kuan_ture == 1) {
     topmax.style.borderBottom = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     lian_jie_l_max.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
@@ -639,6 +639,7 @@ if (localStorage.bei_jing_kuan_ture == 1) {
     sy_3d_kaiguan = document.querySelector('.sy_3d_kaiguan');
     sy_3d_kaiguan.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     lj_zcb_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
+    ztfg_tj_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
 }
 
 
@@ -755,6 +756,12 @@ setInterval(function() {
 
 window.addEventListener('unhandledrejection', function(event) {
     console.error('捕获到未处理的Promise拒绝:', event.reason);
+});
+
+var max_ncxs = document.querySelector('.max_ncxs');
+max_ncxs.addEventListener('click', function(e) {
+    document.querySelector('.top_dhl').querySelectorAll('div')[3].click();
+    document.querySelector('.shezhi_gywm').click();
 });
 
 
@@ -883,7 +890,7 @@ shezhi_sp_xp_min2.addEventListener('blur', function(e) {
 // 相互关闭
 // 点击的,不需要隐藏的...
 function xhgb_dx(class1, class2, class3) {
-    var xhgb_dx = ['so_yq_s', 'ssbqym', 'music_ym', 'top_tou_xian_sc', 'lj_xg_tj', 'dhr_xg_tj'];
+    var xhgb_dx = ['lj_zcb_ym', 'so_yq_s', 'ssbqym', 'music_ym', 'top_tou_xian_sc', 'lj_xg_tj', 'dhr_xg_tj'];
     var dj = document.querySelector('.' + class1);
     dj.addEventListener('click', function(e) {
         for (var i = 0; i < xhgb_dx.length; i++) {
@@ -899,3 +906,19 @@ xhgb_dx('i_music_tb', 'music_ym');
 xhgb_dx('top_tou_xian', 'top_tou_xian_sc');
 xhgb_dx('dhr_shezhi_gn_tj', 'lj_xg_tj', 'dhr_xg_tj');
 xhgb_dx('dhr_shezhi_gn_cmm', 'lj_xg_tj', 'dhr_xg_tj');
+xhgb_dx('lj_zcb_i', 'lj_xg_tj', 'lj_zcb_ym');
+
+
+
+
+
+// 页面可见度
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') {
+        // console.log('页面不可见');
+        // 可以在这里执行一些操作，比如暂停视频播放
+    } else {
+        // console.log('页面可见');
+        // 页面再次可见时，可以恢复之前暂停的操作
+    }
+});
