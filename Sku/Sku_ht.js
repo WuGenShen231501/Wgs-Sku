@@ -279,13 +279,13 @@ if (localStorage.mryy == undefined) {
 }
 // 主题风格
 if (localStorage.ztfg == undefined) {
-    // 纯颜色壁纸,图片壁纸url,字体颜色,重字体颜色,背景颜色,背景透明度100max,背景框颜色,背景框透明度100max,是否背景框1是0否,毛玻璃效果1是0否
+    // 纯颜色壁纸,图片壁纸url,字体颜色,重字体颜色,背景颜色,背景透明度100max,背景框颜色,背景框透明度100max,是否背景框1是0否,毛玻璃效果1是0否、场景0否1234...是
     var ztfg = [
-        ['', 'https://pic.3gbizhi.com/uploads/20231218/bc41092030bb7e763170bc172af92039.png', '#ccfbff', '#ccfbff', '#000000', '10', '#d1feff', '80', '1', '5'],
-        ['', '#', '#000000', '#000000', '#ffffff', '90', '#000000', '100', '1', '0'],
-        ['', 'https://pic.3gbizhi.com/uploads/20231227/e0b15cfc41a57575ca154db81ed745f2.png', '#feb4b4', '#ffe5e5', '#0a0505', '59', '#ffc7c7', '80', '1', '0'],
-        ['', 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/4e4a20a4462309f7e770251f7a0e0cf3d7cad6a4.jpg', '#ededed', '#ffffff', '#000000', '0', '#ffffff', '50', '1', '0'],
-        ['', 'https://pic.3gbizhi.com/uploads/20240130/d97c54c7a77532c34f74c5ee56562a70.jpg', '#fffae9', '#f8dca6', '#000000', '50', '#fff7eb', '80', '1', '0']
+        ['', 'https://pic.3gbizhi.com/uploads/20231218/bc41092030bb7e763170bc172af92039.png', '#ccfbff', '#ccfbff', '#000000', '10', '#d1feff', '80', '1', '5', '1'],
+        ['', '#', '#000000', '#000000', '#ffffff', '90', '#000000', '100', '1', '0', '0'],
+        ['', 'https://pic.3gbizhi.com/uploads/20231227/e0b15cfc41a57575ca154db81ed745f2.png', '#feb4b4', '#ffe5e5', '#0a0505', '59', '#ffc7c7', '80', '1', '0', '3'],
+        ['', 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/4e4a20a4462309f7e770251f7a0e0cf3d7cad6a4.jpg', '#ededed', '#ffffff', '#000000', '0', '#ffffff', '50', '1', '0', '0'],
+        ['', 'https://pic.3gbizhi.com/uploads/20240130/d97c54c7a77532c34f74c5ee56562a70.jpg', '#fffae9', '#f8dca6', '#000000', '50', '#fff7eb', '80', '1', '0', '0']
     ];
     localStorage.ztfg = JSON.stringify(ztfg);
 }

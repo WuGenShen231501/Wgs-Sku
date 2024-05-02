@@ -890,15 +890,21 @@ ztfg_tj_ym_qr.addEventListener('click', function(e) {
         xsz.push(localStorage.bei_jing_kuan_tmd * 100);
         xsz.push(localStorage.bei_jing_kuan_ture);
         xsz.push(localStorage.mao_bo_li);
+        xsz.push(localStorage.tian_qi);
         ztfg.push(xsz);
         localStorage.ztfg = JSON.stringify(ztfg);
     }
 });
 
+var tianqi_qt = document.querySelector('.tianqi_qt');
+var tianqi_xy = document.querySelector('.tianqi_xy');
+var tianqi_dy = document.querySelector('.tianqi_dy');
+var tianqi_xx = document.querySelector('.tianqi_xx');
+var tianqi_dx = document.querySelector('.tianqi_dx');
+
 function ztfg_hs(sz) {
     document.documentElement.style.backgroundColor = sz[0];
     localStorage.bi_zhi_ys = sz[0];
-    tianqi_qt.click();
     localStorage.bi_zhi = sz[1];
     document.documentElement.style.backgroundImage = 'url(' + sz[1] + ')';
     input_color1.value = sz[2];
@@ -931,6 +937,17 @@ function ztfg_hs(sz) {
         localStorage.mao_bo_li = 0;
     }
     mblxg.click();
+    if (sz[10] == 0) {
+        tianqi_qt.click();
+    } else if (sz[10] == 1) {
+        tianqi_xy.click();
+    } else if (sz[10] == 2) {
+        tianqi_dy.click();
+    } else if (sz[10] == 3) {
+        tianqi_xx.click();
+    } else if (sz[10] == 4) {
+        tianqi_dx.click();
+    }
 }
 
 
