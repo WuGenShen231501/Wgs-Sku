@@ -434,6 +434,7 @@ html {
 
 .i_toplogo_tb {
     font-size: 34px;
+    transition: 0.1s;
 }
 
 
@@ -804,7 +805,7 @@ html {
     width: 100%;
     height: 20px;
     text-align: center;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .mryy:hover {

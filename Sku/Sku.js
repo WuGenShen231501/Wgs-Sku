@@ -409,19 +409,22 @@ document.addEventListener('click', function() {
     top_tou_xian_sc.style.display = 'none';
 });
 //全局按键事件
-document.addEventListener('keydown', function(e) {
-    if (e.key == 'Enter' && so_ssk_num == 1) {
-        so_anniu.click();
-    }
-    if (e.key == 'Enter' && drym_max.style.display == 'block') {
-        drym_dr.click();
-    }
+document.addEventListener('keyup', function(e) {
     if (top_tou_xian_sc.style.display == 'block') {
         if (input_tou_xian.value !== '') {
             tou_xian_tp.style.backgroundImage = 'url(' + input_tou_xian.value + ')';
         } else {
             tou_xian_tp.style.backgroundImage = 'url(' + localStorage.tou_xiang + ')';
         }
+    }
+})
+
+document.addEventListener('keydown', function(e) {
+    if (e.key == 'Enter' && so_ssk_num == 1) {
+        so_anniu.click();
+    }
+    if (e.key == 'Enter' && drym_max.style.display == 'block') {
+        drym_dr.click();
     }
     if (top_tou_xian_sc.style.display == 'block' && e.key == 'Enter') {
         tou_xian_qr.click();
@@ -578,6 +581,9 @@ drym_min = document.querySelector('.drym_min');
 drym_min.style.backgroundColor = RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd);
 var style_s4 = document.querySelector('.style_s4');
 style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}';
+
+document.documentElement.style.setProperty('--bei_jing_color', RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd));
+
 
 //开机背景框
 var music_ym = document.querySelector('.music_ym');

@@ -1416,6 +1416,7 @@ function a_click_self() {
     var className = document.querySelectorAll('a[href^="Sku-"]');
     for (var i = 0; i < className.length; i++) {
         className[i].target = '_self';
+        className[i].innerHTML = '打开';
     }
 }
 
@@ -1463,7 +1464,22 @@ document.addEventListener('click', function() {
     lj_zcb_ym_sc();
 });
 //全局回车事件
+document.addEventListener('keyup', function(e) {
+    if (nrmaxs1.style.display == 'block') {
+        if (e.key == '+') {
+            dhr_shezhi_gn_tj.click();
+        }
+        if (e.key == 'Delete' && dhr_shezhi_gn_sc.style.display == 'block' && dhr_shezhi_gn.style.display == 'block') {
+            dhr_shezhi_gn_sc.click();
+        }
+        if (e.key == 'F2' && dhr_shezhi_gn_cmm.style.display == 'block' && dhr_shezhi_gn.style.display == 'block') {
+            dhr_shezhi_gn_cmm.click();
+        }
+    }
+});
+
 document.addEventListener('keydown', function(e) {
+
     if (nrmaxs1.style.display == 'block' && e.ctrlKey && e.key == '/') {
         lian_jie_ssk.focus();
     }
@@ -1541,20 +1557,5 @@ document.addEventListener('keydown', function(e) {
             }
         }
     }
-    if (nrmaxs1.style.display == 'block') {
-        if (e.key == '+') {
-            dhr_shezhi_gn_tj.click();
-        }
-        if (e.key == 'Delete' && dhr_shezhi_gn_sc.style.display == 'block' && dhr_shezhi_gn.style.display == 'block') {
-            dhr_shezhi_gn_sc.click();
-        }
-        if (e.key == 'F2' && dhr_shezhi_gn_cmm.style.display == 'block' && dhr_shezhi_gn.style.display == 'block') {
-            dhr_shezhi_gn_cmm.click();
-        }
-    }
-
-
-
-
 
 });

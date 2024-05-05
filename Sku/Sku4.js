@@ -544,6 +544,8 @@ function bei_jing_color_s() {
     drym_min.style.backgroundColor = RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd);
     var style_s4 = document.querySelector('.style_s4');
     style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}';
+
+    document.documentElement.style.setProperty('--bei_jing_color', RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd));
 }
 //背景颜色
 input_color3 = document.querySelector('.input_color3');
@@ -1330,7 +1332,9 @@ var jisuan_bendidx = 0;
 shezhi_daoru.addEventListener('click', function(e) {
     shezhi_min.style.display = 'none';
     shezhi_daoru_ym.style.display = 'block';
+    daoru_ym_sc.value = '';
     daoru_ym_sc.focus();
+    daoru_ym_sc_tjzs();
 
     var daochu_sz = [];
     // 导航栏
@@ -3733,12 +3737,27 @@ function ssrd(url_s, num, dx, dx2) {
             mrrd_zg_2++;
             so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
 
+            if (mrrd_zg_2 == 16) {
+                setTimeout(function() {
+                    if (so_ssk.placeholder[0] !== '搜') {
+                        so_ssk.placeholder = '搜索引擎';
+                    }
+                }, 5000);
+            }
         })
         .catch(error => {
             mrrd_F++;
             mrrd_zg_2++;
             console.log('您的抓取操作出现了问题 ( ' + num + ' )' + '\n' + error);
             so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
+
+            if (mrrd_zg_2 == 16) {
+                setTimeout(function() {
+                    if (so_ssk.placeholder[0] !== '搜') {
+                        so_ssk.placeholder = '搜索引擎';
+                    }
+                }, 5000);
+            }
         });
 }
 
@@ -3801,11 +3820,6 @@ function mrrd_sx() {
                 ssrd('https://api.vvhan.com/api/hotlist/woShiPm', 'woShiPm', 'data', 'title');
             } else {
                 clearInterval(mrrd_dsq);
-                setTimeout(function() {
-                    if (so_ssk.placeholder[0] !== '搜') {
-                        so_ssk.placeholder = '搜索引擎';
-                    }
-                }, 5000);
             }
 
         }, 1000);

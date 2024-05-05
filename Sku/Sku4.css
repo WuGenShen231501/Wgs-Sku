@@ -1225,6 +1225,7 @@
         border-radius: 10px;
         z-index: 1;
         backdrop-filter: blur(var(--mao_bo_li));
+        background-color: var(--bei_jing_color);
     }
     
     .ztfg_tj_ym_name {
