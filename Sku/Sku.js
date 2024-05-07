@@ -5,28 +5,28 @@ function Sku_tsy(num) {
     sku_tsy[num].play();
 }
 
-var shui_you_nc = ['ztfg_name', 'ztfg', 'mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
+var shui_you_nc = ['sy_ci_shu', 'ztfg_name', 'ztfg', 'mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 // 保护localStorage值
 window.addEventListener('storage', function(event) {
-    console.clear();
-    console.log(event);
-    // event.key 为被修改的键名
-    console.log('键名:', event.key);
-
-    // event.oldValue 为旧值（在更改之前）
-    console.log('旧值:', event.oldValue);
-
-    // event.newValue 为新值（在更改之后）
-    console.log('新值:', event.newValue);
-
-    // event.url 是触发 storage 更改的页面的URL
-    console.log('触发 storage 更改的页面URL:', decodeURI(event.url));
-
     if (event.key == 'sy_ci_shu' && decodeURI(event.url).substring(decodeURI(event.url).length - 8, decodeURI(event.url).length) == decodeURI(location.href).substring(decodeURI(location.href).length - 8, decodeURI(location.href).length)) {
         window.close();
         setTimeout(function() { location.replace('https://cn.bing.com/'); });
     } else {
-        if (shui_you_nc.indexOf(event.key) != -1) {
+        if (shui_you_nc.indexOf(event.key) !== -1) {
+            console.clear();
+
+            // event.key 为被修改的键名
+            console.log('键名:', event.key);
+
+            // event.oldValue 为旧值（在更改之前）
+            console.log('旧值:', event.oldValue);
+
+            // event.newValue 为新值（在更改之后）
+            console.log('新值:', event.newValue);
+
+            // event.url 是触发 storage 更改的页面的URL
+            console.log('触发 storage 更改的页面URL:', decodeURI(event.url));
+
             localStorage.setItem(
                 `${event.key}`,
                 event.oldValue
@@ -35,8 +35,8 @@ window.addEventListener('storage', function(event) {
 
             Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做!');
 
-            window.close();
-            setTimeout(function() { location.replace('https://cn.bing.com/'); });
+            // window.close();
+            // setTimeout(function() { location.replace('https://cn.bing.com/'); });
         }
     }
 });
@@ -592,6 +592,8 @@ var music_boyyom_tj_ym = document.querySelector('.music_boyyom_tj_ym');
 var daoru_ym_dr_mmym = document.querySelector('.daoru_ym_dr_mmym');
 var lj_zcb_ym = document.querySelector('.lj_zcb_ym');
 var ztfg_tj_ym = document.querySelector('.ztfg_tj_ym');
+var sy_hddb = document.querySelector('.sy_hddb');
+var sy_zpzs_max = document.querySelector('.sy_zpzs_max');
 if (localStorage.bei_jing_kuan_ture == 1) {
     topmax.style.borderBottom = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     lian_jie_l_max.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);

@@ -122,6 +122,10 @@
     transform: scale(calc(1 / (1536 / 658)));
 }
 
+.liu_yan_z a {
+    text-decoration: underline;
+}
+
 .liu_yan_tx {
     position: absolute;
     width: 43px;

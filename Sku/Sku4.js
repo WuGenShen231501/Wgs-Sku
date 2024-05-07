@@ -2153,7 +2153,18 @@ so_ssk.addEventListener('click', function(e) {
     e.stopPropagation();
 });
 
-
+// 匹配函数
+function containsAllChars(str1, str2) {
+    // 检查 str1 中的每个字符是否在 str2 中存在
+    for (const char of str1) {
+        if (str2.indexOf(char) === -1) {
+            // 如果 str1 中的某个字符在 str2 中没有找到，返回 false
+            return false;
+        }
+    }
+    // 如果 str1 中的所有字符都在 str2 中找到了，返回 true
+    return true;
+}
 
 so_ssk.addEventListener('input', function(e) {
     if (so_ssk.value !== '') {
@@ -2175,7 +2186,7 @@ so_ssk.addEventListener('input', function(e) {
         ssbqym_min.innerHTML = '';
         // 匹配添加
         for (var i = 0; i < lsjl.length; i++) {
-            if (lsjl[i].indexOf(so_ssk.value) !== -1 && lsjl[i] !== so_ssk.value) {
+            if (containsAllChars(so_ssk.value, lsjl[i]) && lsjl[i] !== so_ssk.value) {
                 if (i > lsjl2.length - 1 && ssjl_zuih == 0) {
                     ssjl_zuih = 1;
                     var syjl = document.querySelectorAll('.ssbq_s');
@@ -2280,7 +2291,7 @@ so_ssk.addEventListener('focus', function(e) {
         ssbqym_min.innerHTML = '';
         // 匹配添加
         for (var i = 0; i < lsjl.length; i++) {
-            if (lsjl[i].indexOf(so_ssk.value) !== -1 && lsjl[i] !== so_ssk.value) {
+            if (containsAllChars(so_ssk.value, lsjl[i]) && lsjl[i] !== so_ssk.value) {
                 if (i > lsjl2.length - 1 && ssjl_zuih == 0) {
                     ssjl_zuih = 1;
                     var syjl = document.querySelectorAll('.ssbq_s');
@@ -3737,7 +3748,7 @@ function ssrd(url_s, num, dx, dx2) {
             mrrd_zg_2++;
             so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
 
-            if (mrrd_zg_2 == 16) {
+            if (mrrd_zg_2 == mrrd_zg) {
                 setTimeout(function() {
                     if (so_ssk.placeholder[0] !== '搜') {
                         so_ssk.placeholder = '搜索引擎';
@@ -3751,7 +3762,7 @@ function ssrd(url_s, num, dx, dx2) {
             console.log('您的抓取操作出现了问题 ( ' + num + ' )' + '\n' + error);
             so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
 
-            if (mrrd_zg_2 == 16) {
+            if (mrrd_zg_2 == mrrd_zg) {
                 setTimeout(function() {
                     if (so_ssk.placeholder[0] !== '搜') {
                         so_ssk.placeholder = '搜索引擎';
@@ -3778,7 +3789,10 @@ function mrrd_sx() {
         so_ssk.placeholder = '抓取热点中.........';
 
         mrrd_asd = 0;
+
+        // 需要手动更改
         mrrd_zg = 16;
+
         mrrd_zg_2 = 0;
         mrrd_F = 0;
         mrrd_T = 0;

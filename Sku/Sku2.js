@@ -912,6 +912,20 @@ function ycgn_lj_xgk() {
 
 
 //搜索链接
+
+// 匹配函数
+function containsAllChars(str1, str2) {
+    // 检查 str1 中的每个字符是否在 str2 中存在
+    for (const char of str1) {
+        if (str2.indexOf(char) === -1) {
+            // 如果 str1 中的某个字符在 str2 中没有找到，返回 false
+            return false;
+        }
+    }
+    // 如果 str1 中的所有字符都在 str2 中找到了，返回 true
+    return true;
+}
+
 lian_jie_l2 = document.querySelector('.lian_jie_l2');
 lian_jie_ssym = document.querySelector('.lian_jie_ssym');
 lian_jie_r2 = document.querySelector('.lian_jie_r2');
@@ -925,6 +939,7 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
         lian_jie_l2.style.display = 'block';
         lian_jie_ssym.innerHTML = '';
         var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
+        // 集合所有对象
         var lian_jie_dxs = {};
         for (var i = 0; i < Object.keys(dhr_ym_dx).length; i++) {
             var dhr_ym_dx_s = dhr_ym_dx['dhr_ym_dx' + i]
@@ -932,6 +947,7 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
                 lian_jie_dxs['lian_jie_dxs' + Object.keys(lian_jie_dxs).length] = dhr_ym_dx_s['dhr_ym_sz' + o];
             }
         }
+        // 所有对象合并成一个字符串
         var lian_jie_szs = [];
         for (var i = 0; i < Object.keys(dhr_ym_dx).length; i++) {
             var dhr_ym_dx_s = dhr_ym_dx['dhr_ym_dx' + i]
@@ -943,31 +959,21 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
                 }
             }
         }
+        // 匹配
         for (var i = 0; i < lian_jie_szs.length; i++) {
-            var lian_jie_szs_g = lian_jie_szs[i];
-            for (var o = 0; o < lian_jie_szs_g.length; o++) {
-                if (lian_jie_szs_g.charAt(o) == lian_jie_ssk.value[0].toUpperCase() || lian_jie_szs_g.charAt(o) == lian_jie_ssk.value[0].toLowerCase()) {
-                    var zq_gs = 1;
-                    for (var p = 1; p < lian_jie_ssk.value.length; p++) {
-                        if (lian_jie_szs_g.charAt(o + p) == lian_jie_ssk.value[p].toUpperCase() || lian_jie_szs_g.charAt(o + p) == lian_jie_ssk.value[p].toLowerCase()) {
-                            zq_gs++;
-                        }
-                    }
-                    if (zq_gs == lian_jie_ssk.value.length) {
-                        var lian_jie_rs_div = document.createElement('div');
-                        lian_jie_rs_div.className = 'lj_max';
-                        lian_jie_rs_div.draggable = "true";
-                        if (lian_jie_dxs['lian_jie_dxs' + i][4]) {
-                            lian_jie_rs_div.innerHTML = '<div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a><a class="lj_lj_b" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][4] + '">下载</a></div>';
-                        } else {
-                            lian_jie_rs_div.innerHTML = '<div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a></div>';
-                        }
-                        lian_jie_ssym.appendChild(lian_jie_rs_div);
-                        break;
-                    }
+            if (containsAllChars(lian_jie_ssk.value, lian_jie_szs[i])) {
+                var lian_jie_rs_div = document.createElement('div');
+                lian_jie_rs_div.className = 'lj_max';
+                lian_jie_rs_div.draggable = "true";
+                if (lian_jie_dxs['lian_jie_dxs' + i][4]) {
+                    lian_jie_rs_div.innerHTML = '<div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a><a class="lj_lj_b" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][4] + '">下载</a></div>';
+                } else {
+                    lian_jie_rs_div.innerHTML = '<div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a></div>';
                 }
+                lian_jie_ssym.appendChild(lian_jie_rs_div);
             }
         }
+
         lian_jie_r2.scroll(0, 0);
         WGS_wenbengundon('.lj_xx_b_2');
 
