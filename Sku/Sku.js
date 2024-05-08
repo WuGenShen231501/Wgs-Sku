@@ -930,3 +930,32 @@ document.addEventListener('visibilitychange', function() {
         // 页面再次可见时，可以恢复之前暂停的操作
     }
 });
+
+
+
+// 代码量build
+var max_bbxs2 = document.querySelector('.max_bbxs2');
+var gywm_gjcs = document.querySelector('.gywm_gjcs');
+var zong_dml = 0;
+var ip_dz_s = 0;
+var ip_dz = ['Sku.html', 'Sku.css', 'Sku1.css', 'Sku2.css', 'Sku3.css', 'Sku4.css', 'Sku_ht.js', 'Sku1.js', 'Sku2.js', 'Sku3.js', 'Sku4.js', 'Sku.js', 'iconfont.css', 'iconfont.ttf', 'logo.svg'];
+for (var i = 0; i < ip_dz.length; i++) {
+    fetch('https://wugenshen231501.github.io/Wgs-Sku/Sku/' + ip_dz[i])
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text();
+        })
+        .then(data => {
+            zong_dml += data.length;
+            ip_dz_s++;
+            gywm_gjcs.innerText = zong_dml + ' ' + ip_dz_s + '/' + ip_dz.length;
+            max_bbxs2.innerText = 'build:' + zong_dml;
+        })
+        .catch(error => {
+            console.log('获取失败! 网络故障 或 地址错误');
+            gywm_gjcs.innerText = zong_dml + ' ' + ip_dz_s + '/' + ip_dz.length;
+            max_bbxs2.innerText = 'build:' + zong_dml;
+        });
+}

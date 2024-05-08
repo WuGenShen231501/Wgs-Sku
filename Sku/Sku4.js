@@ -118,6 +118,8 @@ for (var i = 0; i < i_fanhui_tp.length; i++) {
             shezhi_ym[i].style.display = 'none';
         }
         shezhi_min.style.display = 'block';
+
+        daoru_ym_sc.value = '';
     });
 }
 
@@ -3051,7 +3053,7 @@ gywm_l.addEventListener('click', function(e) {
         gywm_ban_ben_djcs2 = 0;
 
         var WGS_HTSP_S = document.querySelector('.WGS_HTSP_S');
-        var s_sz = ['az', 'qq', 'ww', 'ee', 'rr', 'tt', 'yy', 'uu', 'ii', 'oo', 'pp', 'aa', 'ss', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'zz', 'xx', 'cc', 'vv', 'bb', 'nn', 'mm'];
+        var s_sz = ['az', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
         var s_sz_2 = ['vip', 'xyz'];
         var s_sz_3 = ['9527'];
         var htsp_s_tjgs = 0;

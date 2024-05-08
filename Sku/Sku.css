@@ -403,6 +403,14 @@ html {
 .max_bbxs {
     position: fixed;
     right: 0;
+    bottom: 12px;
+    font-size: 10px;
+    opacity: 0.4;
+}
+
+.max_bbxs2 {
+    position: fixed;
+    right: 0;
     bottom: 0;
     font-size: 10px;
     opacity: 0.4;
