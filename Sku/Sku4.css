@@ -394,6 +394,14 @@
     .cdcsh_click:hover {
         transform: scale(1.1);
     }
+    
+    .cdcsh_click_lxdj {
+        position: absolute;
+        width: 200px;
+        text-align: center;
+        top: 315px;
+        right: calc(50% - 100px);
+    }
     /* ------备份------ */
     
     .bfsz_sccd {
@@ -833,7 +841,7 @@
     
     .ssbq_s {
         float: left;
-        width: 100%;
+        width: 320px;
         height: 40px;
         font-size: 14px;
         line-height: 40px;
@@ -1006,7 +1014,7 @@
         border: 1px solid var(--zi_ti_color);
         border-radius: 5px;
         text-indent: 5px;
-        transition: 0.15s;
+        transition: 0.3s;
     }
     
     .lszcb_s_dizhi:hover,

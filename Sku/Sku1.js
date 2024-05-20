@@ -23,25 +23,59 @@ function RGB_zhq(hex, opacity) {
 
 
 // 所有文本超出字体浮动效果
+// function WGS_wenbengundon(qwe, asd) {
+//     var wb = document.querySelectorAll(qwe);
+//     for (var i = 0; i < wb.length; i++) {
+//         wb[i].addEventListener('mouseover', function(e) {
+//             var nrcd = this.scrollWidth;
+//             var hzcd = this.offsetWidth;
+//             if (nrcd > hzcd) {
+//                 var duochu = nrcd - hzcd;
+//                 var sj = duochu / 50;
+//                 this.style.transition = sj + 's linear';
+//                 this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) + 'px';
+//             }
+//         });
+//         wb[i].addEventListener('mouseout', function(e) {
+//             this.style.transition = '';
+//             this.style.textIndent = asd + 'px';
+//         });
+//     }
+// }
+
 function WGS_wenbengundon(qwe, asd) {
     var wb = document.querySelectorAll(qwe);
     for (var i = 0; i < wb.length; i++) {
-        wb[i].addEventListener('mouseover', function(e) {
-            var nrcd = this.scrollWidth;
-            var hzcd = this.offsetWidth;
-            if (nrcd > hzcd) {
+        // 克隆元素
+        var clone = wb[i].cloneNode(true);
+        clone.style.visibility = 'hidden';
+        clone.style.position = 'absolute';
+        clone.style.left = '-9999px'; // 将其移出视图
+        document.body.appendChild(clone);
+        // 进行测量
+        var scrollWidth = clone.scrollWidth;
+        var offsetWidth = clone.offsetWidth;
+        // 移除克隆元素
+        document.body.removeChild(clone);
+
+        if (scrollWidth > offsetWidth) {
+            wb[i].addEventListener('mouseover', function(e) {
+                var nrcd = this.scrollWidth;
+                var hzcd = this.offsetWidth;
                 var duochu = nrcd - hzcd;
                 var sj = duochu / 50;
                 this.style.transition = sj + 's linear';
                 this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) + 'px';
-            }
-        });
-        wb[i].addEventListener('mouseout', function(e) {
-            this.style.transition = '';
-            this.style.textIndent = asd + 'px';
-        });
+            });
+            wb[i].addEventListener('mouseout', function(e) {
+                this.style.transition = '';
+                this.style.textIndent = asd + 'px';
+            });
+        }
     }
 }
+
+
 
 // 弹窗提醒
 function Sku_tctx(zdysx1) {
@@ -111,9 +145,11 @@ sy_hddb.addEventListener('click', function() {
 sy_lbt = document.querySelector('.sy_lbt');
 sy_lbt_b = document.querySelector('.sy_lbt_b');
 sy_djs_tjym = document.querySelector('.sy_djs_tjym');
+sy_zp_tj_ym = document.querySelector('.sy_zp_tj_ym');
 sy_lbt.style.marginTop = (window.innerHeight + 56 - 523 - 84) / 2 + 'px';
 sy_lbt_b.style.marginTop = ((window.innerHeight + 56 - 523 - 84) / 2) - 56 + 'px';
 sy_djs_tjym.style.top = ((window.innerHeight - 300) / 2) + 'px';
+sy_zp_tj_ym.style.top = ((window.innerHeight - 300) / 2) + 'px';
 window.addEventListener('resize', function() {
     sy_lbt = document.querySelector('.sy_lbt');
     sy_lbt_b = document.querySelector('.sy_lbt_b');
@@ -121,6 +157,7 @@ window.addEventListener('resize', function() {
     sy_lbt.style.marginTop = (window.innerHeight + 56 - 523 - 84) / 2 + 'px';
     sy_lbt_b.style.marginTop = ((window.innerHeight + 56 - 523 - 84) / 2) - 56 + 'px';
     sy_djs_tjym.style.top = ((window.innerHeight - 300) / 2) + 'px';
+    sy_zp_tj_ym.style.top = ((window.innerHeight - 300) / 2) + 'px';
 });
 
 
@@ -713,7 +750,7 @@ window.addEventListener('resize', function() {
 
 //添加事件
 function iframe1_sygn() {
-    iframe1 = document.querySelectorAll('.iframe1');
+    var iframe1 = document.querySelectorAll('.iframe1');
     for (var i = 0; i < iframe1.length; i++) {
         //取消鼠标
         if (localStorage.sy_zpzs_kaiguan == 0) {
@@ -745,6 +782,37 @@ function iframe1_sygn() {
 }
 iframe1_sygn();
 
+//添加事件2单独添加
+function iframe1_sygn2() {
+    var iframe1 = document.querySelector('.iframe1');
+    //取消鼠标
+    if (localStorage.sy_zpzs_kaiguan == 0) {
+        iframe1.querySelector('iframe').addEventListener('mouseenter', function() {
+            su_biao.style.display = 'none';
+        });
+    }
+    //进入
+    iframe1.querySelector('.sy_zpzs_jr').addEventListener('click', function() {
+        var sy_zpzs_mz = JSON.parse(localStorage.sy_zpzs_mz);
+        var sy_zpzs_lj = JSON.parse(localStorage.sy_zpzs_lj);
+        window.open(sy_zpzs_lj[sy_zpzs_mz.indexOf(this.innerText)]);
+    });
+    //删除
+    iframe1.querySelector('.sy_zpzs_sc').addEventListener('click', function() {
+        this.parentNode.parentNode.removeChild(this.parentNode);
+        //删除内存
+        var sy_zpzs_lj = JSON.parse(localStorage.sy_zpzs_lj);
+        var sy_zpzs_mz = JSON.parse(localStorage.sy_zpzs_mz);
+        sy_zpzs_lj.splice(this.parentNode.getAttribute('iframe_num'), 1);
+        sy_zpzs_mz.splice(this.parentNode.getAttribute('iframe_num'), 1);
+        localStorage.sy_zpzs_lj = JSON.stringify(sy_zpzs_lj);
+        localStorage.sy_zpzs_mz = JSON.stringify(sy_zpzs_mz);
+        //重新排序
+        iframe_cxpx();
+        Sku_tctx('作品删除成功');
+    });
+}
+
 //重新排序
 function iframe_cxpx() {
     var sy_zpzs_lj = JSON.parse(localStorage.sy_zpzs_lj);
@@ -753,6 +821,7 @@ function iframe_cxpx() {
         iframe1[i].setAttribute('iframe_num', i);
     }
 }
+iframe_cxpx();
 
 //添加作品
 sy_zp_tj_anniu = document.querySelector('.sy_zp_tj_anniu');
@@ -817,7 +886,7 @@ sy_zp_tj_anniu.addEventListener('click', function() {
         }
         sy_zp_tj_sc();
         iframe1_heigth();
-        iframe1_sygn();
+        iframe1_sygn2();
         iframe_cxpx();
         Sku_tctx('作品添加成功');
 
@@ -844,6 +913,7 @@ sy_zpzs_kaiguan.addEventListener('click', function(e) {
         }
         sy_zp_shuc_hs();
         iframe1_heigth();
+        iframe_cxpx();
         iframe1_sygn();
     } else {
         localStorage.sy_zpzs_kaiguan = 0;
@@ -854,6 +924,7 @@ sy_zpzs_kaiguan.addEventListener('click', function(e) {
         }
         sy_zp_shuc_hs();
         iframe1_heigth();
+        iframe_cxpx();
         iframe1_sygn();
     }
     enableDragAndDrop3('iframe1');
@@ -2185,6 +2256,7 @@ function handleDragEnd3(e) {
                 localStorage.sy_zpzs_lj = JSON.stringify(sy_zpzs_lj);
             }
         }
+        iframe_cxpx();
         console.log('---------------');
     }
 

@@ -600,11 +600,10 @@
     
     .sy_zp_tj_ym {
         position: fixed;
-        width: 600px;
-        height: 400px;
+        width: 500px;
+        height: 300px;
         border-radius: 5px;
-        top: 150px;
-        left: calc((100% - 600px) / 2);
+        left: calc((100% - 500px) / 2);
     }
     
     .input_sy_zp_tj {
@@ -614,7 +613,7 @@
         border-bottom: 1px solid white;
         background-color: rgb(0, 0, 0, 0);
         margin-left: calc((100% - 400px) / 2);
-        margin-top: 50px;
+        margin-top: 32px;
         outline: none;
         text-indent: 1em;
     }

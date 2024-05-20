@@ -57,6 +57,7 @@
 
 .lj_max {
     float: left;
+    position: relative;
     width: calc((100% - (4 * 20px)) / 3) !important;
     height: 100px !important;
     border-bottom: 1px solid rgb(255, 255, 255);
@@ -507,5 +508,19 @@
 }
 
 .lj_xg_tj_bdtj:hover>.lj_xg_tj_bdtj_wz {
+    display: block;
+}
+
+.lj_laiyuan {
+    display: none;
+    position: absolute;
+    font-size: 12px;
+    transform: scale(0.9);
+    opacity: 0.5;
+    bottom: 2px;
+    left: -3px;
+}
+
+.lj_max:hover>.lj_laiyuan {
     display: block;
 }

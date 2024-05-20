@@ -6,42 +6,91 @@ function Sku_tsy(num) {
 }
 
 // 所有文本超出字体浮动效果
-function WGS_wenbengundon(qwe) {
+// function WGS_wenbengundon(qwe) {
+//     var wb = document.querySelectorAll(qwe);
+//     for (var i = 0; i < wb.length; i++) {
+//         wb[i].addEventListener('mouseover', function(e) {
+//             var nrcd = this.scrollWidth;
+//             var hzcd = this.offsetWidth;
+//             if (nrcd > hzcd) {
+//                 var duochu = nrcd - hzcd;
+//                 var sj = duochu / 50;
+//                 this.style.transition = sj + 's linear';
+//                 this.style.textIndent = (nrcd * -1) + hzcd + 'px';
+//             }
+//         });
+//         wb[i].addEventListener('mouseout', function(e) {
+//             this.style.transition = '';
+//             this.style.textIndent = '0px';
+//         });
+//     }
+// }
+
+function WGS_wenbengundon9(qwe) {
     var wb = document.querySelectorAll(qwe);
     for (var i = 0; i < wb.length; i++) {
-        wb[i].addEventListener('mouseover', function(e) {
-            var nrcd = this.scrollWidth;
-            var hzcd = this.offsetWidth;
-            if (nrcd > hzcd) {
+        // 克隆元素
+        var clone = wb[i].cloneNode(true);
+        clone.style.visibility = 'hidden';
+        clone.style.position = 'absolute';
+        clone.style.left = '-9999px'; // 将其移出视图
+        document.body.appendChild(clone);
+        // 进行测量
+        var scrollWidth = clone.scrollWidth;
+        var offsetWidth = clone.offsetWidth;
+        // 移除克隆元素
+        document.body.removeChild(clone);
+
+        if (scrollWidth > offsetWidth) {
+            wb[i].addEventListener('mouseover', function(e) {
+                var nrcd = this.scrollWidth;
+                var hzcd = this.offsetWidth;
                 var duochu = nrcd - hzcd;
                 var sj = duochu / 50;
                 this.style.transition = sj + 's linear';
                 this.style.textIndent = (nrcd * -1) + hzcd + 'px';
-            }
-        });
-        wb[i].addEventListener('mouseout', function(e) {
-            this.style.transition = '';
-            this.style.textIndent = '0px';
-        });
+            });
+            wb[i].addEventListener('mouseout', function(e) {
+                this.style.transition = '';
+                this.style.textIndent = '0px';
+            });
+        }
     }
 }
 
 // 单独文本超出字体浮动效果
+// function WGS_wenbengundon_dd(qwe) {
+//     qwe.addEventListener('mouseover', function(e) {
+//         var nrcd = this.scrollWidth;
+//         var hzcd = this.offsetWidth;
+//         if (nrcd > hzcd) {
+//             var duochu = nrcd - hzcd;
+//             var sj = duochu / 50;
+//             this.style.transition = sj + 's linear';
+//             this.style.textIndent = (nrcd * -1) + hzcd + 'px';
+//         }
+//     });
+//     qwe.addEventListener('mouseout', function(e) {
+//         this.style.transition = '';
+//         this.style.textIndent = '0px';
+//     });
+// }
+
 function WGS_wenbengundon_dd(qwe) {
-    qwe.addEventListener('mouseover', function(e) {
-        var nrcd = this.scrollWidth;
-        var hzcd = this.offsetWidth;
-        if (nrcd > hzcd) {
+    if (qwe.scrollWidth > qwe.offsetWidth) {
+        qwe.addEventListener('mouseover', function(e) {
+            var nrcd = this.scrollWidth;
+            var hzcd = this.offsetWidth;
             var duochu = nrcd - hzcd;
             var sj = duochu / 50;
             this.style.transition = sj + 's linear';
             this.style.textIndent = (nrcd * -1) + hzcd + 'px';
-        }
-    });
-    qwe.addEventListener('mouseout', function(e) {
-        this.style.transition = '';
-        this.style.textIndent = '0px';
-    });
+        });
+        qwe.addEventListener('mouseout', function(e) {
+            this.style.transition = '';
+            this.style.textIndent = '0px';
+        });
+    }
 }
 
 // 弹窗提醒
@@ -278,9 +327,11 @@ function lian_jie_l_kaishi() {
             lian_jie_r_s[j].appendChild(lian_jie_rs_div);
         }
     }
-    WGS_wenbengundon('.lj_xx_b');
+    WGS_wenbengundon9('.lj_xx_b');
     // Sku-a转换href
     a_click_self();
+    // 下载转换href
+    a_click_self_xz();
 
     //为所有链接添加事   
     lj_max = document.querySelectorAll('.lj_max');
@@ -351,10 +402,30 @@ function cxpx() {
     } else if (zhi_xian == '链接') {
         //链接排序
         lian_jie_r = document.querySelector('.lian_jie_r');
-        lian_jie_r_s_s = lian_jie_r.children[dhr_zhi_xian].children;
+        var lian_jie_r_s_s = lian_jie_r.children[dhr_zhi_xian].children;
         for (var i = 0; i < lian_jie_r_s_s.length; i++) {
             //指定顺序值
             lian_jie_r_s_s[i].setAttribute('lj_num', i)
+        }
+    } else if (zhi_xian == '搜索中的链接') {
+        //原全部链接排序
+        var lian_jie_r = document.querySelector('.lian_jie_r');
+        var lian_jie_r_s_s = lian_jie_r.children[dhr_zhi_xian].children;
+        for (var i = 0; i < lian_jie_r_s_s.length; i++) {
+            //指定顺序值
+            lian_jie_r_s_s[i].setAttribute('lj_num', i)
+        }
+        //搜索中的链接排序
+        lian_jie_r2 = document.querySelector('.lian_jie_r2');
+        var lian_jie_r_s_s = lian_jie_r2.querySelectorAll('.lj_max');
+        for (var i = 0; i < lian_jie_r_s_s.length; i++) {
+            //指定顺序值
+            lian_jie_r_s_s[i].setAttribute('lj_num', i);
+            //搜索中的链接总排序
+            var this_zong_lj_num = lian_jie_r_s_s[i].getAttribute('zong_lj_num');
+            if (this_zong_lj_num - 0 > suo_shui_zhon_num2 - 0) {
+                lian_jie_r_s_s[i].setAttribute('zong_lj_num', this_zong_lj_num - 1);
+            }
         }
     }
 }
@@ -385,17 +456,33 @@ dhr_shezhi_gn_sc.addEventListener('click', function() {
         lian_jie_r.removeChild(lian_jie_r_s2[dhr_zhi_xian2]);
         //重新排序
         cxpx();
-        //显示第一个
-        one_kaishi();
-        //指向更改
-        lian_jie_l = document.querySelector('.lian_jie_l');
-        lian_jie_l_s = lian_jie_l.children;
-        if (lian_jie_l_s.length !== 0) {
-            dhr_zhi_xian = 0;
+        if (dhr_zhi_xian == dhr_zhi_xian2) {
+            //显示第一个
+            one_kaishi();
+            //指向更改
+            lian_jie_l = document.querySelector('.lian_jie_l');
+            lian_jie_l_s = lian_jie_l.children;
+            if (lian_jie_l_s.length !== 0) {
+                dhr_zhi_xian = 0;
+            } else {
+                dhr_zhi_xian = '无';
+            }
+            qjgnzx();
+            // 显示最上方
+            lian_jie_l.scroll(0, 0);
         } else {
-            dhr_zhi_xian = '无';
+            //指向更改
+            lian_jie_l = document.querySelector('.lian_jie_l');
+            lian_jie_l_s = lian_jie_l.children;
+            if (lian_jie_l_s.length !== 0) {
+                if (dhr_zhi_xian > dhr_zhi_xian2) {
+                    dhr_zhi_xian--;
+                }
+            } else {
+                dhr_zhi_xian = '无';
+            }
+            qjgnzx();
         }
-        qjgnzx();
 
         Sku_tctx('分页删除成功');
     } else if (zhi_xian == '链接') {
@@ -601,6 +688,8 @@ jl_qrk.addEventListener('click', function(e) {
 
             // Sku-a转换href
             a_click_self();
+            // 下载转换href
+            a_click_self_xz();
         }
     } else if (lj_srk_mc.value !== '' && lj_srk_wzid.value !== '' && gong_neng == '链接修改' && zhi_xian == '搜索中的链接') {
         if (lj_srk_xzid.value !== '') {
@@ -648,6 +737,8 @@ jl_qrk.addEventListener('click', function(e) {
 
             // Sku-a转换href
             a_click_self();
+            // 下载转换href
+            a_click_self_xz();
         }
     } else if ((lj_srk_mc.value == '' || lj_srk_wzid.value == '') && gong_neng == '链接修改') {
         lj_srk_mc.style.borderColor = '';
@@ -814,6 +905,8 @@ dhr_qrk.addEventListener('click', function(e) {
             ycgn_dhr_xgk();
             // 添加拖动
             enableDragAndDrop2('tuodon_dhr_div');
+            // 显示最下方
+            lian_jie_l.scroll(0, lian_jie_l.scrollHeight);
 
             Sku_tctx('分页添加成功');
         }
@@ -891,6 +984,10 @@ jl_qrk.addEventListener('click', function(e) {
             // 隐藏
             ycgn_lj_xgk();
 
+            // 显示最下面
+            var dhr_ym_r_s = document.querySelectorAll('.dhr_ym_r_s');
+            lian_jie_r.scroll(0, dhr_ym_r_s[dhr_zhi_xian].scrollHeight);
+
             Sku_tctx('链接添加成功');
 
             // 换位功能
@@ -902,6 +999,8 @@ jl_qrk.addEventListener('click', function(e) {
 
             // Sku-a转换href
             a_click_self();
+            // 下载转换href
+            a_click_self_xz();
 
         }
     } else if ((lj_srk_tpid.value !== '' || lj_srk_mc.value !== '' || lj_srk_zsm.value !== '' || lj_srk_wzid.value !== '' || lj_srk_xzid.value !== '') && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML !== '匹配添加已有链接') {
@@ -915,9 +1014,13 @@ jl_qrk.addEventListener('click', function(e) {
 
         var zg_lj = 0;
         for (var o = 0; o < dx_l.length; o++) {
+            // 本页跳过
+            if (o == dhr_zhi_xian) { continue; }
+
             var dx_l_l = Object.keys(dx[dx_l[o]]);
             for (var p = 0; p < dx_l_l.length; p++) {
                 var dx_l_l_l = dx[dx_l[o]][dx_l_l[p]];
+                // 是否匹配
                 var ji_shu = 0;
                 for (var i = 0; i < lj_sz_s2.length; i++) {
                     if (lj_sz_s2[i] !== '' && dx_l_l_l[i]) {
@@ -928,25 +1031,39 @@ jl_qrk.addEventListener('click', function(e) {
                         ji_shu++;
                     }
                 }
+
+                // 满足添加
                 if (ji_shu == 5) {
-                    // 隐藏
-                    ycgn_lj_xgk();
-                    lj_xg_tj_bdtj_wz.innerHTML = '匹配添加已有链接';
+                    // 是否重复
+                    var lj_cf = 0;
+                    var dx_l_by = dx[dx_l[dhr_zhi_xian]];
+                    var dx_l_l_by = Object.keys(dx_l_by);
+                    for (var i = 0; i < dx_l_l_by.length; i++) {
+                        if (JSON.stringify(dx_l_by[dx_l_l_by[i]]) == JSON.stringify(dx_l_l_l)) {
+                            lj_cf++;
+                        }
+                    }
 
-                    lj_srk_tpid.value = dx_l_l_l[0];
-                    lj_srk_mc.value = dx_l_l_l[1];
-                    lj_srk_zsm.value = dx_l_l_l[2];
-                    lj_srk_wzid.value = dx_l_l_l[3];
-                    dx_l_l_l[4] ? lj_srk_xzid.value = dx_l_l_l[4] : lj_srk_xzid.value = '';
+                    if (lj_cf == 0) { //不重复的添加
+                        // 隐藏
+                        ycgn_lj_xgk();
+                        lj_xg_tj_bdtj_wz.innerHTML = '匹配添加已有链接';
 
-                    jl_qrk.click();
-                    zg_lj++;
+                        lj_srk_tpid.value = dx_l_l_l[0];
+                        lj_srk_mc.value = dx_l_l_l[1];
+                        lj_srk_zsm.value = dx_l_l_l[2];
+                        lj_srk_wzid.value = dx_l_l_l[3];
+                        dx_l_l_l[4] ? lj_srk_xzid.value = dx_l_l_l[4] : lj_srk_xzid.value = '';
+
+                        jl_qrk.click();
+                        zg_lj++;
+                    }
                 }
             }
         }
 
         if (zg_lj == 0) {
-            Sku_tctx('未找到匹配的链接 !');
+            Sku_tctx('未找到匹配的链接! 或 重复链接!');
         }
 
     } else if ((lj_srk_mc.value == '' || lj_srk_wzid.value == '') && gong_neng == '链接添加' && lj_xg_tj_bdtj_wz.innerHTML == '匹配添加已有链接') {
@@ -1026,15 +1143,27 @@ function ycgn_lj_xgk() {
 
 // 匹配函数
 function containsAllChars(str1, str2) {
-    // 检查 str1 中的每个字符是否在 str2 中存在
+    // 创建一个对象来记录str1中每个字符的出现次数
+    const charCounts = {};
     for (const char of str1) {
-        if (str2.indexOf(char) === -1) {
-            // 如果 str1 中的某个字符在 str2 中没有找到，返回 false
-            return false;
+        // 增加字符在str1中的出现次数
+        charCounts[char] = (charCounts[char] || 0) + 1;
+    }
+
+    // 遍历str2，减少每个字符的计数
+    for (const char of str2) {
+        if (charCounts.hasOwnProperty(char)) {
+            // 如果字符在str1中出现过，则减少其计数
+            charCounts[char]--;
+            // 如果计数变为0，则从对象中删除该字符
+            if (charCounts[char] === 0) {
+                delete charCounts[char];
+            }
         }
     }
-    // 如果 str1 中的所有字符都在 str2 中找到了，返回 true
-    return true;
+
+    // 如果对象中没有剩余的字符，则说明str2中包含了str1中所有字符且满足出现次数要求
+    return Object.keys(charCounts).length === 0;
 }
 
 lian_jie_l2 = document.querySelector('.lian_jie_l2');
@@ -1084,10 +1213,28 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
                 var lian_jie_rs_div = document.createElement('div');
                 lian_jie_rs_div.className = 'lj_max';
                 lian_jie_rs_div.draggable = "true";
+
+                // 来源
+                var i2 = 0;
+                for (var ii = 0; ii < lian_jie_dxs_s_gs.length; ii++) {
+                    var num_ss = -1;
+                    for (var tt = 0; tt <= ii; tt++) {
+                        num_ss += lian_jie_dxs_s_gs[tt];
+                    }
+                    if (num_ss >= i && ii >= 1) {
+                        i2 = ii;
+                        break;
+                    } else if (num_ss >= i && ii == 0) {
+                        i2 = ii;
+                        break;
+                    }
+                }
+                var dhr_sz = JSON.parse(localStorage.dhr_sz);
+
                 if (lian_jie_dxs['lian_jie_dxs' + i][4]) {
-                    lian_jie_rs_div.innerHTML = '<div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a><a class="lj_lj_b" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][4] + '">下载</a></div>';
+                    lian_jie_rs_div.innerHTML = '<div class="lj_laiyuan">来源：' + dhr_sz[i2] + '</div><div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a><a class="lj_lj_b" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][4] + '">下载</a></div>';
                 } else {
-                    lian_jie_rs_div.innerHTML = '<div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a></div>';
+                    lian_jie_rs_div.innerHTML = '<div class="lj_laiyuan">来源：' + dhr_sz[i2] + '</div><div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a></div>';
                 }
 
                 // 添加右击按钮修改链接功能
@@ -1100,8 +1247,15 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
                     // 设置指向
                     var i2 = 0;
                     var zong_num_ph = this.getAttribute('zong_lj_num');
+                    suo_shui_zhon_num2 = this.getAttribute('zong_lj_num');
                     suo_shui_zhon_num = this.getAttribute('lj_num');
 
+                    var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
+                    //获取每个导航栏中的个数
+                    var lian_jie_dxs_s_gs = [];
+                    for (var i = 0; i < Object.keys(dhr_ym_dx).length; i++) {
+                        lian_jie_dxs_s_gs.push(Object.keys(dhr_ym_dx['dhr_ym_dx' + i]).length);
+                    }
                     for (var ii = 0; ii < lian_jie_dxs_s_gs.length; ii++) {
                         var num_ss = -1;
                         for (var tt = 0; tt <= ii; tt++) {
@@ -1145,10 +1299,12 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
         }
 
         lian_jie_r2.scroll(0, 0);
-        WGS_wenbengundon('.lj_xx_b_2');
+        WGS_wenbengundon9('.lj_xx_b_2');
 
         // Sku-a转换href
         a_click_self();
+        // 下载转换href
+        a_click_self_xz();
 
     } else {
         lian_jie_r.style.display = 'block';
@@ -1593,6 +1749,18 @@ function a_click_self() {
     for (var i = 0; i < className.length; i++) {
         className[i].target = '_self';
         className[i].innerHTML = '打开';
+    }
+}
+
+// 下载标签打开方式替换
+function a_click_self_xz() {
+    var hzm = ['.zip', '.exe'];
+    for (var p = 0; p < hzm.length; p++) {
+        var className = document.querySelectorAll('a[href$="' + hzm[p] + '"]');
+        for (var i = 0; i < className.length; i++) {
+            className[i].target = '_self';
+            className[i].innerHTML = '安装';
+        }
     }
 }
 

@@ -141,15 +141,18 @@ html {
     position: absolute;
     width: 150px;
     height: auto;
-    top: 70px;
-    left: -25px;
-    background-color: rgba(255, 255, 255, 0.9);
+    top: 62px;
+    right: 570px;
+    background-color: var(--bei_jing_color);
     z-index: 1;
+    border-radius: 5px;
+    backdrop-filter: var(--mao_bo_li);
+    transition: 0.4s;
 }
 
 .so_yq_s_sjx {
     position: absolute;
-    border: 10px solid rgba(255, 255, 255, 0.9);
+    border: 10px solid var(--bei_jing_kuan_color);
     border-right: 10px solid transparent;
     border-bottom: 10px solid transparent;
     top: -9px;
@@ -160,14 +163,24 @@ html {
 .so_yqs {
     width: 150px;
     height: 40px;
-    border-bottom: 1px solid rgb(190, 190, 190);
+    border-bottom: 1px solid;
     background-size: auto 25px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+.so_yqs:last-child {
+    /* 最后一个 */
+    border: 0;
+}
+
+.so_yqs:last-child:hover {
+    /* 最后一个 */
+    border: 0;
+}
+
 .so_yqs:hover {
-    border-bottom: 1px solid rgb(255, 213, 0);
+    background-color: var(--zi_ti_click_color_15);
 }
 
 .so_yq_baidu {
@@ -842,6 +855,9 @@ html {
     .so_suo {
         right: 100px;
     }
+    .so_yq_s {
+        right: 370px;
+    }
     .ssbqym {
         right: 135px !important;
     }
@@ -862,6 +878,9 @@ html {
 @media screen and (max-width: 890px) {
     .so_suo {
         display: none;
+    }
+    .so_yq_s {
+        display: none !important;
     }
     .ssbqym {
         display: none !important;

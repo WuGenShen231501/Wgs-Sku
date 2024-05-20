@@ -35,24 +35,56 @@ function WGS_zfc_jiemi(nr, key) {
 }
 
 // WGS_wenbengundon(class, 首行缩进)
+// function WGS_wenbengundon(qwe, asd) {
+//     if (asd == undefined) { asd = 0; }
+//     var wb = document.querySelectorAll(qwe);
+//     for (var i = 0; i < wb.length; i++) {
+//         wb[i].addEventListener('mouseover', function(e) {
+//             var nrcd = this.scrollWidth;
+//             var hzcd = this.offsetWidth;
+//             if (nrcd > hzcd) {
+//                 var duochu = nrcd - hzcd;
+//                 var sj = duochu / 50;
+//                 this.style.transition = sj + 's linear';
+//                 this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) - asd + 'px';
+//             }
+//         });
+//         wb[i].addEventListener('mouseout', function(e) {
+//             this.style.transition = '';
+//             this.style.textIndent = asd + 'px';
+//         });
+//     }
+// }
+
 function WGS_wenbengundon(qwe, asd) {
-    if (asd == undefined) { asd = 0; }
     var wb = document.querySelectorAll(qwe);
     for (var i = 0; i < wb.length; i++) {
-        wb[i].addEventListener('mouseover', function(e) {
-            var nrcd = this.scrollWidth;
-            var hzcd = this.offsetWidth;
-            if (nrcd > hzcd) {
+        // 克隆元素
+        var clone = wb[i].cloneNode(true);
+        clone.style.visibility = 'hidden';
+        clone.style.position = 'absolute';
+        clone.style.left = '-9999px'; // 将其移出视图
+        document.body.appendChild(clone);
+        // 进行测量
+        var scrollWidth = clone.scrollWidth;
+        var offsetWidth = clone.offsetWidth;
+        // 移除克隆元素
+        document.body.removeChild(clone);
+
+        if (scrollWidth > offsetWidth) {
+            wb[i].addEventListener('mouseover', function(e) {
+                var nrcd = this.scrollWidth;
+                var hzcd = this.offsetWidth;
                 var duochu = nrcd - hzcd;
                 var sj = duochu / 50;
                 this.style.transition = sj + 's linear';
-                this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) - asd + 'px';
-            }
-        });
-        wb[i].addEventListener('mouseout', function(e) {
-            this.style.transition = '';
-            this.style.textIndent = asd + 'px';
-        });
+                this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) + 'px';
+            });
+            wb[i].addEventListener('mouseout', function(e) {
+                this.style.transition = '';
+                this.style.textIndent = asd + 'px';
+            });
+        }
     }
 }
 
@@ -545,9 +577,9 @@ function bei_jing_color_s() {
     drym_min = document.querySelector('.drym_min');
     drym_min.style.backgroundColor = RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd);
     var style_s4 = document.querySelector('.style_s4');
-    style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}';
+    style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}.so_yqs{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';}';
 
-    document.documentElement.style.setProperty('--bei_jing_color', RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd));
+    html_css();
 }
 //背景颜色
 input_color3 = document.querySelector('.input_color3');
@@ -590,6 +622,7 @@ sy_nrs_t_span = document.querySelectorAll('.sy_nrs_t_span');
 sy_3d_kaiguan = document.querySelector('.sy_3d_kaiguan');
 lj_zcb_ym = document.querySelector('.lj_zcb_ym');
 ztfg_tj_ym = document.querySelector('.ztfg_tj_ym');
+so_yq_s = document.querySelector('.so_yq_s');
 if (localStorage.bei_jing_kuan_ture == 1) {
     bjk_xzk.innerHTML = '✔';
 } else if (localStorage.bei_jing_kuan_ture == 0) {
@@ -638,6 +671,9 @@ function bj_kuan_hs() {
     sy_3d_kaiguan.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     lj_zcb_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     ztfg_tj_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
+    so_yq_s.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
+
+    html_css();
 }
 setTimeout(function() {
 
@@ -688,6 +724,7 @@ bjk_xzk.addEventListener('click', function() {
         sy_3d_kaiguan.style.border = '';
         lj_zcb_ym.style.border = '';
         ztfg_tj_ym.style.border = '';
+        so_yq_s.style.border = '';
     } else if (localStorage.bei_jing_kuan_ture == 0) {
         localStorage.bei_jing_kuan_ture = 1;
         bjk_xzk.innerHTML = '✔';
@@ -968,17 +1005,39 @@ shezhi_cdcsh.addEventListener('click', function() {
     shezhi_cdcsh_ym.style.display = 'block';
 });
 cdcsh_click = document.querySelector('.cdcsh_click');
-cdcsh_click.addEventListener('click', function() {
-    localStorage.removeItem('dhr_sz');
-    localStorage.removeItem('dhr_ym_dx');
-    localStorage.removeItem('bi_zhi_s');
-    localStorage.removeItem('liu_yan_dx');
-    localStorage.removeItem('sy_djs');
-    localStorage.removeItem('sy_zpzs_mz');
-    localStorage.removeItem('sy_zpzs_lj');
-    localStorage.removeItem('music_cd');
-    localStorage.removeItem('lsjl');
-    location.reload();
+var cdcsh_click_lxdj = document.querySelector('.cdcsh_click_lxdj');
+var gywm_ban_ben_djcs5 = 0;
+var WGS_HTSP_TJ = document.querySelector('.WGS_HTSP_TJ');
+var gywm_ban_ben_sj5;
+cdcsh_click.addEventListener('click', function(e) {
+    gywm_ban_ben_sj5 ? clearTimeout(gywm_ban_ben_sj5) : undefined;
+    gywm_ban_ben_djcs5++;
+    cdcsh_click_lxdj.innerHTML = '再次点击 ' + (10 - gywm_ban_ben_djcs5) + ' 次';
+    if (gywm_ban_ben_djcs5 == 10) {
+        gywm_ban_ben_djcs5 = 0;
+        cdcsh_click_lxdj.innerHTML = '';
+        // 这里开始
+        localStorage.removeItem('dhr_sz');
+        localStorage.removeItem('dhr_ym_dx');
+        localStorage.removeItem('bi_zhi_s');
+        localStorage.removeItem('liu_yan_dx');
+        localStorage.removeItem('sy_djs');
+        localStorage.removeItem('sy_zpzs_mz');
+        localStorage.removeItem('sy_zpzs_lj');
+        localStorage.removeItem('music_cd');
+        localStorage.removeItem('lsjl');
+        localStorage.removeItem('ztfg_name');
+        localStorage.removeItem('ztfg');
+        localStorage.removeItem('sku_zcb');
+        localStorage.dr_mmdr_drsj = 0;
+
+        location.reload();
+    }
+    WGS_HTSP_TJ.focus();
+    gywm_ban_ben_sj5 = setTimeout(function() {
+        gywm_ban_ben_djcs5 = 0;
+        cdcsh_click_lxdj.innerHTML = '';
+    }, 2000);
 });
 
 
@@ -2157,15 +2216,27 @@ so_ssk.addEventListener('click', function(e) {
 
 // 匹配函数
 function containsAllChars(str1, str2) {
-    // 检查 str1 中的每个字符是否在 str2 中存在
+    // 创建一个对象来记录str1中每个字符的出现次数
+    const charCounts = {};
     for (const char of str1) {
-        if (str2.indexOf(char) === -1) {
-            // 如果 str1 中的某个字符在 str2 中没有找到，返回 false
-            return false;
+        // 增加字符在str1中的出现次数
+        charCounts[char] = (charCounts[char] || 0) + 1;
+    }
+
+    // 遍历str2，减少每个字符的计数
+    for (const char of str2) {
+        if (charCounts.hasOwnProperty(char)) {
+            // 如果字符在str1中出现过，则减少其计数
+            charCounts[char]--;
+            // 如果计数变为0，则从对象中删除该字符
+            if (charCounts[char] === 0) {
+                delete charCounts[char];
+            }
         }
     }
-    // 如果 str1 中的所有字符都在 str2 中找到了，返回 true
-    return true;
+
+    // 如果对象中没有剩余的字符，则说明str2中包含了str1中所有字符且满足出现次数要求
+    return Object.keys(charCounts).length === 0;
 }
 
 so_ssk.addEventListener('input', function(e) {
@@ -3472,6 +3543,7 @@ lszcb_yjsc.addEventListener('click', function(e) {
 var lszcb_yjqk = document.querySelector('.lszcb_yjqk');
 lszcb_yjqk.addEventListener('click', function(e) {
     // 删除本地
+    lszcb_yjqk.style.display = 'none';
     localStorage.sku_zcb = '[[],[]]';
     ssjl_min2.innerHTML = '';
     Sku_tctx('以清空所有历史注册表');
@@ -3761,7 +3833,7 @@ function ssrd(url_s, num, dx, dx2) {
         .catch(error => {
             mrrd_F++;
             mrrd_zg_2++;
-            console.log('您的抓取操作出现了问题 ( ' + num + ' )' + '\n' + error);
+            console.log('您的抓取操作出现了问题 ( ' + num + ' )' + '\n' + url_s);
             so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
 
             if (mrrd_zg_2 == mrrd_zg) {

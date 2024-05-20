@@ -64,6 +64,25 @@ function Sku_tctx(zdysx1) {
 
 
 
+// 全部密钥
+var miyao = 688;
+//WGS_zfc_jiami('要加密的文本','整数值(密钥)');
+function WGS_zfc_jiami(nr, key) {
+    function xorEncode(str, key) {
+        let result = '';
+        for (let i = 0; i < str.length; i++) {
+            let charCode = str.charCodeAt(i);
+            result += String.fromCharCode(charCode ^ key);
+        }
+        return result;
+    }
+    const encrypted = xorEncode(nr, key);
+    return encrypted;
+}
+
+
+
+
 // 定位
 var music_hzmax = document.querySelector('.music_hzmax');
 music_hzmax.style.maxHeight = window.innerHeight - (60 + 60) + 'px';
@@ -525,14 +544,24 @@ if (localStorage.zi_ti_color !== '') {
         var style_s5 = document.querySelector('.style_s5');
         style_s5.innerHTML = '.music_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.1) + ';}.music_bottom_hk {background: -webkit-linear-gradient(' + RGB_zhq(localStorage.zi_ti_color) + ', ' + RGB_zhq(localStorage.zi_ti_color) + ') no-repeat,' + RGB_zhq(localStorage.zi_ti_color, 0.2) + ';}.music_bottom_hk::-webkit-slider-thumb { background: ' + RGB_zhq(localStorage.zi_ti_color) + ';} .music_boyyom_tj_ym,.Sku_tcjg_Max,.sy_lbt,.sy_djs_txl,.sy_nrs_t_span,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {backdrop-filter: blur(' + localStorage.mao_bo_li + 'px);}.music_tjym_qd:hover {border-color:' + localStorage.zi_ti_click_color + ';color:' + localStorage.zi_ti_click_color + ';}.music_tjym_mz,.music_tjym_url,.ssjl_s{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lian_jie_l2_sy{background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';border-bottom:1px solid ' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.ssbq_s {border-bottom-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ' !important;}.ssbq_s:hover {background-color:' + RGB_zhq(localStorage.zi_ti_click_color, 0.15) + ';color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';} .daoru_ym_jmdc{background-color:' + RGB_zhq(localStorage.zi_ti_color, 0.2) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';} .su_biao{color:' + localStorage.zi_ti_color + ';}.daoru_ym_my{border-color:' + localStorage.zi_ti_color + ';color:' + localStorage.zi_ti_color + ';}.lbnr_ljbz{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.lbnr_ljxz,.lbnr_ljdz,.lbnr_max {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lbnr_ljxz:hover,.lbnr_ljdz:hover {color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';}.sy_zpzs_kaiguan,.lbnr_ljtp{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.sy_zpzs_kaiguan_ts{color:' + RGB_zhq(localStorage.zi_ti_color, 0.5) + ';}.WGS_HTSP_TJ,.shezhi_sp_xp_min2,.htsp_qjss_jdt,.lj_zcb_name,.lj_zcb_dizhi,.lj_zcb_qr {color:' + RGB_zhq(localStorage.zi_ti_color) + '; border-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.htsp_qjss_jdt2 {background-color:' + RGB_zhq(localStorage.zi_ti_color) + ';}.lj_lj_t:hover,.lj_lj_b:hover { box-shadow: 0px 0px 30px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.3) + ';}.lj_max:hover { box-shadow: inset 0px -17px 15px -20px ' + RGB_zhq(localStorage.zi_ti_click_color, 0.8) + ';}';
 
-        document.documentElement.style.setProperty('--zi_ti_color', RGB_zhq(localStorage.zi_ti_color));
-        document.documentElement.style.setProperty('--zi_ti_click_color', RGB_zhq(localStorage.zi_ti_click_color));
-        document.documentElement.style.setProperty('--mao_bo_li', localStorage.mao_bo_li + 'px');
-        document.documentElement.style.setProperty('--bei_jing_kuan_color', RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd));
+        html_css();
     }
 
     zi_ti_color_bh();
 }
+
+
+
+function html_css() {
+    document.documentElement.style.setProperty('--zi_ti_color', RGB_zhq(localStorage.zi_ti_color));
+    document.documentElement.style.setProperty('--zi_ti_click_color', RGB_zhq(localStorage.zi_ti_click_color));
+    document.documentElement.style.setProperty('--mao_bo_li', 'blur(' + localStorage.mao_bo_li + 'px)');
+    document.documentElement.style.setProperty('--bei_jing_color', RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd));
+    document.documentElement.style.setProperty('--bei_jing_kuan_color', RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd));
+    document.documentElement.style.setProperty('--zi_ti_click_color_15', RGB_zhq(localStorage.zi_ti_click_color, 0.15));
+}
+
+
 
 
 //开机背景
@@ -580,7 +609,7 @@ sy_dwck_ym = document.querySelector('.sy_dwck_ym');
 drym_min = document.querySelector('.drym_min');
 drym_min.style.backgroundColor = RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd);
 var style_s4 = document.querySelector('.style_s4');
-style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}';
+style_s4.innerHTML = '.sy_3d_kaiguan,.sy_djs_txl,.Sku_tcjg_Max,.sy_dwck_ym,.sy_dwck,.wl_max,.sy_lbt,.sy_zp_tj_ym,.sy_zpzs_max,.sy_hddb,.kcp_kc span,.kcp_xq span,.music_boyyom_yj,.music_boyyom_tj_ym,.daoru_ym_dr_mmym,.ssbqym,.sd_dtnr_max,.lj_zcb_ym {background-color:' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';} .lian_jie_ssk {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.3') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 50%);} .lian_jie_ssk:focus {background:linear-gradient(to top, ' + RGB_zhq(localStorage.bei_jing_color, '0.7') + ' 0%, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ' 100%);}.music_ym {background-color: ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ';}.sy_b{ background: linear-gradient(to bottom, ' + RGB_zhq(localStorage.bei_jing_color, '0') + ', ' + RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd) + ' 70%);}.so_yqs{border-color:' + RGB_zhq(localStorage.zi_ti_color, 0.3) + ';}';
 
 document.documentElement.style.setProperty('--bei_jing_color', RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd));
 
@@ -594,6 +623,7 @@ var lj_zcb_ym = document.querySelector('.lj_zcb_ym');
 var ztfg_tj_ym = document.querySelector('.ztfg_tj_ym');
 var sy_hddb = document.querySelector('.sy_hddb');
 var sy_zpzs_max = document.querySelector('.sy_zpzs_max');
+var so_yq_s = document.querySelector('.so_yq_s');
 if (localStorage.bei_jing_kuan_ture == 1) {
     topmax.style.borderBottom = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     lian_jie_l_max.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
@@ -648,6 +678,7 @@ if (localStorage.bei_jing_kuan_ture == 1) {
     sy_3d_kaiguan.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     lj_zcb_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
     ztfg_tj_ym.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
+    so_yq_s.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
 }
 
 
@@ -940,7 +971,7 @@ var zong_dml = 0;
 var ip_dz_s = 0;
 var ip_dz = ['Sku.html', 'Sku.css', 'Sku1.css', 'Sku2.css', 'Sku3.css', 'Sku4.css', 'Sku_ht.js', 'Sku1.js', 'Sku2.js', 'Sku3.js', 'Sku4.js', 'Sku.js', 'iconfont.css', 'iconfont.ttf', 'logo.svg'];
 for (var i = 0; i < ip_dz.length; i++) {
-    fetch('https://wugenshen231501.github.io/Wgs-Sku/Sku/' + ip_dz[i])
+    fetch(WGS_zfc_jiami('˘˄˄ˀ˃ʊʟʟˇ˅˗˕˞˃˘˕˞ʂʃʁʅʀʁʞ˗˙˄˘˅˒ʞ˙˟ʟ˧˗˃ʝˣ˛˅ʟˣ˛˅ʟ', miyao) + ip_dz[i])
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
@@ -950,12 +981,38 @@ for (var i = 0; i < ip_dz.length; i++) {
         .then(data => {
             zong_dml += data.length;
             ip_dz_s++;
-            gywm_gjcs.innerText = zong_dml + ' ' + ip_dz_s + '/' + ip_dz.length;
+            gywm_gjcs.innerText = insertCommasEveryFourDigits(zong_dml) + '字符 ' + ip_dz_s + '/' + ip_dz.length + '文件';
             max_bbxs2.innerText = 'build:' + zong_dml;
         })
         .catch(error => {
             console.log('获取失败! 网络故障 或 地址错误');
-            gywm_gjcs.innerText = zong_dml + ' ' + ip_dz_s + '/' + ip_dz.length;
+            gywm_gjcs.innerText = insertCommasEveryFourDigits(zong_dml) + '字符 ' + ip_dz_s + '/' + ip_dz.length + '文件';
             max_bbxs2.innerText = 'build:' + zong_dml;
         });
+}
+// 区分千和万函数
+function insertCommasEveryFourDigits(numberStr) {
+    var numberStr = numberStr.toString();
+    var xyds = 0;
+    if (numberStr.length % 4 == 0) {
+        xyds = (numberStr.length - 4) / 4;
+    } else {
+        xyds = (numberStr.length - (numberStr.length % 4)) / 4;
+    }
+    var numberStr_sz = [];
+    numberStr = numberStr.split('').reverse().join('');
+    for (var i = 0; i <= xyds; i++) {
+        // 使用slice方法分割字符串，然后在指定位置插入逗号
+        numberStr_sz[i] = numberStr.substring((i * 4), ((i + 1) * 4));
+    }
+    var numberStr2 = '';
+    for (var i = 0; i < numberStr_sz.length; i++) {
+        if (i === numberStr_sz.length - 1) {
+            numberStr2 = numberStr2.concat(numberStr_sz[i]);
+        } else {
+            numberStr2 = numberStr2.concat(numberStr_sz[i]) + ',';
+        }
+    }
+    numberStr2 = numberStr2.split('').reverse().join('');
+    return numberStr2;
 }
