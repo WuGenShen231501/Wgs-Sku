@@ -1024,7 +1024,7 @@ jl_qrk.addEventListener('click', function(e) {
                 var ji_shu = 0;
                 for (var i = 0; i < lj_sz_s2.length; i++) {
                     if (lj_sz_s2[i] !== '' && dx_l_l_l[i]) {
-                        if (dx_l_l_l[i].includes(lj_sz_s2[i])) {
+                        if (containsAllChars(lj_sz_s2[i], dx_l_l_l[i])) {
                             ji_shu++;
                         }
                     } else if (lj_sz_s2[i] == '') {
@@ -1140,32 +1140,6 @@ function ycgn_lj_xgk() {
 
 
 //搜索链接
-
-// 匹配函数
-function containsAllChars(str1, str2) {
-    // 创建一个对象来记录str1中每个字符的出现次数
-    const charCounts = {};
-    for (const char of str1) {
-        // 增加字符在str1中的出现次数
-        charCounts[char] = (charCounts[char] || 0) + 1;
-    }
-
-    // 遍历str2，减少每个字符的计数
-    for (const char of str2) {
-        if (charCounts.hasOwnProperty(char)) {
-            // 如果字符在str1中出现过，则减少其计数
-            charCounts[char]--;
-            // 如果计数变为0，则从对象中删除该字符
-            if (charCounts[char] === 0) {
-                delete charCounts[char];
-            }
-        }
-    }
-
-    // 如果对象中没有剩余的字符，则说明str2中包含了str1中所有字符且满足出现次数要求
-    return Object.keys(charCounts).length === 0;
-}
-
 lian_jie_l2 = document.querySelector('.lian_jie_l2');
 lian_jie_ssym = document.querySelector('.lian_jie_ssym');
 lian_jie_r2 = document.querySelector('.lian_jie_r2');
@@ -1193,9 +1167,20 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
             var dhr_ym_dx_s = dhr_ym_dx['dhr_ym_dx' + i]
             for (var o = 0; o < Object.keys(dhr_ym_dx_s).length; o++) {
                 if (dhr_ym_dx_s['dhr_ym_sz' + o][4]) {
-                    lian_jie_szs[lian_jie_szs.length] = dhr_ym_dx_s['dhr_ym_sz' + o][0].concat(dhr_ym_dx_s['dhr_ym_sz' + o][1]).concat(dhr_ym_dx_s['dhr_ym_sz' + o][2]).concat(dhr_ym_dx_s['dhr_ym_sz' + o][3]).concat(dhr_ym_dx_s['dhr_ym_sz' + o][4]);
+                    var dhr_ym_dx_s_s = [];
+                    dhr_ym_dx_s_s[0] = dhr_ym_dx_s['dhr_ym_sz' + o][0];
+                    dhr_ym_dx_s_s[1] = dhr_ym_dx_s['dhr_ym_sz' + o][1];
+                    dhr_ym_dx_s_s[2] = dhr_ym_dx_s['dhr_ym_sz' + o][2];
+                    dhr_ym_dx_s_s[3] = dhr_ym_dx_s['dhr_ym_sz' + o][3];
+                    dhr_ym_dx_s_s[4] = dhr_ym_dx_s['dhr_ym_sz' + o][4];
+                    lian_jie_szs[lian_jie_szs.length] = dhr_ym_dx_s_s;
                 } else {
-                    lian_jie_szs[lian_jie_szs.length] = dhr_ym_dx_s['dhr_ym_sz' + o][0].concat(dhr_ym_dx_s['dhr_ym_sz' + o][1]).concat(dhr_ym_dx_s['dhr_ym_sz' + o][2]).concat(dhr_ym_dx_s['dhr_ym_sz' + o][3]);
+                    var dhr_ym_dx_s_s = [];
+                    dhr_ym_dx_s_s[0] = dhr_ym_dx_s['dhr_ym_sz' + o][0];
+                    dhr_ym_dx_s_s[1] = dhr_ym_dx_s['dhr_ym_sz' + o][1];
+                    dhr_ym_dx_s_s[2] = dhr_ym_dx_s['dhr_ym_sz' + o][2];
+                    dhr_ym_dx_s_s[3] = dhr_ym_dx_s['dhr_ym_sz' + o][3];
+                    lian_jie_szs[lian_jie_szs.length] = dhr_ym_dx_s_s;
                 }
             }
         }
@@ -1207,94 +1192,98 @@ i_lian_jie_ss_tb.addEventListener('click', function() {
         // 匹配
         var sspp_gs = -1;
         for (var i = 0; i < lian_jie_szs.length; i++) {
-            if (containsAllChars(lian_jie_ssk.value, lian_jie_szs[i])) {
-                sspp_gs++;
+            for (var u = 0; u < lian_jie_szs[i].length; u++) {
+                if (containsAllChars(lian_jie_ssk.value, lian_jie_szs[i][u])) {
+                    sspp_gs++;
 
-                var lian_jie_rs_div = document.createElement('div');
-                lian_jie_rs_div.className = 'lj_max';
-                lian_jie_rs_div.draggable = "true";
+                    var lian_jie_rs_div = document.createElement('div');
+                    lian_jie_rs_div.className = 'lj_max';
+                    lian_jie_rs_div.draggable = "true";
 
-                // 来源
-                var i2 = 0;
-                for (var ii = 0; ii < lian_jie_dxs_s_gs.length; ii++) {
-                    var num_ss = -1;
-                    for (var tt = 0; tt <= ii; tt++) {
-                        num_ss += lian_jie_dxs_s_gs[tt];
-                    }
-                    if (num_ss >= i && ii >= 1) {
-                        i2 = ii;
-                        break;
-                    } else if (num_ss >= i && ii == 0) {
-                        i2 = ii;
-                        break;
-                    }
-                }
-                var dhr_sz = JSON.parse(localStorage.dhr_sz);
-
-                if (lian_jie_dxs['lian_jie_dxs' + i][4]) {
-                    lian_jie_rs_div.innerHTML = '<div class="lj_laiyuan">来源：' + dhr_sz[i2] + '</div><div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a><a class="lj_lj_b" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][4] + '">下载</a></div>';
-                } else {
-                    lian_jie_rs_div.innerHTML = '<div class="lj_laiyuan">来源：' + dhr_sz[i2] + '</div><div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a></div>';
-                }
-
-                // 添加右击按钮修改链接功能
-                lian_jie_rs_div.setAttribute('zong_lj_num', i);
-                lian_jie_rs_div.setAttribute('lj_num', sspp_gs);
-
-                lian_jie_rs_div.addEventListener('contextmenu', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    // 设置指向
+                    // 来源
                     var i2 = 0;
-                    var zong_num_ph = this.getAttribute('zong_lj_num');
-                    suo_shui_zhon_num2 = this.getAttribute('zong_lj_num');
-                    suo_shui_zhon_num = this.getAttribute('lj_num');
-
-                    var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
-                    //获取每个导航栏中的个数
-                    var lian_jie_dxs_s_gs = [];
-                    for (var i = 0; i < Object.keys(dhr_ym_dx).length; i++) {
-                        lian_jie_dxs_s_gs.push(Object.keys(dhr_ym_dx['dhr_ym_dx' + i]).length);
-                    }
                     for (var ii = 0; ii < lian_jie_dxs_s_gs.length; ii++) {
                         var num_ss = -1;
                         for (var tt = 0; tt <= ii; tt++) {
                             num_ss += lian_jie_dxs_s_gs[tt];
                         }
-                        if (num_ss >= zong_num_ph && ii >= 1) {
-                            for (var pp = 0; pp < ii; pp++) {
-                                zong_num_ph -= lian_jie_dxs_s_gs[pp];
-                            }
+                        if (num_ss >= i && ii >= 1) {
                             i2 = ii;
                             break;
-                        } else if (num_ss >= zong_num_ph && ii == 0) {
+                        } else if (num_ss >= i && ii == 0) {
                             i2 = ii;
                             break;
                         }
                     }
+                    var dhr_sz = JSON.parse(localStorage.dhr_sz);
 
-                    lj_zhi_xian = zong_num_ph;
-                    dhr_zhi_xian = i2;
-                    zhi_xian = '搜索中的链接';
-                    qjgnzx();
+                    if (lian_jie_dxs['lian_jie_dxs' + i][4]) {
+                        lian_jie_rs_div.innerHTML = '<div class="lj_laiyuan">来源：' + dhr_sz[i2] + '</div><div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a><a class="lj_lj_b" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][4] + '">下载</a></div>';
+                    } else {
+                        lian_jie_rs_div.innerHTML = '<div class="lj_laiyuan">来源：' + dhr_sz[i2] + '</div><div class="lj_tp" style="background-image: url(' + lian_jie_dxs['lian_jie_dxs' + i][0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lian_jie_dxs['lian_jie_dxs' + i][1] + '</div><div class="lj_xx_b_2">' + lian_jie_dxs['lian_jie_dxs' + i][2] + '</div></div><div class="lj_lj"><a class="lj_lj_t" target="_blank" href="' + lian_jie_dxs['lian_jie_dxs' + i][3] + '">进入</a></div>';
+                    }
 
-                    //显示设置
-                    var dhr_shezhi_gn = document.querySelector('.dhr_shezhi_gn');
-                    var dhr_shezhi_gn_sc = document.querySelector('.dhr_shezhi_gn_sc');
-                    var dhr_shezhi_gn_cmm = document.querySelector('.dhr_shezhi_gn_cmm');
-                    var dhr_shezhi_gn_tj = document.querySelector('.dhr_shezhi_gn_tj');
-                    dhr_shezhi_gn.style.display = 'block';
-                    dhr_shezhi_gn_sc.style.display = 'block';
-                    dhr_shezhi_gn_cmm.style.display = 'block';
-                    dhr_shezhi_gn_tj.style.display = 'none';
-                    dhr_shezhi_gn.style.top = e.pageY + 'px';
-                    dhr_shezhi_gn.style.left = e.pageX + 'px';
-                    //隐藏修改框
-                    ycgn_dhr_xgk();
-                    ycgn_lj_xgk();
-                });
+                    // 添加右击按钮修改链接功能
+                    lian_jie_rs_div.setAttribute('zong_lj_num', i);
+                    lian_jie_rs_div.setAttribute('lj_num', sspp_gs);
 
-                lian_jie_ssym.appendChild(lian_jie_rs_div);
+                    lian_jie_rs_div.addEventListener('contextmenu', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // 设置指向
+                        var i2 = 0;
+                        var zong_num_ph = this.getAttribute('zong_lj_num');
+                        suo_shui_zhon_num2 = this.getAttribute('zong_lj_num');
+                        suo_shui_zhon_num = this.getAttribute('lj_num');
+
+                        var dhr_ym_dx = JSON.parse(localStorage.dhr_ym_dx);
+                        //获取每个导航栏中的个数
+                        var lian_jie_dxs_s_gs = [];
+                        for (var i = 0; i < Object.keys(dhr_ym_dx).length; i++) {
+                            lian_jie_dxs_s_gs.push(Object.keys(dhr_ym_dx['dhr_ym_dx' + i]).length);
+                        }
+                        for (var ii = 0; ii < lian_jie_dxs_s_gs.length; ii++) {
+                            var num_ss = -1;
+                            for (var tt = 0; tt <= ii; tt++) {
+                                num_ss += lian_jie_dxs_s_gs[tt];
+                            }
+                            if (num_ss >= zong_num_ph && ii >= 1) {
+                                for (var pp = 0; pp < ii; pp++) {
+                                    zong_num_ph -= lian_jie_dxs_s_gs[pp];
+                                }
+                                i2 = ii;
+                                break;
+                            } else if (num_ss >= zong_num_ph && ii == 0) {
+                                i2 = ii;
+                                break;
+                            }
+                        }
+
+                        lj_zhi_xian = zong_num_ph;
+                        dhr_zhi_xian = i2;
+                        zhi_xian = '搜索中的链接';
+                        qjgnzx();
+
+                        //显示设置
+                        var dhr_shezhi_gn = document.querySelector('.dhr_shezhi_gn');
+                        var dhr_shezhi_gn_sc = document.querySelector('.dhr_shezhi_gn_sc');
+                        var dhr_shezhi_gn_cmm = document.querySelector('.dhr_shezhi_gn_cmm');
+                        var dhr_shezhi_gn_tj = document.querySelector('.dhr_shezhi_gn_tj');
+                        dhr_shezhi_gn.style.display = 'block';
+                        dhr_shezhi_gn_sc.style.display = 'block';
+                        dhr_shezhi_gn_cmm.style.display = 'block';
+                        dhr_shezhi_gn_tj.style.display = 'none';
+                        dhr_shezhi_gn.style.top = e.pageY + 'px';
+                        dhr_shezhi_gn.style.left = e.pageX + 'px';
+                        //隐藏修改框
+                        ycgn_dhr_xgk();
+                        ycgn_lj_xgk();
+                    });
+
+                    lian_jie_ssym.appendChild(lian_jie_rs_div);
+
+                    break;
+                }
             }
         }
 

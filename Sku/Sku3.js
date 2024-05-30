@@ -265,30 +265,6 @@ liu_yan_sxuan_zh.addEventListener('click', function() {
     liu_yan_srk.focus();
 });
 
-// 匹配函数
-function containsAllChars(str1, str2) {
-    // 创建一个对象来记录str1中每个字符的出现次数
-    const charCounts = {};
-    for (const char of str1) {
-        // 增加字符在str1中的出现次数
-        charCounts[char] = (charCounts[char] || 0) + 1;
-    }
-
-    // 遍历str2，减少每个字符的计数
-    for (const char of str2) {
-        if (charCounts.hasOwnProperty(char)) {
-            // 如果字符在str1中出现过，则减少其计数
-            charCounts[char]--;
-            // 如果计数变为0，则从对象中删除该字符
-            if (charCounts[char] === 0) {
-                delete charCounts[char];
-            }
-        }
-    }
-
-    // 如果对象中没有剩余的字符，则说明str2中包含了str1中所有字符且满足出现次数要求
-    return Object.keys(charCounts).length === 0;
-}
 
 //搜索按钮
 ji_ru_ssk_max = document.querySelector('.ji_ru_ssk_max');

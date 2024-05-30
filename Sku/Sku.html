@@ -360,6 +360,7 @@
                     <div class="shezhi_daoru">导入 / 导出</div>
                     <div class="shezhi_lszcb">历史注册表</div>
                     <div class="shezhi_ssjl">历史搜索记录</div>
+                    <div class="shezhi_sscl">搜索策略</div>
                     <div class="shezhi_synr">更换首页内容</div>
                     <div class="shezhi_sp_xp">休眠 / 锁定</div>
                     <div class="shezhi_cdcsh">存档初始化</div>
@@ -588,6 +589,26 @@
                     <i class="iconfont icon-shanchu1 i_ssjl_sc_tb"></i>
                     <!-- 添加按钮 -->
                     <i class="iconfont icon-tianjia i_ssjl_tj_tb" style="display: none;"></i>
+                </div>
+
+                <!-- 搜索策略 -->
+                <div class="shezhi_ym shezhi_sscl_ym" style="display: none;">
+                    <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>搜索策略</div>
+                    <div class="sscl_max_s">
+                        <div class="sscl_xzk" data-ssclnum="0"></div>
+                        <div class="sscl_mz">模糊匹配</div>
+                        <div class="sscl_js">ab => abcd | cb => abcd | abb !=> abcd</div>
+                    </div>
+                    <div class="sscl_max_s">
+                        <div class="sscl_xzk" data-ssclnum="1"></div>
+                        <div class="sscl_mz">精确匹配</div>
+                        <div class="sscl_js">ab => abcd | bc => abcd | cb !=> abcd</div>
+                    </div>
+                    <div class="sscl_max_s">
+                        <div class="sscl_xzk" data-ssclnum="2"></div>
+                        <div class="sscl_mz">完全匹配</div>
+                        <div class="sscl_js">abcd => abcd | abc !=> abcd</div>
+                    </div>
                 </div>
 
                 <!-- 自定义首页内容 -->

@@ -5,6 +5,15 @@ function Sku_tsy(num) {
     sku_tsy[num].play();
 }
 
+// 路径转换
+function escapeBackslash2(path) {
+    var path2 = path.replace(/\"/g, '');
+    var path3 = path2.replace(/\'/g, '');
+    var path4 = path3.replace(/\\/g, '\/');
+    var path5 = path4.replace(/\/\//g, '\/');
+    return path5;
+}
+
 // 全部密钥
 var miyao = 688;
 //WGS_zfc_jiami('要加密的文本','整数值(密钥)');
@@ -2214,30 +2223,7 @@ so_ssk.addEventListener('click', function(e) {
     e.stopPropagation();
 });
 
-// 匹配函数
-function containsAllChars(str1, str2) {
-    // 创建一个对象来记录str1中每个字符的出现次数
-    const charCounts = {};
-    for (const char of str1) {
-        // 增加字符在str1中的出现次数
-        charCounts[char] = (charCounts[char] || 0) + 1;
-    }
 
-    // 遍历str2，减少每个字符的计数
-    for (const char of str2) {
-        if (charCounts.hasOwnProperty(char)) {
-            // 如果字符在str1中出现过，则减少其计数
-            charCounts[char]--;
-            // 如果计数变为0，则从对象中删除该字符
-            if (charCounts[char] === 0) {
-                delete charCounts[char];
-            }
-        }
-    }
-
-    // 如果对象中没有剩余的字符，则说明str2中包含了str1中所有字符且满足出现次数要求
-    return Object.keys(charCounts).length === 0;
-}
 
 so_ssk.addEventListener('input', function(e) {
     if (so_ssk.value !== '') {
@@ -3779,7 +3765,8 @@ function mrrd_Ahs() {
 }
 
 // 每日热点API
-function ssrd(url_s, num, dx, dx2) {
+// function ssrd(链接, 来源名字, 循环对象, 循环对象2, 去除前几个字符/无用字符) 
+function ssrd(url_s, num, dx, dx2, jie_qu) {
     fetch(url_s)
         .then(response => {
             if (!response.ok) {
@@ -3791,33 +3778,44 @@ function ssrd(url_s, num, dx, dx2) {
         .then(data => {
             // 处理返回的数据
             var mrrd = JSON.parse(localStorage.mrrd);
+            // 截取字符串
+            if (jie_qu) {
+                data = data.substring(jie_qu, data.length);
+            }
+            // 格式化数据
             var mrrd_s_dx = JSON.parse(data);
-            // 提取所有name到一个新数组
+            // 提取所有热点到一个新数组
             if (dx2) {
                 var names = mrrd_s_dx[`${dx}`].map(item => item[`${dx2}`]);
             } else if (dx) {
                 var names = mrrd_s_dx[`${dx}`].map(item => item);
             }
-
+            // 提取不重复内容
             var names2 = [];
             for (var i = 0; i < names.length; i++) {
                 if (mrrd.indexOf(names[i]) == -1 && names2.indexOf(names[i]) == -1) {
                     names2.push(names[i]);
                 }
             }
-            // 打印names数组
-            var mrrd2 = mrrd.concat(names2);
-            localStorage.mrrd = JSON.stringify(mrrd2);
 
-            var mrrd_top = JSON.parse(localStorage.mrrd_top);
-            mrrd_top.push(names2.length);
-            localStorage.mrrd_top = JSON.stringify(mrrd_top);
+            if (names2.length !== 0) {
+                // 拼接热点
+                var mrrd2 = mrrd.concat(names2);
+                localStorage.mrrd = JSON.stringify(mrrd2);
+                // 拼接热点数
+                var mrrd_top = JSON.parse(localStorage.mrrd_top);
+                mrrd_top.push(names2.length);
+                localStorage.mrrd_top = JSON.stringify(mrrd_top);
+                // 拼接热点来源
+                var mrrd_name = JSON.parse(localStorage.mrrd_name);
+                mrrd_name.push(num);
+                localStorage.mrrd_name = JSON.stringify(mrrd_name);
+                // 控制台显示
+                console.log('抓取成功 ' + names2.length + ' 条 ( ' + num + ' )');
+            } else {
+                console.log('您的抓取信息为空 ( ' + num + ' )' + '\n' + url_s);
+            }
 
-            var mrrd_name = JSON.parse(localStorage.mrrd_name);
-            mrrd_name.push(num);
-            localStorage.mrrd_name = JSON.stringify(mrrd_name);
-
-            console.log('抓取成功 ' + names2.length + ' 条 ( ' + num + ' )');
             names2.length == 0 ? mrrd_F++ : mrrd_T++;
             mrrd_zg_2++;
             so_ssk.placeholder = '抓取热点中......... ' + mrrd_zg_2 + '/' + mrrd_zg + ' T:' + mrrd_T + ' F:' + mrrd_F + ' A:' + mrrd_Ahs();
@@ -3897,7 +3895,7 @@ function mrrd_sx() {
             } else if (mrrd_asd == 11) {
                 ssrd('https://api.andeer.top/API/hot_cs.php', 'CSDN', 'data', 'title');
             } else if (mrrd_asd == 12) {
-                ssrd('https://api.andeer.top/API/hot_wy.php', '网易', 'data', 'titles');
+                ssrd('https://api.andeer.top/API/hot_wy.php', '网易', 'data', 'titles', 3);
             } else if (mrrd_asd == 13) {
                 ssrd('https://api.vvhan.com/api/hotlist/huPu', '虎扑', 'data', 'title');
             } else if (mrrd_asd == 14) {
@@ -4049,13 +4047,44 @@ function ss_gjcss() {
 
 
 
+// 搜索策略
+var shezhi_sscl = document.querySelector('.shezhi_sscl');
+var shezhi_sscl_ym = document.querySelector('.shezhi_sscl_ym');
+shezhi_sscl.addEventListener('click', function(e) {
+    shezhi_min.style.display = 'none';
+    shezhi_sscl_ym.style.display = 'block';
+});
+
+if (localStorage.sscl == undefined) {
+    localStorage.sscl = 1;
+}
+// 开始显示
+var sscl_xzk = document.querySelectorAll('.sscl_xzk');
+if (localStorage.sscl == 0) {
+    sscl_xzk[0].innerHTML = '✔';
+} else if (localStorage.sscl == 1) {
+    sscl_xzk[1].innerHTML = '✔';
+} else if (localStorage.sscl == 2) {
+    sscl_xzk[2].innerHTML = '✔';
+}
+// 切换显示
+for (var i = 0; i < sscl_xzk.length; i++) {
+    sscl_xzk[i].addEventListener('click', function(e) {
+        for (var p = 0; p < sscl_xzk.length; p++) {
+            sscl_xzk[p].innerHTML = '';
+        }
+        this.innerHTML = '✔';
+        localStorage.sscl = this.getAttribute('data-ssclnum');
+    });
+}
+
 
 
 
 //全局按键事件
 document.addEventListener('keyup', function(e) {
     if (bzsz_tj_ym_tp_jk == 1) {
-        bzsz_tj_ym_TP.style.backgroundImage = 'url(' + input_bzlj.value + ')';
+        bzsz_tj_ym_TP.style.backgroundImage = 'url(' + escapeBackslash2(input_bzlj.value) + ')';
     }
     if (e.key == 'Enter' && bzsz_tj_ym_tp_jk == 1) {
         bzsz_tj_anniu.click();
