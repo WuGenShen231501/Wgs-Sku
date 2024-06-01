@@ -23,8 +23,11 @@ function RGB_zhq(hex, opacity) {
 
 
 
-// 匹配函数
-function containsAllChars(str1, str2) {
+
+// 匹配函数/不区分大小写
+function containsAllChars(str11, str22) {
+    var str1 = str11.toLowerCase(); //全部转为小写
+    var str2 = str22.toLowerCase(); //全部转为小写
     if (localStorage.sscl == 0) {
         // 创建一个对象来记录str1中每个字符的出现次数
         const charCounts = {};

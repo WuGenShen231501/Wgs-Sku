@@ -3895,7 +3895,7 @@ function mrrd_sx() {
             } else if (mrrd_asd == 11) {
                 ssrd('https://api.andeer.top/API/hot_cs.php', 'CSDN', 'data', 'title');
             } else if (mrrd_asd == 12) {
-                ssrd('https://api.andeer.top/API/hot_wy.php', '网易', 'data', 'titles', 3);
+                ssrd('https://api.andeer.top/API/hot_wy.php', '网易', 'data', 'titles');
             } else if (mrrd_asd == 13) {
                 ssrd('https://api.vvhan.com/api/hotlist/huPu', '虎扑', 'data', 'title');
             } else if (mrrd_asd == 14) {
@@ -4077,6 +4077,29 @@ for (var i = 0; i < sscl_xzk.length; i++) {
         localStorage.sscl = this.getAttribute('data-ssclnum');
     });
 }
+
+
+
+
+
+// 拖拽读取导入信息
+shezhi_daoru_ym.addEventListener('dragover', function(e) {
+    e.preventDefault();
+});
+shezhi_daoru_ym.addEventListener('drop', function(e) {
+    e.preventDefault();
+    var dt = e.dataTransfer;
+    var files = dt.files;
+    var dx = new FileReader();
+    dx.readAsText(files[0]);
+    dx.onload = function(e) {
+        var wj = e.target.result;
+        // 处理信息
+        console.log(wj);
+        daoru_ym_sc.value = wj;
+        daoru_ym_sc_tjzs();
+    }
+});
 
 
 

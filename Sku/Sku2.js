@@ -565,6 +565,7 @@ dhr_shezhi_gn_cmm.addEventListener('click', function(e) {
         dhr_shezhi_gn.style.display = 'none';
         //显示修改框 
         dhr_xg_tj.style.display = 'block';
+        dhr_srk.value = JSON.parse(localStorage.dhr_sz)[dhr_zhi_xian2];
         dhr_srk.select();
     } else if (zhi_xian == '链接') {
         //功能指向
