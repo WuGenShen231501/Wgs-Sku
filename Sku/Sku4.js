@@ -4095,7 +4095,6 @@ shezhi_daoru_ym.addEventListener('drop', function(e) {
     dx.onload = function(e) {
         var wj = e.target.result;
         // 处理信息
-        console.log(wj);
         daoru_ym_sc.value = wj;
         daoru_ym_sc_tjzs();
     }

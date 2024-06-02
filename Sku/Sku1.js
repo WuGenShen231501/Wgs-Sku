@@ -1500,17 +1500,20 @@ music_bfq.addEventListener('ended', function(e) {
 
 // 声音
 var music_bfq = document.querySelector('.music_bfq');
+var yuan = localStorage.music_sydx;
 if ((new Date().getHours() >= 22 || new Date().getHours() <= 6) && localStorage.music_sydx > 0.3) {
     localStorage.music_sydx = 0.3; // 天黑自动减小声音
 }
 music_bfq.volume = localStorage.music_sydx;
 music_bottom_hk3.style.backgroundSize = (localStorage.music_sydx * 100) + '% 100%';
 music_bottom_hk3.value = localStorage.music_sydx * 100;
+localStorage.music_sydx = yuan;
 music_bottom_hk3.addEventListener('input', function(e) {
     music_bottom_hk3.style.backgroundSize = music_bottom_hk3.value + '% 100%';
     music_bfq.volume = music_bottom_hk3.value / 100;
     localStorage.music_sydx = music_bottom_hk3.value / 100;
 });
+
 
 // 添加音乐
 var music_tj_cxg = 0;

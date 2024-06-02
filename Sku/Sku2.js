@@ -77,20 +77,20 @@ function WGS_wenbengundon9(qwe) {
 // }
 
 function WGS_wenbengundon_dd(qwe) {
-    if (qwe.scrollWidth > qwe.offsetWidth) {
-        qwe.addEventListener('mouseover', function(e) {
+    qwe.addEventListener('mouseover', function(e) {
+        if (qwe.scrollWidth > qwe.offsetWidth) {
             var nrcd = this.scrollWidth;
             var hzcd = this.offsetWidth;
             var duochu = nrcd - hzcd;
             var sj = duochu / 50;
             this.style.transition = sj + 's linear';
             this.style.textIndent = (nrcd * -1) + hzcd + 'px';
-        });
-        qwe.addEventListener('mouseout', function(e) {
-            this.style.transition = '';
-            this.style.textIndent = '0px';
-        });
-    }
+        }
+    });
+    qwe.addEventListener('mouseout', function(e) {
+        this.style.transition = '';
+        this.style.textIndent = '0px';
+    });
 }
 
 // 弹窗提醒
@@ -440,6 +440,7 @@ dhr_shezhi_gn_sc.addEventListener('click', function() {
         var sz1 = JSON.parse(localStorage.dhr_sz);
         sz1.splice(dhr_zhi_xian2, 1);
         localStorage.dhr_sz = JSON.stringify(sz1);
+        var mz = lian_jie_l_s[dhr_zhi_xian2].innerHTML;
         dx1 = JSON.parse(localStorage.dhr_ym_dx);
         delete dx1['dhr_ym_dx' + dhr_zhi_xian2];
         var dx2 = {};
@@ -484,7 +485,7 @@ dhr_shezhi_gn_sc.addEventListener('click', function() {
             qjgnzx();
         }
 
-        Sku_tctx('分页删除成功');
+        Sku_tctx('分页《' + mz + '》' + '删除成功');
     } else if (zhi_xian == '链接') {
         // 删除内存
         var dx1 = JSON.parse(localStorage.dhr_ym_dx);
@@ -503,11 +504,12 @@ dhr_shezhi_gn_sc.addEventListener('click', function() {
         lian_jie_r = document.querySelector('.lian_jie_r');
         lian_jie_r_s = lian_jie_r.children;
         lian_jie_r_s_s = lian_jie_r_s[dhr_zhi_xian].children;
+        var mz = lian_jie_r_s_s[lj_zhi_xian].querySelector('.lj_xx_t').innerHTML;
         lian_jie_r_s[dhr_zhi_xian].removeChild(lian_jie_r_s_s[lj_zhi_xian]);
         //重新排序
         cxpx();
 
-        Sku_tctx('链接删除成功');
+        Sku_tctx('链接《' + mz + '》删除成功');
     } else if (zhi_xian == '搜索中的链接') {
         // 删除内存
         var dx1 = JSON.parse(localStorage.dhr_ym_dx);
@@ -531,12 +533,13 @@ dhr_shezhi_gn_sc.addEventListener('click', function() {
         //删除HTML2(搜索中的html)
         var lian_jie_ssym = document.querySelector('.lian_jie_ssym');
         var xgwz = lian_jie_ssym.children[suo_shui_zhon_num];
+        var mz = xgwz.querySelector('.lj_xx_t').innerHTML;
         lian_jie_ssym.removeChild(xgwz);
 
         //重新排序
         cxpx();
 
-        Sku_tctx('链接删除成功');
+        Sku_tctx('链接《' + mz + '》删除成功');
     }
 });
 
@@ -632,11 +635,11 @@ dhr_qrk.addEventListener('click', function(e) {
             //更改HTML
             lian_jie_l = document.querySelector('.lian_jie_l');
             lian_jie_r_l = lian_jie_l.children;
+            var mz = lian_jie_r_l[dhr_zhi_xian2].innerHTML;
             lian_jie_r_l[dhr_zhi_xian2].innerHTML = dhr_srk.value;
+            Sku_tctx('分页《' + mz + '》修改为《' + dhr_srk.value + '》');
             //隐藏
             ycgn_dhr_xgk();
-
-            Sku_tctx('分页修改成功');
         }
     } else {
         dhr_srk = document.querySelector('.dhr_srk');
@@ -813,6 +816,7 @@ dhr_qrk.addEventListener('click', function(e) {
             dx['dhr_ym_dx' + lian_jie_l_s.length] = {};
             localStorage.dhr_ym_dx = JSON.stringify(dx);
             //更改HTML
+            var mz = dhr_srk.value;
             lian_jie_l = document.querySelector('.lian_jie_l');
             var lian_jie_r_l = lian_jie_l.children;
             var dhr_div = document.createElement('div');
@@ -909,7 +913,7 @@ dhr_qrk.addEventListener('click', function(e) {
             // 显示最下方
             lian_jie_l.scroll(0, lian_jie_l.scrollHeight);
 
-            Sku_tctx('分页添加成功');
+            Sku_tctx('分页《' + mz + '》添加成功');
         }
     } else {
         dhr_srk = document.querySelector('.dhr_srk');
@@ -982,6 +986,7 @@ jl_qrk.addEventListener('click', function(e) {
                 divss.innerHTML = '<div class="lj_tp" style="background-image: url(' + lj_sz_s[0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lj_sz_s[1] + '</div><div class="lj_xx_b" >' + lj_sz_s[2] + '</div></div><div class="lj_lj"><a class="lj_lj_t"target="_blank" href="' + lj_sz_s[3] + '">进入</a></div>';
             }
             xgwz.appendChild(divss);
+            var mz = lj_sz_s[1];
             // 隐藏
             ycgn_lj_xgk();
 
@@ -989,7 +994,7 @@ jl_qrk.addEventListener('click', function(e) {
             var dhr_ym_r_s = document.querySelectorAll('.dhr_ym_r_s');
             lian_jie_r.scroll(0, dhr_ym_r_s[dhr_zhi_xian].scrollHeight);
 
-            Sku_tctx('链接添加成功');
+            Sku_tctx('链接《' + mz + '》添加成功');
 
             // 换位功能
             enableDragAndDrop('lj_max');
@@ -1440,27 +1445,30 @@ function enableDragAndDrop(className) {
 }
 
 var draggedItem = null;
+var draggedItem_lg = null;
 var sfwuxiao = 0;
 
 function handleDragStart(e) {
     draggedItem = this;
+    draggedItem_lg = this;
     e.dataTransfer.effectAllowed = 'move';
 
     su_biao.style.display = 'none';
-
 
     var parent = draggedItem.parentNode;
     dragIndex2 = Array.prototype.indexOf.call(parent.children, draggedItem);
     dropIndex2 = Array.prototype.indexOf.call(parent.children, this);
 
     sfwuxiao = 0;
+
 }
 
 function handleDragOver(e) {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
 
-    if (draggedItem !== this) {
+    if (draggedItem !== this && draggedItem !== null) {
+        draggedItem.style.opacity = '';
         // 交换两个元素的位置
         var parent = draggedItem.parentNode;
         var dragIndex = Array.prototype.indexOf.call(parent.children, draggedItem);
@@ -1485,9 +1493,8 @@ function handleDrop(e) {
 }
 
 function handleDragEnd(e) {
-
+    draggedItem.style.opacity = '';
     su_biao.style.transform = 'scale(1)';
-
     if (sfwuxiao == 0) {
         var parent = draggedItem.parentNode;
         var dragIndex = dropIndex2;
@@ -1499,7 +1506,7 @@ function handleDragEnd(e) {
             var qb = parent.querySelectorAll('.' + huanwei_class_name);
             parent.insertBefore(qb[dragIndex], qb[dropIndex]);
         }
-    } else {
+    } else if (sfwuxiao == 1) {
         // 最后交换两个元素的位置
         var parent = draggedItem.parentNode;
         dropIndex2 = Array.prototype.indexOf.call(parent.children, this);
@@ -1548,6 +1555,13 @@ function handleDragEnd(e) {
 
     draggedItem = null;
 
+    // 获取所有自定义属性dhr_num不等于现在的
+    var elements = document.querySelectorAll('[class*="dhr_num"], [dhr_num]:not([dhr_num="' + dhr_zhi_xian + '"])');
+    // 遍历所有元素并执行操作
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.backgroundColor = '';
+    }
+
 }
 enableDragAndDrop('lj_max');
 
@@ -1581,6 +1595,7 @@ var draggedItem2 = null;
 var sfwuxiao2 = 0;
 
 function handleDragStart2(e) {
+    draggedItem_lg = null;
     draggedItem2 = this;
     e.dataTransfer.effectAllowed = 'move';
 
@@ -1598,7 +1613,7 @@ function handleDragOver2(e) {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
 
-    if (draggedItem2 !== this) {
+    if (draggedItem2 !== this && draggedItem2 !== null) {
         // 交换两个元素的位置
         var parent2 = draggedItem2.parentNode;
         var dragIndex1 = Array.prototype.indexOf.call(parent2.children, draggedItem2);
@@ -1612,20 +1627,122 @@ function handleDragOver2(e) {
             parent2.insertBefore(qb[dragIndex1], qb[dropIndex1]);
         }
     }
+
+    // 链接到别的页
+    // 获取所有自定义属性dhr_num不等于现在的
+    var elements = document.querySelectorAll('[class*="dhr_num"], [dhr_num]:not([dhr_num="' + dhr_zhi_xian + '"])');
+    if (draggedItem_lg !== null && draggedItem_lg !== this) {
+        draggedItem_lg.style.opacity = '0.3';
+
+        // 遍历所有元素并执行操作
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.backgroundColor = '';
+        }
+
+        this.style.backgroundColor = RGB_zhq(localStorage.zi_ti_click_color, 0.15);
+    }
 }
 
 function handleDrop2(e) {
     e.stopPropagation();
-
     su_biao.style.transform = 'scale(1)';
 
     sfwuxiao2 = 1;
+
+    // 链接到别的页
+    if (draggedItem_lg !== null && draggedItem_lg !== this) {
+        if (this.getAttribute('dhr_num') - 0 !== dhr_zhi_xian - 0) {
+            sfwuxiao = 3;
+
+            // 删除html
+            lian_jie_r = document.querySelector('.lian_jie_r');
+            lian_jie_r_s_s = lian_jie_r.children[dhr_zhi_xian];
+            lian_jie_r_s_s.removeChild(draggedItem_lg);
+
+            //链接排序
+            lian_jie_r = document.querySelector('.lian_jie_r');
+            lian_jie_r_s_s = lian_jie_r.children[dhr_zhi_xian].children;
+            for (var i = 0; i < lian_jie_r_s_s.length; i++) {
+                //指定顺序值
+                lian_jie_r_s_s[i].setAttribute('lj_num', i);
+            }
+
+            // 添加内存
+            var dx = JSON.parse(localStorage.dhr_ym_dx);
+            var lj_sz_s = dx['dhr_ym_dx' + dhr_zhi_xian]['dhr_ym_sz' + dragIndex2];
+            var dx_sz_gs = document.querySelector('.lian_jie_r').children[this.getAttribute('dhr_num')].children;
+            dx['dhr_ym_dx' + this.getAttribute('dhr_num')]['dhr_ym_sz' + dx_sz_gs.length] = lj_sz_s;
+            localStorage.dhr_ym_dx = JSON.stringify(dx);
+
+            // 添加html
+            var xgwz = lian_jie_r.children[this.getAttribute('dhr_num')];
+            var divss = document.createElement('div');
+            divss.className = 'lj_max';
+            divss.draggable = "true";
+            // 新链接添加右击事件
+            divss.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                // 设置指向
+                lj_zhi_xian = this.getAttribute('lj_num');
+                zhi_xian = '链接';
+                qjgnzx();
+                //显示设置
+                var dhr_shezhi_gn = document.querySelector('.dhr_shezhi_gn');
+                var dhr_shezhi_gn_sc = document.querySelector('.dhr_shezhi_gn_sc');
+                var dhr_shezhi_gn_cmm = document.querySelector('.dhr_shezhi_gn_cmm');
+                dhr_shezhi_gn.style.display = 'block';
+                dhr_shezhi_gn_sc.style.display = 'block';
+                dhr_shezhi_gn_cmm.style.display = 'block';
+                dhr_shezhi_gn.style.top = e.pageY + 'px';
+                dhr_shezhi_gn.style.left = e.pageX + 'px';
+                var dhr_shezhi_gn_tj = document.querySelector('.dhr_shezhi_gn_tj');
+                dhr_shezhi_gn_tj.style.display = 'block';
+                //隐藏修改框
+                ycgn_dhr_xgk();
+                ycgn_lj_xgk();
+            });
+            divss.setAttribute('lj_num', dx_sz_gs.length);
+            if (lj_sz_s.length == 5) {
+                divss.innerHTML = '<div class="lj_tp" style="background-image: url(' + lj_sz_s[0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lj_sz_s[1] + '</div><div class="lj_xx_b" >' + lj_sz_s[2] + '</div></div><div class="lj_lj"><a class="lj_lj_t"target="_blank" href="' + lj_sz_s[3] + '">进入</a><a class="lj_lj_b"target="_blank" href="' + lj_sz_s[4] + '">下载</a></div>';
+            } else if (lj_sz_s.length == 4) {
+                divss.innerHTML = '<div class="lj_tp" style="background-image: url(' + lj_sz_s[0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lj_sz_s[1] + '</div><div class="lj_xx_b" >' + lj_sz_s[2] + '</div></div><div class="lj_lj"><a class="lj_lj_t"target="_blank" href="' + lj_sz_s[3] + '">进入</a></div>';
+            }
+            xgwz.appendChild(divss);
+
+            // 换位功能
+            enableDragAndDrop('lj_max');
+
+            // 添加单独字体浮动
+            var xgwz_lj_xx_b_2 = divss.querySelector('.lj_xx_b');
+            WGS_wenbengundon_dd(xgwz_lj_xx_b_2);
+
+            // Sku-a转换href
+            a_click_self();
+            // 下载转换href
+            a_click_self_xz();
+
+            // 删除内存
+            var dx1 = JSON.parse(localStorage.dhr_ym_dx);
+            delete dx1['dhr_ym_dx' + dhr_zhi_xian]['dhr_ym_sz' + dragIndex2];
+            var dx2 = {};
+            for (var i = 0; i < Object.keys(dx1).length; i++) {
+                dx2['dhr_ym_dx' + i] = new Object();
+            }
+            for (var j = 0; j < Object.keys(dx1).length; j++) {
+                for (var i = 0; i < Object.keys(dx1['dhr_ym_dx' + j]).length; i++) {
+                    dx2['dhr_ym_dx' + j]['dhr_ym_sz' + i] = dx1['dhr_ym_dx' + j][Object.keys(dx1['dhr_ym_dx' + j])[i]];
+                }
+            }
+            localStorage.dhr_ym_dx = JSON.stringify(dx2);
+        } else {
+            sfwuxiao = 1;
+        }
+    }
 }
 
 function handleDragEnd2(e) {
-
     su_biao.style.transform = 'scale(1)';
-
 
     if (sfwuxiao2 == 0) {
         var parent2 = draggedItem2.parentNode;
@@ -1638,7 +1755,7 @@ function handleDragEnd2(e) {
             var qb = parent2.querySelectorAll('.' + huanwei_class_name2);
             parent2.insertBefore(qb[dragIndex1], qb[dropIndex1]);
         }
-    } else {
+    } else if (sfwuxiao2 == 1) {
         // 最后交换两个元素的位置
         var parent2 = draggedItem2.parentNode;
         dropIndex22 = Array.prototype.indexOf.call(parent2.children, this);
@@ -1753,8 +1870,6 @@ function a_click_self_xz() {
         }
     }
 }
-
-
 
 
 
