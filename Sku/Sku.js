@@ -5,14 +5,16 @@ function Sku_tsy(num) {
     sku_tsy[num].play();
 }
 
-var shui_you_nc = ['sy_ci_shu', 'ztfg_name', 'ztfg', 'mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 // 保护localStorage值
+var shui_you_nc = ['Sku_kfzms', 'sy_ci_shu', 'ztfg_name', 'ztfg', 'mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 window.addEventListener('storage', function(event) {
-    if (event.key == 'sy_ci_shu' && decodeURI(event.url).substring(decodeURI(event.url).length - 8, decodeURI(event.url).length) == decodeURI(location.href).substring(decodeURI(location.href).length - 8, decodeURI(location.href).length)) {
-        window.close();
-        setTimeout(function() { location.replace('https://cn.bing.com/'); });
+    if (localStorage.Sku_kfzms == 0 && event.key == 'sy_ci_shu' && decodeURI(event.url).substring(decodeURI(event.url).length - 8, decodeURI(event.url).length) == decodeURI(location.href).substring(decodeURI(location.href).length - 8, decodeURI(location.href).length)) {
+        setTimeout(function() {
+            window.close();
+            setTimeout(function() { location.replace('https://cn.bing.com/'); });
+        }, 1000);
     } else {
-        if (shui_you_nc.indexOf(event.key) !== -1) {
+        if (shui_you_nc.indexOf(event.key) !== -1 && localStorage.Sku_kfzms == 0) {
             console.clear();
 
             // event.key 为被修改的键名
@@ -35,11 +37,52 @@ window.addEventListener('storage', function(event) {
 
             Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做!');
 
-            // window.close();
-            // setTimeout(function() { location.replace('https://cn.bing.com/'); });
+            setTimeout(function() {
+                window.close();
+                setTimeout(function() { location.replace('https://cn.bing.com/'); });
+            }, 1000);
         }
     }
 });
+
+// 防止打开开发者工具
+document.onkeydown = function() {
+    var e = window.e || arguments[0];
+    if (localStorage.Sku_kfzms == 0 && (e.keyCode == 123 || (e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73) || (e.ctrlKey) && (e.keyCode == 85) || (e.ctrlKey) && (e.keyCode == 83) || (e.ctrlKey) && (e.key == 'C'))) {
+        e.preventDefault();
+        Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做!');
+        setTimeout(function() {
+            window.close();
+            setTimeout(function() { location.replace('https://cn.bing.com/'); });
+        }, 1000);
+        return false;
+    }
+}
+
+// 禁止开发者工具运行
+var check = function() {
+    function doCheck(a) {
+        if (("" + a / a)["length"] !== 1 || a % 20 === 0) {
+            (function() {}
+                ["constructor"]("debugger")())
+        } else {
+            (function() {}
+                ["constructor"]("debugger")())
+        }
+        doCheck(++a)
+    }
+    try {
+        doCheck(0)
+    } catch (err) {}
+};
+Sku_kfzgj_jsq = null;
+if (localStorage.Sku_kfzms == 0) {
+    Sku_kfzgj_jsq = setInterval(function() {
+        check();
+    }, 1000);
+}
+
+
 
 // 弹窗提醒
 function Sku_tctx(zdysx1) {
@@ -60,8 +103,6 @@ function Sku_tctx(zdysx1) {
         document.body.removeChild(Sku_tcjg_Max[0]);
     }, 3000)
 }
-
-
 
 
 // 全部密钥
@@ -767,17 +808,15 @@ setInterval(function() {
     if (max_ncxs) { max_ncxs.innerHTML = `Free Memory:${remainingPercent}%`; }
     var gywm_nczbl = document.querySelector('.gywm_nczbl');
     if (gywm_nczbl) { gywm_nczbl.innerHTML = `${remainingPercent2} %`; }
-}, 5000);
 
 
-// 网络状态
-var sku_wlzt = document.querySelector('.sku_wlzt');
-var sku_wlyc = document.querySelector('.sku_wlyc');
-// 使用函数检查设备是否在线
-function isOnline() {
-    return navigator.onLine;
-}
-setInterval(function() {
+    // 放一个外来的：网络状态
+    var sku_wlzt = document.querySelector('.sku_wlzt');
+    var sku_wlyc = document.querySelector('.sku_wlyc');
+    // 使用函数检查设备是否在线
+    function isOnline() {
+        return navigator.onLine;
+    }
     if (isOnline()) {
         //   在线
         if (sku_wlzt) { sku_wlzt.innerHTML = 'Status:Online'; }
@@ -792,6 +831,7 @@ setInterval(function() {
         sku_wlzt.style.bottom = '10px';
     }
 }, 5000);
+
 
 window.addEventListener('unhandledrejection', function(event) {
     console.error('捕获到未处理的Promise拒绝:', event.reason);

@@ -276,7 +276,7 @@
 
                 <!-- 输入框 -->
                 <div class="liu_yan_bottom">
-                    <input type="text" class="liu_yan_srk">
+                    <textarea class="liu_yan_srk"></textarea>
                 </div>
 
                 <!-- 发送框 -->
@@ -364,6 +364,7 @@
                     <div class="shezhi_synr">更换首页内容</div>
                     <div class="shezhi_sp_xp">休眠 / 锁定</div>
                     <div class="shezhi_cdcsh">存档初始化</div>
+                    <div class="shezhi_klm">口令码</div>
                     <div class="shezhi_gywm">关于 S-ku</div>
                 </div>
 
@@ -459,7 +460,7 @@
                     </div>
                     <div class="ztsz_ztys_max">
                         <div class="ztsz_ztys">毛玻璃效果:</div>
-                        <div class="mblxg_px">5 PX ( 发烧级! )</div>
+                        <div class="mblxg_px"><input type="number" class="mblxg_px_in"> PX ( 1 - 100 )</div>
                         <div class="mblxg"></div>
                     </div>
                     <div class="ztsz_ztys_chongzhi">
@@ -630,6 +631,13 @@
                     </div>
                 </div>
 
+                <!-- 口令码 -->
+                <div class="shezhi_ym shezhi_klm_ym" style="display: none;">
+                    <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>口令码</div>
+                    <input type="text" class="klm_srk">
+                    <div class="klm_qr">➤</div>
+                </div>
+
                 <!-- 关于 -->
                 <div class="shezhi_ym shezhi_gywm_ym" style="display: none;">
                     <div class="shezhi_ym_top"><i class="iconfont icon-fanhui1 i_fanhui_tp"></i>关于我们</div>
@@ -711,6 +719,9 @@
     <!-- 版本显示 -->
     <div class="max_bbxs"></div>
     <div class="max_bbxs2"></div>
+
+    <!-- root -->
+    <div class="max_root"></div>
 
     <!-- 内存显示 -->
     <div class="max_ncxs"></div>

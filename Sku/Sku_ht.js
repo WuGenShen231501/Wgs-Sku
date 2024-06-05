@@ -1,5 +1,5 @@
 //检测是否第一次使用
-var ban_ben_s = 'v27.14.6';
+var ban_ben_s = 'v28.35.6';
 if (localStorage.ban_ben) {
     console.log('继续使用中');
     //检查是否最新
@@ -291,6 +291,11 @@ if (localStorage.ztfg == undefined) {
 }
 if (localStorage.ztfg_name == undefined) {
     localStorage.ztfg_name = '["月光琉璃", "雅致白绸", "丝绸粉霞", "寂静之章","阳光米色"]';
+}
+
+// 开发者模式
+if (localStorage.Sku_kfzms == undefined) {
+    localStorage.Sku_kfzms = 0;
 }
 
 // 开机壁纸颜色(放前面免卡顿)

@@ -682,9 +682,10 @@ jl_qrk.addEventListener('click', function(e) {
                 xgwz.innerHTML = '<div class="lj_tp" style="background-image: url(' + lj_sz_s[0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lj_sz_s[1] + '</div><div class="lj_xx_b" >' + lj_sz_s[2] + '</div></div><div class="lj_lj"><a class="lj_lj_t"target="_blank" href="' + lj_sz_s[3] + '">进入</a></div>';
             }
             //隐藏
+            var mz = lj_sz_s[1];
             ycgn_lj_xgk();
 
-            Sku_tctx('链接修改成功');
+            Sku_tctx('链接修改成功《' + mz + '》');
 
             // 添加单独字体浮动
             var xgwz_lj_xx_b = xgwz.querySelector('.lj_xx_b');
@@ -730,10 +731,11 @@ jl_qrk.addEventListener('click', function(e) {
                 xgwz.innerHTML = '<div class="lj_tp" style="background-image: url(' + lj_sz_s[0] + ');"></div><div class="lj_xx"><div class="lj_xx_t">' + lj_sz_s[1] + '</div><div class="lj_xx_b" >' + lj_sz_s[2] + '</div></div><div class="lj_lj"><a class="lj_lj_t"target="_blank" href="' + lj_sz_s[3] + '">进入</a></div>';
             }
 
-            //隐藏
+            var mz = lj_sz_s[1];
+            // 隐藏
             ycgn_lj_xgk();
 
-            Sku_tctx('链接修改成功');
+            Sku_tctx('链接修改成功《' + mz + '》');
 
             // 添加单独字体浮动
             var xgwz_lj_xx_b = xgwz.querySelector('.lj_xx_b');

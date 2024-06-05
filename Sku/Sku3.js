@@ -626,6 +626,49 @@ i_liu_yan_wzbc_tp.addEventListener('click', function() {
 
 
 
+
+
+
+liu_yan_srk.addEventListener('keydown', function(e) {
+    var sf_shift2 = 0;
+    if (e.shiftKey) {
+        sf_shift2 = 1;
+    }
+    // 检查是否按下了Shift键和Enter键
+    if (sf_shift2 == 0 && e.key == 'Enter') {
+        // 阻止默认行为
+        e.preventDefault();
+    }
+});
+
+
+
+
+
+
+
+// 拖拽读取导入信息
+liu_yan.addEventListener('dragover', function(e) {
+    e.preventDefault();
+});
+liu_yan.addEventListener('drop', function(e) {
+    e.preventDefault();
+    var dt = e.dataTransfer;
+    var files = dt.files;
+    var dx = new FileReader();
+    dx.readAsText(files[0]);
+    dx.onload = function(e) {
+        var wj = e.target.result;
+        // 处理信息
+        liu_yan_srk.value = wj;
+        liu_yan_button.click();
+    }
+});
+
+
+
+
+
 //全局右击事件
 document.addEventListener('contextmenu', function() {
     liu_yan_sxuan_div.style.display = 'none';
@@ -642,6 +685,18 @@ document.addEventListener('keydown', function(e) {
     if (liu_yan_srk_jc == '1' && e.shiftKey && e.key === 'Enter') {
         // e.preventDefault();
         // 执行shift+回车的逻辑
+        // var zfc = liu_yan_srk.value;
+        // var cswz = liu_yan_srk.selectionEnd;
+        // var zfc_x = insertStr(zfc, cswz, '<br>');
+        // liu_yan_srk.value = zfc_x;
+        // liu_yan_srk.focus();
+        // liu_yan_srk.selectionEnd = cswz + 4;
+
+        sf_shift = 1;
+    }
+    if (liu_yan_srk_jc == '1' && e.ctrlKey && e.key === 'Enter') {
+        // e.preventDefault();
+        // 执行shift+回车的逻辑
         var zfc = liu_yan_srk.value;
         var cswz = liu_yan_srk.selectionEnd;
         var zfc_x = insertStr(zfc, cswz, '<br>');
@@ -656,6 +711,7 @@ document.addEventListener('keyup', function(e) {
     if (nrmaxs2.style.display == 'block' && so_ssk_num == 0) {
         if (e.key == 'Enter' && sf_shift == 0) {
             liu_yan_button.click();
+
         } else if (e.key == 'Enter' && sf_shift == 1) {
             sf_shift = 0;
         }

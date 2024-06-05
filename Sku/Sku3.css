@@ -39,20 +39,28 @@
 }
 
 .liu_yan_bottom {
+    position: relative;
     float: left;
     width: 100%;
     height: 150px;
 }
 
 .liu_yan_srk {
-    width: 760px;
-    height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 879px;
+    height: 98px;
     border: none;
-    margin: 0 20px;
+    padding-right: 75px;
     color: rgb(255, 255, 255);
+    font-size: 16px;
     background-color: rgb(0, 0, 0, 0);
     outline: none;
     margin-bottom: 5px;
+    resize: none;
+    overflow-y: scroll;
+    cursor: none;
 }
 
 .liu_yan_button {
@@ -90,6 +98,7 @@
     border: 1px solid rgb(255, 255, 255);
     border-radius: 5px;
     overflow: hidden;
+    white-space: pre-wrap;
 }
 
 .liu_yan_z:hover~.liu_yan_time {
