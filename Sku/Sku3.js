@@ -548,10 +548,17 @@ liu_yan_shezhi_gn_cmm.addEventListener('click', function() {
 });
 
 //删除所有
+var liu_yan_scsy = document.querySelector('.liu_yan_scsy');
 liu_yan_top = document.querySelector('.liu_yan_top');
 liu_yan_top_min = document.querySelector('.liu_yan_top_min');
 liu_yan_sxuan_sc = document.querySelector('.liu_yan_sxuan_sc');
 liu_yan_sxuan_sc.addEventListener('click', function() {
+    liu_yan_scsy.style.display = 'block';
+});
+var liu_yan_scsy_qr = document.querySelector('.liu_yan_scsy_qr');
+var liu_yan_scsy_qx = document.querySelector('.liu_yan_scsy_qx');
+liu_yan_scsy_qr.addEventListener('click', function() {
+    liu_yan_scsy.style.display = 'none';
     //删除所有留言
     liu_yan_top.removeChild(liu_yan_top_min);
     var div = document.createElement('div');
@@ -563,7 +570,12 @@ liu_yan_sxuan_sc.addEventListener('click', function() {
     localStorage.liu_yan_dx = JSON.stringify(liu_yan_dx);
     //标记个数刷新
     liu_yan_biaoji_gs();
+})
+liu_yan_scsy_qx.addEventListener('click', function(e) {
+    liu_yan_scsy.style.display = 'none';
 });
+
+
 
 
 

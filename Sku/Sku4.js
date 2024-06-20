@@ -734,6 +734,8 @@ bjk_xzk.addEventListener('click', function() {
         lj_zcb_ym.style.border = '';
         ztfg_tj_ym.style.border = '';
         so_yq_s.style.border = '';
+
+        html_css();
     } else if (localStorage.bei_jing_kuan_ture == 0) {
         localStorage.bei_jing_kuan_ture = 1;
         bjk_xzk.innerHTML = '✔';
@@ -2894,6 +2896,22 @@ function sy_lbnr_hs() {
                         }
 
                         lbnr_max[i].appendChild(div);
+
+                        // a标签打开方式替换
+                        var className = document.querySelectorAll('a[href^="Sku-"]');
+                        for (var iii = 0; iii < className.length; iii++) {
+                            className[iii].target = '_self';
+                            className[iii].innerHTML = '打开';
+                        }
+                        var hzm = ['.zip', '.exe'];
+                        for (var ppp = 0; ppp < hzm.length; ppp++) {
+                            var className = document.querySelectorAll('a[href$="' + hzm[ppp] + '"]');
+                            for (var iii = 0; iii < className.length; iii++) {
+                                className[iii].target = '_self';
+                                className[iii].innerHTML = '安装';
+                            }
+                        }
+
                         // 固定位置
                         div.style.width = '302px'
                         div.style.left = sjnr_wz_shu[i] + 'px';
@@ -3298,7 +3316,7 @@ gywm_l.addEventListener('click', function(e) {
     }, 2000);
 });
 
-// 清楚本地HTSP
+// 清除本地HTSP
 var gywm_l2 = document.querySelectorAll('.gywm_l')[1];
 var gywm_r2 = document.querySelectorAll('.gywm_r')[1];
 var gywm_ban_ben_djcs3 = 0;
@@ -4196,23 +4214,57 @@ klm_qr.addEventListener('click', function(e) {
     var klm = WGS_zfc_jiemi(klm_srk.value, miyao);
     if (klm == '嶰兡芵梑嶿' || klm == '惣嶰嶰兡芵梑嶿' || klm == '惣嶰嶰兡芵' || klm == '嶰兡芵' || klm == '˂˟˟˄') {
         localStorage.Sku_kfzms = 1;
-        Sku_kfzgj_jsq ? clearInterval(Sku_kfzgj_jsq) : undefined;
+
+        // 关闭永久调试
+        Sku_kfzgj_jsq !== null ? clearInterval(Sku_kfzgj_jsq) : undefined;
+
         max_root.innerHTML = 'root!';
-        Sku_tctx('已打开 开发者模式!');
+
+        localStorage.dr_mmdr_drsj = 0;
+        location.reload();
     } else if (klm == '參靝嶰兡芵' || klm == '參靝嶰兡芵梑嶿' || klm == '參愹嶰兡芵' || klm == '參愹嶰兡芵梑嶿' || klm == '˞˟˂˟˟˄') {
         localStorage.Sku_kfzms = 0;
+
+        // 关闭永久调试
+        Sku_kfzgj_jsq !== null ? clearInterval(Sku_kfzgj_jsq) : undefined;
+        // 打开永久调试
         Sku_kfzgj_jsq = setInterval(function() {
             check();
         }, 1000);
+
         max_root.innerHTML = '';
         Sku_tctx('已关闭 开发者模式!');
+    } else if (klm == '懯嗿' || klm == '溈䳵懯嗿' || klm == '靚銰' || klm == '徙氳' || klm == '˃˅˞˘˅ˑ˙') {
+        localStorage.Sku_benghuai = 1;
+        localStorage.dr_mmdr_drsj = 0;
+        setTimeout(function() {
+            window.close();
+            location.replace('https://cn.bing.com/');
+        }, 2000);
+
+        Sku_tctx('网 页 已 崩 溃 !!!!!!!!!!!!!!!!!!!!');
+    } else if (klm == '拒宽' || klm == '˘˅˙˖˅') {
+        localStorage.Sku_benghuai = 0;
+        localStorage.Sku_kfzms = 0;
+        localStorage.dr_mmdr_drsj = 0;
+
+        location.reload();
     } else {
         Sku_tctx('无效口令! 请检查口令码是否正确');
     }
     klm_srk.value = '';
 });
+// 开始显示root
 if (localStorage.Sku_kfzms == 1) { max_root.innerHTML = 'root!'; }
-
+// 开始闪退
+Sku_benghuai_jsq = null;
+if (localStorage.Sku_benghuai == 1) {
+    Sku_benghuai_jsq_t = 1;
+    Sku_benghuai_jsq = setInterval(function() {
+        window.close();
+        location.replace('https://cn.bing.com/');
+    }, 500);
+}
 
 
 
@@ -4228,6 +4280,11 @@ document.addEventListener('keyup', function(e) {
 });
 var sd_dtnr_max = document.querySelector('.sd_dtnr_max');
 document.addEventListener('keydown', function(e) {
+    if (e.shiftKey && Sku_benghuai_jsq_t == 1) {
+        // 关闭闪退
+        Sku_benghuai_jsq !== null ? clearInterval(Sku_benghuai_jsq) : undefined;
+        Sku_benghuai_jsq_t = 0;
+    }
     if (e.key == 'Enter' && shezhi_klm_ym.style.display == 'block') {
         if (klm_srk.value == '') {
             klm_srk.focus();

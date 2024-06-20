@@ -298,6 +298,16 @@ if (localStorage.Sku_kfzms == undefined) {
     localStorage.Sku_kfzms = 0;
 }
 
+// 崩溃
+if (localStorage.Sku_benghuai == undefined) {
+    localStorage.Sku_benghuai = 0;
+}
+
+
+
+
+
+
 // 开机壁纸颜色(放前面免卡顿)
 if (localStorage.bi_zhi_ys !== '') {
     document.documentElement.style.backgroundColor = localStorage.bi_zhi_ys;

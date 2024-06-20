@@ -23,7 +23,6 @@ function RGB_zhq(hex, opacity) {
 
 
 
-
 // 匹配函数/不区分大小写
 function containsAllChars(str11, str22) {
     var str1 = str11.toLowerCase(); //全部转为小写
@@ -1969,6 +1968,22 @@ function sy_lbnr_hs2(max_gs) {
                     }
 
                     lbnr_max[i].appendChild(div);
+
+                    // a标签打开方式替换
+                    var className = document.querySelectorAll('a[href^="Sku-"]');
+                    for (var iii = 0; iii < className.length; iii++) {
+                        className[iii].target = '_self';
+                        className[iii].innerHTML = '打开';
+                    }
+                    var hzm = ['.zip', '.exe'];
+                    for (var ppp = 0; ppp < hzm.length; ppp++) {
+                        var className = document.querySelectorAll('a[href$="' + hzm[ppp] + '"]');
+                        for (var iii = 0; iii < className.length; iii++) {
+                            className[iii].target = '_self';
+                            className[iii].innerHTML = '安装';
+                        }
+                    }
+
                     // 固定位置
                     div.style.width = '302px'
                     div.style.left = sjnr_wz_shu[i] + 'px';

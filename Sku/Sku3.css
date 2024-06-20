@@ -359,3 +359,47 @@
     text-align: center;
     line-height: 28px;
 }
+
+.liu_yan_scsy {
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: var(--bei_jing_color);
+    border: var(--bei_jing_kuan_true) solid var(--bei_jing_kuan_color);
+    backdrop-filter: var(--mao_bo_li);
+}
+
+.liu_yan_scsy_wz {
+    position: absolute;
+    top: 20px;
+    left: 65px;
+}
+
+.liu_yan_scsy_qr {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    text-align: center;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid var(--bei_jing_kuan_color);
+    backdrop-filter: var(--mao_bo_li);
+}
+
+.liu_yan_scsy_qx {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    text-align: center;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid var(--bei_jing_kuan_color);
+    backdrop-filter: var(--mao_bo_li);
+}

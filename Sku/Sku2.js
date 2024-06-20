@@ -949,7 +949,7 @@ jl_qrk.addEventListener('click', function(e) {
                 var dx_sz_gs = document.querySelector('.lian_jie_r').children[dhr_zhi_xian].children;
             } catch (error) {
                 // 这个块会在 try 中有错误抛出时执行
-                Sku_tctx('添加错误 ! 请先添加左侧分页');
+                Sku_tctx('添加错误 ! 请先创建左侧分页');
             }
             dx['dhr_ym_dx' + dhr_zhi_xian]['dhr_ym_sz' + dx_sz_gs.length] = lj_sz_s;
             localStorage.dhr_ym_dx = JSON.stringify(dx);

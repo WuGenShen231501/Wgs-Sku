@@ -6,13 +6,13 @@ function Sku_tsy(num) {
 }
 
 // 保护localStorage值
-var shui_you_nc = ['Sku_kfzms', 'sy_ci_shu', 'ztfg_name', 'ztfg', 'mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_sydx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
+var shui_you_nc = ['sy_ci_shu', 'Sku_kfzms', 'ztfg_name', 'ztfg', 'mrrd_name', 'mryy', 'mrrd_sxsj', 'mrrd', 'bi_zhi_ys', 'dr_mmdr_mmfw', 'dr_mmdr_drsj', 'dhr_sz', 'dhr_ym_dx', 'sy_sosuo_yq', 'tou_xiang', 'liu_yan_dx', 'bi_zhi_s', 'bi_zhi', 'tian_qi', 'zi_ti_color', 'zi_ti_click_color', 'bei_jing_color', 'bei_jing_tmd', 'bei_jing_kuan_ture', 'bei_jing_kuan_color', 'bei_jing_kuan_tmd', 'mao_bo_li', 'zdbf', 'dhr_sz_bf', 'dhr_ym_dx_bf', 'bi_zhi_s_bf', 'liu_yan_dx_bf', 'sy_djs_bf', 'sy_zpzs_lj_bf', 'sy_zpzs_mz_bf', 'sy_ci_shu', 'sy_djs', 'dr_mm', 'dr_mm_cf', 'drym_cs', 'drym_srcs', 'sy_zpzs_lj', 'sy_zpzs_mz', 'sy_zpzs_kaiguan', 'music_cd', 'music_bfsx', 'music_cd_bf', 'lsjl', 'lsjl_bf', 'sy_lbxz', 'sku_xp_sp', 'htsp_s', 'htsp_s_bf', 'sku_zcb', 'sku_zcb_bf', 'dr_mmdr'];
 window.addEventListener('storage', function(event) {
     if (localStorage.Sku_kfzms == 0 && event.key == 'sy_ci_shu' && decodeURI(event.url).substring(decodeURI(event.url).length - 8, decodeURI(event.url).length) == decodeURI(location.href).substring(decodeURI(location.href).length - 8, decodeURI(location.href).length)) {
-        setTimeout(function() {
-            window.close();
-            setTimeout(function() { location.replace('https://cn.bing.com/'); });
-        }, 1000);
+
+        window.close();
+        location.replace('https://cn.bing.com/');
+
     } else {
         if (shui_you_nc.indexOf(event.key) !== -1 && localStorage.Sku_kfzms == 0) {
             console.clear();
@@ -35,12 +35,16 @@ window.addEventListener('storage', function(event) {
             );
             console.log('保护后的值:' + localStorage.getItem(`${event.key}`));
 
-            Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做!');
+            Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做! ' + event.key + ' 已被保护!');
 
             setTimeout(function() {
+                localStorage.Sku_benghuai = 1;
+                localStorage.dr_mmdr_drsj = 0;
                 window.close();
                 setTimeout(function() { location.replace('https://cn.bing.com/'); });
-            }, 1000);
+            }, 1500);
+        } else if (shui_you_nc.indexOf(event.key) !== -1 && localStorage.Sku_kfzms == 1) {
+            Sku_tctx('温馨提示: 窜改文件可能导致网页崩溃! ( ROOT 用户请谨慎 )');
         }
     }
 });
@@ -600,6 +604,7 @@ function html_css() {
     document.documentElement.style.setProperty('--bei_jing_color', RGB_zhq(localStorage.bei_jing_color, localStorage.bei_jing_tmd));
     document.documentElement.style.setProperty('--bei_jing_kuan_color', RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd));
     document.documentElement.style.setProperty('--zi_ti_click_color_15', RGB_zhq(localStorage.zi_ti_click_color, 0.15));
+    document.documentElement.style.setProperty('--bei_jing_kuan_true', localStorage.bei_jing_kuan_ture + 'px');
 }
 
 
