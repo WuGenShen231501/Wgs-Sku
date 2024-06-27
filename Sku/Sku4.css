@@ -581,6 +581,7 @@
         height: auto;
         margin-right: 35px;
         margin-top: 16px;
+        white-space: pre-wrap;
     }
     
     .bfsz_zdbf_qrk {

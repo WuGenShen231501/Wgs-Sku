@@ -54,6 +54,7 @@ document.onkeydown = function() {
     var e = window.e || arguments[0];
     if (localStorage.Sku_kfzms == 0 && (e.keyCode == 123 || (e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73) || (e.ctrlKey) && (e.keyCode == 85) || (e.ctrlKey) && (e.keyCode == 83) || (e.ctrlKey) && (e.key == 'C'))) {
         e.preventDefault();
+        localStorage.Sku_benghuai = 1;
         Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做!');
         setTimeout(function() {
             window.close();
@@ -90,6 +91,7 @@ if (localStorage.Sku_kfzms == 0) {
 
 // 弹窗提醒
 function Sku_tctx(zdysx1) {
+    console.log(zdysx1);
     var div = document.createElement('div');
     div.className = "Sku_tcjg_Max";
     div.innerHTML = zdysx1;
@@ -803,6 +805,7 @@ setInterval(function() {
     }
     const result2 = calculateLocalStorageValueLengthAndSum();
     var sync = 1 - (((result + result2.sum) * 1) / 5242880);
+    var zgzfc = 5242880 - (result + result2.sum);
 
     // 转化为百分比并输出结果
     const remainingPercent = (sync * 100).toFixed(3);
@@ -812,7 +815,7 @@ setInterval(function() {
     var max_ncxs = document.querySelector('.max_ncxs');
     if (max_ncxs) { max_ncxs.innerHTML = `Free Memory:${remainingPercent}%`; }
     var gywm_nczbl = document.querySelector('.gywm_nczbl');
-    if (gywm_nczbl) { gywm_nczbl.innerHTML = `${remainingPercent2} %`; }
+    if (gywm_nczbl) { gywm_nczbl.innerHTML = `${remainingPercent2}%  ( ` + zgzfc + ' / 5242880 )'; }
 
 
     // 放一个外来的：网络状态
@@ -960,6 +963,7 @@ shezhi_sp_xp_min2.addEventListener('blur', function(e) {
     if (shezhi_sp_xp_min2.value >= 1 && shezhi_sp_xp_min2.value <= (60 * 24)) {
         Sku_tctx('更改成功 ! 无操作 ' + shezhi_sp_xp_min2.value + ' 分钟后自动(休眠/锁定)');
         localStorage.sku_xp_sp = shezhi_sp_xp_min2.value;
+        localStorage.dr_mmdr_drsj = 0;
     } else if (shezhi_sp_xp_min2.value < 1) {
         Sku_tctx('更改失败 ! 时间不能小于 1 分钟');
         shezhi_sp_xp_min2.value = localStorage.sku_xp_sp;

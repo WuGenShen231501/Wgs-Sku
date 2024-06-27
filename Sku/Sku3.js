@@ -718,6 +718,9 @@ document.addEventListener('keydown', function(e) {
 
         sf_shift = 1;
     }
+    if (liu_yan_srk_jc == '1' && e.ctrlKey && e.key === 'a') {
+        liu_yan_srk.select();
+    }
 })
 document.addEventListener('keyup', function(e) {
     if (nrmaxs2.style.display == 'block' && so_ssk_num == 0) {
