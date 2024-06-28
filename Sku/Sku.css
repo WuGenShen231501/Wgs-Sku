@@ -416,15 +416,7 @@ html {
 .max_bbxs {
     position: fixed;
     right: 0;
-    bottom: 12px;
-    font-size: 10px;
-    opacity: 0.4;
-}
-
-.max_bbxs2 {
-    position: fixed;
-    right: 0;
-    bottom: 0;
+    bottom: 0px;
     font-size: 10px;
     opacity: 0.4;
 }
@@ -785,15 +777,7 @@ html {
 .sku_wlzt {
     position: fixed;
     left: 0;
-    bottom: 20px;
-    font-size: 10px;
-    opacity: 0.4;
-}
-
-.sku_wlyc {
-    position: fixed;
-    left: 0;
-    bottom: 10px;
+    bottom: 12px;
     font-size: 10px;
     opacity: 0.4;
 }
@@ -839,7 +823,7 @@ html {
 .max_root {
     position: fixed;
     right: 0;
-    bottom: 24px;
+    bottom: 12px;
     font-size: 10px;
     opacity: 0.4;
 }
@@ -908,7 +892,6 @@ html {
 /* ---------兼容手机端----------- */
 
 @media screen and (max-width: 700px) {
-    .sku_wlyc,
     .sku_wlzt,
     .max_ncxs {
         display: none !important;

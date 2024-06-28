@@ -820,7 +820,6 @@ setInterval(function() {
 
     // 放一个外来的：网络状态
     var sku_wlzt = document.querySelector('.sku_wlzt');
-    var sku_wlyc = document.querySelector('.sku_wlyc');
     // 使用函数检查设备是否在线
     function isOnline() {
         return navigator.onLine;
@@ -828,15 +827,9 @@ setInterval(function() {
     if (isOnline()) {
         //   在线
         if (sku_wlzt) { sku_wlzt.innerHTML = 'Status:Online'; }
-        sku_wlzt.style.bottom = '20px';
-        sku_wlyc.style.display = 'block';
-        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        sku_wlyc.innerText = 'RTT:' + connection.rtt + ' ms';
     } else {
         //   不在线
         if (sku_wlzt) { sku_wlzt.innerHTML = 'Status:Offline'; }
-        sku_wlyc.style.display = 'none';
-        sku_wlzt.style.bottom = '10px';
     }
 }, 5000);
 
@@ -999,46 +992,19 @@ xhgb_dx('lj_zcb_i', 'lj_xg_tj', 'lj_zcb_ym');
 
 
 
-
 // 页面可见度
-document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'hidden') {
-        // console.log('页面不可见');
-        // 可以在这里执行一些操作，比如暂停视频播放
-    } else {
-        // console.log('页面可见');
-        // 页面再次可见时，可以恢复之前暂停的操作
-    }
-});
+// document.addEventListener('visibilitychange', function() {
+//     if (document.visibilityState === 'hidden') {
+//         console.log('页面不可见');
+//         // 可以在这里执行一些操作，比如暂停视频播放
+//     } else {
+//         console.log('页面可见');
+//         // 页面再次可见时，可以恢复之前暂停的操作
+//     }
+// });
 
 
 
-// 代码量build
-var max_bbxs2 = document.querySelector('.max_bbxs2');
-var gywm_gjcs = document.querySelector('.gywm_gjcs');
-var zong_dml = 0;
-var ip_dz_s = 0;
-var ip_dz = ['Sku.html', 'Sku.css', 'Sku1.css', 'Sku2.css', 'Sku3.css', 'Sku4.css', 'Sku_ht.js', 'Sku1.js', 'Sku2.js', 'Sku3.js', 'Sku4.js', 'Sku.js', 'iconfont.css', 'iconfont.ttf', 'logo.svg'];
-for (var i = 0; i < ip_dz.length; i++) {
-    fetch(WGS_zfc_jiami('˘˄˄ˀ˃ʊʟʟˇ˅˗˕˞˃˘˕˞ʂʃʁʅʀʁʞ˗˙˄˘˅˒ʞ˙˟ʟ˧˗˃ʝˣ˛˅ʟˣ˛˅ʟ', miyao) + ip_dz[i])
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.text();
-        })
-        .then(data => {
-            zong_dml += data.length;
-            ip_dz_s++;
-            gywm_gjcs.innerText = insertCommasEveryFourDigits(zong_dml) + '字符 ' + ip_dz_s + '/' + ip_dz.length + '文件';
-            max_bbxs2.innerText = 'build:' + zong_dml;
-        })
-        .catch(error => {
-            console.log('获取失败! 网络故障 或 地址错误');
-            gywm_gjcs.innerText = insertCommasEveryFourDigits(zong_dml) + '字符 ' + ip_dz_s + '/' + ip_dz.length + '文件';
-            max_bbxs2.innerText = 'build:' + zong_dml;
-        });
-}
 // 区分千和万函数
 function insertCommasEveryFourDigits(numberStr) {
     var numberStr = numberStr.toString();

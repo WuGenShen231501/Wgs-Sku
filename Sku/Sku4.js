@@ -4010,13 +4010,22 @@ function mrrd_sx() {
 }
 
 if (((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5) || localStorage.mrrd_sxsj == 0) {
+    console.log(new Date());
     mrrd_sx();
 }
 
 setInterval(function() {
-    console.log(new Date());
-    mrrd_sx();
+    if (document.visibilityState === 'visible') {
+        console.log(new Date());
+        mrrd_sx();
+    }
 }, (1000 * 60 * 5));
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible' && ((+new Date()) - localStorage.mrrd_sxsj) >= (1000 * 60 * 5)) {
+        console.log(new Date());
+        mrrd_sx();
+    }
+});
 
 
 // 每日一言
