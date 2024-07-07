@@ -1387,7 +1387,7 @@
         height: 500px;
         background-color: var(--zi_ti_color_20);
         overflow: hidden;
-        opacity: 0!;
+        opacity: 0;
     }
     
     .shezhi_max_gundontiao_min {

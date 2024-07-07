@@ -328,6 +328,7 @@
     }
     
     .sy_djs {
+        position: relative;
         width: 1250px;
         height: 200px;
         margin-bottom: 100px;
@@ -383,6 +384,8 @@
     
     .sy_djs_r_min {
         height: 100%;
+        position: relative;
+        transition: 0.05s linear;
     }
     
     .sy_djs_r_s {
@@ -736,4 +739,25 @@
             /* 动画结束的画面; */
             opacity: 1;
         }
+    }
+    
+    .i_djs_z_tb {
+        position: absolute;
+        top: -25px;
+        right: 65px;
+        opacity: 0.5;
+    }
+    
+    .i_djs_y_tb {
+        position: absolute;
+        top: -25px;
+        right: 16px;
+        opacity: 0.5;
+    }
+    
+    .i_djs_y_tb:hover,
+    .i_djs_z_tb:hover {
+        opacity: 1;
+        transition: 0.25s;
+        transform: scale(1.2);
     }

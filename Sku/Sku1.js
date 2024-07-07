@@ -549,7 +549,7 @@ SC_djs();
 
 //拖动封装wgsTUODONGKUANG('点击盒子','要动盒子');
 function wgsTUODONGKUANG() {
-    var sy_djs_r_s = document.querySelectorAll('.sy_djs_r_s');
+    sy_djs_r_s = document.querySelectorAll('.sy_djs_r_s');
     var dianJiYuangSu = document.querySelector(arguments[0]);
     var tuoDongYuangSu = document.querySelector(arguments[1]);
     x_ZhouPianYiLian = 0;
@@ -569,13 +569,14 @@ function wgsTUODONGKUANG() {
             if (sy_djs_r_s.length * 200 > 1048) {
                 if (x_ZhouPianYiLian >= 0) {
                     x_ZhouPianYiLian = 0;
-                } else if (x_ZhouPianYiLian <= -(sy_djs_r_s.length * 200 - 1048)) {
-                    x_ZhouPianYiLian = -(sy_djs_r_s.length * 200 - 1048);
+                } else if (x_ZhouPianYiLian <= -(sy_djs_r_s.length * 200 - 1049)) {
+                    x_ZhouPianYiLian = -(sy_djs_r_s.length * 200 - 1049);
                 }
             } else if (sy_djs_r_s.length * 200 < 1048) {
                 x_ZhouPianYiLian = 0;
             }
 
+            sy_djs_r_min.style.transition = '0s';
             tuoDongYuangSu.style.left = x_ZhouPianYiLian + 'px';
         }
 
@@ -599,7 +600,13 @@ function sy_djs_yd() {
     if (sy_djs_r_s.length > 0) {
         sy_djs_r_min = document.querySelector('.sy_djs_r_min');
         wgsTUODONGKUANG('.sy_djs_r_min', '.sy_djs_r_min');
-        sy_djs_r_min.style.left = 0;
+
+        sy_djs_r_min.style.transition = '1s';
+        if (sy_djs_r_s.length > 5 && parseFloat(sy_djs_r_min.style.left) + 200 < 0) {
+            sy_djs_r_min.style.left = parseFloat(sy_djs_r_min.style.left) + 200 + 'px';
+        } else {
+            sy_djs_r_min.style.left = '0px';
+        }
     }
 }
 sy_djs_yd()
@@ -731,7 +738,7 @@ function sy_djs_sc() {
     // 重新加载边框
     if (localStorage.bei_jing_kuan_ture == 1) {
         sy_djs_r_s = document.querySelectorAll('.sy_djs_r_s');
-        for (var i = 0; i < (sy_djs_r_s.length < 6 ? sy_djs_r_s.length : sy_djs_r_s.length - 1); i++) {
+        for (var i = 0; i < sy_djs_r_s.length; i++) {
             sy_djs_r_s[i].style.borderRight = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
         }
         sy_djs_r_t = document.querySelectorAll('.sy_djs_r_t');
@@ -772,7 +779,7 @@ function sy_djs_tj_yc() {
     input_djs_tjym_time_s2[0].style.color = '';
 }
 
-//倒计时输入快捷键 
+//倒计时输入快捷键
 input_djs_tjym_sj = document.querySelector('.input_djs_tjym_sj');
 input_djs_tjym_time_s = document.querySelectorAll('.input_djs_tjym_time_s');
 input_djs_tjym_time_s2 = document.querySelectorAll('.input_djs_tjym_time_s2');
@@ -804,6 +811,63 @@ input_djs_tjym_time_s2[2].addEventListener('focus', function() {
     input_djs_tjym_gs = 0 + 3;
     this.select();
 });
+// 日程移动
+var sy_djs_cm = 0;
+var sy_djs = document.querySelector('.sy_djs');
+sy_djs.addEventListener('mouseover', function(e) {
+    sy_djs_cm = 1;
+});
+sy_djs.addEventListener('mouseout', function(e) {
+    sy_djs_cm = 0;
+});
+// 监听鼠标滚轮事件
+var sy_djs_r_min = document.querySelector('.sy_djs_r_min');
+document.addEventListener('wheel', function(e) {
+    if (isShiftPressed && e.deltaY < 0 && sy_djs_cm == 1) {
+        sy_djs_r_min.style.transition = '0.05s linear';
+        if (parseFloat(sy_djs_r_min.style.left) + 100 > 0) {
+            sy_djs_r_min.style.left = '0px';
+        } else {
+            sy_djs_r_min.style.left = parseFloat(sy_djs_r_min.style.left) + 100 + 'px';
+        }
+    } else if (isShiftPressed && e.deltaY > 0 && sy_djs_cm == 1) {
+        sy_djs_r_min.style.transition = '0.05s linear';
+        if (parseFloat(sy_djs_r_min.style.left) - 100 < sy_djs_r_s.length * -200 + 1049) {
+            if (sy_djs_r_s.length > 5) {
+                sy_djs_r_min.style.left = sy_djs_r_s.length * -200 + 1049 + 'px';
+            } else {
+                sy_djs_r_min.style.left = '0px';
+            }
+        } else {
+            sy_djs_r_min.style.left = parseFloat(sy_djs_r_min.style.left) - 100 + 'px';
+        }
+    }
+});
+// 按钮左右
+var i_djs_z_tb = document.querySelector('.i_djs_z_tb');
+var i_djs_y_tb = document.querySelector('.i_djs_y_tb');
+i_djs_z_tb.addEventListener('click', function(e) {
+    sy_djs_r_min.style.transition = '1s';
+    if (parseFloat(sy_djs_r_min.style.left) + 1000 > 0) {
+        sy_djs_r_min.style.left = '0px';
+    } else {
+        sy_djs_r_min.style.left = parseFloat(sy_djs_r_min.style.left) + 1000 + 'px';
+    }
+});
+i_djs_y_tb.addEventListener('click', function(e) {
+    sy_djs_r_min.style.transition = '1s';
+    if (parseFloat(sy_djs_r_min.style.left) - 1000 < sy_djs_r_s.length * -200 + 1049) {
+        if (sy_djs_r_s.length > 5) {
+            sy_djs_r_min.style.left = sy_djs_r_s.length * -200 + 1049 + 'px';
+        } else {
+            sy_djs_r_min.style.left = '0px';
+        }
+    } else {
+        sy_djs_r_min.style.left = parseFloat(sy_djs_r_min.style.left) - 1000 + 'px';
+    }
+});
+
+
 
 
 
@@ -2423,7 +2487,16 @@ Sku_gundontiao('.music_hzmax', '.music_ym_gundontiao_max', '.music_ym_gundontiao
 
 
 //全局按键事件
+let isShiftPressed = false;
+document.addEventListener('keyup', function(event) {
+    if (event.key === 'Shift') {
+        isShiftPressed = false;
+    }
+});
 document.addEventListener('keydown', function(e) {
+    if (e.key === 'Shift') {
+        isShiftPressed = true;
+    }
     if (music_ym.style.display == 'block') {
         if (e.key == ' ' && music_boyyom_tj_ym.style.display == 'none') {
             i_music_boyyom_ks.click();
