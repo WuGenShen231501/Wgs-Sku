@@ -524,3 +524,45 @@
 .lj_max:hover>.lj_laiyuan {
     display: block;
 }
+
+.lianjie_gundontiao_max {
+    position: absolute;
+    right: 0;
+    top: -1px;
+    width: 5px;
+    height: 600px;
+    border-radius: 5px;
+    background-color: var(--zi_ti_color_20);
+    overflow: hidden;
+    opacity: 0;
+}
+
+.lianjie_gundontiao_min {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border-radius: 5px;
+    background-color: var(--zi_ti_color);
+    opacity: 0.6;
+}
+
+.lianjied_gundontiao_max {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 5px;
+    height: 600px;
+    border-radius: 5px;
+    background-color: var(--zi_ti_color_20);
+    overflow: hidden;
+    opacity: 0;
+}
+
+.lianjied_gundontiao_min {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border-radius: 5px;
+    background-color: var(--zi_ti_color);
+    opacity: 0.6;
+}

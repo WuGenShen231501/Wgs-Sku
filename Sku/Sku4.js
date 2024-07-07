@@ -1156,6 +1156,8 @@ bfsz_xzcd.addEventListener('click', function() {
     localStorage.sku_zcb = localStorage.sku_zcb_bf;
     localStorage.ztfg_name = localStorage.ztfg_name_bf;
     localStorage.ztfg = localStorage.ztfg_bf;
+
+    localStorage.dr_mmdr_drsj = 0;
     location.reload();
 });
 //自动上传
@@ -2279,7 +2281,9 @@ var so_yq_s = document.querySelector('.so_yq_s');
 so_ssk.addEventListener('click', function(e) {
     e.stopPropagation();
 });
-
+ssbqym.addEventListener('click', function(e) {
+    e.stopPropagation();
+});
 
 
 so_ssk.addEventListener('input', function(e) {
@@ -2550,7 +2554,6 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
-
 
 
 
@@ -4280,6 +4283,19 @@ if (localStorage.Sku_benghuai == 1) {
         location.replace('https://cn.bing.com/');
     }, 500);
 }
+
+
+
+
+// 滚动条
+Sku_gundontiao('.bzsz_max', '.bizhi_gundontiao_max', '.bizhi_gundontiao_min');
+Sku_gundontiao('.shezhi_ym_max', '.ztfg_gundontiao_max', '.ztfg_gundontiao_min');
+Sku_gundontiao('.grb_j_max', '.ctysj_gundontiao_max', '.ctysj_gundontiao_min');
+Sku_gundontiao('.daorubendi_max_hd', '.daoru_bendi_gundontiao_max', '.daoru_bendi_gundontiao_min');
+Sku_gundontiao('.ssjl_max2', '.lszcb_gundontiao_max', '.lszcb_gundontiao_min');
+Sku_gundontiao('.ssjl_max', '.lsssjl_gundontiao_max', '.lsssjl_gundontiao_min');
+Sku_gundontiao('.ssbqym_max', '.ssbqym_gundontiao_max', '.ssbqym_gundontiao_min');
+Sku_gundontiao('.shezhi_min', '.shezhi_max_gundontiao_max', '.shezhi_max_gundontiao_min');
 
 
 

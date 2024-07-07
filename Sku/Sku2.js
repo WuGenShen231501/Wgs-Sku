@@ -1896,6 +1896,12 @@ lj_xg_tj_bdtj.addEventListener('click', function(e) {
 
 
 
+// 滚动条
+Sku_gundontiao('.lian_jie_r', '.lianjie_gundontiao_max', '.lianjie_gundontiao_min');
+Sku_gundontiao('.lian_jie_l', '.lianjied_gundontiao_max', '.lianjied_gundontiao_min');
+
+
+
 //全局事件
 dhr_xg_tj = document.querySelector('.dhr_xg_tj');
 dhr_shezhi_gn = document.querySelector('.dhr_shezhi_gn');

@@ -473,13 +473,12 @@ html {
 }
 
 .music_ym {
-    display: none;
     position: absolute;
     width: 350px;
     height: auto;
     right: 55px;
     top: 56px;
-    border-radius: 10px;
+    border-radius: 5px;
     z-index: 2;
     overflow: hidden;
 }
@@ -515,6 +514,25 @@ html {
     overflow: hidden;
     white-space: nowrap;
     transition: 0.3s;
+}
+
+.music_ym_gundontiao_max {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 5px;
+    background-color: var(--zi_ti_color_20);
+    overflow: hidden;
+    opacity: 0;
+}
+
+.music_ym_gundontiao_min {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border-radius: 5px;
+    background-color: var(--zi_ti_color);
+    opacity: 0.6;
 }
 
 .i_music_s_ks_tb,

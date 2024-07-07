@@ -56,26 +56,6 @@ function containsAllChars(str11, str22) {
 
 
 // 所有文本超出字体浮动效果
-// function WGS_wenbengundon(qwe, asd) {
-//     var wb = document.querySelectorAll(qwe);
-//     for (var i = 0; i < wb.length; i++) {
-//         wb[i].addEventListener('mouseover', function(e) {
-//             var nrcd = this.scrollWidth;
-//             var hzcd = this.offsetWidth;
-//             if (nrcd > hzcd) {
-//                 var duochu = nrcd - hzcd;
-//                 var sj = duochu / 50;
-//                 this.style.transition = sj + 's linear';
-//                 this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) + 'px';
-//             }
-//         });
-//         wb[i].addEventListener('mouseout', function(e) {
-//             this.style.transition = '';
-//             this.style.textIndent = asd + 'px';
-//         });
-//     }
-// }
-
 function WGS_wenbengundon(qwe, asd) {
     var wb = document.querySelectorAll(qwe);
     for (var i = 0; i < wb.length; i++) {
@@ -128,6 +108,103 @@ function Sku_tctx(zdysx1) {
         var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
         document.body.removeChild(Sku_tcjg_Max[0]);
     }, 3000)
+}
+
+
+
+// 滚动条
+function Sku_gundontiao(gun_don_ye1, gun_don_tiao_max1, gun_don_tiao_min1) {
+    let scrollEndTimer;
+    var gun_don_ye = document.querySelector(gun_don_ye1);
+    var gun_don_tiao_max = document.querySelector(gun_don_tiao_max1);
+    var gun_don_tiao_min = document.querySelector(gun_don_tiao_min1);
+    // 页面滚动时
+    gun_don_ye.addEventListener('scroll', function(e) {
+        var gun_don_tiao_min_h = this.offsetHeight / this.scrollHeight;
+        if (gun_don_tiao_min_h * (gun_don_tiao_max.offsetHeight) < 20) {
+            gun_don_tiao_min.style.height = '20px';
+        } else {
+            gun_don_tiao_min.style.height = gun_don_tiao_min_h * 100 + '%';
+        }
+        var top_bdz;
+        if (this.scrollHeight > this.offsetHeight) {
+            top_bdz = (this.scrollTop / (this.scrollHeight - this.offsetHeight)) * (gun_don_tiao_max.offsetHeight - gun_don_tiao_min.offsetHeight);
+        } else {
+            top_bdz = 0;
+        }
+        gun_don_tiao_min.style.top = top_bdz + 'px';
+        if (gun_don_tiao_max.offsetHeight > gun_don_tiao_min.offsetHeight) {
+            gun_don_tiao_max.style.transition = '0.2s';
+            gun_don_tiao_max.style.opacity = '1';
+        } else {
+            gun_don_tiao_max.style.transition = '0s';
+            gun_don_tiao_max.style.opacity = '0';
+        }
+
+        // 滚动结束计时器
+        if (scrollEndTimer) clearTimeout(scrollEndTimer);
+        scrollEndTimer = setTimeout(onScrollEnd, 500);
+    });
+    // 触摸滚动条
+    gun_don_tiao_max.addEventListener('mouseover', function(e) {
+        var gun_don_tiao_min_h = gun_don_ye.offsetHeight / gun_don_ye.scrollHeight;
+        if (gun_don_tiao_min_h * (gun_don_tiao_max.offsetHeight) < 20) {
+            gun_don_tiao_min.style.height = '20px';
+        } else {
+            gun_don_tiao_min.style.height = gun_don_tiao_min_h * 100 + '%';
+        }
+        var top_bdz;
+        if (gun_don_ye.scrollHeight > gun_don_ye.offsetHeight) {
+            top_bdz = (gun_don_ye.scrollTop / (gun_don_ye.scrollHeight - gun_don_ye.offsetHeight)) * (gun_don_tiao_max.offsetHeight - gun_don_tiao_min.offsetHeight);
+        } else {
+            top_bdz = 0;
+        }
+        gun_don_tiao_min.style.top = top_bdz + 'px';
+        if (gun_don_tiao_max.offsetHeight > gun_don_tiao_min.offsetHeight) {
+            this.style.transition = '0.2s';
+            this.style.opacity = '1';
+        } else {
+            gun_don_tiao_max.style.transition = '0s';
+            gun_don_tiao_max.style.opacity = '0';
+        }
+    });
+    gun_don_tiao_max.addEventListener('mouseout', function(e) {
+        this.style.transition = '0.5s';
+        this.style.opacity = '0';
+    });
+    // 拖拉滚动条
+    gun_don_tiao_min.addEventListener('mousedown', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        var y2 = e.pageY - this.offsetTop;
+
+        document.addEventListener('mousemove', wgsLAIDONTIAO2);
+
+        function wgsLAIDONTIAO2(e) {
+            var y_ZhouPianYiLian = e.pageY - y2;
+            if (y_ZhouPianYiLian < 0) {
+                y_ZhouPianYiLian = 0;
+            } else if (y_ZhouPianYiLian > gun_don_tiao_max.offsetHeight - gun_don_tiao_min.offsetHeight) {
+                y_ZhouPianYiLian = gun_don_tiao_max.offsetHeight - gun_don_tiao_min.offsetHeight;
+            }
+
+            gun_don_tiao_min.style.top = y_ZhouPianYiLian + 'px';
+            gun_don_ye.scroll(0, parseFloat(gun_don_tiao_min.style.top) / (gun_don_tiao_max.offsetHeight - gun_don_tiao_min.offsetHeight) * (gun_don_ye.scrollHeight - gun_don_ye.offsetHeight));
+        }
+
+        document.addEventListener('mouseup', wgsTanQiXiaoChu2);
+
+        function wgsTanQiXiaoChu2(e) {
+            document.removeEventListener('mousemove', wgsLAIDONTIAO2);
+            document.removeEventListener('mouseup', wgsTanQiXiaoChu2);
+        }
+    });
+    // 滚动结束
+    function onScrollEnd() {
+        gun_don_tiao_max.style.transition = '0.5s';
+        gun_don_tiao_max.style.opacity = '0';
+    }
 }
 
 
@@ -187,6 +264,7 @@ window.addEventListener('resize', function() {
     sy_lbt = document.querySelector('.sy_lbt');
     sy_lbt_b = document.querySelector('.sy_lbt_b');
     sy_djs_tjym = document.querySelector('.sy_djs_tjym');
+    sy_zp_tj_ym = document.querySelector('.sy_zp_tj_ym');
     sy_lbt.style.marginTop = (window.innerHeight + 56 - 523 - 84) / 2 + 'px';
     sy_lbt_b.style.marginTop = ((window.innerHeight + 56 - 523 - 84) / 2) - 56 + 'px';
     sy_djs_tjym.style.top = ((window.innerHeight - 300) / 2) + 'px';
@@ -1584,6 +1662,19 @@ music_bfq2.addEventListener('play', function(e) {
     music_bfq.pause();
 });
 
+// 音乐滚动条
+setTimeout(function() {
+    music_hzmax = document.querySelector('.music_hzmax');
+    music_ym_gundontiao_max = document.querySelector('.music_ym_gundontiao_max');
+    music_ym_gundontiao_max.style.height = parseFloat(music_hzmax.style.maxHeight) - 2 + 'px';
+});
+window.addEventListener('resize', function() {
+    setTimeout(function() {
+        music_hzmax = document.querySelector('.music_hzmax');
+        music_ym_gundontiao_max = document.querySelector('.music_ym_gundontiao_max');
+        music_ym_gundontiao_max.style.height = parseFloat(music_hzmax.style.maxHeight) - 2 + 'px';
+    });
+});
 
 
 
@@ -2323,6 +2414,14 @@ enableDragAndDrop3('iframe1');
 
 
 
+// 滚动条
+Sku_gundontiao('.music_hzmax', '.music_ym_gundontiao_max', '.music_ym_gundontiao_min');
+
+
+
+
+
+
 //全局按键事件
 document.addEventListener('keydown', function(e) {
     if (music_ym.style.display == 'block') {
@@ -2465,12 +2564,12 @@ document.addEventListener('contextmenu', function() {
     sy_djs_tj_yc();
     sy_zp_tj_sc();
     sy_dwck_ym_yc();
-    music_yms_yc()
+    music_yms_yc();
 });
 //全局左击事件
 document.addEventListener('click', function() {
     sy_djs_tj_yc();
     sy_zp_tj_sc();
     sy_dwck_ym_yc();
-    music_yms_yc()
+    music_yms_yc();
 });

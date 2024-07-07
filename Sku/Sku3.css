@@ -95,10 +95,14 @@
     height: auto;
     margin: 0px 100px 0px 20px;
     padding: 10px 10px;
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid;
     border-radius: 5px;
     overflow: hidden;
     white-space: pre-wrap;
+}
+
+.liu_yan_z2 {
+    border: 1px dashed !important;
 }
 
 .liu_yan_z:hover~.liu_yan_time {
@@ -402,4 +406,25 @@
     border-radius: 5px;
     border: 1px solid var(--bei_jing_kuan_color);
     backdrop-filter: var(--mao_bo_li);
+}
+
+.liuyan_gundontiao_max {
+    position: absolute;
+    right: 0;
+    top: 39px;
+    width: 5px;
+    height: 411px;
+    border-radius: 5px;
+    background-color: var(--zi_ti_color_20);
+    overflow: hidden;
+    opacity: 0;
+}
+
+.liuyan_gundontiao_min {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border-radius: 5px;
+    background-color: var(--zi_ti_color);
+    opacity: 0.6;
 }

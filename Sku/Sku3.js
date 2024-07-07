@@ -114,7 +114,7 @@ function liu_yan_shuchu_sz() {
         div.setAttribute('liu_yan_num2', i2);
         //判断是否标记
         if (liu_yan_dx['liu_yan_sz' + i][2] == 2) {
-            div.innerHTML = '<div class="liu_yan_z">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
+            div.innerHTML = '<div class="liu_yan_z liu_yan_z2">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
         } else if (liu_yan_dx['liu_yan_sz' + i][2] == 1) {
             div.innerHTML = '<div class="liu_yan_z" style="border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
         }
@@ -231,7 +231,7 @@ liu_yan_sxuan_wbj.addEventListener('click', function() {
             div_0.className = 'liu_yan_z_max';
             div_0.setAttribute('liu_yan_num', i);
             div_0.setAttribute('liu_yan_num2', i2);
-            div_0.innerHTML = '<div class="liu_yan_z">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
+            div_0.innerHTML = '<div class="liu_yan_z liu_yan_z2">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
             liu_yan_top_min.appendChild(div_0);
             i2++;
         }
@@ -293,7 +293,7 @@ i_liu_yan_ss_tp.addEventListener('click', function() {
                 div.setAttribute('liu_yan_num2', i2);
                 //判断是否标记
                 if (liu_yan_dx['liu_yan_sz' + i][2] == 2) {
-                    div.innerHTML = '<div class="liu_yan_z">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
+                    div.innerHTML = '<div class="liu_yan_z liu_yan_z2">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
                 } else if (liu_yan_dx['liu_yan_sz' + i][2] == 1) {
                     div.innerHTML = '<div class="liu_yan_z" style="border-color:' + RGB_zhq(localStorage.zi_ti_click_color) + ';">' + liu_yan_dx['liu_yan_sz' + i][0] + '</div><div class="liu_yan_tx" style="background-image: url(' + localStorage.tou_xiang + ');"></div><div class="liu_yan_time">' + liu_yan_dx['liu_yan_sz' + i][1] + '</div>';
                 }
@@ -404,9 +404,12 @@ liu_yan_shezhi_gn_biaoji.addEventListener('click', function() {
         localStorage.liu_yan_dx = JSON.stringify(liu_yan_dx);
         //修改HTML
         liu_yan_z = document.querySelectorAll('.liu_yan_z');
-        if (liu_yan_z[liu_yan_zhi_xian2].style.borderColor == '') {
+        liu_yan_dx = JSON.parse(localStorage.liu_yan_dx);
+        if (liu_yan_dx['liu_yan_sz' + liu_yan_zhi_xian][2] == 1) {
+            liu_yan_z[liu_yan_zhi_xian2].className = 'liu_yan_z';
             liu_yan_z[liu_yan_zhi_xian2].style.borderColor = RGB_zhq(localStorage.zi_ti_click_color);
         } else {
+            liu_yan_z[liu_yan_zhi_xian2].className = 'liu_yan_z liu_yan_z2';
             liu_yan_z[liu_yan_zhi_xian2].style.borderColor = '';
         }
         //标记个数刷新
@@ -676,6 +679,14 @@ liu_yan.addEventListener('drop', function(e) {
         liu_yan_button.click();
     }
 });
+
+
+
+
+
+
+// 滚动条
+Sku_gundontiao('.liu_yan_top', '.liuyan_gundontiao_max', '.liuyan_gundontiao_min');
 
 
 
