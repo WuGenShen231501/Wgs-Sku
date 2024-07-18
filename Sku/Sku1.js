@@ -91,23 +91,31 @@ function WGS_wenbengundon(qwe, asd) {
 
 
 // 弹窗提醒
+// var Sku_tctx_ture = 1;
+
 function Sku_tctx(zdysx1) {
-    var div = document.createElement('div');
-    div.className = "Sku_tcjg_Max";
-    div.innerHTML = zdysx1;
-    if (localStorage.bei_jing_kuan_ture == 1) {
-        div.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
-    }
+    typeof Sku_tctx_ture === 'undefined' ? Sku_tctx_ture = 1 : undefined;
+    if (Sku_tctx_ture == 1) {
+        Sku_tctx_ture = 0;
+        setTimeout(() => Sku_tctx_ture = 1, 500);
 
-    document.body.appendChild(div);
+        var div = document.createElement('div');
+        div.className = "Sku_tcjg_Max";
+        div.innerHTML = zdysx1;
+        if (localStorage.bei_jing_kuan_ture == 1) {
+            div.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
+        }
 
-    var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
-    Sku_tcjg_Max[Sku_tcjg_Max.length - 1].style.left = ((window.innerWidth / 2) - (Sku_tcjg_Max[Sku_tcjg_Max.length - 1].offsetWidth / 2)) + 'px';
+        document.body.appendChild(div);
 
-    setTimeout(function() {
         var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
-        document.body.removeChild(Sku_tcjg_Max[0]);
-    }, 3000)
+        Sku_tcjg_Max[Sku_tcjg_Max.length - 1].style.left = ((window.innerWidth / 2) - (Sku_tcjg_Max[Sku_tcjg_Max.length - 1].offsetWidth / 2)) + 'px';
+
+        setTimeout(function() {
+            var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
+            document.body.removeChild(Sku_tcjg_Max[0]);
+        }, 3000)
+    }
 }
 
 
@@ -206,6 +214,11 @@ function Sku_gundontiao(gun_don_ye1, gun_don_tiao_max1, gun_don_tiao_min1) {
         gun_don_tiao_max.style.opacity = '0';
     }
 }
+
+
+
+
+
 
 
 
@@ -2181,7 +2194,7 @@ function sy_lbnr_hs2(max_gs) {
                     var div = document.createElement('div');
                     div.className = 'lbnr_min';
 
-                    var shezhi_min_div = document.querySelector('.shezhi_min').querySelectorAll('div');
+                    var shezhi_min_div = document.querySelector('.shezhi_min').querySelectorAll('.shezhi_mins');
                     var sknr_sjs2 = sjs4(0, shezhi_min_div.length - 1);
 
                     div.innerHTML = '<div class="lbnr_sz">设置</div><div class="lbnr_sz2">' + shezhi_min_div[sknr_sjs2].innerText + '</div>';

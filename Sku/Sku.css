@@ -473,6 +473,7 @@ html {
 }
 
 .music_ym {
+    display: none;
     position: absolute;
     width: 350px;
     height: auto;

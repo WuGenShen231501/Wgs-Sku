@@ -38,7 +38,7 @@ window.addEventListener('storage', function(event) {
             Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做! ' + event.key + ' 已被保护!');
 
             setTimeout(function() {
-                // localStorage.Sku_benghuai = 1;
+                localStorage.Sku_benghuai = 1;
                 localStorage.dr_mmdr_drsj = 0;
                 window.close();
                 setTimeout(function() { location.replace('https://cn.bing.com/'); });
@@ -52,9 +52,10 @@ window.addEventListener('storage', function(event) {
 // 防止打开开发者工具
 document.onkeydown = function() {
     var e = window.e || arguments[0];
-    if (localStorage.Sku_kfzms == 0 && (e.keyCode == 123 || (e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73) || (e.ctrlKey) && (e.keyCode == 85) || (e.ctrlKey) && (e.keyCode == 83) || (e.ctrlKey) && (e.key == 'C'))) {
+    if (localStorage.Sku_kfzms == 0 && (e.keyCode == 123 || (e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73) || (e.ctrlKey) && (e.keyCode == 85) || (e.ctrlKey) && (e.key == 'C'))) {
         e.preventDefault();
         localStorage.Sku_benghuai = 1;
+        localStorage.dr_mmdr_drsj = 0;
         Sku_tctx('༼ 🖕 ◕_◕ ༽🖕 请不要这样做!');
         setTimeout(function() {
             window.close();
@@ -88,27 +89,6 @@ if (localStorage.Sku_kfzms == 0) {
 }
 
 
-
-// 弹窗提醒
-function Sku_tctx(zdysx1) {
-    console.log(zdysx1);
-    var div = document.createElement('div');
-    div.className = "Sku_tcjg_Max";
-    div.innerHTML = zdysx1;
-    if (localStorage.bei_jing_kuan_ture == 1) {
-        div.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
-    }
-
-    document.body.appendChild(div);
-
-    var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
-    Sku_tcjg_Max[Sku_tcjg_Max.length - 1].style.left = ((window.innerWidth / 2) - (Sku_tcjg_Max[Sku_tcjg_Max.length - 1].offsetWidth / 2)) + 'px';
-
-    setTimeout(function() {
-        var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
-        document.body.removeChild(Sku_tcjg_Max[0]);
-    }, 3000)
-}
 
 
 // 全部密钥
@@ -1040,3 +1020,27 @@ function insertCommasEveryFourDigits(numberStr) {
     numberStr2 = numberStr2.split('').reverse().join('');
     return numberStr2;
 }
+
+
+
+
+// var dhr_ym_r_s = document.querySelector('.dhr_ym_r_s');
+// dhr_ym_r_s.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('lj_max')) {
+//         console.log('Clicked on an element with class "lj_max"');
+
+//         // 打印出触发事件的元素
+//         console.log(e.target);
+
+//         // 如果这个元素有id，打印出它的id
+//         if (e.target.id) {
+//             console.log('Element ID:', e.target.id);
+//         }
+
+//         // 打印出这个元素的HTML内容
+//         console.log('Element HTML:', e.target.innerHTML);
+
+//         // 打印出这个元素的文本内容
+//         console.log('Element Text:', e.target.textContent);
+//     }
+// });

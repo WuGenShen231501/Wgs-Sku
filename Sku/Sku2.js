@@ -93,25 +93,6 @@ function WGS_wenbengundon_dd(qwe) {
     });
 }
 
-// 弹窗提醒
-function Sku_tctx(zdysx1) {
-    var div = document.createElement('div');
-    div.className = "Sku_tcjg_Max";
-    div.innerHTML = zdysx1;
-    if (localStorage.bei_jing_kuan_ture == 1) {
-        div.style.border = '1px solid ' + RGB_zhq(localStorage.bei_jing_kuan_color, localStorage.bei_jing_kuan_tmd);
-    }
-
-    document.body.appendChild(div);
-
-    var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
-    Sku_tcjg_Max[Sku_tcjg_Max.length - 1].style.left = ((window.innerWidth / 2) - (Sku_tcjg_Max[Sku_tcjg_Max.length - 1].offsetWidth / 2)) + 'px';
-
-    setTimeout(function() {
-        var Sku_tcjg_Max = document.querySelectorAll('.Sku_tcjg_Max');
-        document.body.removeChild(Sku_tcjg_Max[0]);
-    }, 3000)
-}
 
 
 
