@@ -87,7 +87,7 @@ function WGS_wenbengundon(qwe, asd) {
                 var duochu = nrcd - hzcd;
                 var sj = duochu / 50;
                 this.style.transition = sj + 's linear';
-                this.style.textIndent = (nrcd * -1) + hzcd + (asd * 1) + 'px';
+                this.style.textIndent = (nrcd * -1) + hzcd + 'px';
             });
             wb[i].addEventListener('mouseout', function(e) {
                 this.style.transition = '';
@@ -1754,20 +1754,35 @@ daoru_ym_jmdc.addEventListener('click', function(e) {
 
 });
 
-// 统计字数
+// 统计字数和来源
 var daoru_ym_sc_zishu = document.querySelector('.daoru_ym_sc_zishu');
+var daoru_ym_sc_laiyuan = document.querySelector('.daoru_ym_sc_laiyuan');
 
 function daoru_ym_sc_tjzs() {
     if (daoru_ym_sc.value.length < 15000) {
-        daoru_ym_sc_zishu.innerText = '输入 ' + daoru_ym_sc.value.length + ' 位数';
+        daoru_ym_sc_zishu.innerText = '导入 ' + daoru_ym_sc.value.length + ' 位数';
+        daoru_ym_dr.innerText = '导入';
+
+        daoru_ym_sc_laiyuan.innerText = '';
     } else {
         if (daoru_ym_sc.value.length > jisuan_bendidx) {
-            daoru_ym_sc_zishu.innerText = '输入 ' + daoru_ym_sc.value.length + ' 位数 > 本地 ' + jisuan_bendidx + ' 位数';
+            daoru_ym_sc_zishu.innerText = '导入 ' + daoru_ym_sc.value.length + ' 位数 > 当前 ' + jisuan_bendidx + ' 位数';
+            daoru_ym_dr.innerText = '导入';
         } else if (daoru_ym_sc.value.length == jisuan_bendidx) {
-            daoru_ym_sc_zishu.innerText = '输入 ' + daoru_ym_sc.value.length + ' 位数 = 本地 ' + jisuan_bendidx + ' 位数';
+            daoru_ym_sc_zishu.innerText = '导入 ' + daoru_ym_sc.value.length + ' 位数 = 当前 ' + jisuan_bendidx + ' 位数';
+            daoru_ym_dr.innerText = '导入';
         } else {
-            daoru_ym_sc_zishu.innerText = '输入 ' + daoru_ym_sc.value.length + ' 位数 < 本地 ' + jisuan_bendidx + ' 位数\n(当前数据量较小' + (jisuan_bendidx - daoru_ym_sc.value.length) + '位,建议谨慎操作导入)';
+            daoru_ym_sc_zishu.innerText = '导入 ' + daoru_ym_sc.value.length + ' 位数 < 当前 ' + jisuan_bendidx + ' 位数\n(当前数据量较小' + (jisuan_bendidx - daoru_ym_sc.value.length) + '位,建议谨慎操作导入)';
+            daoru_ym_dr.innerText = '导入 !';
         }
+
+        var daoru_laiyuan_sj = daoru_ym_sc.value.substring(daoru_ym_sc.value.length - 21, daoru_ym_sc.value.length - 2);
+        if (daoru_laiyuan_sj[0] == 'ʂ') {
+            daoru_laiyuan_sj = WGS_zfc_jiami(daoru_laiyuan_sj, miyao);
+        } else if (daoru_laiyuan_sj[0] !== '2') {
+            daoru_laiyuan_sj = '未知';
+        }
+        daoru_ym_sc_laiyuan.innerText = '来源[ ' + daoru_laiyuan_sj + ' ]';
     }
 }
 daoru_ym_sc.addEventListener('input', function(e) {
@@ -2349,7 +2364,7 @@ so_ssk.addEventListener('input', function(e) {
         }
 
         // 关键词搜索
-        ss_gjcss();
+        ss_gjcss(so_ssk.value);
     } else {
         var mrrd = JSON.parse(localStorage.mrrd);
         var lsjl2_qjbl = [];
@@ -2377,7 +2392,7 @@ so_ssk.addEventListener('input', function(e) {
                 so_anniu.click();
             });
 
-            if (i == 48) {
+            if (i == (mrrd.length >= 50 ? 48 : mrrd.length - 1)) {
                 div.style.borderBottom = '2px dashed';
             } else {
                 div.style.borderBottom = '1px solid';
@@ -2455,7 +2470,7 @@ so_ssk.addEventListener('focus', function(e) {
         }
 
         // 关键词搜索
-        ss_gjcss();
+        ss_gjcss(so_ssk.value);
     } else {
         var mrrd = JSON.parse(localStorage.mrrd);
         var lsjl2_qjbl = [];
@@ -2482,7 +2497,8 @@ so_ssk.addEventListener('focus', function(e) {
                 so_ssk.value = this.innerText;
                 so_anniu.click();
             });
-            if (i == 48) {
+
+            if (i == (mrrd.length >= 50 ? 48 : mrrd.length - 1)) {
                 div.style.borderBottom = '2px dashed';
             } else {
                 div.style.borderBottom = '1px solid';
@@ -4096,14 +4112,14 @@ function mryy_s() {
 // 搜索关键词
 var ss_gjcss_ysq = undefined;
 
-function ss_gjcss() {
+function ss_gjcss(so_ssk_value2) {
     var zhypxuxian = 'true';
     ss_gjcss_ysq ? clearTimeout(ss_gjcss_ysq) : undefined;
     ss_gjcss_ysq = setTimeout(function() {
-        if (so_ssk.value !== '') {
+        if (so_ssk.value !== '' && so_ssk_value2 == so_ssk.value) {
             var tjc_sz_max = [];
 
-            function API_dz_syff(gjc, hdhs, ff, ff2, ff3, ff4, ff5, ff6, ff7, ff8) {
+            function API_dz_syff(so_ssk_value, gjc, hdhs, ff, ff2, ff3, ff4, ff5, ff6, ff7, ff8) {
                 //定义回调函数
                 window[hdhs] = {
                         sug: function(json) {
@@ -4152,49 +4168,51 @@ function ss_gjcss() {
                                     });
                                 }
 
-                                // 最后一排虚线
-                                if (tjc_sz.length !== 0 && zhypxuxian == 'true') {
-                                    var syjl = document.querySelectorAll('.ssbq_s');
-                                    if (syjl.length !== 0) {
-                                        syjl[syjl.length - 1].style.borderBottom = '2px dashed';
-                                    }
-                                    zhypxuxian = 'false';
-                                }
-
-                                // 输出补全
-                                var qrgs = 0;
-                                for (var i = 0; i < tjc_sz.length; i++) {
-                                    if (tjc_sz_max.indexOf(tjc_sz[i]) == -1 && tjc_sz[i] !== so_ssk.value) {
-                                        qrgs++;
-                                        var div = document.createElement('div');
-                                        div.className = 'ssbq_s ssbq_s2';
-                                        div.innerText = tjc_sz[i];
-                                        div.addEventListener('click', function(e) {
-                                            so_ssk.value = this.innerText;
-                                            so_anniu.click();
-                                        });
-                                        div.style.borderBottom = '1px solid';
-
-                                        ssbqym_min.appendChild(div);
+                                // 判断是否还需要输出
+                                if (so_ssk_value == so_ssk.value) {
+                                    // 最先一排虚线
+                                    if (tjc_sz.length !== 0 && zhypxuxian == 'true') {
+                                        var syjl = document.querySelectorAll('.ssbq_s');
+                                        if (syjl.length !== 0) {
+                                            syjl[syjl.length - 1].style.borderBottom = '2px dashed';
+                                        }
+                                        zhypxuxian = 'false';
                                     }
 
-                                    if (qrgs == 1000) { break; }
+                                    // 输出补全
+                                    var qrgs = 0;
+                                    for (var i = 0; i < tjc_sz.length; i++) {
+                                        if (tjc_sz_max.indexOf(tjc_sz[i]) == -1 && tjc_sz[i] !== so_ssk.value) {
+                                            qrgs++;
+                                            var div = document.createElement('div');
+                                            div.className = 'ssbq_s ssbq_s2';
+                                            div.innerText = tjc_sz[i];
+                                            div.addEventListener('click', function(e) {
+                                                so_ssk.value = this.innerText;
+                                                so_anniu.click();
+                                            });
+                                            div.style.borderBottom = '1px solid';
+
+                                            ssbqym_min.appendChild(div);
+                                        }
+
+                                        if (qrgs == 1000) { break; }
+                                    }
+
+                                    // 显示页面
+                                    if (qrgs !== 0 && so_ssk_num == 1) {
+                                        so_yq_s.style.display = 'none';
+                                        ssbqym.style.display = 'block';
+
+                                        WGS_wenbengundon('.ssbq_s2', 9);
+                                    }
+
+                                    // 所有补全
+                                    tjc_sz_max = tjc_sz_max.concat(tjc_sz);
                                 }
-
-                                // 显示页面
-                                if (qrgs !== 0 && so_ssk_num == 1) {
-                                    so_yq_s.style.display = 'none';
-                                    ssbqym.style.display = 'block';
-
-                                    WGS_wenbengundon('.ssbq_s2', 9);
-                                }
-
-                                // 所有补全
-                                tjc_sz_max = tjc_sz_max.concat(tjc_sz);
-                                console.log(tjc_sz_max);
                             } catch (error) {
                                 // 这个块会在 try 中有错误抛出时执行
-                                console.log('搜索补全API数据整理出错');
+                                console.log('%c' + hdhs + ' 搜索补全API数据整理出错 \n' + gjc, "color: red");
                             }
                         }
                     }
@@ -4204,14 +4222,14 @@ function ss_gjcss() {
                 document.getElementsByTagName("head")[0].appendChild(script);
             }
 
-            API_dz_syff('https://suggestion.baidu.com/su?wd=' + so_ssk.value, 'baidu', 's');
-            API_dz_syff('https://api.bing.com/qsonhs.aspx?type=cb&cb=window.bing.sug&q=' + so_ssk.value, 'bing', 'AS', 'Results', '0', 'Suggests');
-            API_dz_syff('https://sug.so.360.cn/suggest?encodein=utf-8&encodeout=utf-8&callback=window.sanliulin.sug&format=json&word=' + so_ssk.value, 'sanliulin', 'result');
-            API_dz_syff('https://suggest.taobao.com/sug?code=utf-8&callback=window.taobao.sug&q=' + so_ssk.value, 'taobao', 'result');
-            API_dz_syff('https://suggest.taobao.com/sug?area=etao&code=utf-8&callback=window.yitao.sug&q=' + so_ssk.value, 'yitao', 'result');
+            API_dz_syff(so_ssk.value, 'https://suggestion.baidu.com/su?wd=' + so_ssk.value, 'baidu', 's');
+            API_dz_syff(so_ssk.value, 'https://api.bing.com/qsonhs.aspx?type=cb&cb=window.bing.sug&q=' + so_ssk.value, 'bing', 'AS', 'Results', '0', 'Suggests');
+            API_dz_syff(so_ssk.value, 'https://sug.so.360.cn/suggest?encodein=utf-8&encodeout=utf-8&callback=window.sanliulin.sug&format=json&word=' + so_ssk.value, 'sanliulin', 'result');
+            API_dz_syff(so_ssk.value, 'https://suggest.taobao.com/sug?code=utf-8&callback=window.taobao.sug&q=' + so_ssk.value, 'taobao', 'result');
+            API_dz_syff(so_ssk.value, 'https://suggest.taobao.com/sug?area=etao&code=utf-8&callback=window.yitao.sug&q=' + so_ssk.value, 'yitao', 'result');
 
         }
-    }, 500);
+    }, 100);
 }
 
 
