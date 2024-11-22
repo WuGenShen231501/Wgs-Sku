@@ -121,6 +121,7 @@ function mods_qh() {
     });
 
     // 页面打开
+    var AI_mods_max_hd = document.querySelector('.AI_mods_max_hd');
     var AI_modss = document.querySelectorAll('.AI_mods');
     for (var i = 0; i < AI_modss.length; i++) {
         AI_modss[i].addEventListener('click', function(e) {
@@ -134,6 +135,7 @@ function mods_qh() {
                 for (var j = 0; j < AI_mods_min.length; j++) {
                     if (AI_mods_min[j].querySelector('.AI_mods_name').innerText == AI_mods.innerText) {
                         AI_mods_min[j].className = 'AI_mods_min AI_mods_min2';
+                        AI_mods_max_hd.scroll(0, AI_mods_min[j].offsetTop - ((AI_zj.clientHeight / 2) - (AI_mods_min[j].clientHeight / 2)));
                     } else {
                         AI_mods_min[j].className = 'AI_mods_min';
                     }
@@ -406,7 +408,7 @@ function AI_fsxx(nr_s, mod_s, key_s, AI_ID) {
             AI_cl('请求失败 检查 API 是否失效', 2, mod_s, AI_ID);
         }
 
-    } else if (mod_s == 'glm-4-plus' || mod_s == 'GLM-4-Flash') {
+    } else if (mod_s == 'glm-4-plus' || mod_s == 'GLM-4-Flash' || mod_s == 'glm-4-air') {
 
         try {
             // 替换 <你的apikey> 为您的实际 API Key
@@ -445,6 +447,56 @@ function AI_fsxx(nr_s, mod_s, key_s, AI_ID) {
                     console.log(data); // 处理返回的数据
 
                     AI_cl(data.choices[0].message.content, 2, mod_s, AI_ID);
+                })
+                .catch(err => {
+                    console.log(err);
+
+                    AI_cl('请求失败 检查{key}是否正确 或 请求限制', 2, mod_s, AI_ID);
+                });
+        } catch (error) {
+            // 这个块会在 try 中有错误抛出时执行
+            AI_cl('请求失败 检查 API 是否失效', 2, mod_s, AI_ID);
+        }
+
+    } else if (mod_s == 'cogView-3-plus') {
+
+        try {
+            // 替换 <你的apikey> 为您的实际 API Key
+            const apiKey = key_s;
+            const url = 'https://open.bigmodel.cn/api/paas/v4/chat/completions';
+
+            // 请求数据
+            const requestData = {
+                max_tokens: 4095,
+                model: mod_s,
+                messages: [{
+                    role: "user",
+                    content: nr_s
+                }]
+            };
+
+            // 将请求数据转换为JSON字符串
+            const jsonData = JSON.stringify(requestData);
+
+            // 使用 fetch 发起 POST 请求
+            fetch(url, {
+                    method: 'POST', // 或者 'GET'，根据API的要求
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: jsonData // 对于 POST 请求，请求数据在 body 中
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data); // 处理返回的数据
+
+                    AI_cl('<img src="' + data.choices[0].message.content[0].url + '">', 2, mod_s, AI_ID);
                 })
                 .catch(err => {
                     console.log(err);
@@ -517,7 +569,7 @@ function AI_fsxx(nr_s, mod_s, key_s, AI_ID) {
             AI_cl('请求失败 检查 API 是否失效', 2, mod_s, AI_ID);
         }
 
-    } else if (mod_s == 'Pro/Qwen/Qwen2-1.5B-Instruct' || mod_s == 'Qwen/Qwen2-7B-Instruct' || mod_s == 'Qwen/Qwen2-1.5B-Instruct' || mod_s == 'THUDM/chatglm3-6b' || mod_s == '01-ai/Yi-1.5-9B-Chat-16K' || mod_s == 'internlm/internlm2_5-7b-chat' || mod_s == 'google/gemma-2-9b-it' || mod_s == 'meta-llama/Meta-Llama-3-8B-Instruct' || mod_s == 'meta-llama/Meta-Llama-3.1-8B-Instruct' || mod_s == 'mistralai/Mistral-7B-Instruct-v0.2' || mod_s == 'Qwen/Qwen1.5-7B-Chat' || mod_s == 'THUDM/glm-4-9b-chat') {
+    } else if (mod_s == 'Qwen/Qwen2.5-Coder-7B-Instruct' || 'Qwen/Qwen2.5-7B-Instruct' || 'Pro/Qwen/Qwen2-1.5B-Instruct' || mod_s == 'Qwen/Qwen2-7B-Instruct' || mod_s == 'Qwen/Qwen2-1.5B-Instruct' || mod_s == 'THUDM/chatglm3-6b' || mod_s == '01-ai/Yi-1.5-9B-Chat-16K' || mod_s == 'internlm/internlm2_5-7b-chat' || mod_s == 'google/gemma-2-9b-it' || mod_s == 'meta-llama/Meta-Llama-3-8B-Instruct' || mod_s == 'meta-llama/Meta-Llama-3.1-8B-Instruct' || mod_s == 'mistralai/Mistral-7B-Instruct-v0.2' || mod_s == 'Qwen/Qwen1.5-7B-Chat' || mod_s == 'THUDM/glm-4-9b-chat') {
 
         try {
             const options = {
@@ -656,6 +708,10 @@ var AI_zj = document.querySelector('.AI_zj');
 var AI_zj_nr = document.querySelector('.AI_zj_nr');
 
 function AI_cl(nr, rw, mod_s, AI_ID) {
+    if (nr == '请求失败 检查{key}是否正确 或 请求限制' && document.querySelector('.sku_wlzt').innerText == 'Status:Offline') {
+        nr = '请求失败 未连接到互联网 {请检查网线、调制解调器和路由器，或重新设置网络}'
+    }
+
     var sj = new Date().getFullYear() + ' 年 ' + (new Date().getMonth() + 1) + ' 月 ' + new Date().getDate() + ' 日 ' + shi_jian_hs3() + ':' + shi_jian_hs2();
     if (rw == 1) { //自己
 
@@ -673,6 +729,8 @@ function AI_cl(nr, rw, mod_s, AI_ID) {
     } else if (rw == 2) { //AI
 
         try {
+            // 使用mathjax解析数学公式
+            // var nr = nr.replace(/\[/g, '\\[').replace(/\]/g, '\\]').replace(/\(/g, '\\(').replace(/\)/g, '\\)');
             // 使用marked解析Markdown
             var parsedHtml = marked.parse(nr);
             // 将解析后的HTML设置回div元素中
@@ -760,8 +818,6 @@ function AI_cl(nr, rw, mod_s, AI_ID) {
 
     }
 }
-
-
 
 
 // 输出历史数据
@@ -1285,7 +1341,7 @@ AI_sz_lxdh_kaiguan.addEventListener('click', function(e) {
         AI_sz_lxdh_shu.value = localStorage.AI_lxdh;
 
         // 重新对话
-        if (AI_zhi_xing_s == 0) {
+        if (AI_zhi_xing_s == 0 && localStorage.Sku_kfzms == 0) {
             AI_zj_nr.innerHTML = '';
             localStorage.AI_jl = '[]';
             AI_xian_cheng = 0;
@@ -1393,6 +1449,8 @@ function onMouseUp(e) {
     let distance = Math.sqrt(Math.pow(releasePosition.x - clickPosition.x, 2) + Math.pow(releasePosition.y - clickPosition.y, 2));
     // 如果距离小于5px，执行函数
     if (distance < 5) {
+        console.log(td_target.nodeName);
+
         if (td_target.classList.contains('AI_huida_nr') || td_target.classList.contains('yh_huida_nr')) {
             copyToClipboard(td_target.innerText, '文本已复制到剪贴板');
         } else if (td_target.nodeName === 'PRE') {
@@ -1401,6 +1459,8 @@ function onMouseUp(e) {
             copyToClipboard(td_target.innerText, '单词已复制到剪贴板');
         } else if (td_target.nodeName === 'IMG') {
             copyToClipboard(td_target.src, '图片链接已复制到剪贴板');
+        } else if (td_target.nodeName === 'P') {
+            copyToClipboard(td_target.innerText, '段落已复制到剪贴板');
         }
     }
 }
@@ -1512,15 +1572,23 @@ document.addEventListener('keyup', function(e) {
     }
 });
 // 放大
+if (localStorage.AI_quanpin_true == undefined) {
+    localStorage.AI_quanpin_true = 0;
+}
 var AI_quanpin_anniu = document.querySelector('.AI_quanpin_anniu');
-var AI_quanpin_anniu_true = 0;
+var AI_max = document.querySelector('.AI_max');
+if (localStorage.AI_quanpin_true == 0) {
+    AI_max.className = 'AI_max';
+} else {
+    AI_max.className = 'AI_max AI_max2';
+}
 AI_quanpin_anniu.addEventListener('click', function(e) {
-    var AI_max = document.querySelector('.AI_max');
-    if (AI_quanpin_anniu_true == 0) {
-        AI_quanpin_anniu_true = 1;
+
+    if (localStorage.AI_quanpin_true == 0) {
+        localStorage.AI_quanpin_true = 1;
         AI_max.className = 'AI_max AI_max2';
     } else {
-        AI_quanpin_anniu_true = 0;
+        localStorage.AI_quanpin_true = 0;
         AI_max.className = 'AI_max';
     }
 

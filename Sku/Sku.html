@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="Sku5.css">
 
     <script src="https://cdn.jsdelivr.net/npm/marked@14.1.0/lib/marked.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
 
     <script script src="Sku_ht.js"></script>
     <script src="Sku1.js" defer></script>
@@ -107,6 +108,39 @@
                     <i class="iconfont icon-icon-arrow-right2 i_djs_y_tb"></i>
                 </div>
 
+                <!-- 课表 -->
+                <div class="sy_nrs_t fundong"><span class="sy_nrs_t_span">周</span><span class="sy_nrs_t_span">程</span></div>
+                <div class="sy_ke_biao_max fundong">
+                    <input class="ke_biao_zhoushu" type="number">
+                    <div class="sy_zpzs_kaiguan2"></div>
+                    <div class="sy_zpzs_kaiguan_ts2">锁定课表</div>
+                    <div class="ke_biao_tianjia"><i class="iconfont icon-tianjia1 ke_biao_tianjia_tb"></i></div>
+                    <div class="sy_ke_biao_top sy_ke_biao_h_s">
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s"></div>
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s">星期一
+                            <div class="ke_biao_zd_hao"></div>
+                        </div>
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s">星期二
+                            <div class="ke_biao_zd_hao"></div>
+                        </div>
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s">星期三
+                            <div class="ke_biao_zd_hao"></div>
+                        </div>
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s">星期四
+                            <div class="ke_biao_zd_hao"></div>
+                        </div>
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s">星期五
+                            <div class="ke_biao_zd_hao"></div>
+                        </div>
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s">星期六
+                            <div class="ke_biao_zd_hao"></div>
+                        </div>
+                        <div class="sy_ke_biao_top_s sy_ke_biao_l_s">星期天
+                            <div class="ke_biao_zd_hao"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 作品展示 -->
                 <div class="sy_nrs_t fundong"><span class="sy_nrs_t_span">作</span><span class="sy_nrs_t_span">品</span><span class="sy_nrs_t_span">展</span><span class="sy_nrs_t_span">示</span></div>
                 <div class="sy_zpzs_max fundong">
@@ -180,6 +214,7 @@
             <div class="sy_dwck_ym">
                 <div class="sy_dwck_s sy_dw_top">Top</div>
                 <div class="sy_dwck_s sy_dw_richen">日程</div>
+                <div class="sy_dwck_s sy_dw_kebiao">周程</div>
                 <div class="sy_dwck_s sy_dw_zpzs">作品展示</div>
             </div>
 
@@ -298,6 +333,9 @@
 
                 <!-- 发送框 -->
                 <div class="liu_yan_button">发送(E)</div>
+
+                <!-- 全屏 -->
+                <div class="liu_yan_quanpin"><i class="iconfont icon-quanping icon_AI_fdsx"></i></div>
 
                 <!-- 筛选框 -->
                 <div class="liu_yan_sxuan"><i class="iconfont icon-ai248 i_liu_yan_sxuan_tp"></i></div>
@@ -835,11 +873,27 @@
                         </div>
                         <div class="AI_mods_min">
                             <div class="AI_mods_name">glm-4-plus</div>
-                            <div class="AI_mods_sm">智谱AI开放平台 (付费版)<br>并发数限制5<br>适用于所有按tokens计费的基础模型推理</div>
+                            <div class="AI_mods_sm">智谱AI开放平台 (付费版)<br>并发数限制5<br>高智能旗舰: 性能全面提升，长文本和复杂任务能力显著增强</div>
+                        </div>
+                        <div class="AI_mods_min">
+                            <div class="AI_mods_name">glm-4-air</div>
+                            <div class="AI_mods_sm">智谱AI开放平台 (付费版)<br>并发数限制5<br>高性价比：推理能力和价格之间最平衡的模型</div>
+                        </div>
+                        <div class="AI_mods_min">
+                            <div class="AI_mods_name">cogView-3-plus</div>
+                            <div class="AI_mods_sm">智谱AI开放平台 (付费版)<br>文字生图片<br>高质量图像微调数据集<br>模型生成更符合指令且美学评分更高的图像,效果接近MJ-V6和FLUX等一流模型</div>
                         </div>
                         <div class="AI_mods_min">
                             <div class="AI_mods_name">web-search-pro</div>
                             <div class="AI_mods_sm">智谱AI开放平台 (限时免费)<br>专业版联网搜索</div>
+                        </div>
+                        <div class="AI_mods_min">
+                            <div class="AI_mods_name">Qwen/Qwen2.5-Coder-7B-Instruct</div>
+                            <div class="AI_mods_sm">SiliconCloud (免费版)<br>长度32K<br>每分钟请求数1000<br>每分钟输入输出10000tokens<br>更多可以进行申请</div>
+                        </div>
+                        <div class="AI_mods_min">
+                            <div class="AI_mods_name">Qwen/Qwen2.5-7B-Instruct</div>
+                            <div class="AI_mods_sm">SiliconCloud (免费版)<br>长度32K<br>每分钟请求数1000<br>每分钟输入输出10000tokens<br>更多可以进行申请</div>
                         </div>
                         <div class="AI_mods_min">
                             <div class="AI_mods_name">Qwen/Qwen2-7B-Instruct</div>
